@@ -103,7 +103,7 @@
             <label for="">Enter your email</label>
             <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
           </div>
-          <div class="btn btn-primary">Submit</div>
+          <a href="" class="btn btn-primary">Submit</a>
         </div>
       </div>
       <hr>

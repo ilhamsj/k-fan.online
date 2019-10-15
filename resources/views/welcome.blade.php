@@ -7,13 +7,16 @@
         <div class="container">
             <div class="row h-100-kfan align-items-center text-center">
                 <div class="col">
-                    <i class="fas fa-cog fa-4x fa-spin"></i>
                     <h1>BORN GROW DIE </h1>
-                    <p class="lead">
+                    <p class="lead d-none d-md-block">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, mollitia error distinctio perspiciatis, ratione velit molestias quas consequatur suscipit rerum dolorum praesentium culpa, ea dolor
                     </p>
-                    <div class="btn btn-primary">Login</div>
-                    <div class="btn btn-primary">Register</div>
+                    <a href="" class="btn btn-primary">
+                        Login
+                    </a>
+                    <a href="" class="btn btn-primary">
+                        Register
+                    </a>
                 </div>
             </div>
         </div>

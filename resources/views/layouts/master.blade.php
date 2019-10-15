@@ -120,6 +120,7 @@
   </footer>
 
   <script src="{{ secure_url('js/app.js') }}"></script>
+  <script src="{{ secure_url('js/admin.js') }}"></script>
   @stack('scripts')
 </body>
 </html>

@@ -11,10 +11,10 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <nav class="navbar navbar-expand-sm navbar-light bg-transparent py-4">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <strong>When i die</strong>
+        <strong>Kfan Online</strong>
       </a>
       <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -65,42 +65,21 @@
           <h5>CONTACT US</h5>
           <p>
             <strong>Address</strong> <br/>
-            ipsum dolor sit amet consectetur adipisicing elit. 
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           </p>
           <p>
-            <strong>Phone</strong> <br/>
-            6289666445551
+            <strong>Social Media</strong> <br/>
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            6289666445551 <br/>
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+            K-FAN
           </p>
         </div>
-        <div class="col-12 col-md mb-4">
-          <div class="row">
-            <div class="col-12"><h5>GALLERY</h5></div>
-            <div class="col mb-4">
-                <img class="img-fluid" data-src="holder.js/400x400?random=yes&auto=yes&textmode=exact" alt="">              
-            </div>
-            <div class="col">
-                <img class="img-fluid" data-src="holder.js/400x400?random=yes&auto=yes&textmode=exact" alt="">              
-            </div>
-            <div class="col mb-4">
-                <img class="img-fluid" data-src="holder.js/400x400?random=yes&auto=yes&textmode=exact" alt="">              
-            </div>
-            <div class="w-100"></div>
-            <div class="col mb-4">
-                <img class="img-fluid" data-src="holder.js/400x400?random=yes&auto=yes&textmode=exact" alt="">              
-            </div>
-            <div class="col mb-4">
-                <img class="img-fluid" data-src="holder.js/400x400?random=yes&auto=yes&textmode=exact" alt="">              
-            </div>
-            <div class="col mb-4">
-                <img class="img-fluid" data-src="holder.js/400x400?random=yes&auto=yes&textmode=exact" alt="">              
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
+        <div class="col-12 col-md-4 mb-4">
           <h5>NEWSLETTER</h5>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem non fuga molestiae
           <div class="form-group">
-            <label for="">Enter your email</label>
+            <label for="">Daftarkan email kamu untuk mengetahui info tentang rilis aplikasi, acara, dan lainnya dari K-FAN</label>
             <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
           </div>
           <a href="" class="btn btn-primary">Submit</a>
@@ -112,14 +91,27 @@
             Copyright © 2019. All Rights Reserved
         </div>
         <div class="col text-right">
+          <a href="">Privacy Policy</a>
+          <a href="">About Us</a>
+          <a href="">Support</a>
           <a href="">Blog</a>
-          <a href="">About</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script src="{{ secure_url('js/app.js') }}"></script>
+  <script>
+    $('nav').first().addClass('fixed-top');
+
+    $(window).scroll(function () { 
+        if ($(document).scrollTop() > 50) {
+            $('nav').hide()
+        } else {
+            $('nav').show()
+        }
+    });
+  </script>
   @stack('scripts')
 </body>
 </html>

@@ -11,14 +11,13 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-})->name('admin.home');
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@home');
+Route::get('/admin', 'HomeController@admin')->name('admin.home');
 
 Route::resource('admin/user', 'UserController');
 Route::resource('admin/produk', 'ProdukController');
 Route::resource('admin/paket', 'PaketController');
 Route::resource('admin/paket-produk', 'PaketProdukController');
+
 Auth::routes();

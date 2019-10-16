@@ -68,7 +68,7 @@
           <h5>KONTAK KAMI</h5>
           <p>
             <strong>Alamat</strong> <br/>
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <i class="fas fa-map-marker-alt    "></i>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           </p>
           <p>

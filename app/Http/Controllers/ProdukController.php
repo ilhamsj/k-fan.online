@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Produk;
-use Illuminate\Http\Request;
+use App\Http\Requests\ProdukStoreRequest;
 
 class ProdukController extends Controller
 {
@@ -21,17 +21,11 @@ class ProdukController extends Controller
         return view('admin.produk.create');
     }
 
-    public function store(Request $request)
+    public function store(ProdukStoreRequest $request)
     {
-        $request->validate([
-            'mitra_id' => 'required|integer',
-            'nama' => 'required|string',
-            'harga' => 'required|integer',
-            'kategori' => 'required|string',
-        ]);
         Produk::create($request->all());
         return redirect()->route('produk.index')->with([
-            'status' => 'Data berhasil ditambahkan'
+            'status' => 'Tambah data Berhasil'
         ]);
     }
 
@@ -48,12 +42,12 @@ class ProdukController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(ProdukStoreRequest $request, $id)
     {
         Produk::find($id)->update($request->all());
 
         return redirect()->route('produk.index')->with([
-            'status' => 'Data berhasil ditambahkan'
+            'status' => 'Update data berhasil'
         ]);
     }
 
@@ -61,7 +55,7 @@ class ProdukController extends Controller
     {
         Produk::destroy($id);
         return redirect()->back()->with([
-            'status' => 'Data berhasil dihapus'
+            'status' => 'Hapus data berhasil'
         ]);
     }
 }

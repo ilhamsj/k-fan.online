@@ -15,6 +15,12 @@ class CreateProduksTable extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('mitra_id')->unsigned()->index();
+            $table->foreign('mitra_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->string('name', 100);
             $table->timestamps();
         });

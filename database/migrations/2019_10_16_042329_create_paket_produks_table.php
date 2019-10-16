@@ -15,6 +15,18 @@ class CreatePaketProduksTable extends Migration
     {
         Schema::create('paket_produks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('paket_id')->unsigned()->index();
+            $table->foreign('paket_id')
+                    ->references('id')
+                    ->on('pakets')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+            $table->bigInteger('produk_id')->unsigned()->index();
+            $table->foreign('produk_id')
+                    ->references('id')
+                    ->on('produks')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }

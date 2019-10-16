@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin.dashboard');
 })->name('admin.home');
+
+Route::resource('admin/produk', 'ProdukController');
+Route::resource('admin/paket', 'PaketController');
+Route::resource('admin/paket-produk', 'PaketProdukController');

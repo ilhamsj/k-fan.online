@@ -14,7 +14,7 @@ class ProdukController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.produk.create');
     }
     public function store(Request $request)
     {

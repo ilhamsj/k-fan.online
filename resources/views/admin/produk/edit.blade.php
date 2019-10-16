@@ -21,7 +21,7 @@
                 <input type="number" name="mitra_id" value="1" hidden>
 
                 <div class="form-group">
-                    <label for="nama"> nama </label>
+                    <label for="nama"> Produk/Jasa </label>
                     <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ? old('nama') : $item->nama }}" autocomplete="nama" autofocus>
 
                     @error('nama')
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="harga"> harga </label>
+                    <label for="harga"> Harga </label>
                     <input id="harga" type="number" class="form-control @error('harga') is-invalid @enderror" name="harga" value="{{ old('harga') ? old('harga') : $item->harga }}" autocomplete="harga" autofocus>
 
                     @error('harga')
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="kategori"> kategori </label>
+                    <label for="kategori"> Kategori </label>
                     <input id="kategori" type="text" class="form-control @error('kategori') is-invalid @enderror" name="kategori" value="{{ old('kategori') ? old('kategori') : $item->kategori }}" autocomplete="kategori" autofocus>
 
                     @error('kategori')
@@ -53,7 +53,7 @@
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary shadow-sm">Simpan</button>
+                <button type="submit" class="btn btn-primary shadow-sm">Update</button>
             </form>
         </div>
     </div>

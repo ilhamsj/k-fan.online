@@ -40,7 +40,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.home') }}">
+        <a class="nav-link" href="{{ route('user.index') }}">
           <i class="fa fa-user" aria-hidden="true"></i>
           <span>User</span></a>
       </li>

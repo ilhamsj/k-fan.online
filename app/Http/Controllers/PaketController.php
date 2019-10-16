@@ -10,8 +10,10 @@ class PaketController extends Controller
     public function index()
     {
         $items = Paket::orderBy('updated_at', 'desc')->get();
+        $produks = \App\Produk::orderBy('updated_at', 'desc')->get();
         return view('admin.paket.index')->with([
             'items' => $items,
+            'produks' => $produks,
             'no' => 1,
         ]);
     }

@@ -192,10 +192,10 @@
 
             </div>
             <div class="row justify-content-center">
-                <div class="col-12 col-md-3">
-                    <a href="#" class="btn btn-sm btn-block btn-primary shadow-sm">
-                        Lihat Semuanya
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                <div class="col-12 col-md text-right">
+                    <a href="#" class="">
+                        Tampilkan semuanya
+                        <i class="fas fa-arrow-alt-circle-right    "></i>
                     </a>
                 </div>
             </div>

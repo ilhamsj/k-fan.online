@@ -18,7 +18,7 @@
             <form action="{{ route('produk.store') }}" method="post">
                 @csrf
 
-                <input type="number" name="mitra_id" value="1" hidden>
+                <input type="number" name="mitra_id" value="@auth{{ Auth::user()->id }}@endauth" hidden>
 
                 <div class="form-group">
                     <label for="nama"> Nama </label>

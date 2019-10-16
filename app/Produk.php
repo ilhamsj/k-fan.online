@@ -12,4 +12,9 @@ class Produk extends Model
         'harga',
         'kategori',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'mitra_id', 'id');
+    }
 }

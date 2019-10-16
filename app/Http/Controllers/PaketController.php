@@ -46,7 +46,7 @@ class PaketController extends Controller
     {
         Paket::find($id)->update($request->all());
 
-        return redirect()->route('Paket.index')->with([
+        return redirect()->route('paket.index')->with([
             'status' => 'Update data berhasil'
         ]);
     }

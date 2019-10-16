@@ -7,18 +7,65 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pusat Urusan Kematian Yogyakarta - PUKJ</title>
     <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
+    <style>
+    .icon-bar {
+      width: 22px; 
+      height: 2px;
+      background-color: #B6B6B6;
+      display: block;
+      transition: all 0.2s;
+      margin-top: 4px
+    }
+    
+    .navbar-toggler {
+      border: none;
+      background: transparent !important;
+    }
+    
+
+    .navbar-toggler .top-bar {
+      transform: rotate(45deg);
+      transform-origin: 10% 10%;
+    }
+    
+    .navbar-toggler .middle-bar {
+      opacity: 0;
+    }
+    
+    .navbar-toggler .bottom-bar {
+      transform: rotate(-45deg);
+      transform-origin: 10% 90%;
+    }
+    
+    .navbar-toggler.collapsed .top-bar {
+      transform: rotate(0);
+    }
+    
+    .navbar-toggler.collapsed .middle-bar {
+      opacity: 1;
+    }
+    
+    .navbar-toggler.collapsed .bottom-bar {
+      transform: rotate(0);
+    }
+    nav button:focus {
+      outline: 0;
+  }
+
+    </style>
     @stack('styles')
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-sm navbar-light bg-transparent py-4">
+  <nav class="navbar navbar-expand-sm navbar-light bg-transparent p-4">
     <div class="container">
       <a class="navbar-brand" href="/">
         <strong>K-Fan.Online</strong>
       </a>
-      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-          aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar top-bar"></span>
+          <span class="icon-bar middle-bar"></span>
+          <span class="icon-bar bottom-bar"></span>		
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavId">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -110,6 +157,11 @@
         } else {
             $('nav').show()
         }
+    });
+
+    $('div > button').first().click(function (e) { 
+    e.preventDefault();
+        $('nav').toggleClass( 'bg-light bg-transparent', 10000, 'easeOutSine' );
     });
   </script>
   @stack('scripts')

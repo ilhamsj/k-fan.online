@@ -10,4 +10,9 @@ class PaketProduk extends Model
         'paket_id',
         'produk_id',
     ];
+
+    public function produk()
+    {
+        return $this->belongsTo('App\Produk');
+    }
 }

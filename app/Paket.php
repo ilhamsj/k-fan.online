@@ -13,4 +13,9 @@ class Paket extends Model
         'deskripsi',
         'foto',
     ];
+
+    public function PaketProduk()
+    {   
+        return $this->hasMany('App\PaketProduk');
+    }
 }

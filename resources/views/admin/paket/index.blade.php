@@ -18,7 +18,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table id="dataPaket" class="table table-bordered">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -26,7 +26,7 @@
                         <th>Harga</th>
                         <th>Diskon</th>
                         <th>Foto</th>
-                        <th>Deskripsi</th>
+                        <th>Barang/Jasa</th>
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -38,7 +38,17 @@
                         <td>{{$item->harga}}</td>
                         <td>{{$item->diskon}}</td>
                         <td><img class="img-fluid rounded" src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""></td>
-                        <td>{{$item->deskripsi}}</td>
+                        <td class="listProduk">
+                            @foreach ($item->paketproduk as $paket)
+                                {{$paket->produk->nama}}
+                                <a href="" class="text-danger"><i class="fa fa-window-close"></i></a>
+                                <form action="{{ route('paket-produk.destroy', $paket->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            @endforeach
+                            
+                        </td>
                         <td class="d-sm-flex justify-content-center">
                             <a href="{{ route('paket.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
                                 <span class="icon text-white-50">
@@ -127,6 +137,11 @@
       $('#tambahLayanan').click(function (e) { 
           e.preventDefault();
           $('form').last().submit();
+      });
+      
+      $('.listProduk').find('a').click(function (e) { 
+          e.preventDefault();
+          confirm() ? $(this).next().submit() : console.log('no');
       });
 
       </script>

@@ -15,9 +15,9 @@
             <h6 class="m-0 font-weight-bold text-primary">Data</h6>
         </div>
         <div class="card-body">
-            <form action="{{ route('produk.store') }}" method="post">
+            <form action="{{ route('produk.update', $item->id) }}" method="post">
                 @csrf
-
+                @method('PUT')
                 <input type="number" name="mitra_id" value="1" hidden>
 
                 <div class="form-group">

@@ -50,7 +50,11 @@ class ProdukController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        Produk::find($id)->update($request->all());
+
+        return redirect()->route('produk.index')->with([
+            'status' => 'Data berhasil ditambahkan'
+        ]);
     }
 
     public function destroy($id)

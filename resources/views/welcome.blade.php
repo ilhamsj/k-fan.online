@@ -2,122 +2,24 @@
 
 @section('content')
 
-    {{-- Product --}}
+    {{-- Welcome Page --}}
     <section class="my-6">
         <div class="container">
             <div class="row h-100-kfan align-items-center">
                 <div class="col-12 col-md-5">
-                            <h1 class="text-primary display-1a">
-                                Kami hadir untuk meringankan beban bagi keluarga yang ditinggal.
-                            </h1>
-                            <p>
-                                Bergabung bersama Kfan sekarang !
-                            </p>
-                            <div class="my-4"></div>
-                            <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
-                                Login
-                            </a>
-                            <a href="" class="btn btn-primary btn-block rounded-pill">
-                                Register
-                            </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- Service --}}
-    <section class="my-6" id="service">
-        <div class="container">
-            <div class="row">
-                <div class="col-10 m-auto text-center mb-4">
-                    <i class="fas fa-star fa-2x"></i>
-                    <div class="my-2"></div>
-                    <h2>OUR <span class="text-primary">SERVICE</span> </h2>
-                    <p class="lead d-none d-md-block">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos laborum, ut nulla dolore eveniet recusandae assumenda, ducimus odio
+                    <h1 class="text-primary display-1a">
+                        Kami hadir untuk meringankan beban bagi keluarga yang ditinggal.
+                    </h1>
+                    <p>
+                        Bergabung bersama Kfan sekarang !
                     </p>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div style="border-radius:1rem" class="card shadow-sm border-0">
-                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" src="{{ secure_url('images/3-columns (1).jpg') }}" alt="" srcset="">
-                        <div class="card-body">
-                            <h3>
-                                Paket Bronze
-                            </h3>
-                            <span class="text-muted">$50</span>
-                            <p class="text-muted">
-                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
-                                Lorem ipsum dolor sit amet consectetur <br/> 
-                            </p>
-                            <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
-                                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                            </a>
-                         </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div style="border-radius:1rem" class="card shadow-sm border-0">
-                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" src="{{ secure_url('images/3-columns (1).jpg') }}" alt="" srcset="">
-                        <div class="card-body">
-                            <h3>
-                                Paket Bronze
-                            </h3>
-                            <span class="text-muted">$50</span>
-                            <p class="text-muted">
-                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
-                                Lorem ipsum dolor sit amet consectetur <br/> 
-                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
-                                Lorem ipsum dolor sit amet consectetur <br/> 
-                            </p>
-                            <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
-                                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                            </a>
-                         </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div style="border-radius:1rem" class="card shadow-sm border-0">
-                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" src="{{ secure_url('images/3-columns (1).jpg') }}" alt="" srcset="">
-                        <div class="card-body">
-                            <h3>
-                                Paket Bronze
-                            </h3>
-                            <span class="text-muted">$50</span>
-                            <p class="text-muted">
-                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
-                                Lorem ipsum dolor sit amet consectetur <br/> 
-                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
-                                Lorem ipsum dolor sit amet consectetur <br/> 
-                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
-                                Lorem ipsum dolor sit amet consectetur <br/> 
-                            </p>
-                            <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
-                                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                            </a>
-                         </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div style="border-radius:1rem" class="card shadow-sm border-0">
-                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" src="{{ secure_url('images/3-columns (1).jpg') }}" alt="" srcset="">
-                        <div class="card-body">
-                            <h3>
-                                Paket Bronze
-                            </h3>
-                            <span class="text-muted">$50</span>
-                            <p class="text-muted">
-                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
-                                Lorem ipsum dolor sit amet consectetur <br/> 
-                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
-                                Lorem ipsum dolor sit amet consectetur <br/> 
-                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
-                                Lorem ipsum dolor sit amet consectetur <br/> 
-                            </p>
-                            <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
-                                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                            </a>
-                         </div>
-                    </div>
+                    <div class="my-4"></div>
+                    <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                        Login
+                    </a>
+                    <a href="" class="btn btn-primary btn-block rounded-pill">
+                        Register
+                    </a>
                 </div>
             </div>
         </div>
@@ -154,7 +56,106 @@
         </div>
     </section>
 
-    {{-- Service --}}
+    {{-- Layanan --}}
+    <section class="my-6" id="service">
+        <div class="container">
+            <div class="row">
+                <div class="col-10 m-auto text-center mb-4">
+                    <i class="fas fa-star fa-2x"></i>
+                    <div class="my-2"></div>
+                    <h2>PAKET <span class="text-primary">PEMAKAMAN</span> </h2>
+                    <p class="lead d-none d-md-block">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos laborum, ut nulla dolore eveniet recusandae assumenda, ducimus odio
+                    </p>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div style="border-radius:1rem" class="card shadow-sm border-0">
+                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" src="{{ secure_url('images/3-columns (1).jpg') }}" alt="" srcset="">
+                        <div class="card-body">
+                            <h3>
+                                Paket Bronze
+                            </h3>
+                            <span class="text-muted">$50</span>
+                            <p class="text-muted">
+                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
+                                Lorem ipsum dolor sit amet consectetur <br/> 
+                            </p>
+                            <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                            </a>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div style="border-radius:1rem" class="card shadow-sm border-0">
+                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" src="{{ secure_url('images/3-columns (1).jpg') }}" alt="" srcset="">
+                        <div class="card-body">
+                            <h3>
+                                Paket Bronze
+                            </h3>
+                            <span class="text-muted">$50</span>
+                            <p class="text-muted">
+                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
+                                Lorem ipsum dolor sit amet consectetur <br/> 
+                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
+                                Lorem ipsum dolor sit amet consectetur <br/> 
+                            </p>
+                            <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                            </a>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div style="border-radius:1rem" class="card shadow-sm border-0">
+                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" src="{{ secure_url('images/3-columns (1).jpg') }}" alt="" srcset="">
+                        <div class="card-body">
+                            <h3>
+                                Paket Bronze
+                            </h3>
+                            <span class="text-muted">$50</span>
+                            <p class="text-muted">
+                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
+                                Lorem ipsum dolor sit amet consectetur <br/> 
+                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
+                                Lorem ipsum dolor sit amet consectetur <br/> 
+                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
+                                Lorem ipsum dolor sit amet consectetur <br/> 
+                            </p>
+                            <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                            </a>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div style="border-radius:1rem" class="card shadow-sm border-0">
+                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" src="{{ secure_url('images/3-columns (1).jpg') }}" alt="" srcset="">
+                        <div class="card-body">
+                            <h3>
+                                Paket Bronze
+                            </h3>
+                            <span class="text-muted">$50</span>
+                            <p class="text-muted">
+                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
+                                Lorem ipsum dolor sit amet consectetur <br/> 
+                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
+                                Lorem ipsum dolor sit amet consectetur <br/> 
+                                <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>
+                                Lorem ipsum dolor sit amet consectetur <br/> 
+                            </p>
+                            <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                            </a>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {{-- Berita Duka --}}
     <section class="my-6">
         <div class="container">
             <div class="row align-items-center text-center">
@@ -199,9 +200,13 @@
         <div class="container">
             <div class="row h-50-kfan align-items-center text-center">
                 <div class="col text-light">
-                    <h2>Ready to <span class="text-primary">join with us ?</span></h2>
+                    <h2>Persiapkan dirimu <span class="text-primary">Sekarang</span></h2>
+                    <p>
+                        Bagi dunia, mungkin Kamu adalah miliarder, selebriti atau tokoh penting lainnya. 
+                        <br/>Namun, bagi Malaikat Maut, Kamu tidak lain hanyalah nama yang telah terdaftar
+                    </p>
                     <div class="my-4"></div>
-                    <a href="" class="btn btn-primary rounded-pill">Grab this button</a>
+                    <a href="" class="btn btn-primary rounded-pill">Gabung</a>
                 </div>
             </div>
         </div>
@@ -214,7 +219,8 @@
         .h-100-kfan {min-height: 100vh}
         .h-50-kfan {min-height: 50vh}
         .bg-image {
-            background-image: url('/images/photo-1455819760800-d2aa223b237a.jpg');
+            /* background-image: url('/images/photo-1455819760800-d2aa223b237a.jpg'); */
+            background-image: url(https://images.unsplash.com/photo-1503745328377-1f4355a2284b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;

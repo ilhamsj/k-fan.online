@@ -14,7 +14,7 @@
   <nav class="navbar navbar-expand-sm navbar-light bg-transparent py-4">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <strong>Kfan Online</strong>
+        <strong>K-Fan.Online</strong>
       </a>
       <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -62,14 +62,14 @@
     <div class="container">
       <div class="row">
         <div class="col mb-4">
-          <h5>CONTACT US</h5>
+          <h5>KONTAK KAMI</h5>
           <p>
-            <strong>Address</strong> <br/>
+            <strong>Alamat</strong> <br/>
             <i class="fa fa-map-marker" aria-hidden="true"></i>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           </p>
           <p>
-            <strong>Social Media</strong> <br/>
+            <strong>Sosial Media</strong> <br/>
             <i class="fab fa-whatsapp" aria-hidden="true"></i>
             6289666445551 <br/>
             <i class="fab fa-instagram" aria-hidden="true"></i>
@@ -77,7 +77,7 @@
           </p>
         </div>
         <div class="col-12 col-md-4 mb-4">
-          <h5>NEWSLETTER</h5>
+          <h5>UPDATE INFORMASI</h5>
           <div class="form-group">
             <label for="">Daftarkan email kamu untuk mengetahui info tentang rilis aplikasi, acara, dan lainnya dari K-FAN</label>
             <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
@@ -88,12 +88,12 @@
       <hr>
       <div class="row align-items-center justify-content-center">
         <div class="col">
-            Copyright © 2019. All Rights Reserved
+            Made with <i class="fas fa-heart    "></i> in Yogyakarta
         </div>
         <div class="col text-right">
-          <a href="">Privacy Policy</a>
-          <a href="">About Us</a>
-          <a href="">Support</a>
+          <a href="">Peraturan Kebijakan</a>
+          <a href="">Tentang Kami</a>
+          <a href="">Bantuan</a>
           <a href="">Blog</a>
         </div>
       </div>

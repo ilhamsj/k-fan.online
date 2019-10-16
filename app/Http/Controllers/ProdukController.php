@@ -42,7 +42,10 @@ class ProdukController extends Controller
 
     public function edit($id)
     {
-        return view('admin.produk.edit');
+        $item = Produk::find($id);
+        return view('admin.produk.edit')->with([
+            'item' => $item,
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -53,8 +56,8 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         Produk::destroy($id);
-        return response()->json([
-            'success' => 'Record deleted successfully!'
+        return redirect()->back()->with([
+            'status' => 'Data berhasil dihapus'
         ]);
     }
 }

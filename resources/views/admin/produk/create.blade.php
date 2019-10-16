@@ -5,9 +5,9 @@
         <h1 class="h3 mb-2 text-gray-800">
             Produk
         </h1>
-        <a href="{{ route('produk.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fa fa-plus fa-sm text-white-50"></i>
-            Tambah Produk
+        <a href="{{ URL::previous() }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fa fa-arrow-left fa-sm text-white-50" aria-hidden="true"></i>
+            Kembali
         </a>
     </div>
     <div class="card shadow mb-4">

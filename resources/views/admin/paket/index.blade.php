@@ -45,14 +45,16 @@
                                     <i class="fas fa-pencil-alt"></i>
                                 </span>
                             </a>
-c
+
+                            <form action="{{ route('paket.destroy', $item->id) }}" method="post">
+                                @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-icon-split btn-sm" type="submit">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-trash-alt"></i>
                                     </span>
                                 </button>
-c
+                            </form>
                         </td>
                     </tr>
                     @endforeach

@@ -21,6 +21,9 @@
                         Masuk
                     </a>
                 </div>
+                <div class="col d-none d-md-block text-right">
+                    <img class="img-fluid" src="https://www.freepngimg.com/thumb/funeral/28358-3-funeral-transparent-background.png" alt="" srcset="">
+                </div>
             </div>
         </div>
     </section>

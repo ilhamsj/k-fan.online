@@ -22,3 +22,6 @@ Route::get('/admin', function () {
 Route::resource('admin/produk', 'ProdukController');
 Route::resource('admin/paket', 'PaketController');
 Route::resource('admin/paket-produk', 'PaketProdukController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

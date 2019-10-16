@@ -5,6 +5,10 @@
         <h1 class="h3 mb-2 text-gray-800">
             Produk
         </h1>
+        <a href="{{ route('produk.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fa fa-plus fa-sm text-white-50"></i>
+            Tambah Produk
+        </a>
     </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -49,7 +53,7 @@
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="submit" class="btn btn-primary shadow-sm">Simpan</button>
             </form>
         </div>
     </div>

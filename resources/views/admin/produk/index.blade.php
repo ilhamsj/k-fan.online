@@ -24,7 +24,7 @@
                       <th>Nama</th>
                       <th>Harga</th>
                       <th>Kategori</th>
-                      <th>Action</th>
+                      <th class="text-center">Action</th>
                   </tr>
               </thead>
               <tbody>
@@ -34,8 +34,21 @@
                       <td>{{$item->nama}}</td>
                       <td>{{$item->harga}}</td>
                       <td>{{$item->kategori}}</td>
-                      <td>
-                        Button
+                      <td class="d-sm-flex justify-content-center">
+                          <a href="{{ route('produk.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
+                              <span class="icon text-white-50">
+                                  <i class="fas fa-pencil-alt"></i>
+                              </span>
+                          </a>
+                          <form action="{{ route('produk.destroy', $item->id) }}" method="post">
+                              @csrf
+                              @method('DELETE')
+                              <button class="btn btn-danger btn-icon-split btn-sm" type="submit">
+                                  <span class="icon text-white-50">
+                                      <i class="fas fa-trash-alt"></i>
+                                  </span>
+                              </button>
+                          </form>
                       </td>
                   </tr>
                   @endforeach

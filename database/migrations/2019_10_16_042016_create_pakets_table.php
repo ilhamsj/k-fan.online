@@ -15,8 +15,11 @@ class CreatePaketsTable extends Migration
     {
         Schema::create('pakets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 100);
+            $table->string('nama', 100);
             $table->integer('harga');
+            $table->integer('diskon');
+            $table->string('foto');
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }

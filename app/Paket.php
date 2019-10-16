@@ -9,5 +9,8 @@ class Paket extends Model
     protected $fillable = [
         'nama',
         'harga',
+        'diskon',
+        'deskripsi',
+        'foto',
     ];
 }

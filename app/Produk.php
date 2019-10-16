@@ -9,5 +9,7 @@ class Produk extends Model
     protected $fillable = [
         'mitra_id',
         'nama',
+        'harga',
+        'kategori',
     ];
 }

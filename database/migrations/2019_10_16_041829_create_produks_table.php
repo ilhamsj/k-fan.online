@@ -21,7 +21,9 @@ class CreateProduksTable extends Migration
                     ->on('users')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->string('name', 100);
+            $table->string('nama', 100);
+            $table->integer('harga');
+            $table->string('kategori');
             $table->timestamps();
         });
     }

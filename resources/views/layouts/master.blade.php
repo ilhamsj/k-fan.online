@@ -26,20 +26,20 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Service</a>
+            <a class="nav-link" href="#">Produk & Jasa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Product</a>
+            <a class="nav-link" href="#">Paket Pemakaman</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Clients Say</a>
+            <a class="nav-link" href="#">Berita Duka</a>
           </li>
           @guest
             <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
+              <a class="nav-link" href="#">Masuk</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Register</a>
+              <a class="nav-link" href="#">Daftar</a>
             </li>
           @else
             <li class="nav-item dropdown">

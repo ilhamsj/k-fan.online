@@ -15,10 +15,10 @@
                     </p>
                     <div class="my-4"></div>
                     <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
-                        Login
+                        Daftar
                     </a>
                     <a href="" class="btn btn-primary btn-block rounded-pill">
-                        Register
+                        Masuk
                     </a>
                 </div>
             </div>
@@ -29,29 +29,34 @@
     <section class="my-6">
         <div class="container">
             <div class="row align-items-center text-center">
+
                 <div class="col-12">
                     <i class="fa fa-cubes fa-2x" aria-hidden="true"></i>
                     <div class="my-2"></div>
-                    <h2>OUR <span class="text-primary">PRODUCT</span> </h2>
-                    <p class="lead d-none d-md-block">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos laborum, ut nulla dolore eveniet recusandae assumenda, ducimus odio
+                    <h2>PRODUK & <span class="text-primary">JASA</span> </h2>
+                    <p class="lead">
+                        Produk dan jasa yang kami tawarkan
                     </p>
                 </div>
-                <div class="col-6 col-md mb-4">
-                    <img class="img-fluid rounded" data-src="holder.js/225x281?random=yes&auto=yes&textmode=exact" alt="">              
+
+                <div class="col-6 col-md mb-4 produk-jasa">
+                    <div class="card border-0 rounded">
+                        <img class="card-img-top img-fluid rounded" src="https://images.unsplash.com/photo-1561126841-3e34af7b2804?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=281&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=225" alt="" srcset="">
+                        <div class="card-img-overlay p-0 d-flex flex-wrap flex-row-reverse">
+                            <div class="card-body bg-dark align-self-start col-4 col-sm-6 d-none d-md-block" style="border-radius:0 0.25rem 0">
+                                <strong class="text-light">
+                                    1000+
+                                </strong>
+                            </div>
+                            <div class="card-body bg-dark align-self-end col-4 col-sm-12 d-none d-md-block rounded-bottom">
+                                <strong class="text-light">
+                                    Rumah Duka
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-md mb-4">
-                    <img class="img-fluid rounded" data-src="holder.js/225x281?random=yes&auto=yes&textmode=exact" alt="">              
-                </div>
-                <div class="col-6 col-md mb-4">
-                    <img class="img-fluid rounded" data-src="holder.js/225x281?random=yes&auto=yes&textmode=exact" alt="">              
-                </div>
-                <div class="col-6 col-md mb-4">
-                    <img class="img-fluid rounded" data-src="holder.js/225x281?random=yes&auto=yes&textmode=exact" alt="">              
-                </div>
-                <div class="col-6 col-md mb-4">
-                    <img class="img-fluid rounded" data-src="holder.js/225x281?random=yes&auto=yes&textmode=exact" alt="">              
-                </div>
+
             </div>
         </div>
     </section>
@@ -64,8 +69,8 @@
                     <i class="fas fa-star fa-2x"></i>
                     <div class="my-2"></div>
                     <h2>PAKET <span class="text-primary">PEMAKAMAN</span> </h2>
-                    <p class="lead d-none d-md-block">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos laborum, ut nulla dolore eveniet recusandae assumenda, ducimus odio
+                    <p class="lead">
+                        Pilih paket yang dibutuhkan
                     </p>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
@@ -154,39 +159,79 @@
         </div>
     </section>
 
-
     {{-- Berita Duka --}}
     <section class="my-6">
         <div class="container">
-            <div class="row align-items-center text-center">
-                <div class="col-12">
+            <div class="row align-items-center">
+                <div class="col-12 text-center">
                     <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
                     <div class="my-2"></div>
-
-                    <h2>REST IN <span class="text-primary">PEACE</span></h2>
+                    <h2>BERITA <span class="text-primary">DUKA</span></h2>
                     <p class="lead">
                         Turut berduka cita atas meninggalnya
                     </p>
                 </div>
-                <div class="col-6 col-md mb-4">
-                    <img class="img-fluid rounded" data-src="holder.js/225x281?random=yes&auto=yes&textmode=exact" alt="">              
+                
+                <div class="col-6 col-md-3 my-2 berita-duka">
+                    <div class="card border-0">
+                        <img class="card-img-top img-fluid rounded" src="https://images.unsplash.com/photo-1537743708445-618780d77fbf?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=562&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=450" alt="" srcset="">
+                        <div class="card-img-overlay p-0 d-flex flex-row-reverse align-items-end">
+                            <div class="card-body rounded-bottom bg-golden op-lg bg-dark collapse" style="opacity: 0.9">
+                                <a href="">
+                                    <strong class="text-light">
+                                        Kocheang
+                                    </strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-md mb-4">
-                    <img class="img-fluid rounded" data-src="holder.js/225x281?random=yes&auto=yes&textmode=exact" alt="">              
+                <div class="col-6 col-md-3 my-2 berita-duka">
+                    <div class="card border-0">
+                        <img class="card-img-top img-fluid rounded" src="https://images.unsplash.com/photo-1537743708445-618780d77fbf?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=562&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=450" alt="" srcset="">
+                        <div class="card-img-overlay p-0 d-flex flex-row-reverse align-items-end">
+                            <div class="card-body rounded-bottom bg-golden op-lg bg-dark collapse" style="opacity: 0.9">
+                                <a href="">
+                                    <strong class="text-light">
+                                        Kocheang
+                                    </strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-md mb-4">
-                    <img class="img-fluid rounded" data-src="holder.js/225x281?random=yes&auto=yes&textmode=exact" alt="">              
+                <div class="col-6 col-md-3 my-2 berita-duka">
+                    <div class="card border-0">
+                        <img class="card-img-top img-fluid rounded" src="https://images.unsplash.com/photo-1537743708445-618780d77fbf?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=562&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=450" alt="" srcset="">
+                        <div class="card-img-overlay p-0 d-flex flex-row-reverse align-items-end">
+                            <div class="card-body rounded-bottom bg-golden op-lg bg-dark collapse" style="opacity: 0.9">
+                                <a href="">
+                                    <strong class="text-light">
+                                        Kocheang
+                                    </strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-md mb-4">
-                    <img class="img-fluid rounded" data-src="holder.js/225x281?random=yes&auto=yes&textmode=exact" alt="">              
-                </div>
-                <div class="col-6 col-md mb-4">
-                    <img class="img-fluid rounded" data-src="holder.js/225x281?random=yes&auto=yes&textmode=exact" alt="">              
+                <div class="col-6 col-md-3 my-3 berita-duka">
+                    <div class="card border-0">
+                        <img class="card-img-top img-fluid rounded" src="https://images.unsplash.com/photo-1537743708445-618780d77fbf?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=562&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=450" alt="" srcset="">
+                        <div class="card-img-overlay p-0 d-flex flex-row-reverse align-items-end">
+                            <div class="card-body rounded-bottom bg-golden op-lg bg-dark collapse" style="opacity: 0.9">
+                                <a href="">
+                                    <strong class="text-light">
+                                        Kocheang
+                                    </strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-12 text-right">
                     <a href="#" class="btn btn-sm btn-primary shadow-sm">
-                        Show more
+                        Lihat Semuanya
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -263,5 +308,18 @@
                 $(this).removeClass('shadow');
             }
         );
+        $('.berita-duka').hover(function () {
+                $(this).find('.collapse').slideToggle()
+            }, function () {
+                $(this).find('.collapse').slideToggle();
+            }
+        );
+
+        var a = [1,2,3];
+        a.forEach(element => {
+            var x = $('.produk-jasa').first().clone();
+            $(x).appendTo($('.produk-jasa').parent(this));
+        });
+
     </script>
 @endpush

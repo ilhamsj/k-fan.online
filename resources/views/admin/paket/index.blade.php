@@ -21,9 +21,11 @@
               <thead>
                   <tr>
                       <th>No</th>
-                      <th>Nama</th>
+                      <th>Nama Paket</th>
                       <th>Harga</th>
-                      <th>Kategori</th>
+                      <th>Diskon</th>
+                      <th>Foto</th>
+                      <th>Deskripsi</th>
                       <th class="text-center">Action</th>
                   </tr>
               </thead>
@@ -33,14 +35,16 @@
                       <td>{{$no++}}</td>
                       <td>{{$item->nama}}</td>
                       <td>{{$item->harga}}</td>
-                      <td>{{$item->kategori}}</td>
+                      <td>{{$item->diskon}}</td>
+                      <td><img class="img-fluid rounded" src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""></td>
+                      <td>{{$item->deskripsi}}</td>
                       <td class="d-sm-flex justify-content-center">
-                          <a href="{{ route('produk.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
+                          <a href="{{ route('paket.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
                               <span class="icon text-white-50">
                                   <i class="fas fa-pencil-alt"></i>
                               </span>
                           </a>
-                          <form action="{{ route('produk.destroy', $item->id) }}" method="post">
+                          <form action="{{ route('paket.destroy', $item->id) }}" method="post">
                               @csrf
                               @method('DELETE')
                               <button class="btn btn-danger btn-icon-split btn-sm" type="submit">

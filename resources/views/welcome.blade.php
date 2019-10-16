@@ -165,7 +165,7 @@
     {{-- Berita Duka --}}
     <section class="my-6">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center mb-4">
                 <div class="col-12 text-center">
                     <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
                     <div class="my-2"></div>
@@ -177,68 +177,27 @@
                 
                 <div class="col-6 col-md-3 my-2 berita-duka">
                     <div class="card border-0">
-                        <img class="card-img-top img-fluid rounded" src="https://images.unsplash.com/photo-1537743708445-618780d77fbf?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=562&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=450" alt="" srcset="">
-                        <div class="card-img-overlay p-0 d-flex flex-row-reverse align-items-end">
-                            <div class="card-body rounded-bottom bg-golden op-lg bg-dark collapse" style="opacity: 0.9">
-                                <a href="">
-                                    <strong class="text-light">
-                                        Kocheang
-                                    </strong>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 my-2 berita-duka">
-                    <div class="card border-0">
-                        <img class="card-img-top img-fluid rounded" src="https://images.unsplash.com/photo-1537743708445-618780d77fbf?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=562&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=450" alt="" srcset="">
-                        <div class="card-img-overlay p-0 d-flex flex-row-reverse align-items-end">
-                            <div class="card-body rounded-bottom bg-golden op-lg bg-dark collapse" style="opacity: 0.9">
-                                <a href="">
-                                    <strong class="text-light">
-                                        Kocheang
-                                    </strong>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 my-2 berita-duka">
-                    <div class="card border-0">
-                        <img class="card-img-top img-fluid rounded" src="https://images.unsplash.com/photo-1537743708445-618780d77fbf?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=562&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=450" alt="" srcset="">
-                        <div class="card-img-overlay p-0 d-flex flex-row-reverse align-items-end">
-                            <div class="card-body rounded-bottom bg-golden op-lg bg-dark collapse" style="opacity: 0.9">
-                                <a href="">
-                                    <strong class="text-light">
-                                        Kocheang
-                                    </strong>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 my-3 berita-duka">
-                    <div class="card border-0">
-                        <img class="card-img-top img-fluid rounded" src="https://images.unsplash.com/photo-1537743708445-618780d77fbf?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=562&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=450" alt="" srcset="">
-                        <div class="card-img-overlay p-0 d-flex flex-row-reverse align-items-end">
-                            <div class="card-body rounded-bottom bg-golden op-lg bg-dark collapse" style="opacity: 0.9">
-                                <a href="">
-                                    <strong class="text-light">
-                                        Kocheang
-                                    </strong>
-                                </a>
+                        <img class="card-img-top img-fluid rounded" src="{{ secure_url('images/photo-1498579687545-d5a4fffb0a9e.jpg') }}" alt="" srcset="">
+                        <div class="card-img-overlay p-0 d-flex align-items-end">
+                            <div class="card-body rounded-bottom bg-golden op-lg bg-dark text-light collapse" style="opacity: 0.7">
+                                <strong>Si Meng</strong>
+                                <div class="" style="font-size: 0.8rem">
+                                    {{ date('d M Y') }} - {{ date('d M Y') }}<br>
+                                    Yogyakarta, Bantul
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-12 text-right">
-                    <a href="#" class="btn btn-sm btn-primary shadow-sm">
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-3">
+                    <a href="#" class="btn btn-sm btn-block btn-primary shadow-sm">
                         Lihat Semuanya
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
                     </a>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -322,6 +281,11 @@
         a.forEach(element => {
             var x = $('.produk-jasa').first().clone();
             $(x).appendTo($('.produk-jasa').parent(this));
+        });
+
+        a.forEach(element => {
+            var x = $('.berita-duka').first().clone();
+            $(x).appendTo($('.berita-duka').parent(this));
         });
 
     </script>

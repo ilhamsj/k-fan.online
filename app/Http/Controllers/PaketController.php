@@ -24,7 +24,7 @@ class PaketController extends Controller
     public function store(PaketStoreRequest $request)
     {
         Paket::create($request->all());
-        return redirect()->route('Paket.index')->with([
+        return redirect()->route('paket.index')->with([
             'status' => 'Tambah data Berhasil'
         ]);
     }

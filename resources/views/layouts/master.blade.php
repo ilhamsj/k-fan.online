@@ -10,7 +10,6 @@
     @stack('styles')
 </head>
 <body>
-
   <nav class="navbar navbar-expand-sm navbar-light bg-transparent p-4">
     <div class="container">
       <a class="navbar-brand" href="/">
@@ -88,8 +87,8 @@
       </div>
       <hr>
       <div class="row align-items-center justify-content-center">
-        <div class="col">
-            Made with <i class="fas fa-heart    "></i> in Yogyakarta
+        <div class="col text-muted">
+            Made with <i class="fas fa-heart"></i> in Yogyakarta
         </div>
         <div class="col text-right">
           <a href="">Peraturan Kebijakan</a>

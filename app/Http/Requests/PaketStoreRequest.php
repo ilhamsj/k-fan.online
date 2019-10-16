@@ -13,7 +13,7 @@ class PaketStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class PaketStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nama' => 'required|string',
+            'harga' => 'required|integer',
+            'diskon' => 'required|integer',
+            'foto' => 'required|string',
+            'deskripsi' => 'required|string',
         ];
     }
 }

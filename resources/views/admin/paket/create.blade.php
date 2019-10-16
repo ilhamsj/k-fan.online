@@ -3,10 +3,10 @@
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-2 text-gray-800">
-            Tambah Produk & Jasa
+            Tambah Paket
         </h1>
         <a href="{{ URL::previous() }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-            <i class="fa fa-plus-circle fa-sm text-white-50" aria-hidden="true"></i>
+            <i class="fa fa-arrow-left fa-sm text-white-50" aria-hidden="true"></i>
             Kembali
         </a>
     </div>
@@ -15,10 +15,8 @@
             <h6 class="m-0 font-weight-bold text-primary">Data</h6>
         </div>
         <div class="card-body">
-            <form action="{{ route('produk.store') }}" method="post">
+            <form action="{{ route('paket.store') }}" method="post">
                 @csrf
-
-                <input type="number" name="mitra_id" value="1" hidden>
 
                 <div class="form-group">
                     <label for="nama"> Nama </label>
@@ -30,7 +28,6 @@
                         </span>
                     @enderror
                 </div>
-
                 <div class="form-group">
                     <label for="harga"> Harga </label>
                     <input id="harga" type="number" class="form-control @error('harga') is-invalid @enderror" name="harga" value="{{ old('harga') ? old('harga') : \Faker\Factory::create()->randomNumber()}}" autocomplete="harga" autofocus>
@@ -41,18 +38,35 @@
                         </span>
                     @enderror
                 </div>
-
                 <div class="form-group">
-                    <label for="kategori"> Kategori </label>
-                    <input id="kategori" type="text" class="form-control @error('kategori') is-invalid @enderror" name="kategori" value="{{ old('kategori') ? old('kategori') : \Faker\Factory::create()->word}}" autocomplete="kategori" autofocus>
+                    <label for="diskon"> Diskon </label>
+                    <input id="diskon" type="number" class="form-control @error('diskon') is-invalid @enderror" name="diskon" value="{{ old('diskon') ? old('diskon') : \Faker\Factory::create()->randomNumber()}}" autocomplete="diskon" autofocus>
 
-                    @error('kategori')
+                    @error('diskon')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <label for="foto"> Foto </label>
+                    <input id="foto" type="text" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') : 'https://source.unsplash.com/225x281?kitten'}}" autocomplete="foto" autofocus>
 
+                    @error('foto')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="deskripsi"> Deskripsi </label>
+                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" id="deskripsi" cols="30" rows="10">{{ old('deskripsi') ? old('deskripsi') : \Faker\Factory::create()->realText()}}</textarea>
+                    @error('deskripsi')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
                 <button type="submit" class="btn btn-primary shadow-sm">Simpan</button>
             </form>
         </div>

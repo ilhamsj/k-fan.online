@@ -7,78 +7,35 @@ use Illuminate\Http\Request;
 
 class PaketProdukController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\PaketProduk  $paketProduk
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PaketProduk $paketProduk)
+    public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\PaketProduk  $paketProduk
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PaketProduk $paketProduk)
+    public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PaketProduk  $paketProduk
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PaketProduk $paketProduk)
+    public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\PaketProduk  $paketProduk
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PaketProduk $paketProduk)
+    public function destroy($id)
     {
         //
     }

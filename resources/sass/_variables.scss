@@ -17,3 +17,56 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+
+// Menu icon
+.icon-bar {
+  width: 26px; 
+  height: 4px;
+  background-color: #B6B6B6;
+  display: block;
+  transition: all 0.2s;
+}
+
+.icon-bar {
+  width: 26px; 
+  height: 4px;
+  background-color: #B6B6B6;
+  display: block;
+  transition: all 0.2s;
+}
+
+.navbar-toggler {
+  border: none;
+  background: transparent !important;
+}
+
+
+.navbar-toggler .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+
+.navbar-toggler .middle-bar {
+  opacity: 0;
+}
+
+.navbar-toggler .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+}
+
+.navbar-toggler.collapsed .top-bar {
+  transform: rotate(0);
+}
+
+.navbar-toggler.collapsed .middle-bar {
+  opacity: 1;
+}
+
+.navbar-toggler.collapsed .bottom-bar {
+  transform: rotate(0);
+}
+nav button:focus {
+  outline: 0;
+}

@@ -1,23 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+    <section>
+        <div class="container">
+            <div class="row align-items-center" style="min-height: 100vh">
+                <div class="col">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam hic ipsa voluptatem omnis, reprehenderit dolor aliquid rem veniam nam molestiae sint adipisci consectetur! Inventore assumenda cumque quos architecto exercitationem debitis?
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+
 @endsection
+
+@push('styles')
+
+@endpush
+
+@push('scripts')
+    <script>
+        
+    </script>
+@endpush

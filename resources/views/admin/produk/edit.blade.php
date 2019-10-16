@@ -18,7 +18,7 @@
             <form action="{{ route('produk.update', $item->id) }}" method="post">
                 @csrf
                 @method('PUT')
-                <input type="number" name="mitra_id" value="1" hidden>
+                <input type="number" name="mitra_id" value="{{ Auth::user()->id }}" hidden>
 
                 <div class="form-group">
                     <label for="nama"> Produk/Jasa </label>

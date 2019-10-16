@@ -42,7 +42,6 @@ class PaketProdukController extends Controller
 
     public function destroy($id)
     {
-        // dd($request->all());
         PaketProduk::destroy($id);
         return redirect()->back()->with([
             'status' => 'Hapus data berhasil'

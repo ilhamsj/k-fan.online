@@ -6,8 +6,8 @@
     <h1 class="h3 mb-2 text-gray-800">
         Data Paket
     </h1>
-    <a data-toggle="modal" data-target="#tambahPaketProduk" href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fa fa-plus-circle fa-sm text-white-50" aria-hidden="true"></i>
+    <a href="{{ route('paket.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fa fa-plus-circle fa-sm text-white-50"></i>
         Tambah
     </a>
 </div>
@@ -38,16 +38,20 @@
                         <td>{{$item->harga}}</td>
                         <td>{{$item->diskon}}</td>
                         <td><img class="img-fluid rounded" src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""></td>
-                        <td class="listProduk">
+                        <td class="listProduks">
                             @foreach ($item->paketproduk as $paket)
                                 {{$paket->produk->nama}}
-                                <a href="" class="text-danger"><i class="fa fa-window-close"></i></a>
+                                <a href="" class="text-danger listProduk"><i class="fa fa-window-close"></i></a>
                                 <form action="{{ route('paket-produk.destroy', $paket->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                 </form>
                             @endforeach
-                            
+                            <div>
+                                <a data-toggle="modal" data-target="#tambahPaketProduk" href="" class="">
+                                    <i class="fa fa-plus-circle fa-sm" aria-hidden="true"></i>
+                                </a>            
+                            </div>
                         </td>
                         <td class="d-sm-flex justify-content-center">
                             <a href="{{ route('paket.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
@@ -139,7 +143,7 @@
           $('form').last().submit();
       });
       
-      $('.listProduk').find('a').click(function (e) { 
+      $('.listProduk').click(function (e) { 
           e.preventDefault();
           confirm() ? $(this).next().submit() : console.log('no');
       });

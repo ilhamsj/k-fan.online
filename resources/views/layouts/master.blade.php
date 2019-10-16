@@ -8,6 +8,9 @@
     <title>Pusat Urusan Kematian Yogyakarta - PUKJ</title>
     <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
     @stack('styles')
+    <style>
+      .navbar-toggler {border:none}
+    </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-sm navbar-light bg-transparent p-4">

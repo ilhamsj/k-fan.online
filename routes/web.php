@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/admin', function () {
     return view('admin.dashboard');
@@ -24,5 +22,3 @@ Route::resource('admin/produk', 'ProdukController');
 Route::resource('admin/paket', 'PaketController');
 Route::resource('admin/paket-produk', 'PaketProdukController');
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -9,7 +9,11 @@ class ProdukController extends Controller
 {
     public function index()
     {
-        //
+        $items = Produk::orderBy('updated_at', 'desc')->get();
+        return view('admin.produk.index')->with([
+            'items' => $items,
+            'no' => 1,
+        ]);
     }
 
     public function create()
@@ -26,7 +30,7 @@ class ProdukController extends Controller
             'kategori' => 'required|string',
         ]);
         Produk::create($request->all());
-        return redirect()->back()->with([
+        return redirect()->route('produk.index')->with([
             'status' => 'Data berhasil ditambahkan'
         ]);
     }
@@ -38,7 +42,7 @@ class ProdukController extends Controller
 
     public function edit($id)
     {
-        //
+        return view('admin.produk.edit');
     }
 
     public function update(Request $request, $id)
@@ -48,6 +52,9 @@ class ProdukController extends Controller
 
     public function destroy($id)
     {
-        //
+        Produk::destroy($id);
+        return response()->json([
+            'success' => 'Record deleted successfully!'
+        ]);
     }
 }

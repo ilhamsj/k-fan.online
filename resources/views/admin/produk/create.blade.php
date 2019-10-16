@@ -1,54 +1,56 @@
-@extends('layouts.test')
+@extends('layouts.admin')
 
 @section('content')
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-2 text-gray-800">
+            Produk
+        </h1>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Data</h6>
+        </div>
+        <div class="card-body">
+            <form action="{{ route('produk.store') }}" method="post">
+                @csrf
 
-<h3>Tambah produk</h3>
-<p>
-  nama
-  harga
-  kategori
-</p>
+                <input type="number" name="mitra_id" value="1" hidden>
 
-<form action="{{ route('produk.store') }}" method="post">
-  @csrf
+                <div class="form-group">
+                    <label for="nama"> nama </label>
+                    <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ? old('nama') : \Faker\Factory::create()->name}}" autocomplete="nama" autofocus>
 
-  <input type="number" name="mitra_id" value="1" hidden>
+                    @error('nama')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
 
-  <div class="form-group">
-      <label for="nama"> nama </label>
-      <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ? old('nama') : \Faker\Factory::create()->name}}" autocomplete="nama" autofocus>
+                <div class="form-group">
+                    <label for="harga"> harga </label>
+                    <input id="harga" type="number" class="form-control @error('harga') is-invalid @enderror" name="harga" value="{{ old('harga') ? old('harga') : \Faker\Factory::create()->randomNumber()}}" autocomplete="harga" autofocus>
 
-      @error('nama')
-          <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-          </span>
-      @enderror
-  </div>
+                    @error('harga')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
 
-  <div class="form-group">
-      <label for="harga"> harga </label>
-      <input id="harga" type="number" class="form-control @error('harga') is-invalid @enderror" name="harga" value="{{ old('harga') ? old('harga') : \Faker\Factory::create()->randomNumber()}}" autocomplete="harga" autofocus>
+                <div class="form-group">
+                    <label for="kategori"> kategori </label>
+                    <input id="kategori" type="text" class="form-control @error('kategori') is-invalid @enderror" name="kategori" value="{{ old('kategori') ? old('kategori') : \Faker\Factory::create()->word}}" autocomplete="kategori" autofocus>
 
-      @error('harga')
-          <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-          </span>
-      @enderror
-  </div>
+                    @error('kategori')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
 
-  <div class="form-group">
-      <label for="kategori"> kategori </label>
-      <input id="kategori" type="text" class="form-control @error('kategori') is-invalid @enderror" name="kategori" value="{{ old('kategori') ? old('kategori') : \Faker\Factory::create()->word}}" autocomplete="kategori" autofocus>
-
-      @error('kategori')
-          <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-          </span>
-      @enderror
-  </div>
-
-  <button type="submit" class="btn btn-primary">Simpan</button>
-
-</form>
-
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+        </div>
+    </div>
 @endsection

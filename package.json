@@ -25,7 +25,11 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "datatables.net": "^1.10.20",
+        "datatables.net-bs4": "^1.10.20",
         "startbootstrap-sb-admin-2": "^4.0.7",
-        "swiper": "^5.0.4"
+        "swiper": "^5.0.4",
+        "@ttskch/select2-bootstrap4-theme": "^1.2.3",
+        "select2": "^4.0.10"
     }
 }

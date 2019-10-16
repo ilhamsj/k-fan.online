@@ -87,26 +87,6 @@
         Addons
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item active" href="blank.html">Blank Page</a>
-          </div>
-        </div>
-      </li>
-
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
@@ -244,7 +224,7 @@
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="holder.js/60x60?random=yes&auto=yes&textmode=exact" alt="">
+                    <img class="rounded-circle" data-src="holder.js/60x60?random=yes&auto=yes&textmode=exact" alt="">
                     <div class="status-indicator bg-success"></div>
                   </div>
                   <div class="font-weight-bold">
@@ -254,7 +234,7 @@
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="holder.js/60x60?random=yes&auto=yes&textmode=exact" alt="">
+                    <img class="rounded-circle" data-src="holder.js/60x60?random=yes&auto=yes&textmode=exact" alt="">
                     <div class="status-indicator"></div>
                   </div>
                   <div>
@@ -264,7 +244,7 @@
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="holder.js/60x60?random=yes&auto=yes&textmode=exact" alt="">
+                    <img class="rounded-circle" data-src="holder.js/60x60?random=yes&auto=yes&textmode=exact" alt="">
                     <div class="status-indicator bg-warning"></div>
                   </div>
                   <div>
@@ -274,7 +254,7 @@
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="holder.js/60x60?random=yes&auto=yes&textmode=exact" alt="">
+                    <img class="rounded-circle" data-src="holder.js/60x60?random=yes&auto=yes&textmode=exact" alt="">
                     <div class="status-indicator bg-success"></div>
                   </div>
                   <div>
@@ -292,7 +272,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="holder.js/60x60?random=yes&auto=yes&textmode=exact">
+                <img class="img-profile rounded-circle" data-src="holder.js/60x60?random=yes&auto=yes&textmode=exact">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -323,6 +303,11 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+          @if (session('status'))
+              <div class="alert alert-success" role="alert">
+                  <strong>{{ session('status') }}</strong>
+              </div>
+          @endif
           
           <!-- Page Heading -->
           @yield('content')
@@ -374,8 +359,13 @@
   </div>
 
   <script src="{{ secure_url('js/app.js') }}"></script>
-
-
+  <script>
+      // Alert
+      $(".alert").delay(2500).slideUp(200, function() {
+          $(this).alert('close');
+      });
+  </script>
+  @stack('scripts')
 </body>
 
 </html>

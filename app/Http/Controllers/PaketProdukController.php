@@ -3,23 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\PaketProduk;
-use Illuminate\Http\Request;
 
 class PaketProdukController extends Controller
 {
     public function index()
     {
-        //
+        $items = Produk::orderBy('updated_at', 'desc')->get();
+        return view('admin.paket.index')->with([
+            'items' => $items,
+            'no' => 1,
+        ]);
     }
 
     public function create()
     {
-        //
+        return view('admin.produk.create');
     }
-    public function store(Request $request)
+
+    public function store(PaketStoreRequest $request)
     {
-        //
+        Produk::create($request->all());
+        return redirect()->route('produk.index')->with([
+            'status' => 'Tambah data Berhasil'
+        ]);
     }
+
     public function show($id)
     {
         //
@@ -27,16 +35,26 @@ class PaketProdukController extends Controller
 
     public function edit($id)
     {
-        //
+        $item = Produk::find($id);
+        return view('admin.produk.edit')->with([
+            'item' => $item,
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(PaketStoreRequest $request, $id)
     {
-        //
+        Produk::find($id)->update($request->all());
+
+        return redirect()->route('produk.index')->with([
+            'status' => 'Update data berhasil'
+        ]);
     }
 
     public function destroy($id)
     {
-        //
+        Produk::destroy($id);
+        return redirect()->back()->with([
+            'status' => 'Hapus data berhasil'
+        ]);
     }
 }

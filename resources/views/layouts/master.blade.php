@@ -50,6 +50,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Str::title(Auth::user()->name) }}</a>
               <div class="dropdown-menu" aria-labelledby="dropdownId">
                 <a class="dropdown-item" href="{{ route('home') }}">Profile</a>
+                <a class="dropdown-item" href="{{ route('admin.home') }}">Admin Panel</a>
                 <a class="dropdown-item" id="logoutButton" href="#">Logout</a>
                 <form action="{{ route('logout') }}" id="logoutForm" method="post" class="d-none">
                   @csrf

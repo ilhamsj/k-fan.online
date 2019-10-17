@@ -23,10 +23,10 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Paket</th>
+                        <th>Barang atau Jasa</th>
                         <th>Harga</th>
                         <th>Diskon</th>
                         <th>Foto</th>
-                        <th>Barang/Jasa</th>
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -35,9 +35,6 @@
                     <tr>
                         <td>{{$no++}}</td>
                         <td>{{$item->nama}}</td>
-                        <td>{{$item->harga}}</td>
-                        <td>{{$item->diskon}}</td>
-                        <td><img class="img-fluid rounded" src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""></td>
                         <td class="listProduks">
                             @foreach ($item->paketproduk as $paket)
                                 {{$paket->produk->nama}}
@@ -53,6 +50,9 @@
                                 </a>            
                             </div>
                         </td>
+                        <td>{{$item->harga}}</td>
+                        <td>{{$item->diskon}}</td>
+                        <td><img class="img-fluid rounded" data-src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""></td>
                         <td class="d-sm-flex justify-content-center">
                             <a href="{{ route('paket.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
                                 <span class="icon text-white-50">
@@ -120,7 +120,7 @@
                             </span>
                         @enderror
                     </div>
-                </form>               
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="d-none d-sm-inline-block btn btn-secondary shadow-sm" data-dismiss="modal">Close</button>
@@ -140,7 +140,7 @@
 
       $('#tambahLayanan').click(function (e) { 
           e.preventDefault();
-          $('form').last().submit();
+          $('#tambahPaketProduk').find('form').submit();
       });
       
       $('.listProduk').click(function (e) { 

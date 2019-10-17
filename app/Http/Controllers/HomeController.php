@@ -32,21 +32,25 @@ class HomeController extends Controller
                 'title' => 'User',
                 'jumlah' => count(\App\User::all()),
                 'icon' => 'fa fa-user',
+                'color' => 'border-left-danger',
             ],
             1 => [
                 'title' => 'Produk',
                 'jumlah' => count(\App\Produk::all()),
                 'icon' => 'fa fa-table',
+                'color' => 'border-left-primary',   
             ],
             2 => [
                 'title' => 'Paket',
                 'jumlah' => count(\App\Paket::all()),
                 'icon' => 'fa fa-table',
+                'color' => 'border-left-primary',
             ],
             3 => [
                 'title' => 'transaksi',
                 'jumlah' => count(\App\Paket::all()),
                 'icon' => 'fas fa-dollar-sign',
+                'color' => 'border-left-success',
             ],
         ];
 

@@ -108,16 +108,6 @@
 
   <script src="{{ secure_url('js/app.js') }}"></script>
   <script>
-    $('nav').first().addClass('fixed-top');
-
-    $(window).scroll(function () { 
-        if ($(document).scrollTop() > 50) {
-            $('nav').hide()
-        } else {
-            $('nav').show()
-        }
-    });
-
     $('div > button').first().click(function (e) { 
     e.preventDefault();
         $('nav').toggleClass( 'bg-light bg-transparent', 5000);
@@ -126,8 +116,6 @@
     $('#logoutButton').click(function (e) { 
       e.preventDefault();
       confirm('Apakah kamu yakin akan logout ?') ? $('#logoutForm').submit() : console.log('no');
-      // confirm() ? $(this).next().submit() : console.log('no');
-
     });
 
   </script>

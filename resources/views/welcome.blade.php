@@ -46,7 +46,7 @@
                 @foreach ($produks as $item)                
                 <div class="col-6 col-md-3 mb-4 produk-jasa">
                     <div class="card border-0 rounded">
-                        <img class="card-img-top img-fluid rounded" src="holder.js/300x450?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+                        <img class="card-img-top img-fluid rounded" data-src="holder.js/300x450?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                         <div class="card-img-overlay p-0 d-flex flex-wrap flex-row-reverse">
                             <div class="card-body bg-dark align-self-start col-4 col-sm-6 d-none d-md-block" style="border-radius:0 0.25rem 0">
                                 <strong class="text-light">
@@ -83,7 +83,7 @@
                 @foreach ($pakets as $item)
                 <div class="col-12 col-md-4 mb-4">
                     <div style="border-radius:1rem" class="card shadow-sm border-0">
-                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" src="holder.js/300x200?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" data-src="holder.js/300x200?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                         <div class="card-header bg-transparent">
                             <span class="text-muted">${{$item->harga}}</span>
                             <h3>
@@ -100,7 +100,7 @@
                             @endforeach
 
 
-                            <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                            <a href="{{ route('order.paket', $item->id) }}" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
                                 <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                             </a>
                          </div>
@@ -128,22 +128,29 @@
                 @foreach ($produks as $item)                                
                 <div class="col-6 col-md-3 mb-4 berita-duka">
                     <div class="card border-0">
-                        <img class="card-img-top img-fluid rounded" src="{{ secure_url('images/photo-1498579687545-d5a4fffb0a9e.jpg') }}" alt="" srcset="">
+                        <img class="card-img-top img-fluid rounded" data-src="holder.js/300x360?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                         <div class="card-img-overlay p-0 d-flex align-items-end">
                             <div class="card-body rounded-bottom bg-golden op-lg bg-dark text-light collapse" style="opacity: 0.7">
-                                <strong>Si Meng</strong>
+                                
+                                    <a href="" class="text-light">
+                                <strong>
+                                    Si Meng
+                                </strong>
                                 <div class="" style="font-size: 0.8rem">
+                                    <i class="fa fa-birthday-cake" aria-hidden="true"></i>
                                     {{ date('d M Y') }} - {{ date('d M Y') }}<br>
-                                    Yogyakarta, Bantul
-                                </div>
+                                    
+                                        <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                        Yogyakarta, Bantul
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 @endforeach
-
-
             </div>
+
             <div class="row justify-content-center">
                 <div class="col-12 col-md text-right">
                     <a href="#" class="">
@@ -202,10 +209,6 @@
             line-height: 42px;
         }
 
-        .my-6 {
-            margin: 0 0 20vh 0;
-        }
-
         .rounded-sm {
             border-radius:1rem;
         }
@@ -218,7 +221,16 @@
 @endpush
 @push('scripts')
     <script>
-        console.log('helo');
+        $('nav').first().addClass('fixed-top');
+
+        $(window).scroll(function () { 
+            if ($(document).scrollTop() > 50) {
+                $('nav').hide()
+            } else {
+                $('nav').show()
+            }
+        });
+
         $('#service').find('.card').hover(function () {
                 $(this).addClass('shadow');
             }, function () {

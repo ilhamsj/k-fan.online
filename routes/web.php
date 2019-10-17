@@ -21,3 +21,8 @@ Route::resource('admin/paket', 'PaketController');
 Route::resource('admin/paket-produk', 'PaketProdukController');
 
 Auth::routes();
+
+Route::get('/order/{id}', function($id) {
+  return view('order');
+})->name('order.paket');
+

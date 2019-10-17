@@ -6,7 +6,7 @@
             <div class="row justify-content-center align-items-center" style="min-height:100vh">
 
                 <div class="col-12 col-md-4">
-                    <div style="border-radius:1rem" class="card shadow-sm border-0">
+                    <div style="border-radius:1rem" class="card shadow-sm border-0 ">
                         <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" data-src="holder.js/300x200?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                         <div class="card-body bg-transparent">
                             <span class="text-muted">${{$item->harga}}</span>
@@ -38,7 +38,7 @@
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label for="nama"> Nama </label>
-                                    <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ? old('nama') : '' }}" autocomplete="nama" autofocus>
+                                    <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ? old('nama') : '' }}">
                 
                                     @error('nama')
                                         <span class="invalid-feedback" role="alert">
@@ -90,7 +90,7 @@
                             </form>
                         </div>
                         <div class="card-body">
-                        <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                        <a href="" class="btn btn-primary btn-block rounded-pill shadow-sm">
                             Pembayaran <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                         </a>
                         </div>

@@ -10,16 +10,18 @@
                     <h1 class="text-primary display-1a">
                         Kami hadir untuk meringankan beban bagi keluarga yang ditinggal.
                     </h1>
-                    <p>
+                    
+                    @guest
                         Bergabunglah bersama K-FAN sekarang !
-                    </p>
-                    <div class="my-4"></div>
-                    <a href="" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
-                        Daftar
-                    </a>
-                    <a href="" class="btn btn-primary btn-block rounded-pill">
-                        Masuk
-                    </a>
+                        <div class="my-4"></div>
+                        <a href="{{ route('register') }}" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                            Daftar
+                        </a>
+                        <a href="{{ route('login') }}" class="btn btn-primary btn-block rounded-pill">
+                            Masuk
+                        </a>
+                    @endguest
+
                 </div>
                 <div class="col d-none d-md-block text-right">
                     <img class="img-fluid" src="https://www.freepngimg.com/thumb/funeral/28358-3-funeral-transparent-background.png" alt="" srcset="">
@@ -164,7 +166,10 @@
                         <br/>Namun, bagi Malaikat Maut, Kamu tidak lain hanyalah nama yang telah terdaftar
                     </p>
                     <div class="my-4"></div>
-                    <a href="" class="btn btn-primary rounded-pill">Gabung</a>
+                    <a href="" class="btn btn-primary rounded-pill">
+                       Upgrade Akun
+                       <i class="fas fa-level-up-alt"></i>
+                    </a>
                 </div>
             </div>
         </div>

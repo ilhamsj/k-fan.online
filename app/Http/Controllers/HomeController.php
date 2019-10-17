@@ -11,7 +11,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $items = \App\Produk::orderBy('updated_at', 'desc')->get();
+        $items = \App\Produk::orderBy('updated_at', 'desc')->paginate(4);
         $pakets = \App\Paket::orderBy('created_at', 'asc')->get();
 
         return view('welcome')->with([
@@ -31,14 +31,22 @@ class HomeController extends Controller
             0 => [
                 'title' => 'User',
                 'jumlah' => count(\App\User::all()),
+                'icon' => 'fa fa-user',
             ],
             1 => [
                 'title' => 'Produk',
                 'jumlah' => count(\App\Produk::all()),
+                'icon' => 'fa fa-table',
             ],
             2 => [
                 'title' => 'Paket',
                 'jumlah' => count(\App\Paket::all()),
+                'icon' => 'fa fa-table',
+            ],
+            3 => [
+                'title' => 'transaksi',
+                'jumlah' => count(\App\Paket::all()),
+                'icon' => 'fas fa-dollar-sign',
             ],
         ];
 

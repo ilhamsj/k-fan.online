@@ -252,12 +252,16 @@
               </div>
             </li>
 
+            @auth
+            
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                  {{ Str::title(Auth::user()->name) }}
+                </span>
                 <img class="img-profile rounded-circle" data-src="holder.js/60x60?random=yes&auto=yes&textmode=exact">
               </a>
               <!-- Dropdown - User Information -->
@@ -281,6 +285,7 @@
                 </a>
               </div>
             </li>
+            @endauth
 
           </ul>
 
@@ -335,20 +340,31 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">
+          Select "Logout" below if you are ready to end your current session.
+        </div>
+
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" id="logoutButton" href="">Logout</a>
+          <form action="{{ route('logout') }}" id="logoutForm" method="post" class="d-none">
+            @csrf
+          </form>
         </div>
+
       </div>
     </div>
   </div>
 
   <script src="{{ secure_url('js/app.js') }}"></script>
   <script>
-      // Alert
       $(".alert").delay(2500).slideUp(200, function() {
           $(this).alert('close');
+      });
+
+      $('#logoutButton').click(function (e) { 
+        e.preventDefault();
+        $('#logoutForm').submit();
       });
   </script>
   @stack('scripts')

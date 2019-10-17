@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@home');
+Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/admin', 'HomeController@admin')->name('admin.home');
 
 Route::resource('admin/user', 'UserController');

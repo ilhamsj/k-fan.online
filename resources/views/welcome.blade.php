@@ -3,7 +3,7 @@
 @section('content')
 
     {{-- Welcome Page --}}
-    <section class="my-6">
+    <section class="my-6" style="background: cornsilk">
         <div class="container">
             <div class="row h-100-kfan align-items-center">
                 <div class="col-12 col-md-5">
@@ -32,7 +32,6 @@
     <section class="my-6">
         <div class="container">
             <div class="row align-items-center justify-content-center text-center">
-
                 <div class="col-12">
                     <i class="fa fa-cubes fa-2x" aria-hidden="true"></i>
                     <div class="my-2"></div>
@@ -43,7 +42,7 @@
                 </div>
 
                 @foreach ($produks as $item)                
-                <div class="col-6 col-md mb-4 produk-jasa">
+                <div class="col-6 col-md-3 mb-4 produk-jasa">
                     <div class="card border-0 rounded">
                         <img class="card-img-top img-fluid rounded" src="holder.js/300x450?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                         <div class="card-img-overlay p-0 d-flex flex-wrap flex-row-reverse">
@@ -123,8 +122,9 @@
                         Turut berduka cita atas meninggalnya
                     </p>
                 </div>
-                
-                <div class="col-6 col-md-3 my-2 berita-duka">
+
+                @foreach ($produks as $item)                                
+                <div class="col-6 col-md-3 mb-4 berita-duka">
                     <div class="card border-0">
                         <img class="card-img-top img-fluid rounded" src="{{ secure_url('images/photo-1498579687545-d5a4fffb0a9e.jpg') }}" alt="" srcset="">
                         <div class="card-img-overlay p-0 d-flex align-items-end">
@@ -138,6 +138,8 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
+
 
             </div>
             <div class="row justify-content-center">

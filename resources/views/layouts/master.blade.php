@@ -26,40 +26,43 @@
       <div class="collapse navbar-collapse" id="collapsibleNavId">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Produk & Jasa</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Paket Pemakaman</a>
-          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layanan</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownId">
+                <a class="nav-link" href="#">Produk & Jasa</a>
+                <a class="nav-link" href="#">Paket Pemakaman</a>
+              </div>
+            </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Berita Duka</a>
           </li>
           @guest
             <li class="nav-item">
-              <a class="nav-link" href="#">Masuk</a>
+              <a class="nav-link" href="{{ route('login') }}">Masuk</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Daftar</a>
+              <a class="nav-link" href="{{ route('register') }}">Daftar</a>
             </li>
           @else
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+              <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Str::title(Auth::user()->name) }}</a>
               <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="dropdown-item" href="#">Action 1</a>
-                <a class="dropdown-item" href="#">Action 2</a>
+                <a class="dropdown-item" href="{{ route('home') }}">Profile</a>
+                <a class="dropdown-item" id="logoutButton" href="#">Logout</a>
+                <form action="{{ route('logout') }}" id="logoutForm" method="post" class="d-none">
+                  @csrf
+                </form>
               </div>
             </li>
           @endguest
-
         </ul>
       </div>
     </div>
   </nav>
-
-  @yield('content')
+        
+    @yield('content')
 
   <footer class="py-4">
     <div class="container">
@@ -118,6 +121,13 @@
     $('div > button').first().click(function (e) { 
     e.preventDefault();
         $('nav').toggleClass( 'bg-light bg-transparent', 5000);
+    });
+
+    $('#logoutButton').click(function (e) { 
+      e.preventDefault();
+      confirm('Apakah kamu yakin akan logout ?') ? $('#logoutForm').submit() : console.log('no');
+      // confirm() ? $(this).next().submit() : console.log('no');
+
     });
 
   </script>

@@ -10,33 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/admin', 'HomeController@admin')->name('admin.home');
 
-
 Route::resource('admin/user', 'UserController');
 Route::resource('admin/produk', 'ProdukController');
-
-Route::get('/paket/{id}', 'PaketController@show')->name('paket.show');
+Route::resource('admin/paket-produk', 'PaketProdukController');
+Route::resource('transaksi', 'TransaksiController');
 Route::resource('admin/paket', 'PaketController', [
   'except' => 'show'
 ]);
 
-Route::resource('admin/paket-produk', 'PaketProdukController');
-
-Auth::routes();
-
-Route::get('/order/{id}', 'TransaksiController@show')->name('order.paket');
-
-Route::resource('transaksi', 'TransaksiController');
-
-Route::get('transaksi/selesai', function () {
-    return 'selesai';
-})->name('transaksi.selesai');
-
-Route::post('transaksi/notifikasi', function () {
-  return 'selesai';
-})->name('transaksi.notifikasi');
-
+Route::get('/paket/{id}', 'PaketController@show')->name('paket.show');

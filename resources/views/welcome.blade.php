@@ -3,28 +3,29 @@
 @section('content')
 
     {{-- Welcome Page --}}
-    <section class="my-6" style="background: cornsilk">
+    <section class="my-6">
         <div class="container">
-            <div class="row h-100-kfan align-items-center">
-                <div class="col-12 col-md-5">
+            <div class="row h-100-kfan justify-content-center">
+                <div class="col-12 col-md-10 text-center align-self-end">
                     <h1 class="text-primary display-1a">
                         Kami hadir untuk meringankan beban bagi keluarga yang ditinggal.
                     </h1>
-                    
+                    Bergabunglah bersama K-FAN sekarang !
+                    <div class="my-4"></div>
+                </div>
+                <div class="col-12 col-md-4 text-center align-self-start">
                     @guest
-                        Bergabunglah bersama K-FAN sekarang !
-                        <div class="my-4"></div>
+                        <a href="{{ route('login') }}" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                            Masuk
+                        </a>
                         <a href="{{ route('register') }}" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
                             Daftar
                         </a>
-                        <a href="{{ route('login') }}" class="btn btn-primary btn-block rounded-pill">
-                            Masuk
+                    @else 
+                        <a href="{{ route('register') }}" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                            Tingkatkan Akun
                         </a>
                     @endguest
-
-                </div>
-                <div class="col d-none d-md-block text-right">
-                    <img class="img-fluid" src="https://www.freepngimg.com/thumb/funeral/28358-3-funeral-transparent-background.png" alt="" srcset="">
                 </div>
             </div>
         </div>

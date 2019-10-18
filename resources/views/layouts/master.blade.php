@@ -16,12 +16,12 @@
   <nav class="navbar navbar-expand-sm navbar-light bg-transparent p-4">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <strong>K-Fan.Online</strong>
+        <strong><span class="text-primary">Company</span> Name</strong>
       </a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="icon-bar my-1 top-bar"></span>
-          <span class="icon-bar my-1 middle-bar"></span>
-          <span class="icon-bar my-1 bottom-bar"></span>		
+          <span class="bg-primary icon-bar top-bar text"></span>
+          <span class="bg-primary icon-bar my-1 middle-bar text" style="width:15px"></span>
+          <span class="bg-primary icon-bar bottom-bar text"></span>		
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavId">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">

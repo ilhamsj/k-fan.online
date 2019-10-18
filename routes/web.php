@@ -22,10 +22,14 @@ Route::resource('admin/paket-produk', 'PaketProdukController');
 
 Auth::routes();
 
-Route::get('/order/{id}', function($id) {
-  $paket = \App\Paket::find($id);
-  return view('order')->with([
-    'item' => $paket 
-  ]);
-})->name('order.paket');
+Route::get('/order/{id}', 'TransaksiController@show')->name('order.paket');
 
+Route::resource('transaksi', 'TransaksiController');
+
+Route::get('transaksi/selesai', function () {
+    return 'selesai';
+})->name('transaksi.selesai');
+
+Route::post('transaksi/notifikasi', function () {
+  return 'selesai';
+})->name('transaksi.notifikasi');

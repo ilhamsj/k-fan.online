@@ -91,7 +91,7 @@
                         </div>
                         <div class="card-body">
                         <a href="" class="btn btn-primary btn-block rounded-pill shadow-sm">
-                            Pembayaran <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                            Bayar <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                         </a>
                         </div>
                     </div>

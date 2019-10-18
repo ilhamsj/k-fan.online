@@ -15,6 +15,17 @@ class Transaksi extends Model
         'snap_token',
     ];
 
+    // Relasi
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function paket()
+    {
+        return $this->belongsTo('App\Paket');
+    }
+
     public function setPending()
     {
         $this->attributes['status'] = 'pending';

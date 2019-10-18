@@ -15,9 +15,15 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/admin', 'HomeController@admin')->name('admin.home');
 
+
 Route::resource('admin/user', 'UserController');
 Route::resource('admin/produk', 'ProdukController');
-Route::resource('admin/paket', 'PaketController');
+
+Route::get('/paket/{id}', 'PaketController@show')->name('paket.show');
+Route::resource('admin/paket', 'PaketController', [
+  'except' => 'show'
+]);
+
 Route::resource('admin/paket-produk', 'PaketProdukController');
 
 Auth::routes();
@@ -33,3 +39,4 @@ Route::get('transaksi/selesai', function () {
 Route::post('transaksi/notifikasi', function () {
   return 'selesai';
 })->name('transaksi.notifikasi');
+

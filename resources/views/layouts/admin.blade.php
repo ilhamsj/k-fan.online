@@ -77,7 +77,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.home') }}">
+        <a class="nav-link" href="{{ route('transaksi.index') }}">
           <i class="fas fa-money-bill"></i>
           <span>Transaksi</span></a>
       </li>

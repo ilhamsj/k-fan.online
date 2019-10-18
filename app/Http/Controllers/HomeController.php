@@ -48,7 +48,7 @@ class HomeController extends Controller
             ],
             3 => [
                 'title' => 'transaksi',
-                'jumlah' => count(\App\Paket::all()),
+                'jumlah' => count(\App\Transaksi::all()),
                 'icon' => 'fas fa-dollar-sign',
                 'color' => 'border-left-success',
             ],

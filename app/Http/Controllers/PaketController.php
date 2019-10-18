@@ -33,7 +33,10 @@ class PaketController extends Controller
 
     public function show($id)
     {
-        //
+        $item = Paket::find($id);
+        return view('paket.show')->with([
+            'item' => $item,
+        ]);
     }
 
     public function edit($id)

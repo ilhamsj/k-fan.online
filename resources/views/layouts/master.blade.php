@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-sm navbar-light bg-transparent p-4">
+  <nav class="navbar navbar-expand-md navbar-light bg-transparent p-4">
     <div class="container">
       <a class="navbar-brand" href="/">
         <strong><span class="text-primary">Company</span> Name</strong>

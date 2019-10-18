@@ -100,8 +100,7 @@
                                 </p>
                             @endforeach
 
-
-                            <a href="{{ route('order.paket', $item->id) }}" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                            <a href="{{ route('paket.show', $item->id) }}" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
                                 <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                             </a>
                          </div>

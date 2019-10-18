@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Transaksi;
+use Midtrans\Snap;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -17,7 +18,11 @@ class TransaksiController extends Controller
 
     public function index()
     {
-
+        $items = Transaksi::orderBy('created_at', 'desc')->get();
+        return view('admin.transaksi.index')->with([
+            'items' => $items,
+            'no' => 1,
+        ]);
     }
 
     public function create()
@@ -27,27 +32,40 @@ class TransaksiController extends Controller
 
     public function store(Request $request)
     {
+        $transaksi = Transaksi::create($request->all());
+        $user = \App\User::find($request->user_id);
+        $paket = \App\Paket::find($request->paket_id);
 
+        // buat transaksi ke midtrans
+        $params = array(
+            'transaction_details' => [
+                'order_id' => $transaksi->id,
+                'gross_amount' => ($transaksi->jumlah * 1),
+            ],
+            'customer_details' => [
+                'first_name' => $user->name,
+                'email' => $user->email,
+            ],
+            'items' => [
+                'id' => 'item1',
+                'price' => $transaksi->jumlah,
+                'quantity' => 1,
+                'name' => $paket->nama,
+            ],
+        );
+      
+        $snapToken = Snap::getSnapToken($params);
+        $transaksi->snap_token = $snapToken;
+        $transaksi->save();
+
+        return redirect()->route('transaksi.index')->with([
+            'status' => 'Tambah Transaksi Berhasil'
+        ]);
     }
 
     public function show($id)
     {
-        $paket = \App\Paket::find($id);
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => rand(),
-                'gross_amount' => 10000,
-            )
-        );
-      
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-        // dd($snapToken);
-      
-        return view('order')->with([
-          'item' => $paket,
-          'snapToken' => $snapToken,
-        ]);
     }
 
     public function edit($id)
@@ -62,6 +80,9 @@ class TransaksiController extends Controller
 
     public function destroy($id)
     {
-
+        Transaksi::destroy($id);
+        return redirect()->back()->with([
+            'status' => 'Hapus data berhasil'
+        ]);
     }
 }

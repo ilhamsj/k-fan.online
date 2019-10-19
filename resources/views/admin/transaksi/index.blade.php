@@ -37,7 +37,7 @@
                       <td>{{ $no++ }}</td>
                       <td>{{ $item->user->name }}</td>
                       <td>{{ $item->paket->nama }}</td>
-                      <td>{{ $item->jumlah }}</td>
+                      <td>{{ $item->rupiah($item->jumlah) }}</td>
                       <td>{{ $item->catatan }}</td>
                       <td>{{ $item->status }}</td>
                       <td>{{ $item->snap_token }}</td>

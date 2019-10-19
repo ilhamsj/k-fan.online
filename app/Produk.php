@@ -17,4 +17,10 @@ class Produk extends Model
     {
         return $this->belongsTo('App\User', 'mitra_id', 'id');
     }
+
+    // Rupiah
+    function rupiah($angka){
+        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
+    }
 }

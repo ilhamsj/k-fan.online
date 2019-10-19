@@ -84,15 +84,13 @@
                 @foreach ($pakets as $item)
                 <div class="col-12 col-md-4 mb-4">
                     <div style="border-radius:1rem" class="card shadow-sm border-0">
-                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" data-src="holder.js/300x200?auto=yes&random=yes&textmode=exact" alt="" srcset="">
-                        <div class="card-header bg-transparent">
-                            <span class="text-muted">${{$item->harga}}</span>
-                            <h3>
-                                {{$item->nama}}
-                            </h3>
-                        </div>
+                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" data-src="{{ $item->foto }}" alt="" srcset="">
                         <div class="card-body">
-
+                            <span class="text-muted" style="text-decoration: line-through">{{ number_format($item->harga,2,',','.') }}</span>
+                            <strong class="text-muted">| {{ number_format($item->harga - ($item->diskon/100*$item->harga),2,',','.') }}</strong>
+                            <h3>
+                                Paket {{$item->nama}}
+                            </h3>
                             @foreach ($item->paketproduk as $paket)
                                 <p class="text-muted">
                                     <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>

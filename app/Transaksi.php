@@ -26,6 +26,7 @@ class Transaksi extends Model
         return $this->belongsTo('App\Paket');
     }
 
+    // Midtrans
     public function setPending()
     {
         $this->attributes['status'] = 'pending';
@@ -48,5 +49,11 @@ class Transaksi extends Model
     {
         $this->attributes['status'] = 'expired';
         self::save();
+    }
+
+    // Rupiah
+    function rupiah($angka){
+        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
     }
 }

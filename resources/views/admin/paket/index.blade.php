@@ -50,7 +50,7 @@
                                 </a>            
                             </div>
                         </td>
-                        <td>{{$item->harga}}</td>
+                        <td>{{ $item->rupiah($item->harga) }}</td>
                         <td>{{$item->diskon}}</td>
                         <td><img class="img-fluid rounded" data-src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""></td>
                         <td class="d-sm-flex justify-content-center">

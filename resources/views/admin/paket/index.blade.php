@@ -47,7 +47,7 @@
                             <div>
                                 <a data-toggle="modal" data-target="#tambahPaketProduk" href="" class="">
                                     <i class="fa fa-plus-circle fa-sm" aria-hidden="true"></i>
-                                </a>            
+                                </a>
                             </div>
                         </td>
                         <td>{{ $item->rupiah($item->harga) }}</td>

@@ -23,7 +23,7 @@
                         </a>
                     @else 
                         <a href="{{ route('register') }}" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
-                            Tingkatkan Akun
+                            Ringankan Beban
                         </a>
                     @endguest
                 </div>

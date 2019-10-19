@@ -39,7 +39,7 @@
                       <td>{{ $item->paket->nama }}</td>
                       <td>{{ $item->jumlah }}</td>
                       <td>{{ $item->catatan }}</td>
-                      <td>{{ \Midtrans\Transaction::status($item->id)->transaction_status }}</td>
+                      <td>{{ $item->status }}</td>
                       <td>{{ $item->snap_token }}</td>
                       <td>{{ $item->created_at }}</td>
                       <td class="d-sm-flex justify-content-center">

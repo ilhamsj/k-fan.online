@@ -22,7 +22,9 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
-        "vue-template-compiler": "^2.6.10"
+        "vue-template-compiler": "^2.6.10",
+        "html2canvas": "^1.0.0-rc.5",
+        "jspdf": "^1.5.3"
     },
     "dependencies": {
         "datatables.net": "^1.10.20",

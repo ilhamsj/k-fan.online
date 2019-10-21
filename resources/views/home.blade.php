@@ -2,23 +2,42 @@
 
 @section('content')
 {{-- <hr> --}}
-    <section class="py-4 bg-light">
+    <section class="py-4 bg-gradient-success">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-12 col-sm">
-                    <div class="card shadow">
-                        <div class="card-header">
-                            Profil
+                    <div class="card shadow border-0">
+                        <div class="card-header bg-dark">
+                            <strong class="text-light">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                Profil
+                            </strong>        
                         </div>
                         <div class="card-body">                
                             <div>
-                                Nama<br/>
-                                <strong>{{ Auth::user()->name }}</strong>
+                                Nama
+                                <h4>
+                                    {{ Auth::user()->name }}
+                                </h4>
                             </div>
                             <div>
-                                Email<br/>
-                                <strong>{{ Auth::user()->email }}</strong>
+                                Email
+                                <h4>
+                                    {{ Auth::user()->email }}
+                                </h4>
                             </div>
+                            <div>
+                                <a href="">
+                                    Edit akun
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-header bg-success">
+                            <strong class="text-light">
+                                <i class="fa fa-history" aria-hidden="true"></i>
+                                History Transaksi
+                            </strong>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

@@ -32,7 +32,7 @@
     </section>
 
     {{-- Produk & Jasa --}}
-    <section class="my-6">
+    <section class="my-6" id="produk">
         <div class="container">
             <div class="row align-items-center justify-content-center text-center">
                 <div class="col-12">
@@ -111,7 +111,7 @@
     </section>
 
     {{-- Berita Duka --}}
-    <section class="my-6">
+    <section class="my-6" id="berita">
         <div class="container">
             <div class="row align-items-center mb-4">
                 <div class="col-12 text-center">
@@ -130,7 +130,7 @@
                         <div class="card-img-overlay p-0 d-flex align-items-end">
                             <div class="card-body rounded-bottom bg-golden op-lg bg-dark text-light collapse" style="opacity: 0.7">
                                 
-                                    <a href="" class="text-light">
+                                <a href="" class="text-light">
                                 <strong>
                                     Si Meng
                                 </strong>

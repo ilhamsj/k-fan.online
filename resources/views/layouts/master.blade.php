@@ -31,12 +31,12 @@
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layanan</a>
               <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="nav-link" href="#">Produk & Jasa</a>
-                <a class="nav-link" href="#">Paket Pemakaman</a>
+                <a class="nav-link" href="#produk">Produk & Jasa</a>
+                <a class="nav-link" href="#service">Paket Pemakaman</a>
               </div>
             </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Berita Duka</a>
+            <a class="nav-link" href="#berita">Berita Duka</a>
           </li>
           @guest
             <li class="nav-item">

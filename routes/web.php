@@ -25,3 +25,5 @@ Route::resource('admin/paket', 'PaketController', [
 ]);
 
 Route::get('/paket/{id}', 'PaketController@show')->name('paket.show');
+Route::get('/finish', 'HomeController@finish')->name('finish');
+Route::post('/notification', 'HomeController@notification')->name('notification');

@@ -42,7 +42,7 @@ class PaketController extends Controller
     public function edit($id)
     {
         $item = Paket::find($id);
-        return view('admin.Paket.edit')->with([
+        return view('admin.paket.edit')->with([
             'item' => $item,
         ]);
     }

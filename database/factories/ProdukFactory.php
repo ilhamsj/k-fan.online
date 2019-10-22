@@ -8,17 +8,17 @@ use Illuminate\Support\Str;
 
 $factory->define(Produk::class, function (Faker $faker) {
     $produk = [
-        'ambulance',
-        'rumah duka',
+        'Ambulan',
+        'Rumah duka',
         'kain kafan',
-        'Karangan bunga',
+        'Buket bunga',
         'Bunga tabur',
         'batu nisan',
         'peti mati',
         'kremasi',
         'Gali Kubur',
-        'kapas',
-        'sabun',
+        'Rias Jenazah',
+        'Bongkar Makam',
         'gayung',
         'tikar',
         'tempat pemakaman',

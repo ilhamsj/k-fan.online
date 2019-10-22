@@ -27,10 +27,8 @@
                                 </h4>
                             </div>
                             <div>
-                                <a href="">
-                                    Edit akun
-                                    <i class="fas fa-pencil-alt"></i>
-                                </a>
+                                <a href="">Edit akun <i class="fas fa-pencil-alt"></i></a>
+                                <a href="{{ route('password.request') }}">Ganti Password <i class="fas fa-pencil-alt"></i></a>
                             </div>
                         </div>
                         <div class="card-header bg-success">

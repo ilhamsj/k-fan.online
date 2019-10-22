@@ -35,9 +35,10 @@
                             Tenetur vero aperiam voluptas at inventore similique? 
                         </div>
                         <div class="card-body">
-                            <form onsubmit="return submitForm();">
-                              {{-- @csrf --}}
+                            <form action="{{ route('transaksi.store') }}" method="POST">
+                              @csrf
 
+                              <input type="text" name="id" value="{{ 'T' . date('dmYHis') }}">
                               <div class="form-group">
                                   <label for="user_id"> user_id </label>
                                   <input id="user_id" type="number" class="form-control @error('user_id') is-invalid @enderror" name="user_id" value="{{ old('user_id') ? old('user_id') : Auth::user()->id }}">
@@ -81,8 +82,7 @@
                                       </span>
                                   @enderror
                               </div>
-                              <button type="submit" class="btn btn-primary btn-block rounded-pill shadow-sm" id="transaksiBaru">Bayar</button>
-                            
+                              <button type="submit" class="btn btn-primary btn-block rounded-pill shadow-sm" id="transaksiBaru">Bayar</button>    
                             </form>
                         </div>
                     </div>
@@ -92,35 +92,3 @@
         </div>
     </section>
 @endsection
-
-@push('scripts')
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENTKEY') }}"></script>
-    <script>
-    function submitForm() {
-        // Kirim request ajax
-        $.post("{{ route('transaksi.store') }}",
-        {
-            _method: 'POST',
-            _token: '{{ csrf_token() }}',
-            user_id: $('input#user_id').val(),
-            paket_id: $('input#paket_id').val(),
-            jumlah: $('input#jumlah').val(),
-            catatan: $('input#catatan').val(),
-        },
-        function (data, status) {
-            snap.pay(data.snap_token, {
-                onSuccess: function (result) {
-                    location.reload();
-                },
-                onPending: function (result) {
-                    location.reload();
-                },
-                onError: function (result) {
-                    location.reload();
-                }
-            });
-        });
-        return false;
-    }
-    </script>
-@endpush

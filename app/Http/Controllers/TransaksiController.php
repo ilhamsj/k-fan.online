@@ -27,11 +27,6 @@ class TransaksiController extends Controller
         ]);
     }
 
-    public function create()
-    {
-
-    }
-
     public function store(Request $request)
     {
         $transaksi = Transaksi::create($request->all());
@@ -62,13 +57,10 @@ class TransaksiController extends Controller
         $transaksi->snap_token = $snapToken;
         $transaksi->save();
         
-        // return redirect()->route('transaksi.show', $transaksi->id)->with([
-        //     'status' => 'Tambah Transaksi Berhasil',
-        //     'snapToken' => $snapToken 
-        // ]);
-
-        $this->response['snap_token'] = $snapToken;
-        return response()->json($this->response);
+        return redirect()->route('transaksi.show', $transaksi->id)->with([
+            'status' => 'Tambah Transaksi Berhasil',
+            'snapToken' => $snapToken 
+        ]);
     }
 
     public function show($id)
@@ -76,18 +68,8 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::find($id);
 
         return view('transaksi')->with([
-            'snapToken' => $transaksi->snap_token
+            'item' => $transaksi
         ]);
-    }
-
-    public function edit($id)
-    {
-
-    }
-
-    public function update(Request $request, $id)
-    {
-
     }
 
     public function destroy($id)
@@ -98,47 +80,46 @@ class TransaksiController extends Controller
         ]);
     }
 
-    public function notification()
+    public function notification(Request $request)
     {
-        $midtrans = new Midtrans;
-        echo 'test notification handler';
-        $json_result = file_get_contents('php://input');
-        $result = json_decode($json_result);
-        if($result){
-        $notif = $midtrans->status($result->order_id);
-        }
-        error_log(print_r($result,TRUE));
-        /*
+        $notif = new \Midtrans\Notification();
         $transaction = $notif->transaction_status;
-        $type = $notif->payment_type;
-        $order_id = $notif->order_id;
         $fraud = $notif->fraud_status;
+        error_log("Order ID $notif->order_id: "."transaction status = $transaction, fraud staus = $fraud");
+        $transaksi = Transaksi::find($notif->order_id);
         if ($transaction == 'capture') {
-          // For credit card transaction, we need to check whether transaction is challenge by FDS or not
-          if ($type == 'credit_card'){
-            if($fraud == 'challenge'){
-              // TODO set payment status in merchant's database to 'Challenge by FDS'
-              // TODO merchant should decide whether this transaction is authorized or not in MAP
-              echo "Transaction order_id: " . $order_id ." is challenged by FDS";
-              } 
-              else {
-              // TODO set payment status in merchant's database to 'Success'
-              echo "Transaction order_id: " . $order_id ." successfully captured using " . $type;
-              }
+            if ($fraud == 'challenge') {
+                $transaksi->update([
+                    'status' => 'challenge'
+                ]); 
             }
-          }
-        else if ($transaction == 'settlement'){
-          // TODO set payment status in merchant's database to 'Settlement'
-          echo "Transaction order_id: " . $order_id ." successfully transfered using " . $type;
-          } 
-          else if($transaction == 'pending'){
-          // TODO set payment status in merchant's database to 'Pending'
-          echo "Waiting customer to finish transaction order_id: " . $order_id . " using " . $type;
-          } 
-          else if ($transaction == 'deny') {
-          // TODO set payment status in merchant's database to 'Denied'
-          echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is denied.";
-        }*/
-   
+            else if ($fraud == 'accept') {
+                $transaksi->update([
+                    'status' => 'accept'
+                ]); 
+            }
+        }
+        else if ($transaction == 'cancel') {
+            if ($fraud == 'challenge') {
+                $transaksi->update([
+                    'status' => 'challenge'
+                ]); 
+            }
+            else if ($fraud == 'accept') {
+                $transaksi->update([
+                    'status' => 'accept'
+                ]); 
+            }
+        }
+        else if ($transaction == 'deny') {
+            $transaksi->update([
+                'status' => 'deny'
+            ]); 
+        }
+        return;
+    }
+    public function finish()
+    {
+        return 'Transaksi berhasil';
     }
 }

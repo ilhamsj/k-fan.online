@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+
     protected $fillable = [
+        'id',
         'user_id',
         'paket_id',
         'jumlah',

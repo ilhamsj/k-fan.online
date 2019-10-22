@@ -83,36 +83,3 @@
         </div>
     </section>
 @endsection
-
-@push('scripts')
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENTKEY') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('table').DataTable();
-        });
-
-        $('table').find('a').click(function (e) { 
-            e.preventDefault();
-
-            var x = $(this).attr('data-token');
-            console.log(x);
-            snap.pay(x);
-            document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-        });
-
-
-        // function (data, status) {
-        //     snap.pay(data.snap_token, {
-        //         onSuccess: function (result) {
-        //             location.reload();
-        //         },
-        //         onPending: function (result) {
-        //             location.reload();
-        //         },
-        //         onError: function (result) {
-        //             location.reload();
-        //         }
-        //     });
-        // });
-    </script>
-@endpush

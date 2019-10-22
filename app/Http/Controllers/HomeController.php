@@ -61,23 +61,4 @@ class HomeController extends Controller
             'items' => $data
         ]);
     }
-
-    public function finish()
-    {
-        return 'Transaksi selesai';
-    }
-
-    public function notification(Request $request)
-    {
-        $notif          = new \Midtrans\Notification();        
-        $transaction    = $notif->transaction_status;
-        $fraud          = $notif->fraud_status;
-        $trasaksi       = '';
-
-        if ($transaction == 'capture') {
-
-        }
-        return;
-    }
-
 }

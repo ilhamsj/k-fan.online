@@ -21,10 +21,10 @@
               <thead>
                   <tr>
                       <th>No</th>
+                      <th>ID</th>
                       <th>User</th>
                       <th>Paket</th>
                       <th>Jumlah</th>
-                      <th>Catatan</th>
                       <th>Status</th>
                       <th>Snap Token</th>
                       <th>Tanggal</th>
@@ -35,10 +35,10 @@
                   @foreach ($items as $item)
                   <tr>
                       <td>{{ $no++ }}</td>
+                      <td>{{ $item->id }}</td>
                       <td>{{ $item->user->name }}</td>
                       <td>{{ $item->paket->nama }}</td>
                       <td>{{ $item->rupiah($item->jumlah) }}</td>
-                      <td>{{ $item->catatan }}</td>
                       <td>{{ $item->status }}</td>
                       <td>{{ $item->snap_token }}</td>
                       <td>{{ $item->created_at }}</td>

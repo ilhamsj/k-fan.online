@@ -23,6 +23,7 @@
                       <th>No</th>
                       <th>Name</th>
                       <th>Email</th>
+                      <th>Verivikasi</th>
                       <th class="text-center">Action</th>
                   </tr>
               </thead>
@@ -32,6 +33,7 @@
                       <td>{{$no++}}</td>
                       <td>{{$item->name}}</td>
                       <td>{{$item->email}}</td>
+                      <td>{{$item->email_verified_at ? 'Success' : 'Sent'}}</td>
                       <td class="d-sm-flex justify-content-center">
                           <a href="{{ route('user.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
                               <span class="icon text-white-50">

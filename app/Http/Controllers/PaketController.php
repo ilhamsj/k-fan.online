@@ -20,7 +20,7 @@ class PaketController extends Controller
 
     public function create()
     {
-        return view('admin.Paket.create');
+        return view('admin.paket.create');
     }
 
     public function store(PaketStoreRequest $request)

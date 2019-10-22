@@ -33,7 +33,6 @@ class TransaksiController extends Controller
         $user = \App\User::find($request->user_id);
         $paket = \App\Paket::find($request->paket_id);
 
-        // buat transaksi ke midtrans
         $params = array(
             'transaction_details' => [
                 'order_id' => $transaksi->id,
@@ -118,6 +117,7 @@ class TransaksiController extends Controller
         }
         return;
     }
+    
     public function finish()
     {
         return 'Transaksi berhasil';

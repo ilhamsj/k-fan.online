@@ -43,7 +43,7 @@
                       <td>{{ $item->snap_token }}</td>
                       <td>{{ $item->created_at }}</td>
                       <td class="d-sm-flex justify-content-center">
-                          <a href="{{ route('transaksi.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
+                          <a href="#" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
                               <span class="icon text-white-50">
                                   <i class="fas fa-pencil-alt"></i>
                               </span>

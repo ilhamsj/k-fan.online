@@ -19,7 +19,11 @@ Route::get('/admin', 'HomeController@admin')->name('admin.home');
 Route::resource('admin/user', 'UserController');
 Route::resource('admin/produk', 'ProdukController');
 Route::resource('admin/paket-produk', 'PaketProdukController');
-Route::resource('transaksi', 'TransaksiController');
+Route::resource('transaksi', 'TransaksiController', [
+  'except' => [
+    'edit'
+  ]
+]);
 Route::resource('admin/paket', 'PaketController', [
   'except' => 'show'
 ]);

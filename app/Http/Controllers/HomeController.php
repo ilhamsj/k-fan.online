@@ -16,10 +16,12 @@ class HomeController extends Controller
     {
         $items = \App\Produk::orderBy('updated_at', 'desc')->paginate(4);
         $pakets = \App\Paket::orderBy('created_at', 'asc')->get();
+        $lelayu = \App\BeritaLelayu::orderBy('created_at', 'asc')->get();
 
         return view('welcome')->with([
             'produks' => $items,
             'pakets' => $pakets,
+            'lelayu' => $lelayu,
         ]);
     }
 

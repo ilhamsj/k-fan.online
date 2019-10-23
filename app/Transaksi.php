@@ -60,4 +60,9 @@ class Transaksi extends Model
         $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
         return $hasil_rupiah;
     }
+
+    public function BeritaLelayu()
+    {
+        return $this->hasMany(BeritaLelayu::class);
+    }
 }

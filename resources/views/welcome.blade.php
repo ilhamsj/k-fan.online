@@ -121,7 +121,7 @@
     {{-- Berita Duka --}}
     <section id="berita" class="py-4 my-4">
         <div class="container">
-            <div class="row align-items-center mb-4">
+            <div class="row align-items-center mb-4 justify-content-center">
                 <div class="col-12 text-center">
                     <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
                     <div class="my-2"></div>
@@ -131,23 +131,25 @@
                     </p>
                 </div>
 
-                @foreach ($produks as $item)                                
+                @foreach ($lelayu as $item)                                
                 <div class="col-6 col-md-3 mb-4 berita-duka">
                     <div class="card border-0">
-                        <img class="card-img-top img-fluid rounded" src="{{ $item->foto ? $item->foto : 'https://images.unsplash.com/photo-1547556061-5ac8fe0b57f8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=281&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=225'}}" alt="" srcset="">
+                        <img class="card-img-top img-fluid rounded" src="{{ $item->foto }}" alt="" srcset="">
                         <div class="card-img-overlay p-0 d-flex align-items-end">
                             <div class="card-body rounded-bottom bg-golden op-lg bg-dark text-light collapse" style="opacity: 0.7">
                                 
                                 <a href="" class="text-light">
-                                <strong>
-                                    Si Meng
-                                </strong>
-                                <div class="" style="font-size: 0.8rem">
-                                    <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-                                    {{ date('d M Y') }} - {{ date('d M Y') }}<br>
-                                    
+                                    <strong>
+                                        {{ $item->nama }}
+                                    </strong>
+                                    <div class="" style="font-size: 0.8rem">
+                                        <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                                        {{ $item->lahir }} -
+                                        {{ $item->wafat }}
+                                        <br>
+                                        
                                         <i class="fa fa-location-arrow" aria-hidden="true"></i>
-                                        Yogyakarta, Bantul
+                                        {{ $item->alamat }}
                                     </div>
                                 </a>
                             </div>
@@ -167,6 +169,8 @@
             </div>
         </div>
     </section>
+
+    <hr>
 
     <section class="py-4 my-4" id="payment-list">
         <div class="container">

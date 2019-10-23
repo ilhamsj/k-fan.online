@@ -31,94 +31,54 @@
                             <i class="fas fa-pencil-alt"></i>
                         </a>
                     </p>
-                    <form action="{{ route('berita-lelayu.store') }}" method="POST">
-                        @csrf
 
-                        <div class="form-group">
-                            <label for="transaksi_id"> Transaksi </label>
-                            <input id="transaksi_id" type="text" class="form-control @error('transaksi_id') is-invalid @enderror" name="transaksi_id" value="{{ $item->id }}">
-        
-                            @error('transaksi_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                    @if (count($item->BeritaLelayu) == null)
+                        <a href="" data-toggle="modal" data-target="#modelId">Tambah</a>
+                    @else
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Tanggal Wafat</th>
+                                        <th>Foto</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($item->beritalelayu as $berita)
+                                    <tr>
+                                        <td>{{ $berita->nama }}</td>
+                                        <td>{{ $berita->lahir}}</td>
+                                        <td>{{ $berita->wafat }}</td>
+                                        <td>
+                                            <img class="img-fluid" src="{{ $berita->foto }}" alt="" srcset="">
+                                        </td>
+                                        <td class="d-sm-flex justify-content-center">
+                                            <form action="{{ route('berita-lelayu.destroy', $berita->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-icon-split btn-sm" type="submit">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </span>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
-
-                        <div class="form-group">
-                            <label for="nama"> Nama Jenazah</label>
-                            <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ? old('nama') :  \Faker\Factory::create()->name }}">
-        
-                            @error('nama')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col">
-                                <label for="lahir"> Tanggal Lahir </label>
-                                <input id="lahir" type="datetime-local" class="form-control @error('lahir') is-invalid @enderror" name="lahir"value="1990-06-12T19:30">
-            
-                                @error('lahir')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group col">
-                                <label for="wafat"> Tanggal Wafat </label>
-                                <input id="wafat" type="datetime-local" class="form-control @error('wafat') is-invalid @enderror" name="wafat"value="2019-06-12T19:30">
-            
-                                @error('wafat')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-    
-                        <div class="form-group">
-                            <label for="alamat"> Alamat </label>
-                            <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') ? old('alamat') :  \Faker\Factory::create()->address}}">
-        
-                            @error('alamat')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="surat_kematian"> Link Surat Kematian </label>
-                            <input id="surat_kematian" type="text" class="form-control @error('surat_kematian') is-invalid @enderror" name="surat_kematian" value="{{ old('surat_kematian') ? old('surat_kematian') :  'https://3.bp.blogspot.com/-7sBdhkwNq34/W9unzLsWJSI/AAAAAAAALtc/EqEskIv9SbsJblzg6vk_ACVrZFInO0dWwCLcBGAs/s1600/img002.jpg' }}">
-        
-                            @error('surat_kematian')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="foto"> Foto </label>
-                            <input id="foto" type="text" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') :  'https://cache.desktopnexus.com/thumbseg/620/620245-bigthumbnail.jpg' }}">
-        
-                            @error('foto')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-
-                    </form>
+                        <a href="" data-toggle="modal" data-target="#modelId">Tambah</a>
+                    @endif
                 </div>
             </div>
         </div>
     </section>
+
+    @include('lelayu.create')
 @endsection
 
 @push('scripts')
@@ -158,5 +118,9 @@
     //     $('#data-jenazah > form > button').toggleClass('collapse');
     //     $('#data-jenazah').find('input').removeAttr('disabled');
     // });
+    $(document).ready(function() {
+          $('table').DataTable();
+      });
+
 </script>
 @endpush

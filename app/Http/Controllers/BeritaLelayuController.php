@@ -18,7 +18,7 @@ class BeritaLelayuController extends Controller
 
     public function create()
     {
-        return view('admin.produk.create');
+        return view('lelayu.create');
     }
 
     public function store(Request $request)
@@ -54,7 +54,7 @@ class BeritaLelayuController extends Controller
 
     public function destroy($id)
     {
-        Produk::destroy($id);
+        BeritaLelayu::destroy($id);
         return redirect()->back()->with([
             'status' => 'Hapus data berhasil'
         ]);

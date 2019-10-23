@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
     <section class="bg-light">
@@ -58,7 +58,7 @@
                             <form action="{{ route('transaksi.store') }}" method="POST">
                               @csrf
 
-                              <input type="text" name="id" value="{{ 'T' . date('dmYHis') }}" hidden>
+                              <input type="text" name="id" value="{{ 'T' . date('dmYHis') }}">
                               <input id="user_id" type="number" class="form-control @error('user_id') is-invalid @enderror" name="user_id" value="{{ old('user_id') ? old('user_id') : Auth::user()->id }}" hidden>
                               <input id="paket_id" type="number" class="form-control @error('paket_id') is-invalid @enderror" name="paket_id" value="{{ old('paket_id') ? old('paket_id') : $item->id }}" hidden>
                               <input id="jumlah" type="number" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" value="{{ old('jumlah') ? old('jumlah') : $item->harga }}" hidden>
@@ -73,6 +73,7 @@
                                       </span>
                                   @enderror
                               </div>
+
                               <button type="submit" class="btn btn-primary btn-block rounded-pill shadow-sm" id="transaksiBaru">Order</button>    
                             </form>
                         </div>

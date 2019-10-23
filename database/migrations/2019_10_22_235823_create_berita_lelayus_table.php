@@ -13,9 +13,15 @@ class CreateBeritaLelayusTable extends Migration
      */
     public function up()
     {
+        Schema::enableForeignKeyConstraints();
         Schema::create('berita_lelayus', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('transaksi_id')->nullable();
+            $table->uuid('transaksi_id', 30)->index();
+            $table->foreign('transaksi_id')
+                    ->references('id')
+                    ->on('transaksis')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->string('nama', 100);
             $table->string('alamat', 100);
             $table->string('surat_kematian');

@@ -32,13 +32,13 @@
         snap.pay(x, {
             // Optional
             onSuccess: function(result){
-            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+            // /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
                 location.replace("/")
             },
             // Optional
             onPending: function(result){
             // /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-              // location.replace("/")
+              location.replace("/home")
             },
             // Optional
             onError: function(result){

@@ -29,7 +29,13 @@ Route::resource('admin/paket', 'PaketController', [
 ]);
 
 Route::get('/paket/{id}', 'PaketController@show')->middleware('verified')->name('paket.show');
-Route::get('/finish', 'TransaksiController@finish')->name('finish');
+Route::get('/finish', function() {
+  return redirect()->route('welcome');
+});
+
+Route::post('/finish', function() {
+  return redirect()->route('welcome');
+});
 Route::post('/notification', 'TransaksiController@notification')->name('notification');
 
 // Route::get('offline', function () {

@@ -14,10 +14,9 @@
 </head>
 
 <body id="page-top">
-
   <!-- Page Wrapper -->
   <div id="wrapper">
-
+      
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -39,7 +38,7 @@
           <span>Dashboard</span></a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item {{ Str::after(url()->current(), 'admin/') == 'user' ? 'active' : ''}}">
         <a class="nav-link" href="{{ route('user.index') }}">
           <i class="fa fa-user" aria-hidden="true"></i>
           <span>User</span></a>
@@ -47,7 +46,7 @@
   
       
       <!-- Divider -->
-      <li class="nav-item">
+      <li class="nav-item {{ Str::after(url()->current(), 'admin/') == 'produk' ? 'active' : ''}}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fa fa-table" aria-hidden="true"></i>
           <span>Produk</span>
@@ -366,6 +365,8 @@
         e.preventDefault();
         $('#logoutForm').submit();
       });
+
+      
   </script>
   @stack('scripts')
 </body>

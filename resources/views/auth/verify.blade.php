@@ -1,9 +1,9 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row justify-content-center h-50-kfan justify-content-center align-items-center">
+        <div class="col-md">
             <div class="card">
                 <div class="card-header">{{ __('Verify Your Email Address') }}</div>
 

@@ -136,22 +136,20 @@
                     <div class="card border-0">
                         <img class="card-img-top img-fluid rounded" src="{{ $item->foto }}" alt="" srcset="">
                         <div class="card-img-overlay p-0 d-flex align-items-end">
-                            <div class="card-body rounded-bottom bg-golden op-lg bg-dark text-light collapse" style="opacity: 0.7">
+                            <div class="card-body rounded-bottom bg-light collapse">
                                 
-                                <a href="" class="text-light">
                                     <strong>
-                                        {{ $item->nama }}
+                                        <a href="">{{ $item->nama }}</a>
                                     </strong>
                                     <div class="" style="font-size: 0.8rem">
                                         <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-                                        {{ $item->lahir }} -
-                                        {{ $item->wafat }}
+                                        {{ \Carbon\Carbon::parse($item->lahir)->format('d M Y') }} -
+                                        {{ \Carbon\Carbon::parse($item->wafat)->format('d M Y') }}
                                         <br>
                                         
-                                        <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                        <i class="fas fa-map-marked-alt    "></i>
                                         {{ $item->alamat }}
                                     </div>
-                                </a>
                             </div>
                         </div>
                     </div>

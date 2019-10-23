@@ -3,14 +3,14 @@
 @section('content')
 
     {{-- Welcome Page --}}
-    <section>
+    <section class="bg-image-welcome border-bottom">
         <div class="container">
             <div class="row h-100-kfan justify-content-center">
                 <div class="col-12 col-md-10 text-center align-self-end">
                     <h1 class="text-primary display-1a">
                         Kami hadir untuk meringankan beban bagi keluarga yang ditinggal.
                     </h1>
-                    Bergabunglah bersama K-FAN sekarang !
+                    Bergabunglah bersama <strong>Kafan</strong> sekarang !
                     <div class="my-4"></div>
                 </div>
                 <div class="col-12 col-md-4 text-center align-self-start">
@@ -22,8 +22,8 @@
                             Daftar
                         </a>
                     @else 
-                        <a href="{{ route('register') }}" class="btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
-                            Ringankan Beban
+                        <a href="#service" class="d-none d-md-block btn btn-outline-primary btn-primary-kfan btn-block rounded-pill">
+                            Upacara Pemakaman
                         </a>
                     @endguest
                 </div>
@@ -77,7 +77,7 @@
     </section>
 
     {{-- Layanan --}}
-    <section id="service" class="py-4 my-4 bg-light">
+    <section id="service" class="py-4 my-4 bg-light bg-image-paket">
         <div class="container">
             <div class="row">
                 <div class="col-10 m-auto text-center mb-4">
@@ -85,7 +85,7 @@
                     <div class="my-2"></div>
                     <h2>PAKET <span class="text-primary">PEMAKAMAN</span> </h2>
                     <p class="lead">
-                        Pilih paket yang dibutuhkan
+                        Beragam paket pilihan paket untuk upacara pemakaman
                     </p>
                 </div>
 
@@ -168,7 +168,7 @@
         </div>
     </section>
 
-    <section class="py-4 my-4">
+    <section class="py-4 my-4" id="payment-list">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -198,7 +198,7 @@
     </section>
 
     {{-- Service --}}
-    <section class="bg-image">
+    <section class="bg-image py-4 mt-4">
         <div class="container">
             <div class="row h-50-kfan align-items-center text-center">
                 <div class="col text-light">
@@ -222,11 +222,27 @@
 @push('styles')
     <style>
         .bg-image {
-            background-image: url('/images/photo-1455819760800-d2aa223b237a.jpg');
+            background-image: url('https://images.unsplash.com/photo-1517405030045-45f7ad942106?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1349&h=400&fit=crop&ixid=eyJhcHBfaWQiOjF9');
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
             background-position: center
+        }
+
+        .bg-image-welcome {
+            background-image: url('https://beyond.life/bottom-mascot-waving-b0eb6ff60b3db3776209faa5822b419a.webp');
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-attachment: fixed;
+            background-position: bottom
+        }
+
+        .bg-image-paket {
+            background-image: url('https://beyond.life/mascot-hand-desktop-bb4d836093b0b0958fe7f69f7f56e08c.png');
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-attachment: scroll;
+            background-position: bottom right;
         }
 
         .btn-primary-kfan {
@@ -237,7 +253,14 @@
             font-size: 29px;
             font-weight: 700;
             line-height: 42px;
-        }        
+        }      
+        
+        #payment-list img {
+            /* -webkit-filter: grayscale(1); */
+            /* -webkit-transition: all .3s; */
+            opacity: .8;
+            cursor: pointer;
+        }
     </style>
 @endpush
 @push('scripts')

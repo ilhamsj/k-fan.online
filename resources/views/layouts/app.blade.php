@@ -23,7 +23,8 @@
   <nav class="navbar navbar-expand-md navbar-light bg-transparent p-4">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <strong><span class="text-primary">Company</span> Name</strong>
+        <i class="fa fa-flag" aria-hidden="true"></i>
+        <strong><span class="text-primary">Ka</span>fan</strong>
       </a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
           <span class="bg-primary icon-bar top-bar text"></span>

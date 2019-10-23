@@ -31,3 +31,7 @@ Route::resource('admin/paket', 'PaketController', [
 Route::get('/paket/{id}', 'PaketController@show')->name('paket.show');
 Route::get('/finish', 'TransaksiController@finish')->name('finish');
 Route::post('/notification', 'TransaksiController@notification')->name('notification');
+
+Route::get('offline', function () {
+    return view('modules.laravelpwa.offline');
+});

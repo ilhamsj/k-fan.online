@@ -11,6 +11,8 @@
     @stack('styles')
     <style>
       .navbar-toggler {border:none}
+      .h-100-kfan {min-height: 100vh}
+      .h-50-kfan {min-height: 50vh}
       h1, h2, h4, h5, h6 {font-weight: bold}
       .rounded-sm {border-radius:1rem;}
       .rounded-card {border-radius:1rem;}

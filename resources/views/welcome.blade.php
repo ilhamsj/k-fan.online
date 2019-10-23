@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
 
@@ -184,8 +184,6 @@
 
 @push('styles')
     <style>
-        .h-100-kfan {min-height: 100vh}
-        .h-50-kfan {min-height: 50vh}
         .bg-image {
             background-image: url('/images/photo-1455819760800-d2aa223b237a.jpg');
             background-repeat: no-repeat;

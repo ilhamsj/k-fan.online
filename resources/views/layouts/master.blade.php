@@ -10,6 +10,9 @@
     @stack('styles')
     <style>
       .navbar-toggler {border:none}
+      h1, h2, h4, h5, h6 {
+            font-weight: bold
+        }
     </style>
 </head>
 <body>

@@ -13,21 +13,19 @@
                                 Profil
                             </strong>        
                         </div>
-                        <div class="card-body">                
-                            <div>
-                                Nama
-                                <h4>
-                                    {{ Auth::user()->name }}
-                                </h4>
-                            </div>
-                            <div>
-                                Email
-                                <h4>
+                        <div class="card-body">
+                            <p>
+                                Nama <br/>
+                                <strong>{{ Auth::user()->name }}</strong>
+                            </p>
+                            <p>
+                                Email <br/>
+                                <strong>
                                     {{ Auth::user()->email }}
-                                </h4>
-                            </div>
+                                </strong>
+                            </p>
                             <div>
-                                <a href="">Edit akun <i class="fas fa-pencil-alt"></i></a>
+                                <a href="">Edit akun <i class="fas fa-pencil-alt"></i></a> <br/>
                                 <a href="{{ route('password.request') }}">Ganti Password <i class="fas fa-pencil-alt"></i></a>
                             </div>
                         </div>

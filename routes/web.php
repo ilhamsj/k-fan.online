@@ -12,9 +12,9 @@
 */
 Auth::routes(['verify' => true]);
 
-Route::get('/', 'HomeController@index')->middleware('verified')->name('welcome');
+Route::get('/', 'HomeController@index')->name('welcome');
 Route::get('/home', 'HomeController@home')->name('home');
-Route::get('/admin', 'HomeController@admin')->name('admin.home');
+Route::get('/admin', 'HomeController@admin')->middleware('verified')->name('admin.home');
 
 Route::resource('admin/user', 'UserController');
 Route::resource('admin/produk', 'ProdukController');
@@ -28,10 +28,10 @@ Route::resource('admin/paket', 'PaketController', [
   'except' => 'show'
 ]);
 
-Route::get('/paket/{id}', 'PaketController@show')->name('paket.show');
+Route::get('/paket/{id}', 'PaketController@show')->middleware('verified')->name('paket.show');
 Route::get('/finish', 'TransaksiController@finish')->name('finish');
 Route::post('/notification', 'TransaksiController@notification')->name('notification');
 
-Route::get('offline', function () {
-    return view('modules.laravelpwa.offline');
-});
+// Route::get('offline', function () {
+//     return view('modules.laravelpwa.offline');
+// });

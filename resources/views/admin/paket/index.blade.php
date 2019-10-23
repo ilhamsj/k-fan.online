@@ -52,7 +52,7 @@
                         </td>
                         <td>{{ $item->rupiah($item->harga) }}</td>
                         <td>{{$item->diskon}}</td>
-                        <td><img class="img-fluid rounded" data-src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""></td>
+                        <td><img class="img-fluid rounded" src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""></td>
                         <td class="d-sm-flex justify-content-center">
                             <a href="{{ route('paket.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
                                 <span class="icon text-white-50">

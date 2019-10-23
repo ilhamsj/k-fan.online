@@ -12,7 +12,7 @@
 */
 Auth::routes(['verify' => true]);
 
-Route::get('/', 'HomeController@index')->middleware('verified');
+Route::get('/', 'HomeController@index')->middleware('verified')->name('welcome');
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/admin', 'HomeController@admin')->name('admin.home');
 

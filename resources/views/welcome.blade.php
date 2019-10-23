@@ -65,6 +65,14 @@
                 @endforeach
 
             </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md text-right">
+                    <a href="#" class="">
+                        Tampilkan semuanya
+                        <i class="fas fa-arrow-alt-circle-right    "></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -84,7 +92,7 @@
                 @foreach ($pakets as $item)
                 <div class="col-12 col-md-4 mb-4">
                     <div style="border-radius:1rem" class="card shadow-sm border-0">
-                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" data-src="{{ $item->foto }}" alt="" srcset="">
+                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" src="{{ $item->foto }}" alt="" srcset="">
                         <div class="card-body">
                             <span class="text-muted" style="text-decoration: line-through">{{ number_format($item->harga,2,',','.') }}</span>
                             <strong class="text-muted">| {{ number_format($item->harga - ($item->diskon/100*$item->harga),2,',','.') }}</strong>
@@ -126,7 +134,7 @@
                 @foreach ($produks as $item)                                
                 <div class="col-6 col-md-3 mb-4 berita-duka">
                     <div class="card border-0">
-                        <img class="card-img-top img-fluid rounded" data-src="holder.js/300x360?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+                        <img class="card-img-top img-fluid rounded" src="{{ $item->foto ? $item->foto : 'https://images.unsplash.com/photo-1547556061-5ac8fe0b57f8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=281&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=225'}}" alt="" srcset="">
                         <div class="card-img-overlay p-0 d-flex align-items-end">
                             <div class="card-body rounded-bottom bg-golden op-lg bg-dark text-light collapse" style="opacity: 0.7">
                                 
@@ -156,6 +164,35 @@
                         <i class="fas fa-arrow-alt-circle-right    "></i>
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4 my-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="lead text-center">
+                        Beragam pilihan cara pembayaran yang mempercepat proses pemakaman
+                    </p>
+                </div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/bca.svg" alt="Pembayaran via BCA"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/mandiri.svg" alt="Pembayaran via Mandiri"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/bni.svg" alt="Pembayaran via BNI"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/bri.svg" alt="Pembayaran via BRI"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/bii.svg" alt="Pembayaran via BII"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/cimb.svg" alt="Pembayaran via CIMB NIAGA"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/alto.svg" alt="Pembayaran via ALTO"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/atm-bersama.svg" alt="Pembayaran via ATM BERSAMA"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/paypal.svg" alt="Pembayaran via PAYPAL"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/indomart.svg" alt="Pembayaran via Indomart"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/alfamart.svg" alt="Pembayaran via Alfamart"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/pegadaian.svg" alt="Pembayaran via Pegadaian"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/pos.svg" alt="Pembayaran via POS"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/ovo.svg" alt="Pembayaran via OVO"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/gopay.svg" alt="Pembayaran via GoPay"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/visa.svg" alt="Pembayaran via Visa Card"></div>
+                <div class="col-3 col-md-2 mb-4 py-4"><img class="img-fluid" src="https://www.niagahoster.co.id/assets/images/2019/payment-gateway/master.svg" alt="Pembayaran via Master Card"></div>
             </div>
         </div>
     </section>

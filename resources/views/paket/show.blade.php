@@ -4,9 +4,18 @@
     <section class="bg-light">
         <div class="container p-4">
             <div class="row justify-content-center" style="min-height:100vh">
+                <div class="col-12">
+
+                <nav class="breadcrumb">
+                    <a class="breadcrumb-item" href="{{ route('welcome') }}">Home</a>
+                    <a class="breadcrumb-item" href="#">Paket</a>
+                    <span class="breadcrumb-item active">{{$item->nama}}</span>
+                </nav>
+
+                </div>
                 <div class="col-12 col-md mb-4">
                     <div style="border-radius:1rem" class="card border-0 shadow-sm">
-                        <img class="card-img-top rounded-img-sm" data-src="holder.js/300x200?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+                        <img class="card-img-top rounded-img-sm" src="{{ $item->foto ? $item->foto : 'holder.js/300x200?auto=yes&random=yes&textmode=exact'}}" alt="" srcset="">
                         <div class="card-body bg-transparent">
 
                             <div class="row">

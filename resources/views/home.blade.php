@@ -62,7 +62,12 @@
                                             <td>{{ $item->snap_token }}</td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
-                                                <a data-token="{{ $item->snap_token }}" href="">Selesaikan Pembayaran</a>
+                                                @if ($item->status == 'accept')
+                                                    Transaksi Selesai
+                                                    <a href="https://wa.me/6289666445551?text=Konfirmasi Order {{$item->id}}" target="_blank">Konfirmasi Pembayaran</a>
+                                                @else
+                                                    <a data-token="{{ $item->snap_token }}" href="">Selesaikan Pembayaran</a>
+                                                @endif
                                             </td>
                                         </tr>
                                         @endforeach

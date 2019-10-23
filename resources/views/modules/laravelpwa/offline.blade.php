@@ -10,7 +10,7 @@
                 <p>
                     Silahkan Hubungi kami via panggilan telfon
                 </p>
-                <a href="https://wa.me/6289666445551" target="_blank">6289666445551</a>
+                <a href="tel:089666445551" target="_blank">Telfon</a>
             </div>
         </div>
     </div>

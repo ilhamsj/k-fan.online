@@ -3,7 +3,7 @@
 @section('content')
 
     {{-- Welcome Page --}}
-    <section class="my-6">
+    <section>
         <div class="container">
             <div class="row h-100-kfan justify-content-center">
                 <div class="col-12 col-md-10 text-center align-self-end">
@@ -32,7 +32,7 @@
     </section>
 
     {{-- Produk & Jasa --}}
-    <section class="my-6" id="produk">
+    <section class="py-4 my-4" id="produk">
         <div class="container">
             <div class="row align-items-center justify-content-center text-center">
                 <div class="col-12">
@@ -69,7 +69,7 @@
     </section>
 
     {{-- Layanan --}}
-    <section class="my-6" id="service">
+    <section id="service" class="py-4 my-4 bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-10 m-auto text-center mb-4">
@@ -111,7 +111,7 @@
     </section>
 
     {{-- Berita Duka --}}
-    <section class="my-6" id="berita">
+    <section id="berita" class="py-4 my-4">
         <div class="container">
             <div class="row align-items-center mb-4">
                 <div class="col-12 text-center">

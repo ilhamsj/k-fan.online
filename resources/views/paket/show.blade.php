@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-    <section class="bg-transparent">
+    <section class="bg-light">
         <div class="container p-4">
             <div class="row justify-content-center" style="min-height:100vh">
                 <div class="col-12 col-md mb-4">
                     <div style="border-radius:1rem" class="card border-0 shadow-sm">
-                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" data-src="holder.js/300x200?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+                        <img class="card-img-top rounded-img-sm" data-src="holder.js/300x200?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                         <div class="card-body bg-transparent">
 
                             <div class="row">
@@ -18,20 +18,19 @@
                                             {{$paket->produk->nama}}
                                         </p>
                                     @endforeach
-                                </div>                                
+                                </div>
                             </div>
 
                         </div>
                         <div class="card-body">
-                            
-                                <h4>Deskripsi Paket</h4>
+                            <h4>Deskripsi Paket</h4>
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi provident eaque quidem dolores qui veniam voluptatem natus fugit architecto, repellat cum magnam praesentium non, hic corporis quasi quae eum aut.
                         </div>
                     </div>
                 </div>
                 
                 <div class="col-12 col-md-4">
-                    <div style="border-radius:1rem" class="card shadow-sm border-0">
+                    <div class="card shadow-sm border-0 rounded-card">
                         <div class="card-body">
                             <h3>
                                 Paket {{$item->nama}}

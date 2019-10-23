@@ -202,16 +202,7 @@
             font-size: 29px;
             font-weight: 700;
             line-height: 42px;
-        }
-
-        .rounded-sm {
-            border-radius:1rem;
-        }
-
-        .rounded-img-sm {
-            'border-radius: 1rem 1rem 0 0;
-        }
-        
+        }        
     </style>
 @endpush
 @push('scripts')

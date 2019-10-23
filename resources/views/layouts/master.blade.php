@@ -10,9 +10,10 @@
     @stack('styles')
     <style>
       .navbar-toggler {border:none}
-      h1, h2, h4, h5, h6 {
-            font-weight: bold
-        }
+      h1, h2, h4, h5, h6 {font-weight: bold}
+      .rounded-sm {border-radius:1rem;}
+      .rounded-card {border-radius:1rem;}
+      .rounded-img-sm {border-radius: 1rem 1rem 0 0;}
     </style>
 </head>
 <body>

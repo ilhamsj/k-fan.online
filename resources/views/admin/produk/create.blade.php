@@ -44,7 +44,10 @@
 
                 <div class="form-group">
                     <label for="kategori"> Kategori </label>
-                    <input id="kategori" type="text" class="form-control @error('kategori') is-invalid @enderror" name="kategori" value="{{ old('kategori') ? old('kategori') : \Faker\Factory::create()->word}}" autocomplete="kategori" autofocus>
+                    <select id="kategori" type="text" class="form-control @error('kategori') is-invalid @enderror" name="kategori">
+                        <option value="barang">Barang</option>
+                        <option value="jasa">Jasa</option>
+                    </select>
 
                     @error('kategori')
                         <span class="invalid-feedback" role="alert">
@@ -52,6 +55,7 @@
                         </span>
                     @enderror
                 </div>
+    
 
                 <button type="submit" class="btn btn-primary shadow-sm">Simpan</button>
             </form>

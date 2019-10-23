@@ -41,3 +41,5 @@ Route::post('/notification', 'TransaksiController@notification')->name('notifica
 // Route::get('offline', function () {
 //     return view('modules.laravelpwa.offline');
 // });
+
+Route::resource('berita-lelayu', 'BeritaLelayuController');

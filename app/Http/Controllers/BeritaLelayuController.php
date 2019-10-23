@@ -7,79 +7,56 @@ use Illuminate\Http\Request;
 
 class BeritaLelayuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $items = Produk::orderBy('updated_at', 'desc')->get();
+        return view('admin.produk.index')->with([
+            'items' => $items,
+            'no' => 1,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.produk.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        BeritaLelayu::create($request->all());
+
+        return redirect()->back()->with([
+            'status' => 'Tambah data Berhasil'
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\BeritaLelayu  $beritaLelayu
-     * @return \Illuminate\Http\Response
-     */
-    public function show(BeritaLelayu $beritaLelayu)
+    public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\BeritaLelayu  $beritaLelayu
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(BeritaLelayu $beritaLelayu)
+    public function edit($id)
     {
-        //
+        $item = Produk::find($id);
+        return view('admin.produk.edit')->with([
+            'item' => $item,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BeritaLelayu  $beritaLelayu
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, BeritaLelayu $beritaLelayu)
+    public function update(ProdukStoreRequest $request, $id)
     {
-        //
+        Produk::find($id)->update($request->all());
+
+        return redirect()->route('produk.index')->with([
+            'status' => 'Update data berhasil'
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\BeritaLelayu  $beritaLelayu
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(BeritaLelayu $beritaLelayu)
+    public function destroy($id)
     {
-        //
+        Produk::destroy($id);
+        return redirect()->back()->with([
+            'status' => 'Hapus data berhasil'
+        ]);
     }
 }

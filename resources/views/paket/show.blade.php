@@ -74,7 +74,7 @@
                                   @enderror
                               </div>
 
-                              <button type="submit" class="btn btn-primary btn-block rounded-pill shadow-sm" id="transaksiBaru">Order</button>    
+                              <button type="submit" class="btn btn-primary btn-block rounded-pill shadow-sm" id="transaksiBaru">Pesan</button>    
                             </form>
                         </div>
                     </div>

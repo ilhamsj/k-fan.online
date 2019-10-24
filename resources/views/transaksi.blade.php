@@ -27,9 +27,6 @@
                 <div class="col" id="data-jenazah">
                     <p>
                         <strong>Informasi Jenazah</strong>
-                        <a href="">
-                            <i class="fas fa-pencil-alt"></i>
-                        </a>
                     </p>
 
                     @if (count($item->BeritaLelayu) == null)

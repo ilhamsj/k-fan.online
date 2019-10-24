@@ -40,21 +40,19 @@
                 
                 <div class="col-12 col-md-4">
                     <div class="card shadow-sm border-0 rounded-card">
+                            <div class="card-header text-center bg-primary text-light" style="border:0; border-radius: 1rem 1rem 0 0">
+                                <strong>Diskon up to {{ $item->diskon}}%</strong>
+                            </div>
+                            <div class="card-body text-center d-flex justify-content-center align-items-center bg-light" style="min-height: 35vh" style="background-image: url({{$item->foto}})">
+                                <div>
+                                    <h3>{{$item->nama}}</h3>
+                                    <span class="text-muted" style="text-decoration: line-through">Rp. {{ number_format($item->harga,2,',','.') }}</span>
+                                    <h4>
+                                        Rp {{ number_format($item->harga - ($item->diskon/100*$item->harga),2,',','.') }}
+                                    </h4>
+                                </div>
+                            </div>
                         <div class="card-body">
-                            <h3>
-                                Paket {{$item->nama}}
-                            </h3>
-                            {{ number_format($item->harga - ($item->diskon/100*$item->harga),2,',','.') }}
-                        </div>
-                        <div class="card-body">
-                            <h4>
-                                Data Jenazah
-                            </h4>
-
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            </p>
-
                             <form action="{{ route('transaksi.store') }}" method="POST">
                               @csrf
 
@@ -63,7 +61,7 @@
                               <input id="paket_id" type="number" class="form-control @error('paket_id') is-invalid @enderror" name="paket_id" value="{{ old('paket_id') ? old('paket_id') : $item->id }}" hidden>
                               <input id="jumlah" type="number" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" value="{{ old('jumlah') ? old('jumlah') : $item->harga }}" hidden>
 
-                              <div class="form-group">
+                              <div class="form-group collapse">
                                   <label for="catatan"> Catatan </label>
                                   <input id="catatan" type="text" class="form-control @error('catatan') is-invalid @enderror" name="catatan" value="{{ old('catatan') ? old('catatan') : ''}}">
               

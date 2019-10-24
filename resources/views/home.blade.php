@@ -66,7 +66,7 @@
                                                     Transaksi Selesai
                                                     <a href="https://wa.me/6289666445551?text=Konfirmasi Order {{$item->id}}" target="_blank">Konfirmasi Pembayaran</a>
                                                 @else
-                                                    <a data-token="{{ $item->snap_token }}" href="">Selesaikan Pembayaran</a>
+                                                    <a href="{{ route('transaksi.show', $item->id) }}">Selesaikan Pembayaran</a>
                                                 @endif
                                             </td>
                                         </tr>
@@ -74,9 +74,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre> 
                         </div>
                     </div>
                 </div>

@@ -26,6 +26,7 @@ Route::resource('transaksi', 'TransaksiController', [
   ]
 ]);
 Route::get('admin/transaksi', 'TransaksiController@index')->name('transaksi.index');
+
 Route::resource('admin/paket', 'PaketController', [
   'except' => 'show'
 ]);

@@ -92,10 +92,10 @@
                 @foreach ($pakets as $item)
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card shadow-sm border-0" style="border-radius: 1rem">
-                        <div class="card-header text-center bg-primary text-light" style="border-radius: 1rem 1rem 0 0">
+                        <div class="card-header text-center bg-primary text-light" style="border:0; border-radius: 1rem 1rem 0 0">
                             <strong>Diskon up to {{ $item->diskon}}%</strong>
                         </div>
-                        <div class="card-body text-center d-flex justify-content-center align-items-center bg-light" style="min-height: 35vh">
+                        <div class="card-body text-center d-flex justify-content-center align-items-center bg-light" style="min-height: 35vh" style="background-image: url({{$item->foto}})">
                             <div>
                                 <h3>{{$item->nama}}</h3>
                                 <span class="text-muted" style="text-decoration: line-through">Rp. {{ number_format($item->harga,2,',','.') }}</span>

@@ -3,7 +3,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">Detail Jenazah</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -12,7 +12,7 @@
           <form action="{{ route('berita-lelayu.store') }}" method="POST">
               @csrf
 
-              <div class="form-group">
+              <div class="form-group collapse">
                   <label for="transaksi_id"> Transaksi </label>
                   <input id="transaksi_id" type="text" class="form-control @error('transaksi_id') is-invalid @enderror" name="transaksi_id" value="{{ $item->id }}">
 

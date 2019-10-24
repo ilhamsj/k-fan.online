@@ -10,7 +10,7 @@
 
   <title>Admin - Pusat Urusan Kematian Yogyakarta</title>
   <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
-
+  @stack('styles')
 </head>
 
 <body id="page-top">

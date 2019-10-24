@@ -121,8 +121,8 @@
     {{-- Berita Duka --}}
     <section id="berita" class="py-4 my-4">
         <div class="container">
-            <div class="row align-items-center mb-4 justify-content-center">
-                <div class="col-12 text-center">
+            <div class="row h-100-kfan align-items-center mb-4 justify-content-center">
+                <div class="col-12 align-self-end text-center">
                     <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
                     <div class="my-2"></div>
                     <h2>BERITA <span class="text-primary">DUKA</span></h2>
@@ -132,7 +132,7 @@
                 </div>
 
                 @foreach ($lelayu as $item)                                
-                <div class="col-6 col-md-3 mb-4 berita-duka">
+                <div class="col-6 col-md-3 mb-4 align-self-start berita-duka">
                     <div class="card border-0">
                         <img class="card-img-top img-fluid rounded" src="{{ $item->foto }}" alt="" srcset="">
                         <div class="card-img-overlay p-0 d-flex align-items-end">

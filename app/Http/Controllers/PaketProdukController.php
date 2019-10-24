@@ -19,7 +19,13 @@ class PaketProdukController extends Controller
 
     public function store(Request $request)
     {
-        PaketProduk::create($request->all());
+        foreach ($request->produk_id as $produk) {
+            PaketProduk::create([
+                'paket_id' => $request->paket_id,
+                'produk_id' => $produk,
+            ]);
+        }
+
         return redirect()->route('paket.index')->with([
             'status' => 'Tambah data Berhasil'
         ]);

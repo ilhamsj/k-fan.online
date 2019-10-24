@@ -108,7 +108,7 @@
 
                     <div class="form-group">
                         <label for="produk_id"> Produk </label>
-                        <select id="produk_id" type="text" class="form-control @error('produk_id') is-invalid @enderror" name="produk_id">
+                        <select id="produk_id" type="text" class="form-control @error('produk_id') is-invalid @enderror" name="produk_id[]" multiple>
                             @foreach ($produks as $item)
                                 <option value="{{ $item->id }}">{{ $item->nama }}</option>
                             @endforeach
@@ -134,19 +134,26 @@
 
 @push('scripts')
     <script>
-      $(document).ready(function() {
-          $('table').DataTable();
-      });
+        $(document).ready(function() {
+            $('table').DataTable();
+        });
 
-      $('#tambahLayanan').click(function (e) { 
-          e.preventDefault();
-          $('#tambahPaketProduk').find('form').submit();
-      });
-      
-      $('.listProduk').click(function (e) { 
-          e.preventDefault();
-          confirm() ? $(this).next().submit() : console.log('no');
-      });
+        $('#tambahLayanan').click(function (e) { 
+            e.preventDefault();
+            $('#tambahPaketProduk').find('form').submit();
+        });
 
+        $('.listProduk').click(function (e) { 
+            e.preventDefault();
+            confirm() ? $(this).next().submit() : console.log('no');
+        });
+
+        $(document).ready(function() {
+            $('#tambahPaketProduk').find('select').select2({
+                theme: 'bootstrap4',
+                allowClear: true,
+                placeholder: "Pilih",
+            });
+        });
       </script>
 @endpush

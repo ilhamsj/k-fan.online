@@ -34,8 +34,8 @@
     {{-- Produk & Jasa --}}
     <section class="py-4 my-4" id="produk">
         <div class="container">
-            <div class="row align-items-center justify-content-center text-center">
-                <div class="col-12">
+            <div class="row h-100-kfan align-items-center justify-content-center text-center">
+                <div class="col-12 align-self-end">
                     <i class="fa fa-cubes fa-2x" aria-hidden="true"></i>
                     <div class="my-2"></div>
                     <h2>PRODUK & <span class="text-primary">JASA</span> </h2>
@@ -45,9 +45,9 @@
                 </div>
 
                 @foreach ($produks as $item)                
-                <div class="col-6 col-md-3 mb-4 produk-jasa">
+                <div class="col-6 col-md-3 mb-4 produk-jasa  align-self-start">
                     <div class="card border-0 rounded">
-                        <img class="card-img-top img-fluid rounded" data-src="holder.js/300x450?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+                        <img class="card-img-top img-fluid rounded" src="{{$item->foto ? $item->foto : 'holder.js/300x450?auto=yes&random=yes&textmode=exact'}}" alt="" srcset="">
                         <div class="card-img-overlay p-0 d-flex flex-wrap flex-row-reverse">
                             <div class="card-body bg-dark align-self-start col-4 col-sm-6 d-none d-md-block" style="border-radius:0 0.25rem 0">
                                 <strong class="text-light">

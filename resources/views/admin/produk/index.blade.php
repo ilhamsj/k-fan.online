@@ -24,6 +24,7 @@
                       <th>Nama</th>
                       <th>Harga</th>
                       <th>Kategori</th>
+                      <th>Foto</th>
                       <th>Mitra</th>
                       <th class="text-center">Action</th>
                   </tr>
@@ -35,6 +36,9 @@
                       <td>{{$item->nama}}</td>
                       <td>{{ $item->rupiah($item->harga) }}</td>
                       <td>{{$item->kategori}}</td>
+                      <td>
+                        <img class="img-fluid rounded" src="{{ $item->foto }}" alt="" srcset="">
+                      </td>
                       <td>{{ $item->user->name }}</td>
                       <td class="d-sm-flex justify-content-center">
                           <a href="{{ route('produk.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">

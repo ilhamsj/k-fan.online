@@ -21,6 +21,17 @@
                 <input type="number" name="mitra_id" value="@auth{{ Auth::user()->id }}@endauth" hidden>
 
                 <div class="form-group">
+                    <label for="foto"> Foto </label>
+                    <input id="foto" type="text" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') : 'holder.js/255x382?random=yes&auto=yes&texmode=exact'}}" autocomplete="foto" autofocus>
+
+                    @error('foto')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+    
+                <div class="form-group">
                     <label for="nama"> Nama </label>
                     <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ? old('nama') : \Faker\Factory::create()->name}}" autocomplete="nama" autofocus>
 

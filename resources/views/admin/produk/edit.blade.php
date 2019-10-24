@@ -18,7 +18,20 @@
             <form action="{{ route('produk.update', $item->id) }}" method="post">
                 @csrf
                 @method('PUT')
+
                 <input type="number" name="mitra_id" value="{{ Auth::user()->id }}" hidden>
+
+
+                <div class="form-group">
+                    <label for="foto"> Foto </label>
+                    <input id="foto" type="text" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') : $item->foto}}" autocomplete="foto" autofocus>
+
+                    @error('foto')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
 
                 <div class="form-group">
                     <label for="nama"> Produk/Jasa </label>

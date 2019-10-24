@@ -11,6 +11,7 @@ class Produk extends Model
         'nama',
         'harga',
         'kategori',
+        'foto',
     ];
 
     public function user()

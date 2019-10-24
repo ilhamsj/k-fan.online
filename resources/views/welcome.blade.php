@@ -54,7 +54,7 @@
                                     1000+
                                 </strong>
                             </div>
-                            <div class="card-body bg-dark align-self-end col-4 col-sm-12 d-none d-md-block rounded-bottom">
+                            <div class="card-body bg-dark align-self-end col-12 rounded-bottom">
                                 <strong class="text-light">
                                     {{$item->nama}}
                                 </strong>

@@ -27,65 +27,58 @@
         </div>
         <div class="sidebar-brand-text mx-3">K-FAN <sup>2</sup></div>
       </a>
+      
+      @php
+        $menu = [
+            0 => [
+                'title' => 'dashboard',
+                'icon' => 'fas fa-fw fa-tachometer-alt',
+                'color' => 'border-left-info',
+                'link'  => route('admin.home')
+            ],
+            1 => [
+                'title' => 'user',
+                'icon' => 'fa fa-user',
+                'color' => 'border-left-info',
+                'link'  => route('user.index')
+            ],
+            2 => [
+                'title' => 'produk',
+                'icon' => 'fa fa-table',
+                'color' => 'border-left-info',   
+                'link'  => route('produk.index')
+            ],
+            3 => [
+                'title' => 'paket',
+                'icon' => 'fa fa-table',
+                'color' => 'border-left-info',
+                'link'  => route('paket.index')
+            ],
+            4 => [
+                'title' => 'transaksi',
+                'icon' => 'fas fa-dollar-sign',
+                'color' => 'border-left-info',
+                'link'  => route('transaksi.index')
+            ],
+            5 => [
+                'title' => 'berita duka',
+                'icon' => 'fa fa-circle',
+                'color' => 'border-left-info',
+                'link'  => route('berita-lelayu.index')
+            ],
+        ];
+      @endphp
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.home') }}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-
-      <li class="nav-item {{ Str::after(url()->current(), 'admin/') == 'user' ? 'active' : ''}}">
-        <a class="nav-link" href="{{ route('user.index') }}">
-          <i class="fa fa-user" aria-hidden="true"></i>
-          <span>User</span></a>
-      </li>
-  
-      
-      <!-- Divider -->
-      <li class="nav-item {{ Str::after(url()->current(), 'admin/') == 'produk' ? 'active' : ''}}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fa fa-table" aria-hidden="true"></i>
-          <span>Produk</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities</h6>
-            <a class="collapse-item" href="{{ route('produk.index') }}">Data</a>
-            <a class="collapse-item" href="{{ route('produk.create') }}">Tambah Baru</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#paket" aria-expanded="true" aria-controls="paket">
-          <i class="fa fa-table" aria-hidden="true"></i>
-          <span>Paket</span>
-        </a>
-        <div id="paket" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities</h6>
-            <a class="collapse-item" href="{{ route('paket.index') }}">Data</a>
-            <a class="collapse-item" href="{{ route('paket.create') }}">Tambah Baru</a>
-          </div>
-        </div>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('transaksi.index') }}">
-          <i class="fas fa-money-bill"></i>
-          <span>Transaksi</span></a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.home') }}">
-          <i class="fa fa-circle" aria-hidden="true"></i>
-          <span>Berita Duka</span></a>
-      </li>
+      @foreach ($menu as $item)
+        <li class="nav-item {{ url()->current() == $item['link'] ? 'active' : '' }}">
+          <a class="nav-link" href="{{ $item['link'] }}">
+            <i class="{{ $item['icon'] }}"></i>
+            <span>{{ Str::title($item['title']) }}</span></a>
+        </li>
+      @endforeach
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

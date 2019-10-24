@@ -19,11 +19,13 @@ Route::get('/admin', 'HomeController@admin')->middleware('verified')->name('admi
 Route::resource('admin/user', 'UserController');
 Route::resource('admin/produk', 'ProdukController');
 Route::resource('admin/paket-produk', 'PaketProdukController');
+Route::resource('admin/berita-lelayu', 'BeritaLelayuController');
 Route::resource('transaksi', 'TransaksiController', [
   'except' => [
-    'edit'
+    'edit', 'index'
   ]
 ]);
+Route::get('admin/transaksi', 'TransaksiController@index')->name('transaksi.index');
 Route::resource('admin/paket', 'PaketController', [
   'except' => 'show'
 ]);
@@ -37,9 +39,3 @@ Route::post('/finish', function() {
   return redirect()->route('welcome');
 });
 Route::post('/notification', 'TransaksiController@notification')->name('notification');
-
-// Route::get('offline', function () {
-//     return view('modules.laravelpwa.offline');
-// });
-
-Route::resource('berita-lelayu', 'BeritaLelayuController');

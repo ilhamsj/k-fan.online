@@ -9,8 +9,8 @@ class BeritaLelayuController extends Controller
 {
     public function index()
     {
-        $items = Produk::orderBy('updated_at', 'desc')->get();
-        return view('admin.produk.index')->with([
+        $items = BeritaLelayu::orderBy('updated_at', 'desc')->get();
+        return view('admin.lelayu.index')->with([
             'items' => $items,
             'no' => 1,
         ]);

@@ -44,8 +44,8 @@
                                     @method('DELETE')
                                 </form>
                             @endforeach
-                            <div>
-                                <a data-toggle="modal" data-target="#tambahPaketProduk" href="" class="">
+                            <div class="tambahProduk">
+                                <a href="" data-paket="{{ $item->id}}">
                                     <i class="fa fa-plus-circle fa-sm" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -154,6 +154,14 @@
                 allowClear: true,
                 placeholder: "Pilih",
             });
+        });
+
+        $('.tambahProduk').find('a').click(function (e) { 
+            e.preventDefault();
+            var x = $(this).attr('data-paket');
+            $("#paket_id").val(x).change();
+
+            $('#tambahPaketProduk').modal('toggle');
         });
       </script>
 @endpush

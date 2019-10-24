@@ -37,6 +37,7 @@ class ProdukController extends Controller
 
     public function edit($id)
     {
+        // dd($id);
         $item = Produk::find($id);
         return view('admin.produk.edit')->with([
             'item' => $item,

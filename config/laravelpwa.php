@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'name' => 'LaravelPWA',
+    'name' => 'Kafan Beta',
     'manifest' => [
-        'name' => env('APP_NAME', 'My PWA App'),
-        'short_name' => 'PWA',
+        'name' => env('APP_NAME', 'Kafan'),
+        'short_name' => 'Kafan',
         'start_url' => '/',
         'background_color' => '#ffffff',
         'theme_color' => '#000000',

@@ -85,7 +85,7 @@
                     <div class="my-2"></div>
                     <h2>PAKET <span class="text-primary">PEMAKAMAN</span> </h2>
                     <p class="lead">
-                        Beragam paket pilihan paket untuk upacara pemakaman
+                        Beragam pilihan paket untuk upacara pemakaman
                     </p>
                 </div>
 

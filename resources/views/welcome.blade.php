@@ -91,14 +91,20 @@
 
                 @foreach ($pakets as $item)
                 <div class="col-12 col-md-4 mb-4">
-                    <div style="border-radius:1rem" class="card shadow-sm border-0">
-                        <img style="border-radius: 1rem 1rem 0 0" class="card-img-top" src="{{ $item->foto }}" alt="" srcset="">
+                    <div class="card shadow-sm border-0" style="border-radius: 1rem">
+                        <div class="card-header text-center bg-primary text-light" style="border-radius: 1rem 1rem 0 0">
+                            <strong>Diskon up to {{ $item->diskon}}%</strong>
+                        </div>
+                        <div class="card-body text-center d-flex justify-content-center align-items-center bg-light" style="min-height: 35vh">
+                            <div>
+                                <h3>{{$item->nama}}</h3>
+                                <span class="text-muted" style="text-decoration: line-through">Rp. {{ number_format($item->harga,2,',','.') }}</span>
+                                <h4>
+                                    Rp {{ number_format($item->harga - ($item->diskon/100*$item->harga),2,',','.') }}
+                                </h4>
+                            </div>
+                        </div>
                         <div class="card-body">
-                            <span class="text-muted" style="text-decoration: line-through">{{ number_format($item->harga,2,',','.') }}</span>
-                            <strong class="text-muted">| {{ number_format($item->harga - ($item->diskon/100*$item->harga),2,',','.') }}</strong>
-                            <h3>
-                                Paket {{$item->nama}}
-                            </h3>
                             @foreach ($item->paketproduk as $paket)
                                 <p class="text-muted">
                                     <i class="fa fa-check-circle text-primary" aria-hidden="true"></i>

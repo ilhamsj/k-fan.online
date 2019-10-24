@@ -6,7 +6,7 @@
             <div class="row justify-content-center" style="min-height:100vh">
                 <div class="col-12">
 
-                <nav class="breadcrumb">
+                <nav class="breadcrumb bg-transparent">
                     <a class="breadcrumb-item" href="{{ route('welcome') }}">Home</a>
                     <a class="breadcrumb-item" href="#">Paket</a>
                     <span class="breadcrumb-item active">{{$item->nama}}</span>
@@ -58,14 +58,14 @@
                             <form action="{{ route('transaksi.store') }}" method="POST">
                               @csrf
 
-                              <input type="text" name="id" value="{{ 'T' . date('dmYHis') }}">
+                              <input type="text" name="id" value="{{ 'T' . date('dmYHis') }}" hidden>
                               <input id="user_id" type="number" class="form-control @error('user_id') is-invalid @enderror" name="user_id" value="{{ old('user_id') ? old('user_id') : Auth::user()->id }}" hidden>
                               <input id="paket_id" type="number" class="form-control @error('paket_id') is-invalid @enderror" name="paket_id" value="{{ old('paket_id') ? old('paket_id') : $item->id }}" hidden>
                               <input id="jumlah" type="number" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" value="{{ old('jumlah') ? old('jumlah') : $item->harga }}" hidden>
 
                               <div class="form-group">
                                   <label for="catatan"> Catatan </label>
-                                  <input id="catatan" type="text" class="form-control @error('catatan') is-invalid @enderror" name="catatan" value="{{ old('catatan') ? old('catatan') :  \Faker\Factory::create()->name . ' wafat gan' }}">
+                                  <input id="catatan" type="text" class="form-control @error('catatan') is-invalid @enderror" name="catatan" value="{{ old('catatan') ? old('catatan') : ''}}">
               
                                   @error('catatan')
                                       <span class="invalid-feedback" role="alert">

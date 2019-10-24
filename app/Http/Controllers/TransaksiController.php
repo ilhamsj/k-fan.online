@@ -29,6 +29,9 @@ class TransaksiController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'catatan' => 'required'
+        ]);
         $transaksi = Transaksi::create($request->all());
         $user = \App\User::find($request->user_id);
         $paket = \App\Paket::find($request->paket_id);

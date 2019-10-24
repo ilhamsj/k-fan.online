@@ -141,7 +141,7 @@
                                     <strong>
                                         <a href="">{{ $item->nama }}</a>
                                     </strong>
-                                    <div class="" style="font-size: 0.8rem">
+                                    <div class="d-none d-md-block" style="font-size: 0.8rem">
                                         <i class="fa fa-birthday-cake" aria-hidden="true"></i>
                                         {{ \Carbon\Carbon::parse($item->lahir)->format('d M Y') }} -
                                         {{ \Carbon\Carbon::parse($item->wafat)->format('d M Y') }}

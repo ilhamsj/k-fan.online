@@ -64,9 +64,12 @@ class HomeController extends Controller
                 'color' => 'border-left-info',
             ],
         ];
+        
 
+        // dd(json_encode(\App\User::all()));
         return view('admin.dashboard')->with([
-            'items' => $data
+            'items' => $data,
+            'users' => json_encode(\App\User::all())
         ]);
     }
 }

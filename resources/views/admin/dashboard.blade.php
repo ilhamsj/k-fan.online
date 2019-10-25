@@ -25,6 +25,7 @@
             </div>
         </div>
         @endforeach
+        <div class="w-100"></div>
         <div class="col-12">
             <div class="card border-0 shadow">
                 <div class="card-body">
@@ -83,9 +84,26 @@
         });
     </script> --}}
     <script>
+        var x = $("meta[name=csrf-token]").attr("content");
+        console.log(x);
+
+        $.ajax({
+            type: "GET",
+            url: "api/user",
+            data: {
+                _token: x
+            },
+            dataType: "dataType",
+            success: function (response) {
+                console.log(response);   
+            },
+            error: function(xhr) {
+                console.log(xhr.responseJSON);
+            }
+        });
+        
         var bulan           = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'];
         var dataPerbulan    = [30, 20, 10, 5, 1, 10];
-        var dataPembelian    = [5, 10, 4, 30, 1, 20];
 
         var ctx = $('#myChart');
         var myLineChart = new Chart(ctx, {
@@ -96,19 +114,11 @@
                     {
                         label: 'Penjualan',
                         data: dataPerbulan,
-                        backgroundColor: 'red',
-                        borderColor: 'red',
+                        backgroundColor: 'rgba(255, 99, 132, 1)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 2,
                         fill: false,
-                    },
-                    {
-                        label: 'Pembelian',
-                        data: dataPembelian,
-                        backgroundColor: 'blue',
-                        borderColor: 'blue',
-                        borderWidth: 2,
-                        fill: false,
-                    },
+                    }
                 ],
             },
             options: {

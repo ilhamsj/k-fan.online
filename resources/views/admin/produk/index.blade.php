@@ -34,10 +34,10 @@
                   <tr>
                       <td>{{$no++}}</td>
                       <td>{{$item->nama}}</td>
-                      <td>{{ $item->rupiah($item->harga) }}</td>
+                      <td>{{$item->rupiah($item->harga) }}</td>
                       <td>{{$item->kategori}}</td>
                       <td>
-                        <img class="img-fluid rounded" src="{{ $item->foto }}" alt="" srcset="">
+                        <img class="img-fluid rounded" src="{{ $item->foto }}" alt="{{$item->foto}}" srcset="">
                       </td>
                       <td>{{ $item->user->name }}</td>
                       <td class="d-sm-flex justify-content-center">

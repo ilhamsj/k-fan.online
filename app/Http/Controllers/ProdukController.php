@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Produk;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProdukStoreRequest;
+
 
 class ProdukController extends Controller
 {
@@ -21,9 +24,14 @@ class ProdukController extends Controller
         return view('admin.produk.create');
     }
 
-    public function store(ProdukStoreRequest $request)
+    public function store(Request $request)
     {
-        Produk::create($request->all());
+        $file_content = $request->file('foto');
+        Storage::disk('public_uploads')->put('produk', $file_content);
+
+        $produk = Produk::create($request->all());
+        $produk->foto = $request->file('foto')->hashName();
+        $produk->save();
 
         return redirect()->route('produk.index')->with([
             'status' => 'Tambah data Berhasil'

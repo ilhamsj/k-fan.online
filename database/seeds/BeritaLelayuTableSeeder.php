@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PaketProduksTableSeeder extends Seeder
+class BeritaLelayuTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class PaketProduksTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\PaketProduk::class, 22)->create();
+        factory(\App\BeritaLelayu::class, 8)->create();
     }
 }

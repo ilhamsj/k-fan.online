@@ -19,8 +19,6 @@ $factory->define(Produk::class, function (Faker $faker) {
         'Gali Kubur',
         'Rias Jenazah',
         'Bongkar Makam',
-        'gayung',
-        'tikar',
         'tempat pemakaman',
         'tenda',
         'kursi',
@@ -28,10 +26,10 @@ $factory->define(Produk::class, function (Faker $faker) {
     ];
     
     return [
-        'mitra_id'  => $faker->numberBetween($min = 1, $max = 5),
+        'mitra_id'  => \App\User::all()->random(),
         'nama'      => Str::title($faker->unique($reset=true)->randomElement($produk)),
-        'harga'     => $faker->numberBetween($min = 1000, $max = 9000),
+        'harga'     => $faker->numberBetween($min = 550000, $max = 1500000),
         'kategori'  => $faker->randomElement(['Produk', 'Jasa']),
-        'foto'      => 'holder.js/225x281?random=yes&auto=yes&texmode=exact',
+        'foto'      => $faker->imageUrl(225, 325, null, true, $faker->name, true), 
     ];
 });

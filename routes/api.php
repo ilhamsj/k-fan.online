@@ -17,7 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('item', function () {
-    $item = \App\User::all();
-    return response()->json($item);
+Route::get('user', function () {
+    return 'a';
+    // $item = \App\User::all();
+    // return response()->json($item);
 });

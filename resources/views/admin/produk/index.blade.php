@@ -37,7 +37,7 @@
                       <td>{{$item->rupiah($item->harga) }}</td>
                       <td>{{$item->kategori}}</td>
                       <td>
-                           <img class="img-fluid rounded" src="{{ file_exists((public_path('images/produk/'.$item->foto ))) ? secure_url('images/produk', $item->foto) : $item->foto }}" alt="" srcset="">
+                           <img class="img-fluid rounded" src="{{ file_exists((public_path('images/produk/'.$item->foto ))) ? secure_url('images/produk', $item->foto) : $item->foto }}" alt="{{ $item->foto }}" srcset="">
                       </td>
                       <td>{{ $item->user->name }}</td>
                       <td class="d-sm-flex justify-content-center">

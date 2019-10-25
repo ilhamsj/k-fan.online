@@ -47,7 +47,7 @@
                 @foreach ($produks as $item)                
                 <div class="col-6 col-md-3 mb-4 produk-jasa  align-self-start">
                     <div class="card border-0 rounded">
-                        <img class="card-img-top img-fluid rounded" src="{{$item->foto ? $item->foto : 'holder.js/300x450?auto=yes&random=yes&textmode=exact'}}" alt="" srcset="">
+                        <img class="card-img-top img-fluid rounded" src="{{ file_exists((public_path('images/produk/'.$item->foto ))) ? secure_url('images/produk', $item->foto) : $item->foto }}" alt="{{ $item->foto }}" srcset="">
                         <div class="card-img-overlay p-0 d-flex flex-wrap flex-row-reverse">
                             <div class="card-body bg-dark align-self-start col-4 col-sm-6 d-none d-md-block" style="border-radius:0 0.25rem 0">
                                 <strong class="text-light">

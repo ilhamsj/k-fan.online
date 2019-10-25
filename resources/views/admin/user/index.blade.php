@@ -62,8 +62,8 @@
 
 @push('scripts')
     <script>
-      $(document).ready(function() {
-          $('table').DataTable();
-      });
+        $(document).ready(function() {
+            $('table').DataTable();
+        });
     </script>
 @endpush

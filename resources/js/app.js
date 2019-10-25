@@ -8,3 +8,5 @@ require('datatables.net-bs4');
 
 // 
 require('select2');
+
+require('chart.js/')

@@ -25,6 +25,102 @@
             </div>
         </div>
         @endforeach
+        <div class="col-12">
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
-
 @endsection
+
+@push('styles')
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css" integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" /> --}}
+@endpush
+
+@push('scripts')
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script> --}}
+    {{-- <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            // type: 'bar',
+            // type: 'line',
+            type: 'horizontalBar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script> --}}
+    <script>
+        var bulan           = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'];
+        var dataPerbulan    = [30, 20, 10, 5, 1, 10];
+        var dataPembelian    = [5, 10, 4, 30, 1, 20];
+
+        var ctx = $('#myChart');
+        var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: bulan,
+                datasets: [
+                    {
+                        label: 'Penjualan',
+                        data: dataPerbulan,
+                        backgroundColor: 'red',
+                        borderColor: 'red',
+                        borderWidth: 2,
+                        fill: false,
+                    },
+                    {
+                        label: 'Pembelian',
+                        data: dataPembelian,
+                        backgroundColor: 'blue',
+                        borderColor: 'blue',
+                        borderWidth: 2,
+                        fill: false,
+                    },
+                ],
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Jumlah Pendapatan'
+                },
+                tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+            }
+        });
+    </script>
+@endpush

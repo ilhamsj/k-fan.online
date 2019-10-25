@@ -105,19 +105,9 @@
     });
 </script>
 
-<script>
-    // $('.form-group').find('label').addClass('text-muted');
-    // $('#data-jenazah').find('button').addClass('collapse');
-    // $('#data-jenazah').find('input').attr('disabled', 'disabled');
-
-    // $('#data-jenazah').find('a').click(function (e) { 
-    //     e.preventDefault();
-    //     $('#data-jenazah > form > button').toggleClass('collapse');
-    //     $('#data-jenazah').find('input').removeAttr('disabled');
-    // });
-    $(document).ready(function() {
-          $('table').DataTable();
-      });
-
-</script>
+    <script>
+        $(document).ready(function() {
+            $('table').DataTable();
+        });
+    </script>
 @endpush

@@ -25,7 +25,7 @@
 
               <div class="form-group">
                   <label for="nama"> Nama Jenazah</label>
-                  <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ? old('nama') :  \Faker\Factory::create()->name }}">
+                  <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ? old('nama') : ''}}">
 
                   @error('nama')
                       <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
               <div class="row">
                   <div class="form-group col">
                       <label for="lahir"> Tanggal Lahir </label>
-                      <input id="lahir" type="datetime-local" class="form-control @error('lahir') is-invalid @enderror" name="lahir"value="1990-06-12T19:30">
+                      <input id="lahir" type="datetime-local" class="form-control @error('lahir') is-invalid @enderror" name="lahir">
   
                       @error('lahir')
                           <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
                   </div>
                   <div class="form-group col">
                       <label for="wafat"> Tanggal Wafat </label>
-                      <input id="wafat" type="datetime-local" class="form-control @error('wafat') is-invalid @enderror" name="wafat"value="2019-06-12T19:30">
+                      <input id="wafat" type="datetime-local" class="form-control @error('wafat') is-invalid @enderror" name="wafat">
   
                       @error('wafat')
                           <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
 
               <div class="form-group">
                   <label for="alamat"> Alamat </label>
-                  <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') ? old('alamat') :  \Faker\Factory::create()->address}}">
+                  <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') ? old('alamat') :  '' }}">
 
                   @error('alamat')
                       <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
 
               <div class="form-group">
                   <label for="surat_kematian"> Link Surat Kematian </label>
-                  <input id="surat_kematian" type="text" class="form-control @error('surat_kematian') is-invalid @enderror" name="surat_kematian" value="{{ old('surat_kematian') ? old('surat_kematian') :  'https://3.bp.blogspot.com/-7sBdhkwNq34/W9unzLsWJSI/AAAAAAAALtc/EqEskIv9SbsJblzg6vk_ACVrZFInO0dWwCLcBGAs/s1600/img002.jpg' }}">
+                  <input id="surat_kematian" type="text" class="form-control @error('surat_kematian') is-invalid @enderror" name="surat_kematian" value="{{ old('surat_kematian') ? old('surat_kematian') : '' }}">
 
                   @error('surat_kematian')
                       <span class="invalid-feedback" role="alert">
@@ -81,7 +81,9 @@
 
               <div class="form-group">
                   <label for="foto"> Foto </label>
-                  <input id="foto" type="text" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') :  'https://cache.desktopnexus.com/thumbseg/620/620245-bigthumbnail.jpg' }}">
+                  <input id="foto" type="text" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') :  '' }}">
+                  <small id="helpId" class="form-text text-muted">
+                </small>
 
                   @error('foto')
                       <span class="invalid-feedback" role="alert">
@@ -91,9 +93,9 @@
               </div>
           </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="simpan-data-jenazah">Save</button>
+      <div class="modal-footer row px-4 pb-3 align-items-center justify-content-center">
+        <button type="button" class="col btn btn-secondary align-self-center" data-dismiss="modal">Batalkan</button>
+        <button type="button" class="col btn btn-primary align-self-center" id="simpan-data-jenazah">Simpan</button>
       </div>
     </div>
   </div>

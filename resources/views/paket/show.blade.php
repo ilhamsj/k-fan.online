@@ -43,7 +43,7 @@
                             <div class="card-header text-center bg-primary text-light" style="border:0; border-radius: 1rem 1rem 0 0">
                                 <strong>Diskon up to {{ $item->diskon}}%</strong>
                             </div>
-                            <div class="card-body text-center d-flex justify-content-center align-items-center bg-light" style="min-height: 35vh" style="background-image: url({{$item->foto}})">
+                            <div class="card-body text-center d-flex justify-content-center align-items-center" style="min-height: 35vh" style="background-image: url({{$item->foto}})">
                                 <div>
                                     <h3>{{$item->nama}}</h3>
                                     <span class="text-muted" style="text-decoration: line-through">Rp. {{ number_format($item->harga,2,',','.') }}</span>
@@ -56,7 +56,7 @@
                             <form action="{{ route('transaksi.store') }}" method="POST">
                               @csrf
 
-                              <input type="text" name="id" value="{{ 'T' . date('dmYHis') }}" hidden>
+                              <input type="text" name="id" value="{{ \Faker\Factory::create()->uuid}}" hidden>
                               <input id="user_id" type="number" class="form-control @error('user_id') is-invalid @enderror" name="user_id" value="{{ old('user_id') ? old('user_id') : Auth::user()->id }}" hidden>
                               <input id="paket_id" type="number" class="form-control @error('paket_id') is-invalid @enderror" name="paket_id" value="{{ old('paket_id') ? old('paket_id') : $item->id }}" hidden>
                               <input id="jumlah" type="number" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" value="{{ old('jumlah') ? old('jumlah') : $item->harga }}" hidden>

@@ -153,8 +153,10 @@
                                         {{ \Carbon\Carbon::parse($item->wafat)->format('d M Y') }}
                                         <br>
                                         
-                                        <i class="fas fa-map-marked-alt    "></i>
-                                        {{ $item->alamat }}
+                                        <a target="_blank" href="https://www.google.co.in/maps/search/{{$item->alamat}}">
+                                            <i class="fas fa-map-marked-alt"></i>
+                                            {{ $item->alamat }}
+                                        </a>
                                     </div>
                             </div>
                         </div>

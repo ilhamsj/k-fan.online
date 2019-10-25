@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProdukStoreRequest;
 
-
 class ProdukController extends Controller
 {
     public function index()
@@ -45,7 +44,6 @@ class ProdukController extends Controller
 
     public function edit($id)
     {
-        // dd($id);
         $item = Produk::find($id);
         return view('admin.produk.edit')->with([
             'item' => $item,
@@ -63,7 +61,14 @@ class ProdukController extends Controller
 
     public function destroy($id)
     {
-        Produk::destroy($id);
+        $item = Produk::find($id);
+        $item->delete();
+        
+        $foto = public_path('images/produk/'.$item->foto );
+        if(file_exists($foto)) {
+            unlink($foto);
+        }
+        
         return redirect()->back()->with([
             'status' => 'Hapus data berhasil'
         ]);

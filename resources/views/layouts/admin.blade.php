@@ -287,11 +287,11 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
           @if (session('status'))
-              <div class="alert alert-success" role="alert">
+              <div id="pesanSukses" class="alert alert-success" role="alert">
                   <strong>{{ session('status') }}</strong>
               </div>
           @endif
-          
+
           <!-- Page Heading -->
           @yield('content')
 
@@ -350,7 +350,7 @@
 
   <script src="{{ secure_url('js/app.js') }}"></script>
   <script>
-      $(".alert").delay(2500).slideUp(200, function() {
+      $("#pesanSukses").delay(2500).slideUp(200, function() {
           $(this).alert('close');
       });
 

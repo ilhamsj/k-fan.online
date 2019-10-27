@@ -10,12 +10,12 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
-        "freshbitsweb/laratables": "^2.1",
         "fzaninotto/faker": "^1.4",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "midtrans/midtrans-php": "^2.0",
-        "silviolleite/laravelpwa": "^1.0"
+        "silviolleite/laravelpwa": "^1.0",
+        "yajra/laravel-datatables-oracle": "^9.7"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

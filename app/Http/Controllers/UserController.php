@@ -20,9 +20,7 @@ class UserController extends Controller
                     <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$user->id.'" data-url="'.route('user.destroy', $user->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
                 })
                 ->toJson();
-        } else {
-            return 'ajax only';
-        }    
+        }   
     }
 
     public function create()

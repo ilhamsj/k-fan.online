@@ -1,9 +1,6 @@
 <?php
 
-use App\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserStoreRequest;
-use App\Http\Requests\UserUpdateRequest;
 
 /*
 |--------------------------------------------------------------------------

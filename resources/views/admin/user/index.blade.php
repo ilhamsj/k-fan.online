@@ -28,6 +28,7 @@
                       <th>No</th>
                       <th>Nama</th>
                       <th>Email</th>
+                      <th>Created at</th>
                       <th>Action</th>
                   </tr>
               </thead>
@@ -35,7 +36,7 @@
 
               </tbody>
           </table>
-      </div>      
+      </div>
   </div>
 </div>
 
@@ -91,7 +92,7 @@
     <script>
         
         $(document).ready(function () {
-            // read
+            // Read
             $('table').DataTable({
                 order : [0,'desc'],
                 responsive: true,
@@ -99,15 +100,16 @@
                 serverSide: true,
                 ajax: "{{ route('user.index') }}",
                 columns: [
-                    {data: 'id', name: 'id' },
+                    {data: 'DT_RowIndex', name: 'id' },
                     {data: 'name', name: 'name' },
                     {data: 'email', name: 'email' },
+                    {data: 'created_at', name: 'created_at' },
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ],
             });
         });
 
-        // hapus
+        // Hapus
         $('table').on('click','.btnDelete',function(e){
             e.preventDefault();
             
@@ -151,13 +153,10 @@
             });
         });
 
-        // update
-        // 1. show the modal
+        // edit/update
+        // Show the modal
         $('table').on('click', '.btnEdit', function (e) { 
             e.preventDefault(); 
-            $('#kirim').toggleClass('collapse');
-            $('#btnUpdate').toggleClass('collapse');
-
             $('#modelId').modal('show');
             
             var url = $(this).attr('data-url');
@@ -184,7 +183,6 @@
             var id = $(form).attr('data-id');
             var url = $(form).attr('action');
             
-
             $('.invalid-feedback').remove();
             $('.form-group').find('input').removeClass("is-invalid");
 
@@ -230,12 +228,5 @@
         }
         
         $('.alert').toggleClass('collapse');
-
-        $('#content > div > div.d-sm-flex.align-items-center.justify-content-between.mb-4 > a').click(function (e) { 
-            e.preventDefault();
-            console.log('a');
-            $('#btnUpdate').toggleClass('collapse');
-        });
-
     </script>
 @endpush

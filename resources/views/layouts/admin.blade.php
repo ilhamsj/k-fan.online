@@ -40,7 +40,7 @@
                 'title' => 'user',
                 'icon' => 'fa fa-user',
                 'color' => 'border-left-info',
-                'link'  => route('user.index')
+                'link'  => route('admin.user')
             ],
             2 => [
                 'title' => 'produk',

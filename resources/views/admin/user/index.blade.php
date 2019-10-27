@@ -10,7 +10,7 @@
     <h1 class="h3 mb-2 text-gray-800">
         Data User
     </h1>
-  <a data-toggle="modal" data-target="#modelId" href="{{ route('user.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+  <a data-toggle="modal" data-target="#modelId" href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
     <i class="fa fa-plus-circle fa-sm text-white-50" aria-hidden="true"></i>
     Tambah
   </a>
@@ -97,7 +97,7 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('api.user') }}",
+                ajax: "{{ route('user.index') }}",
                 columns: [
                     {data: 'id', name: 'id' },
                     {data: 'name', name: 'name' },
@@ -133,7 +133,7 @@
         $('#kirim').click(function (e) { 
             e.preventDefault();
             var form = $('#modelId form'),
-                url = "{{route('api.user.post')}}";
+                url = "{{route('user.store')}}";
             
             $('.invalid-feedback').remove();
             $('.form-group').find('input').removeClass("is-invalid");

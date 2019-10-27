@@ -16,7 +16,6 @@ Route::get('/', 'HomeController@index')->name('welcome');
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/admin', 'HomeController@admin')->middleware('verified')->name('admin.home');
 
-Route::resource('admin/user', 'UserController');
 Route::resource('admin/produk', 'ProdukController');
 Route::resource('admin/paket-produk', 'PaketProdukController');
 Route::resource('admin/berita-lelayu', 'BeritaLelayuController');
@@ -40,3 +39,7 @@ Route::post('/finish', function() {
   return redirect()->route('welcome');
 });
 Route::post('/notification', 'TransaksiController@notification')->name('notification');
+
+Route::get('admin/user', function () {
+    return view('admin.user.index');
+})->name('admin.user');

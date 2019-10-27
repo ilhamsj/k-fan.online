@@ -3,69 +3,72 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserStoreRequest;
-use Symfony\Component\HttpFoundation\Request;
+use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $items = User::orderBy('updated_at', 'desc')->get();
-        return view('admin.user.index')->with([
-            'items' => $items,
-            'no' => 1,
-        ]);
+        $user = User::all();
+
+        if(request()->ajax()) {
+            return datatables($user)
+                ->addColumn('action', function ($user) {
+                    return 
+                    '<a href="" data-id="'.$user->id.'" data-url="'.route('user.show', $user->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
+                    <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$user->id.'" data-url="'.route('user.destroy', $user->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
+                })
+                ->toJson();
+        } else {
+            return 'ajax only';
+        }    
     }
 
     public function create()
     {
-        return view('admin.user.create');
+
     }
 
     public function store(UserStoreRequest $request)
     {
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        return redirect()->route('user.index')->with([
-            'status' => 'Tambah data Berhasil'
-        ]);
+        if(\App\User::create($request->all())) {
+            return response()->json([
+                'success' => 'Data berhasil ditambahkan'
+            ]);
+        }
     }
 
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return response()->json($user);
     }
 
     public function edit($id)
     {
-        $item = User::find($id);
-        return view('admin.user.edit')->with([
-            'item' => $item,
-        ]);
+        $user = User::find($id);
+        return response()->json($user);
     }
 
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        $request->validate([
-            'name' => 'required'
-        ]);
-        User::find($id)->update($request->all());
-
-        return redirect()->route('user.index')->with([
-            'status' => 'Update data berhasil'
+        $user = User::find($id);
+        $user->update($request->all());
+    
+        return response()->json([
+            'success' => 'Data berhasil diupdate'
         ]);
     }
 
     public function destroy($id)
     {
-        User::destroy($id);
-        return redirect()->back()->with([
-            'status' => 'Hapus data berhasil'
+        $item = User::find($id);
+        $item->delete();
+    
+        return response()->json([
+            'status'  => 'success',
+            'success' => $item->name . ' Berhasil dihapus'
         ]);
     }
 }

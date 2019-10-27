@@ -51,7 +51,7 @@
                     </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('api.user.post')}}" method="POST">
+                <form method="POST">
                     @csrf
     
                     <div class="form-group">
@@ -77,13 +77,13 @@
                     <div class="form-group">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button id="kirim" type="submit" class="btn btn-primary shadow-sm">Simpan</button>
+                        <button id="btnUpdate" type="submit" class="btn btn-primary shadow-sm">Update</button>
                     </div>
                 </form> 
             </div>
         </div>
     </div>
 </div>
-
 
 @endsection
 
@@ -133,10 +133,10 @@
         $('#kirim').click(function (e) { 
             e.preventDefault();
             var form = $('#modelId form'),
-                url = form.attr('action');
+                url = "{{route('api.user.post')}}";
             
             $('.invalid-feedback').remove();
-            $('.form-group').find('input').removeClass("is-invalid")
+            $('.form-group').find('input').removeClass("is-invalid");
 
             $.ajax({
                 type: "POST",
@@ -146,25 +146,79 @@
                     sukses(response.success, 'table')
                 },
                 error: function (xhr) {
-                    var res = xhr.responseJSON;
-                    if ($.isEmptyObject(res) == false)
-                    {
-                        $.each(res.errors, function (key, value) {
-                            $('#' + key)
-                                .closest('.form-group')
-                                .append('<span class="invalid-feedback" role="alert"> <strong>'+ value +'</strong> </span>')
-                                .find('input').addClass("is-invalid")
-                        })
-                    }
+                    displayError(xhr.responseJSON);
                 }
             });
         });
+
+        // update
+        // 1. show the modal
+        $('table').on('click', '.btnEdit', function (e) { 
+            e.preventDefault(); 
+            $('#modelId').modal('show');
+            
+            var url = $(this).attr('data-url');
+            var id = $(this).attr('data-id');
+            $('#modelId form').attr('data-id', id);
+            $('#modelId form').attr('action', url);
+
+            console.log(url);
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (response) {
+                    console.log(response.name);
+                    $('#name').val(response.name);
+                    $('#email').val(response.email);
+                }
+            }); 
+        });
+
+        // 2. update the form
+        $('#btnUpdate').click(function (e) { 
+            e.preventDefault();
+            var form = $('#modelId form');
+            var id = $(form).attr('data-id');
+            var url = $(form).attr('action');
+            
+
+            $('.invalid-feedback').remove();
+            $('.form-group').find('input').removeClass("is-invalid");
+
+            $.ajax({
+                type: "PUT",
+                url: url,
+                data: form.serialize(),
+                success: function (response) {
+                    console.log(response);
+                    sukses(response.success, 'table')
+                },
+                error: function (xhr) {
+                    displayError(xhr.responseJSON);
+                }
+            });
+            
+        });
+
+        // show error
+        function displayError(res) {
+            if ($.isEmptyObject(res) == false)
+            {
+                $.each(res.errors, function (key, value) {
+                    $('#' + key)
+                        .closest('.form-group')
+                        .append('<span class="invalid-feedback" role="alert"> <strong>'+ value +'</strong> </span>')
+                        .find('input').addClass("is-invalid")
+                })
+            }
+        }
 
         // message
         function sukses(message, table) {
             $('#modelId').modal('hide')
             $('.alert').find('strong').html(message)
             $('.alert').show();
+            $('#modelId form').trigger('reset');
 
             $(table).DataTable().ajax.reload();
             $('.alert').delay(2500).slideUp(200, function() {
@@ -173,5 +227,6 @@
         }
         
         $('.alert').toggleClass('collapse');
+
     </script>
 @endpush

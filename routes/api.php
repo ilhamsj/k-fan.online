@@ -3,6 +3,7 @@
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +27,8 @@ Route::get('test', function () {
         return datatables($user)
             ->addColumn('action', function ($user) {
                 return 
-                '<a href="'.route('user.edit', $user->id).'" class="mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
-                <a href='.'a'.' class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$user->id.'" data-url="'.route('api.user.delete', $user->id).'">
-                    <span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span>
-                </a>';
+                '<a href="" data-id="'.$user->id.'" data-url="'.route('api.user.show', $user->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
+                <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$user->id.'" data-url="'.route('api.user.delete', $user->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
             })
             ->toJson();
     } else {
@@ -58,3 +57,23 @@ Route::post('test/post', function (UserStoreRequest $request) {
     }
 
 })->name('api.user.post');
+
+Route::get('test/{id}/edit', function ($id) {
+    $user = User::find($id);
+    return response()->json($user);
+})->name('api.user.edit');
+
+Route::put('test/{id}', function (UserUpdateRequest $request, $id) {
+
+    $user = User::find($id);
+    $user->update($request->all());
+
+    return response()->json([
+        'success' => 'Data berhasil diupdate'
+    ]);
+})->name('api.user.update');
+
+Route::get('test/{id}', function ($id) {
+    $user = User::find($id);
+    return response()->json($user);
+})->name('api.user.show');

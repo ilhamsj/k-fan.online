@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -31,11 +32,14 @@ class UserController extends Controller
 
     public function store(UserStoreRequest $request)
     {
-        if(\App\User::create($request->all())) {
-            return response()->json([
-                'success' => 'Data berhasil ditambahkan'
-            ]);
-        }
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return response()->json([
+            'success' => 'Data berhasil ditambahkan'
+        ]);
     }
 
     public function show($id)
@@ -53,7 +57,11 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, $id)
     {
         $user = User::find($id);
-        $user->update($request->all());
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
     
         return response()->json([
             'success' => 'Data berhasil diupdate'

@@ -45,7 +45,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">User</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -155,14 +155,17 @@
         // 1. show the modal
         $('table').on('click', '.btnEdit', function (e) { 
             e.preventDefault(); 
+            $('#kirim').toggleClass('collapse');
+            $('#btnUpdate').toggleClass('collapse');
+
             $('#modelId').modal('show');
             
             var url = $(this).attr('data-url');
             var id = $(this).attr('data-id');
+
             $('#modelId form').attr('data-id', id);
             $('#modelId form').attr('action', url);
 
-            console.log(url);
             $.ajax({
                 type: "GET",
                 url: url,
@@ -227,6 +230,12 @@
         }
         
         $('.alert').toggleClass('collapse');
+
+        $('#content > div > div.d-sm-flex.align-items-center.justify-content-between.mb-4 > a').click(function (e) { 
+            e.preventDefault();
+            console.log('a');
+            $('#btnUpdate').toggleClass('collapse');
+        });
 
     </script>
 @endpush

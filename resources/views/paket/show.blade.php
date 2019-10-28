@@ -89,16 +89,26 @@
 
         $('.tour').click(function (e) { 
             e.preventDefault();
+            tourWebsite()
+        });
+
+        tourWebsite()
+
+        function tourWebsite() {
             var intro = introJs();
             intro.setOptions({
                 steps: [
                     {
+                        element: document.querySelector('body > section.bg-light > div > div > div.col-12.col-md.mb-4 > div > div:nth-child(3)'),
+                        intro: "Informasi paket pemakaman"
+                    },
+                    {
                         element: document.querySelector('#transaksiBaru'),
                         intro: "Klik pesan untuk melanjutkan"
-                    }
+                    },
                 ]
             });
             intro.start();
-        });
+        }
     </script>
 @endpush

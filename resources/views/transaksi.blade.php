@@ -113,6 +113,12 @@
     <script>
         $('.tour').click(function (e) { 
             e.preventDefault();
+            tourWebsite()
+        });
+
+        tourWebsite()
+
+        function tourWebsite() {
             var intro = introJs();
             intro.setOptions({
                 steps: [
@@ -127,6 +133,6 @@
                 ]
             });
             intro.start();
-        });
+        }
     </script>
 @endpush

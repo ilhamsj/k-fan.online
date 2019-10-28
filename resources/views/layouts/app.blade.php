@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <title>Kafan | Layanan perawatan jenazah pertama di Jogja</title>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pusat Urusan Kematian Yogyakarta - PUKJ</title>
+    <meta property="og:description"content="Bagi dunia, mungkin Kamu adalah miliarder, selebriti atau tokoh penting lainnya.
+    Namun, bagi Malaikat Maut, Kamu tidak lain hanyalah nama yang telah terdaftar" />
+    <meta property="og:title"content="Kafan | Layanan perawatan jenazah pertama di Jogja" />
     @laravelPWA
     <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
     @stack('styles')

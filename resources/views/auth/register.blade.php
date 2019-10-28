@@ -4,8 +4,14 @@
     <section class="bg-primary">
         <div class="container">
             <div class="row justify-content-center align-items-center" style="min-height:100vh">
-                <div class="col-12 col-sm-5">
-                    <div class="card shadow-sm">
+                <div class="col-12 col-sm-4">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-header rounded-top border-0">
+                            <a class="navbar-brand" href="/">
+                                <i class="fa fa-flag" aria-hidden="true"></i>
+                                <strong><span class="text-primary">Ka</span>fan</strong>
+                            </a>
+                        </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
@@ -52,11 +58,10 @@
                                     <button type="submit" class="btn btn-primary btn-block">Register</button>
                                 </div>
                             </form>
-                            <div>
-                                Have an account ?
-                                <a href="{{ route('login') }}">Login</a>
-
-                            </div>
+                        </div>
+                        <div class="card-body">
+                            Have an account ?
+                            <a href="{{ route('login') }}">Login</a>
                         </div>
                     </div>
                 </div>

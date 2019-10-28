@@ -299,28 +299,23 @@
             }
         );
 
-        $('.whatsapp').click(function (e) { 
+        $('.tour').click(function (e) { 
             e.preventDefault();
-            startIntro()
-            
-        });
-
-        function startIntro(){
             var intro = introJs();
             intro.setOptions({
                 steps: [
                     { 
-                        element: document.querySelector('h1'),
-                        intro: "Hello world!"
+                        element: document.querySelector('body > section.bg-image-welcome.border-bottom > div > div > div.col-12.col-md-4.text-center.align-self-start'),
+                        intro: "Silahkan login/daftar terlebih dahulu"
                     },
                     {
-                        element: document.querySelector('h2'),
-                        intro: "This is a tooltip."
+                        element: document.querySelector('#service > div > div > div.col-12.col-md-4.mb-4 > div > div:nth-child(3) > a'),
+                        intro: "Pilih paket pemakaman"
                     }
                 ]
             });
             intro.start();
-        }
+        });
 
     </script>
 @endpush

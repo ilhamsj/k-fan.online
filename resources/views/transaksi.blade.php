@@ -110,4 +110,23 @@
             $('table').DataTable();
         });
     </script>
+    <script>
+        $('.tour').click(function (e) { 
+            e.preventDefault();
+            var intro = introJs();
+            intro.setOptions({
+                steps: [
+                    {
+                        element: document.querySelector('#data-jenazah'),
+                        intro: "Tambah informasi jenazah"
+                    },
+                    {
+                        element: document.querySelector('#pay-button'),
+                        intro: "Pilih pembayaran"
+                    },
+                ]
+            });
+            intro.start();
+        });
+    </script>
 @endpush

@@ -86,5 +86,19 @@
 @push('scripts')
     <script>
         $('nav').first().addClass('border-bottom');
+
+        $('.tour').click(function (e) { 
+            e.preventDefault();
+            var intro = introJs();
+            intro.setOptions({
+                steps: [
+                    {
+                        element: document.querySelector('#transaksiBaru'),
+                        intro: "Klik pesan untuk melanjutkan"
+                    }
+                ]
+            });
+            intro.start();
+        });
     </script>
 @endpush

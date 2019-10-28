@@ -24,10 +24,10 @@
       .rounded-sm {border-radius:1rem;}
       .rounded-card {border-radius:1rem;}
       .rounded-img-sm {border-radius: 1rem 1rem 0 0;}
-      .whatsapp {
+      .tour {
     transform: rotate(-90deg);
     bottom: 50vh;
-    right: -50px;
+    right: -48px;
 }
     </style>
 </head>
@@ -127,8 +127,7 @@
     </div>
   </footer>
 
-  <section class="whatsapp position-fixed rounded-left">
-      {{-- <a href="" class="btn btn-primary">whatsapp</a> --}}
+  <section class="tour position-fixed rounded-left">
       <a href="" class="btn btn-primary">Tour Website</a>
   </section>
 
@@ -144,7 +143,6 @@
       e.preventDefault();
       confirm('Apakah kamu yakin akan logout ?') ? $('#logoutForm').submit() : console.log('no');
     });
-
   </script>
   @stack('scripts')
 </body>

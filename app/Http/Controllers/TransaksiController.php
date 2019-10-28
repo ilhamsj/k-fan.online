@@ -11,6 +11,8 @@ class TransaksiController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth');
+
         \Midtrans\Config::$serverKey = env('MIDTRANS_SERVERKEY');
         \Midtrans\Config::$isProduction = false;
         \Midtrans\Config::$isSanitized = true;
@@ -30,7 +32,7 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         $transaksi = Transaksi::create($request->all());
-        $user = \App\User::find($request->user_id);
+        $user = \App\User::find(Auth::user()->id);
         $paket = \App\Paket::find($request->paket_id);
 
         $params = array(

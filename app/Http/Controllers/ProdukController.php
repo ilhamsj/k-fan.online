@@ -9,6 +9,11 @@ use App\Http\Requests\ProdukStoreRequest;
 
 class ProdukController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $items = Produk::orderBy('updated_at', 'desc')->get();

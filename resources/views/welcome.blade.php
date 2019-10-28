@@ -219,10 +219,12 @@
                         <br/>Namun, bagi Malaikat Maut, Kamu tidak lain hanyalah nama yang telah terdaftar
                     </p>
                     <div class="my-4"></div>
-                    <a href="" class="btn btn-primary rounded-pill">
-                       Upgrade Akun
-                       <i class="fas fa-level-up-alt"></i>
-                    </a>
+                    @guest
+                        <a href="" class="btn btn-primary rounded-pill">
+                            Daftar Sekarang
+                            <i class="fas fa-level-up-alt"></i>
+                        </a>
+                    @endguest
                 </div>
             </div>
         </div>

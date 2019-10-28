@@ -23,14 +23,14 @@ Route::resource('transaksi', 'TransaksiController', [
   'except' => [
     'edit', 'index'
   ]
-])->middleware('verified');
+]);
 Route::get('admin/transaksi', 'TransaksiController@index')->name('transaksi.index');
 
 Route::resource('admin/paket', 'PaketController', [
   'except' => 'show'
 ]);
 
-Route::get('/paket/{id}', 'PaketController@show')->middleware('verified')->name('paket.show');
+Route::get('/paket/{id}', 'PaketController@show')->name('paket.show');
 Route::get('/finish', function() {
   return redirect()->route('welcome');
 });

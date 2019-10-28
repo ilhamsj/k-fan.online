@@ -13,6 +13,7 @@ $factory->define(BeritaLelayu::class, function (Faker $faker) {
         'alamat'            => $faker->address, 
         'surat_kematian'    => $faker->imageUrl(225, 281, null, true, 'Kafan', true), 
         'foto'              => $faker->imageUrl(225, 281, 'cats', true, $faker->name, true), 
+        // 'foto'              => 'https://source.unsplash.com/225x281/?grandpa', 
         'lahir'             => $faker->dateTime($max = 'now', $timezone = null), 
         'wafat'             => $faker->dateTime($max = 'now', $timezone = null), 
     ];

@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+use App\Produk;
 use Illuminate\Http\Request;
 
 /*
@@ -18,3 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('user', 'UserController');
+
+Route::get('test', function (Request $request) {
+    $term = $request->q;
+    $user = Produk::where('nama', 'LIKE', '%'.$term.'%')
+                    ->orWhere('kategori', 'LIKE', '%'.$term.'%')
+                    ->orWhere('harga', 'LIKE', '%'.$term.'%')
+                    ->get();
+    return response()->json($user);
+})->name('api.test');

@@ -52,7 +52,9 @@
                         </td>
                         <td>{{ $item->rupiah($item->harga) }}</td>
                         <td>{{$item->diskon}}</td>
-                        <td><img class="img-fluid rounded" src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""></td>
+                        <td>
+                            {{-- <img class="img-fluid rounded" src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""> --}}
+                        </td>
                         <td class="d-sm-flex justify-content-center">
                             <a href="{{ route('paket.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
                                 <span class="icon text-white-50">
@@ -109,9 +111,6 @@
                     <div class="form-group">
                         <label for="produk_id"> Produk </label>
                         <select id="produk_id" type="text" class="form-control @error('produk_id') is-invalid @enderror" name="produk_id[]" multiple>
-                            @foreach ($produks as $item)
-                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                            @endforeach
                         </select>
 
                         @error('produk_id')
@@ -148,14 +147,6 @@
             confirm() ? $(this).next().submit() : console.log('no');
         });
 
-        $(document).ready(function() {
-            $('#tambahPaketProduk').find('select').select2({
-                theme: 'bootstrap4',
-                allowClear: true,
-                placeholder: "Pilih",
-            });
-        });
-
         $('.tambahProduk').find('a').click(function (e) { 
             e.preventDefault();
             var x = $(this).attr('data-paket');
@@ -163,5 +154,33 @@
 
             $('#tambahPaketProduk').modal('toggle');
         });
+
+        $('#tambahPaketProduk').find('#paket_id').select2({
+                theme: 'bootstrap4',
+                allowClear: true,
+                placeholder: "Pilih"
+        })
+
+            $('#tambahPaketProduk').find('#produk_id').select2({
+                dropdownParent: $('#tambahPaketProduk .modal-content'),
+                theme: 'bootstrap4',
+                allowClear: true,
+                placeholder: "Pilih",
+                ajax: {
+                    url: '{{ route("api.test") }}',
+                    dataType: 'json',
+                    type: 'GET',
+                    processResults: function (data) {
+                        return {
+                            results:  $.map(data, function (item) {
+                                return {
+                                    text: item.nama + ' | ' + item.kategori + ' | ' + item.harga,
+                                    id: item.id
+                                }
+                            })
+                        };
+                    },
+                }
+            });
       </script>
 @endpush

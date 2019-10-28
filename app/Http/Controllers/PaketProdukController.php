@@ -19,6 +19,7 @@ class PaketProdukController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         foreach ($request->produk_id as $produk) {
             PaketProduk::create([
                 'paket_id' => $request->paket_id,

@@ -24,11 +24,10 @@
       .rounded-sm {border-radius:1rem;}
       .rounded-card {border-radius:1rem;}
       .rounded-img-sm {border-radius: 1rem 1rem 0 0;}
-      .tour {
-    transform: rotate(-90deg);
-    bottom: 50vh;
-    right: -48px;
-}
+      .tour {transform: rotate(-90deg);bottom: 50vh;right: -48px;}
+      #collapsibleNavId > ul > li.nav-item.dropdown.show > div > a:hover {
+        background: transparent
+      }
     </style>
 </head>
 <body>
@@ -50,9 +49,9 @@
           </li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layanan</a>
-              <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="dropdown-item" href="#produk">Produk & Jasa</a>
-                <a class="dropdown-item" href="#service">Paket Pemakaman</a>
+              <div class="dropdown-menu bg-primary" aria-labelledby="dropdownId" style="border-radius:1rem">
+                <a class="dropdown-item py-2 text-light" href="#produk">Produk & Jasa</a>
+                <a class="dropdown-item py-2 text-light" href="#service">Paket Pemakaman</a>
               </div>
             </li>
           <li class="nav-item">

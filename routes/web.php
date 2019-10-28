@@ -23,7 +23,7 @@ Route::resource('transaksi', 'TransaksiController', [
   'except' => [
     'edit', 'index'
   ]
-]);
+])->middleware('verified');
 Route::get('admin/transaksi', 'TransaksiController@index')->name('transaksi.index');
 
 Route::resource('admin/paket', 'PaketController', [

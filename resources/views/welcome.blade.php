@@ -220,8 +220,13 @@
                     </p>
                     <div class="my-4"></div>
                     @guest
-                        <a href="" class="btn btn-primary rounded-pill">
+                        <a href="{{ route('register') }}" class="btn btn-primary rounded-pill">
                             Daftar Sekarang
+                            <i class="fas fa-level-up-alt"></i>
+                        </a>
+                    @else
+                        <a href="#berita" class="btn btn-primary rounded-pill">
+                            Berita duka
                             <i class="fas fa-level-up-alt"></i>
                         </a>
                     @endguest

@@ -49,7 +49,7 @@
           </li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layanan</a>
-              <div class="dropdown-menu bg-primary" aria-labelledby="dropdownId" style="border-radius:1rem">
+              <div class="dropdown-menu bg-primary rounded-card border-0 shadow-sm" aria-labelledby="dropdownId">
                 <a class="dropdown-item py-2 text-light" href="#produk">Produk & Jasa</a>
                 <a class="dropdown-item py-2 text-light" href="#service">Paket Pemakaman</a>
               </div>
@@ -67,10 +67,10 @@
           @else
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Str::title(Auth::user()->name) }}</a>
-              <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="dropdown-item" href="{{ route('home') }}">Profile</a>
-                <a class="dropdown-item" href="{{ route('admin.home') }}">Admin Panel</a>
-                <a class="dropdown-item" id="logoutButton" href="#">Logout</a>
+              <div class="dropdown-menu bg-primary rounded-card border-0 shadow-sm" aria-labelledby="dropdownId">
+                <a class="dropdown-item text-light py-2" href="{{ route('home') }}">Profile</a>
+                <a class="dropdown-item text-light py-2" href="{{ route('admin.home') }}">Admin Panel</a>
+                <a class="dropdown-item text-light py-2" id="logoutButton" href="#">Logout</a>
                 <form action="{{ route('logout') }}" id="logoutForm" method="post" class="d-none">
                   @csrf
                 </form>

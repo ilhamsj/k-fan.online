@@ -14,6 +14,7 @@
     Pengguna dapat melakukan pemesanan untuk pemakaman keluarga, kerabat, atau teman." />
     @laravelPWA
     <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css" integrity="sha256-OYXGS5m4oWZAAqoAKpf7Y3bIdzdd9jBfly/xCavEpGw=" crossorigin="anonymous" />
     @stack('styles')
     <style>
       .navbar-toggler {border:none}
@@ -23,6 +24,11 @@
       .rounded-sm {border-radius:1rem;}
       .rounded-card {border-radius:1rem;}
       .rounded-img-sm {border-radius: 1rem 1rem 0 0;}
+      .whatsapp {
+    transform: rotate(-90deg);
+    bottom: 50vh;
+    right: -50px;
+}
     </style>
 </head>
 <body>
@@ -121,7 +127,13 @@
     </div>
   </footer>
 
+  <section class="whatsapp position-fixed rounded-left">
+      {{-- <a href="" class="btn btn-primary">whatsapp</a> --}}
+      <a href="" class="btn btn-primary">Tour Website</a>
+  </section>
+
   <script src="{{ secure_url('js/app.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js" integrity="sha256-SPZP/x8QDPEhRlpJjet4AD5X4ergPWcxjhMn73SwyOE=" crossorigin="anonymous"></script>
   <script>
     $('div > button').first().click(function (e) { 
     e.preventDefault();

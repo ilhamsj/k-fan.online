@@ -298,5 +298,29 @@
                 $(this).find('.collapse').slideToggle();
             }
         );
+
+        $('.whatsapp').click(function (e) { 
+            e.preventDefault();
+            startIntro()
+            
+        });
+
+        function startIntro(){
+            var intro = introJs();
+            intro.setOptions({
+                steps: [
+                    { 
+                        element: document.querySelector('h1'),
+                        intro: "Hello world!"
+                    },
+                    {
+                        element: document.querySelector('h2'),
+                        intro: "This is a tooltip."
+                    }
+                ]
+            });
+            intro.start();
+        }
+
     </script>
 @endpush

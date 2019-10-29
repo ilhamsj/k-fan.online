@@ -21,12 +21,11 @@
               <thead>
                   <tr>
                       <th>No</th>
-                      <th>ID</th>
+                      <th>ID Transaksi</th>
                       <th>User</th>
                       <th>Paket</th>
                       <th>Jumlah</th>
                       <th>Status</th>
-                      <th>Snap Token</th>
                       <th>Tanggal</th>
                       <th class="text-center">Action</th>
                   </tr>
@@ -40,7 +39,6 @@
                       <td>{{ $item->paket->nama }}</td>
                       <td>{{ $item->rupiah($item->jumlah) }}</td>
                       <td>{{ $item->status }}</td>
-                      <td>{{ $item->snap_token }}</td>
                       <td>{{ $item->created_at }}</td>
                       <td class="d-sm-flex justify-content-center">
                           <a href="#" class="mx-1 btn btn-secondary btn-sm btn-icon-split">

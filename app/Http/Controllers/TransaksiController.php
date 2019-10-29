@@ -12,7 +12,7 @@ class TransaksiController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('notification', 'finish');
+        // $this->middleware('auth')->except('notification', 'finish');
 
         \Midtrans\Config::$serverKey = env('MIDTRANS_SERVERKEY');
         \Midtrans\Config::$isProduction = false;
@@ -23,7 +23,7 @@ class TransaksiController extends Controller
     public function index()
     {
         $items = Transaksi::orderBy('created_at', 'desc')->get();
-        
+
         return view('admin.transaksi.index')->with([
             'items' => $items,
             'no' => 1,

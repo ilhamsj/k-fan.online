@@ -25,6 +25,7 @@
                         <th>Nama</th>
                         <th>Tanggal Lahir</th>
                         <th>Tanggal Wafat</th>
+                        <th>ID Transaksi</th>
                         <th>Foto</th>
                         <th>Surat Kematian</th>
                         <th class="text-center">Action</th>
@@ -37,6 +38,7 @@
                         <td>{{$item->nama}}</td>
                         <td>{{ $item->lahir}}</td>
                         <td>{{ $item->wafat }}</td>
+                        <td>{{ $item->transaksi->id }}</td>
                         <td><img class="img-fluid rounded" src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""></td>
                         <td>
                             <a href="{{ $item->surat_kematian }}" target="_blank">Lihat</a>

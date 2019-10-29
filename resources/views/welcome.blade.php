@@ -34,7 +34,7 @@
     {{-- Produk & Jasa --}}
     <section class="py-4 my-4" id="produk">
         <div class="container">
-            <div class="row h-100-kfan align-items-center justify-content-center text-center">
+            <div class="row h-100-kfan align-items-center text-center">
                 <div class="col-12 align-self-end">
                     <i class="fa fa-cubes fa-2x" aria-hidden="true"></i>
                     <div class="my-2"></div>
@@ -45,15 +45,15 @@
                 </div>
 
                 @foreach ($produks as $item)                
-                <div class="col-6 col-md-3 mb-4 produk-jasa  align-self-start">
+                <div class="col-6 col-md-3 mb-4 produk-jasa align-self-start">
                     <div class="card border-0 rounded">
                         <img class="card-img-top img-fluid rounded" src="{{ file_exists((public_path('images/produk/'.$item->foto ))) ? secure_url('images/produk', $item->foto) : $item->foto }}" alt="{{ $item->foto }}" srcset="">
                         <div class="card-img-overlay p-0 d-flex flex-wrap flex-row-reverse">
-                            <div class="card-body bg-dark align-self-start col-4 col-sm-6 d-none d-md-block" style="border-radius:0 0.25rem 0">
+                            {{-- <div class="card-body bg-dark align-self-start col-4 col-sm-6 d-none d-md-block" style="border-radius:0 0.25rem 0">
                                 <strong class="text-light">
                                     1000+
                                 </strong>
-                            </div>
+                            </div> --}}
                             <div class="card-body bg-dark align-self-end col-12 rounded-bottom">
                                 <strong class="text-light">
                                     {{$item->nama}}

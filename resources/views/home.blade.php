@@ -11,7 +11,7 @@
                             <strong class="text-light">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 Profil
-                            </strong>        
+                            </strong>
                         </div>
                         <div class="card-body">
                             <p>
@@ -25,7 +25,6 @@
                                 </strong>
                             </p>
                             <div>
-                                <a href="">Edit akun <i class="fas fa-pencil-alt"></i></a> <br/>
                                 <a href="{{ route('password.request') }}">Ganti Password <i class="fas fa-pencil-alt"></i></a>
                             </div>
                         </div>

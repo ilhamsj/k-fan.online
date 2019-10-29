@@ -29,3 +29,7 @@ Route::get('test', function (Request $request) {
                     ->get();
     return response()->json($user);
 })->name('api.test');
+
+Route::post('home', function (Request $request) {
+    return response()->json($request);
+})->name('upload.avatar');

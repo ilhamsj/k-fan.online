@@ -65,8 +65,6 @@ class HomeController extends Controller
             ],
         ];
         
-
-        // dd(json_encode(\App\User::all()));
         return view('admin.dashboard')->with([
             'items' => $data,
             'users' => json_encode(\App\User::all())

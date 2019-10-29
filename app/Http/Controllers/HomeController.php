@@ -14,7 +14,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $items = \App\Produk::orderBy('updated_at', 'desc')->paginate(4);
+        $items = \App\Produk::orderBy('updated_at', 'desc')->paginate(8);
         $pakets = \App\Paket::orderBy('created_at', 'asc')->get();
         $lelayu = \App\BeritaLelayu::orderBy('created_at', 'asc')->get();
 

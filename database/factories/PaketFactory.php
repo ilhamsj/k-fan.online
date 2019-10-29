@@ -11,7 +11,7 @@ $factory->define(Paket::class, function (Faker $faker) {
         'harga'     => $faker->numberBetween($min = 650000, $max = 15000000),
         'diskon'    => $faker->randomNumber(1),
         'deskripsi' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-        // 'foto'      => 'holder.js/348x232?random=yes&auto=yes&texmode=exact',
-        'foto'      => 'https://source.unsplash.com/348x232/?flower', 
+        // 'foto'      => 'https://source.unsplash.com/348x232/?flower', 
+        'foto'      => 'holder.js/348x232?random=yes&auto=yes&texmode=exact',
     ];
 });

@@ -23,6 +23,16 @@ class BeritaLelayuController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'transaksi_id' => 'required', 
+            'nama' => 'required', 
+            'alamat' => 'required', 
+            'surat_kematian' => 'required', 
+            'foto' => 'required', 
+            'lahir' => 'required', 
+            'wafat' => 'required'
+        ]);
+        
         BeritaLelayu::create($request->all());
 
         return redirect()->back()->with([

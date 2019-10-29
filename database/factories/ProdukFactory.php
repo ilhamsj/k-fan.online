@@ -30,6 +30,7 @@ $factory->define(Produk::class, function (Faker $faker) {
         'nama'      => Str::title($faker->unique($reset=true)->randomElement($produk)),
         'harga'     => $faker->numberBetween($min = 550000, $max = 1500000),
         'kategori'  => $faker->randomElement(['Produk', 'Jasa']),
-        'foto'      => $faker->imageUrl(225, 325, null, true, $faker->name, true), 
+        // 'foto'      => $faker->imageUrl(225, 325, null, true, $faker->name, true), 
+        'foto'      => 'holder.js/225x325?auto=yes&random=yes&texmode=exact', 
     ];
 });

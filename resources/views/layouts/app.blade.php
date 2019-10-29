@@ -127,7 +127,7 @@
   </footer>
 
   <section class="tour position-fixed rounded-left">
-      <a href="" class="btn btn-primary">Tour Website</a>
+      <a href="" class="btn btn-primary rounded-img-sm">Tour Website</a>
   </section>
 
   <script src="{{ secure_url('js/app.js') }}"></script>

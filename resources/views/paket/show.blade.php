@@ -17,7 +17,6 @@
                     <div style="border-radius:1rem" class="card border-0 shadow-sm">
                         <img class="card-img-top rounded-img-sm" src="{{ $item->foto ? $item->foto : 'holder.js/300x200?auto=yes&random=yes&textmode=exact'}}" alt="" srcset="">
                         <div class="card-body bg-transparent">
-
                             <div class="row">
                                 <div class="col">
                                     <h4>Informasi Paket</h4>

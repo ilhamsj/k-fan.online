@@ -6,6 +6,7 @@ use App\Transaksi;
 use Midtrans\Snap;
 use Midtrans\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
@@ -31,6 +32,9 @@ class TransaksiController extends Controller
 
     public function store(Request $request)
     {
+        $request->merge([
+            'user_id' => Auth::user()->id
+        ]);
         $transaksi = Transaksi::create($request->all());
         $user = \App\User::find(Auth::user()->id);
         $paket = \App\Paket::find($request->paket_id);

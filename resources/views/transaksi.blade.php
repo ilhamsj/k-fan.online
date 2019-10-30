@@ -92,20 +92,20 @@
         var x = $(this).attr('data-token');
         snap.pay(x, {
             onSuccess: function(result){
-                ShowMessage('Transaksi Berhasil', 'home')
+                ShowMessage('Transaksi Berhasil')
             },
             onPending: function(result){
-                ShowMessage('Transaksi Pending', 'home')
+                ShowMessage('Transaksi Pending')
             },
             onError: function(result){
-                ShowMessage('Transaksi Error', 'home')
+                ShowMessage('Transaksi Error')
             }
         });
     });
 
-    function ShowMessage(message, url) {
+    function ShowMessage(message) {
         alert(message);
-        location.replace(url)
+        location.replace('/home')
     }
 </script>
 

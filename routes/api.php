@@ -67,12 +67,10 @@ Route::delete('lelayu/{id}', function ($id) {
 
 Route::get('lelayu/{id}', function ($id) {
     $item = \App\BeritaLelayu::find($id);
-
     return response()->json($item);
 })->name('api.lelayu.show');
 
 Route::put('lelayu/{id}', function (LelayuStoreRequest $request, $id) {
-
 
     $item = \App\BeritaLelayu::find($id);
     $item->update($request->all());
@@ -85,3 +83,4 @@ Route::post('lelayu', function (LelayuStoreRequest $request) {
     return response()->json($request->all());
 })->name('lelayu.store');
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
+// dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());

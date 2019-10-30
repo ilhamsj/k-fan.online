@@ -49,11 +49,6 @@
                     <div class="card border-0 rounded">
                         <img class="card-img-top img-fluid rounded" src="{{ file_exists((public_path('images/produk/'.$item->foto ))) ? secure_url('images/produk', $item->foto) : $item->foto }}" alt="{{ $item->foto }}" srcset="">
                         <div class="card-img-overlay p-0 d-flex flex-wrap flex-row-reverse">
-                            {{-- <div class="card-body bg-dark align-self-start col-4 col-sm-6 d-none d-md-block" style="border-radius:0 0.25rem 0">
-                                <strong class="text-light">
-                                    1000+
-                                </strong>
-                            </div> --}}
                             <div class="card-body bg-dark align-self-end col-12 rounded-bottom">
                                 <strong class="text-light">
                                     {{$item->nama}}
@@ -138,10 +133,10 @@
                     </p>
                 </div>
 
-                @foreach ($lelayu as $item)                                
+                @foreach ($lelayu as $item)
                 <div class="col-6 col-md-3 mb-4 align-self-start berita-duka">
                     <div class="card border-0">
-                        <img class="card-img-top img-fluid rounded" src="{{ $item->foto }}" alt="" srcset="">
+                        <img class="card-img-top img-fluid rounded" src="{{ $item->foto ? $item->foto : 'https://i.ibb.co/Wt7rX7K/RDJ-Tony-Stark-min-1.jpg' }}" alt="" srcset="">
                         <div class="card-img-overlay p-0 d-flex align-items-end">
                             <div class="card-body rounded-bottom bg-light">
                                     <strong>

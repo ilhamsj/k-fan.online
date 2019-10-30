@@ -171,7 +171,6 @@
                 type: "GET",
                 url: url,
                 success: function (response) {
-                    console.log(response.name);
                     $('#name').val(response.name);
                     $('#email').val(response.email);
                 }

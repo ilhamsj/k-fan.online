@@ -6,7 +6,7 @@
     <h1 class="h3 mb-2 text-gray-800">
         Berita Lelayu
     </h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="btn-add">
         <i class="fa fa-plus-circle fa-sm text-white-50"></i>
         Tambah
     </a>
@@ -33,36 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($items as $item)
-                    <tr>
-                        <td>{{$no++}}</td>
-                        <td>{{$item->nama}}</td>
-                        <td>{{ $item->lahir}}</td>
-                        <td>{{ $item->wafat }}</td>
-                        <td>{{ $item->transaksi->id }}</td>
-                        <td><img class="img-fluid rounded" src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""></td>
-                        <td>
-                            <a href="{{ $item->surat_kematian }}" target="_blank">Lihat</a>
-                        </td>
-                        <td class="">
-                            <a data-toggle="modal" data-target="#modelId" href="#" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </span>
-                            </a>
 
-                            <form action="{{ route('berita-lelayu.destroy', $item->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger btn-icon-split btn-sm" type="submit">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </span>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach --}}
                 </tbody>
             </table>
         </div>
@@ -83,12 +54,39 @@
             <div class="modal-body">
                 <form action="" method="post">
                     <div class="form-group">
-                        <label for="">ID</label>
-                        <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
+                        <label for="transaksi_id"> Transaksi </label>
+                        <input id="transaksi_id" type="text" class="form-control @error('transaksi_id') is-invalid @enderror" name="transaksi_id" value="">
                     </div>
+      
                     <div class="form-group">
-                        <label for="">Foto</label>
-                        <input type="text" class="form-control" name="foto" id="foto" aria-describedby="helpId" placeholder="">
+                        <label for="nama"> Nama Jenazah</label>
+                        <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="">
+                    </div>
+      
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="lahir"> Tanggal Lahir </label>
+                            <input id="lahir" type="datetime-local" class="form-control @error('lahir') is-invalid @enderror" name="lahir" value="">
+                        </div>
+                        <div class="form-group col">
+                            <label for="wafat"> Tanggal Wafat </label>
+                            <input id="wafat" type="datetime-local" class="form-control @error('wafat') is-invalid @enderror" name="wafat" value="">
+                        </div>
+                    </div>
+      
+                    <div class="form-group">
+                        <label for="alamat"> Alamat </label>
+                        <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') ? old('alamat') :  '' }}">
+                    </div>
+      
+                    <div class="form-group">
+                        <label for="surat_kematian"> Link Surat Kematian </label>
+                        <input id="surat_kematian" type="text" class="form-control @error('surat_kematian') is-invalid @enderror" name="surat_kematian" value="{{ old('surat_kematian') ? old('surat_kematian') : '' }}">
+                    </div>
+      
+                    <div class="form-group">
+                        <label for="foto"> Foto </label>
+                        <input id="foto" type="text" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') :  '' }}">
                     </div>
                 </form>
             </div>
@@ -144,5 +142,105 @@
             });     
         });
         
+
+        // show modal to edit
+        $('table').on('click','.btnEdit',function(e){
+            e.preventDefault();
+
+            var url = $(this).attr('data-url');
+
+            $('.invalid-feedback').remove();
+            $('.form-group').find('input').removeClass("is-invalid");
+            
+            $('#modelId').modal('show')
+            $('#modelId form').attr('action', url);
+            $('#modelId').find('button:last-child').attr('id', 'btn-update');
+
+            
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (response) {
+                    $('#id').val(response.id);
+                    $('#transaksi_id').val(response.transaksi_id);
+                    $('#nama').val(response.nama);
+                    $('#foto').val(response.foto);
+                    $('#alamat').val(response.alamat);
+                    $('#surat_kematian').val(response.surat_kematian);
+                }
+            });
+        });
+        
+        // update
+        $('#modelId').on('click','#btn-update',function(e){
+            e.preventDefault();
+
+            var form = $('#modelId form');
+            var url = $(form).attr('action');
+
+            $('.invalid-feedback').remove();
+            $('.form-group').find('input').removeClass("is-invalid");
+
+            $.ajax({
+                type: "PUT",
+                url: url,
+                data: form.serialize(),
+                success: function (response) {
+                    $('#modelId').modal('hide');
+                    $('table').DataTable().ajax.reload();
+                },
+                error: function (xhr) {
+                    showError(xhr.responseJSON)
+                }
+            });
+        });
+
+        // add
+        $('#btn-add').click(function (e) { 
+            e.preventDefault();
+            $('#modelId').modal('show')
+            var form = $('#modelId form');
+            form.trigger('reset');
+            $('#modelId').find('button:last-child').attr('id', 'btn-store');
+        });
+
+        // store
+        $('#modelId').on('click','#btn-store',function(e){
+            e.preventDefault();
+
+            var form = $('#modelId form');
+
+            $('.invalid-feedback').remove();
+            $('.form-group').find('input').removeClass("is-invalid");
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('lelayu.store') }}",
+                data: form.serialize(),
+                success: function (response) {
+                    $('#modelId').modal('hide');
+                    $('table').DataTable().ajax.reload();
+                },
+                error: function (xhr) {
+                    showError(xhr.responseJSON)
+                }
+            });
+        });
+
+
+        // show error
+        function showError(res) 
+        {
+            if ($.isEmptyObject(res) == false)
+            {
+                $.each(res.errors, function (key, value) {
+                    $('#' + key)
+                        .closest('.form-group')
+                        .append('<span class="invalid-feedback" role="alert"> <strong>'+ value +'</strong> </span>')
+                        .find('input').addClass("is-invalid")
+                })
+            }
+        }
     </script>
 @endpush

@@ -82,7 +82,6 @@
               <div class="form-group">
                   <label for="foto"> Foto </label>
                   <input id="foto" type="text" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') :  'https://source.unsplash.com/225x281?man,kid' }}">
-                  {{-- <small id="helpId" class="form-text text-muted"></small> --}}
 
                   @error('foto')
                       <span class="invalid-feedback" role="alert">

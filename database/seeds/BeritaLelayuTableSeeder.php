@@ -11,6 +11,6 @@ class BeritaLelayuTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\BeritaLelayu::class, 100)->create();
+        factory(\App\BeritaLelayu::class, 5)->create();
     }
 }

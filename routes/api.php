@@ -3,6 +3,7 @@
 use App\User;
 use App\Produk;
 use Illuminate\Http\Request;
+use App\Http\Requests\LelayuStoreRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,7 @@ Route::get('lelayu', function () {
         ->addIndexColumn()
         ->addColumn('action', function ($items) {
             return 
-            '<a href="" data-id="'.$items->id.'" data-url="'.route('berita-lelayu.show', $items->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
+            '<a href="" data-id="'.$items->id.'" data-url="'.route('api.lelayu.show', $items->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
             <a href="" data-url="'.route('lelayu.destroy', $items->id).'" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$items->id.'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
         })
         ->editColumn('foto', function ($items) {
@@ -63,3 +64,24 @@ Route::delete('lelayu/{id}', function ($id) {
         'success' => $item->name . ' Berhasil dihapus'
     ]);
 })->name('lelayu.destroy');
+
+Route::get('lelayu/{id}', function ($id) {
+    $item = \App\BeritaLelayu::find($id);
+
+    return response()->json($item);
+})->name('api.lelayu.show');
+
+Route::put('lelayu/{id}', function (LelayuStoreRequest $request, $id) {
+
+
+    $item = \App\BeritaLelayu::find($id);
+    $item->update($request->all());
+    return response()->json($item);
+    
+})->name('api.lelayu.update');
+
+Route::post('lelayu', function (LelayuStoreRequest $request) {
+    \App\BeritaLelayu::create($request->all());
+    return response()->json($request->all());
+})->name('lelayu.store');
+// \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')

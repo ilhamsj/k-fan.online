@@ -91,23 +91,22 @@
         e.preventDefault();
         var x = $(this).attr('data-token');
         snap.pay(x, {
-            // Optional
             onSuccess: function(result){
-            // /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                location.replace("/")
+                ShowMessage('Transaksi Berhasil', 'home')
             },
-            // Optional
             onPending: function(result){
-            // /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-              location.replace("/home")
+                ShowMessage('Transaksi Pending', 'home')
             },
-            // Optional
             onError: function(result){
-            // /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                location.replace("/home")
+                ShowMessage('Transaksi Error', 'home')
             }
         });
     });
+
+    function ShowMessage(message, url) {
+        alert(message);
+        location.replace(url)
+    }
 </script>
 
     <script>

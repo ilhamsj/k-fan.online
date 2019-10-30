@@ -82,6 +82,12 @@
     </div>
   </nav>
         
+  {{-- <div class="container">
+      <div class="alert alert-success" role="alert">
+          <strong>Transaksi anda selesai</strong>
+        </div>
+  </div> --}}
+
     @yield('content')
 
   <footer class="py-4">

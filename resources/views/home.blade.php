@@ -2,14 +2,13 @@
 
 @section('content')
 {{-- <hr> --}}
-    <section class="py-4 bg-gradient-success">
+    <section class="py-4">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-12 col-sm">
-                    <div class="card shadow border-0">
-                        <div class="card-header bg-dark">
-                            <strong class="text-light">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                    <div class="card">
+                        <div class="card-header border-0">
+                            <strong>
                                 Profil
                             </strong>
                         </div>
@@ -25,11 +24,11 @@
                                 </strong>
                             </p>
                             <div>
-                                <a href="{{ route('password.request') }}">Ganti Password <i class="fas fa-pencil-alt"></i></a>
+                                <a href="{{ route('password.request') }}">Ganti Sandi</a>
                             </div>
                         </div>
-                        <div class="card-header bg-success">
-                            <strong class="text-light">
+                        <div class="card-header bg-transparent border-0 text-right">
+                            <strong class="">
                                 <i class="fa fa-history" aria-hidden="true"></i>
                                 History Transaksi
                             </strong>
@@ -39,12 +38,11 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>No</th>
                                             <th>Paket</th>
                                             <th>Jumlah</th>
-                                            <th>Catatan</th>
+                                            {{-- <th>Catatan</th> --}}
                                             <th>Status</th>
-                                            <th>Token</th>
                                             <th>Tanggal</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -53,12 +51,11 @@
                                     <tbody>
                                         @foreach (Auth::user()->transaksi as $item)
                                         <tr>
-                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $no++}}</td>
                                             <td>{{ $item->paket->nama }}</td>
                                             <td>{{ $item->rupiah($item->jumlah) }}</td>
-                                            <td>{{ $item->catatan }}</td>
+                                            {{-- <td>{{ $item->catatan }}</td> --}}
                                             <td>{{ $item->status }}</td>
-                                            <td>{{ $item->snap_token }}</td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 @if ($item->status == 'accept')
@@ -80,3 +77,12 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+    
+    $(document).ready(function() {
+            $('table').DataTable();
+        });
+        </script>
+@endpush

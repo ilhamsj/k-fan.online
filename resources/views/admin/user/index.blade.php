@@ -28,6 +28,7 @@
                       <th>No</th>
                       <th>Nama</th>
                       <th>Email</th>
+                      <th>Verivikasi</th>
                       <th>Created at</th>
                       <th>Action</th>
                   </tr>
@@ -103,6 +104,7 @@
                     {data: 'DT_RowIndex', name: 'id' },
                     {data: 'name', name: 'name' },
                     {data: 'email', name: 'email' },
+                    {data: 'email_verified_at', name: 'email_verified_at' },
                     {data: 'created_at', name: 'created_at' },
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ],

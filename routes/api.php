@@ -42,11 +42,24 @@ Route::get('lelayu', function () {
         ->addColumn('action', function ($items) {
             return 
             '<a href="" data-id="'.$items->id.'" data-url="'.route('berita-lelayu.show', $items->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
-            <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$items->id.'" data-url="'.route('berita-lelayu.destroy', $items->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
+            <a href="" data-url="'.route('lelayu.destroy', $items->id).'" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$items->id.'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
         })
-        ->addColumn('image', function ($items) {
+        ->editColumn('foto', function ($items) {
             return '<img src="'.$items->foto.'" class="img-fluid rounded">';
         })
-        ->rawColumns(['image', 'action'])
+        ->editColumn('surat_kematian', function ($items) {
+            return '<img src="'.$items->surat_kematian.'" class="img-fluid rounded">';
+        })
+        ->rawColumns(['foto','surat_kematian', 'action'])
         ->toJson();
 })->name('api.lelayu');
+
+Route::delete('lelayu/{id}', function ($id) {
+    $item = \App\BeritaLelayu::find($id);
+    $item->delete();
+
+    return response()->json([
+        'status'  => 'success',
+        'success' => $item->name . ' Berhasil dihapus'
+    ]);
+})->name('lelayu.destroy');

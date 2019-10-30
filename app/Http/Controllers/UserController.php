@@ -13,14 +13,17 @@ class UserController extends Controller
     {
         $user = User::all();
 
-        return datatables($user)
-            ->addIndexColumn()
-            ->addColumn('action', function ($user) {
-                return 
-                '<a href="" data-id="'.$user->id.'" data-url="'.route('user.show', $user->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
-                <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$user->id.'" data-url="'.route('user.destroy', $user->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
-            })
-            ->toJson();
+        // if(request()->ajax()) {
+
+            return datatables($user)
+                ->addIndexColumn()
+                ->addColumn('action', function ($user) {
+                    return 
+                    '<a href="" data-id="'.$user->id.'" data-url="'.route('user.show', $user->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
+                    <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$user->id.'" data-url="'.route('user.destroy', $user->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
+                })
+                ->toJson();
+        // }
     }
 
     public function create()

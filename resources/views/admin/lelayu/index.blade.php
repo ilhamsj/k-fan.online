@@ -21,16 +21,15 @@
             <table id="databerita-lelayu" class="table table-bordered">
                 <thead>
                     <tr>
+                        <th class="text-center">Action</th>
                         <th>No</th>
                         <th>Nama</th>
                         <th>Alamat</th>
-                        <th>Created At</th>
-                        {{-- <th>Tanggal Lahir</th>
-                        <th>Tanggal Wafat</th> --}}
-                        {{-- <th>ID Transaksi</th> --}}
                         <th>Foto</th>
-                        {{-- <th>Surat Kematian</th> --}}
-                        <th class="text-center">Action</th>
+                        <th>Surat Kematian</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Tanggal Wafat</th>
+                        <th>ID Transaksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -106,21 +105,44 @@
 @push('scripts')
     <script>
 
-            $('table').DataTable({
-                order : [0,'desc'],
-                responsive: true,
-                processing: true,
-                serverSide: true,
-                ajax: "{{ route('api.lelayu') }}",
-                columns: [
-                    {data: 'DT_RowIndex', name: 'id' },
-                    {data: 'nama', name: 'nama' },
-                    {data: 'alamat', name: 'alamat' },
-                    {data: 'created_at', name: 'created_at' },
-                    {data: 'image', name: 'image' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false},
-                ],
-            });
+        // read
+        var table = $('table').DataTable({
+            order : [0,'desc'],
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('api.lelayu') }}",
+            columns: [
+                {data: 'action', name: 'action', orderable: false, searchable: false},
+                {data: 'DT_RowIndex', name: 'id' },
+                {data: 'nama', name: 'nama' },
+                {data: 'alamat', name: 'alamat' },
+                {data: 'foto', name: 'foto' },
+                {data: 'surat_kematian', name: 'surat_kematian' },
+                {data: 'lahir', name: 'lahir' },
+                {data: 'wafat', name: 'wafat' },
+                {data: 'transaksi_id', name: 'transaksi_id' },
+            ],
+        });
 
+        // delete
+        $('table').on('click','.btnDelete',function(e){
+            e.preventDefault();
+            
+            var urlDelete = $(this).attr('data-url');
+            var idDelete = $(this).attr('data-id');
+            $.ajax({
+                type: "DELETE",
+                url: urlDelete,
+                data: {
+                    _token: "{{csrf_token()}}",
+                },
+                dataType: "json",
+                success: function (response) {
+                    $('table').DataTable().ajax.reload();
+                }
+            });     
+        });
+        
     </script>
 @endpush

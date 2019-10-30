@@ -12,7 +12,7 @@ $factory->define(Paket::class, function (Faker $faker) {
         'diskon'    => $faker->randomNumber(1),
         'deskripsi' => $faker->realText($maxNbChars = 200, $indexSize = 2),
         // 'foto'      => 'https://source.unsplash.com/348x232/?flower', 
-        // 'foto'      => 'holder.js/348x232?random=yes&auto=yes&texmode=exact',
-        'foto'      => 'https://source.unsplash.com/348x232/?funeral,grave',
+        'foto'      => 'holder.js/348x232?random=yes&auto=yes&texmode=exact',
+        // 'foto'      => 'https://source.unsplash.com/348x232/?funeral,grave',
     ];
 });

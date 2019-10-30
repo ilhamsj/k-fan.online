@@ -143,8 +143,7 @@
                     <div class="card border-0">
                         <img class="card-img-top img-fluid rounded" src="{{ $item->foto }}" alt="" srcset="">
                         <div class="card-img-overlay p-0 d-flex align-items-end">
-                            <div class="card-body rounded-bottom bg-light collapse">
-                                
+                            <div class="card-body rounded-bottom bg-light">
                                     <strong>
                                         <a href="">{{ $item->nama }}</a>
                                     </strong>

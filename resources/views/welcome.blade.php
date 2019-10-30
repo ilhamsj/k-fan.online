@@ -311,8 +311,6 @@
             tourWebsite()
         });
 
-        tourWebsite()
-
         function tourWebsite() {
             var intro = introJs();
             intro.setOptions({

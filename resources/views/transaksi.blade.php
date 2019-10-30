@@ -16,8 +16,12 @@
                                 <h4>Rp. {{ number_format($item->jumlah, 2, ',', ',') }}</h4>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-center">
+                            @if (count($item->BeritaLelayu) == null)
+                                <a class="btn btn-link text-danger" href="" data-toggle="modal" data-target="#modelId">* Tambahkan Informasi Jenazah</a>
+                            @endif
                             <button {{ count($item->BeritaLelayu) == null ? 'disabled' : ''}} data-token="{{$item->snap_token}}" id="pay-button" type="button" class="rounded-card btn btn-primary btn-block">Pilih Pembayaran</button>
+
                         </div>
 
                     </div>

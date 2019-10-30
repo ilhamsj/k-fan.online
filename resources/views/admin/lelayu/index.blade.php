@@ -64,11 +64,11 @@
                     </div>
       
                     <div class="row">
-                        <div class="form-group col">
+                        <div class="form-group col lahir">
                             <label for="lahir"> Tanggal Lahir </label>
                             <input id="lahir" type="datetime-local" class="form-control @error('lahir') is-invalid @enderror" name="lahir" value="">
                         </div>
-                        <div class="form-group col">
+                        <div class="form-group col wafat">
                             <label for="wafat"> Tanggal Wafat </label>
                             <input id="wafat" type="datetime-local" class="form-control @error('wafat') is-invalid @enderror" name="wafat" value="">
                         </div>
@@ -167,6 +167,15 @@
                     $('#foto').val(response.foto);
                     $('#alamat').val(response.alamat);
                     $('#surat_kematian').val(response.surat_kematian);
+                    
+                    var lahir = response.lahir;
+                    var lahir = lahir.split(' ').join('T');
+                    
+                    var wafat = response.wafat;
+                    var wafat = wafat.split(' ').join('T');
+
+                    $('#lahir').attr('value', lahir);
+                    $('#wafat').attr('value', wafat);
                 }
             });
         });
@@ -242,5 +251,12 @@
                 })
             }
         }
+
+        
+        $('#modelId').on('hidden.bs.modal', function () {
+            var form = $('#modelId form');
+            form.trigger('reset');
+            $('input[type=datetime-local]').removeAttr('value');
+        });
     </script>
 @endpush

@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         $items = \App\Produk::orderBy('updated_at', 'desc')->paginate(4);
         $pakets = \App\Paket::orderBy('created_at', 'asc')->paginate(4);
-        $lelayu = \App\BeritaLelayu::orderBy('created_at', 'asc')->paginate(4);
+        $lelayu = \App\BeritaLelayu::orderBy('created_at', 'desc')->paginate(4);
 
         return view('welcome')->with([
             'produks' => $items,

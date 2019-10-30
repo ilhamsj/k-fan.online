@@ -33,3 +33,20 @@ Route::get('test', function (Request $request) {
 Route::post('home', function (Request $request) {
     return response()->json($request);
 })->name('upload.avatar');
+
+Route::get('lelayu', function () {
+    $items = \App\BeritaLelayu::all();
+
+    return datatables($items)
+        ->addIndexColumn()
+        ->addColumn('action', function ($items) {
+            return 
+            '<a href="" data-id="'.$items->id.'" data-url="'.route('berita-lelayu.show', $items->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
+            <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$items->id.'" data-url="'.route('berita-lelayu.destroy', $items->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
+        })
+        ->addColumn('image', function ($items) {
+            return '<img src="'.$items->foto.'" class="img-fluid rounded">';
+        })
+        ->rawColumns(['image', 'action'])
+        ->toJson();
+})->name('api.lelayu');

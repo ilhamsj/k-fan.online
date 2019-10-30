@@ -23,16 +23,18 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Tanggal Lahir</th>
-                        <th>Tanggal Wafat</th>
-                        <th>ID Transaksi</th>
+                        <th>Alamat</th>
+                        <th>Created At</th>
+                        {{-- <th>Tanggal Lahir</th>
+                        <th>Tanggal Wafat</th> --}}
+                        {{-- <th>ID Transaksi</th> --}}
                         <th>Foto</th>
-                        <th>Surat Kematian</th>
+                        {{-- <th>Surat Kematian</th> --}}
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($items as $item)
+                    {{-- @foreach ($items as $item)
                     <tr>
                         <td>{{$no++}}</td>
                         <td>{{$item->nama}}</td>
@@ -43,8 +45,8 @@
                         <td>
                             <a href="{{ $item->surat_kematian }}" target="_blank">Lihat</a>
                         </td>
-                        <td class="d-sm-flex justify-content-center">
-                            <a href="#" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
+                        <td class="">
+                            <a data-toggle="modal" data-target="#modelId" href="#" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-pencil-alt"></i>
                                 </span>
@@ -61,9 +63,40 @@
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="">ID</label>
+                        <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Foto</label>
+                        <input type="text" class="form-control" name="foto" id="foto" aria-describedby="helpId" placeholder="">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
         </div>
     </div>
 </div>
@@ -72,8 +105,22 @@
 
 @push('scripts')
     <script>
-      $(document).ready(function() {
-          $('table').DataTable();
-      });
-      </script>
+
+            $('table').DataTable({
+                order : [0,'desc'],
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('api.lelayu') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'id' },
+                    {data: 'nama', name: 'nama' },
+                    {data: 'alamat', name: 'alamat' },
+                    {data: 'created_at', name: 'created_at' },
+                    {data: 'image', name: 'image' },
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ],
+            });
+
+    </script>
 @endpush

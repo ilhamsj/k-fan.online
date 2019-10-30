@@ -95,7 +95,7 @@
                 ShowMessage('Transaksi Berhasil')
             },
             onPending: function(result){
-                ShowMessage('Transaksi Pending')
+                ShowMessage('Selesaikan Pembayaran')
             },
             onError: function(result){
                 ShowMessage('Transaksi Error')

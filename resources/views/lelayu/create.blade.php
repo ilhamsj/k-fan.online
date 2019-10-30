@@ -70,7 +70,7 @@
 
               <div class="form-group">
                   <label for="surat_kematian"> Link Surat Kematian </label>
-                  <input id="surat_kematian" type="text" class="form-control @error('surat_kematian') is-invalid @enderror" name="surat_kematian" value="{{ old('surat_kematian') ? old('surat_kematian') : '' }}">
+                  <input id="surat_kematian" type="text" class="form-control @error('surat_kematian') is-invalid @enderror" name="surat_kematian" value="{{ old('surat_kematian') ? old('surat_kematian') : 'https://3.bp.blogspot.com/-7sBdhkwNq34/W9unzLsWJSI/AAAAAAAALtc/EqEskIv9SbsJblzg6vk_ACVrZFInO0dWwCLcBGAs/s1600/img002.jpg' }}">
 
                   @error('surat_kematian')
                       <span class="invalid-feedback" role="alert">
@@ -81,9 +81,8 @@
 
               <div class="form-group">
                   <label for="foto"> Foto </label>
-                  <input id="foto" type="text" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') :  '' }}">
-                  <small id="helpId" class="form-text text-muted">
-                </small>
+                  <input id="foto" type="text" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') :  'https://source.unsplash.com/225x281?girl' }}">
+                  {{-- <small id="helpId" class="form-text text-muted"></small> --}}
 
                   @error('foto')
                       <span class="invalid-feedback" role="alert">

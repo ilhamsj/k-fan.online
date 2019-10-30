@@ -25,7 +25,7 @@
 
               <div class="form-group">
                   <label for="nama"> Nama Jenazah</label>
-                  <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ? old('nama') : ''}}">
+                  <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ? old('nama') : \Faker\Factory::create()->name }}">
 
                   @error('nama')
                       <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
               <div class="row">
                   <div class="form-group col">
                       <label for="lahir"> Tanggal Lahir </label>
-                      <input id="lahir" type="datetime-local" class="form-control @error('lahir') is-invalid @enderror" name="lahir">
+                      <input id="lahir" type="datetime-local" class="form-control @error('lahir') is-invalid @enderror" name="lahir" value="{{ \Faker\Factory::create()->date($format = 'Y-m-d', $max = 'now') }}T00:00">
   
                       @error('lahir')
                           <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
                   </div>
                   <div class="form-group col">
                       <label for="wafat"> Tanggal Wafat </label>
-                      <input id="wafat" type="datetime-local" class="form-control @error('wafat') is-invalid @enderror" name="wafat">
+                      <input id="wafat" type="datetime-local" class="form-control @error('wafat') is-invalid @enderror" name="wafat" value="{{ date('Y-m-d') }}T00:00">
   
                       @error('wafat')
                           <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
 
               <div class="form-group">
                   <label for="alamat"> Alamat </label>
-                  <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') ? old('alamat') :  '' }}">
+                  <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') ? old('alamat') :  \Faker\Factory::create()->address }}">
 
                   @error('alamat')
                       <span class="invalid-feedback" role="alert">

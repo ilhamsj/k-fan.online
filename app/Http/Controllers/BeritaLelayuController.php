@@ -48,7 +48,8 @@ class BeritaLelayuController extends Controller
 
     public function edit($id)
     {
-
+        $item = \App\BeritaLelayu::where('transaksi_id', 'a317a7d-dcd5-3a61-a705-5a49c5d5d23d')->get();
+        return response()->json($item);
     }
 
     public function update(LelayuStoreRequest $request, $id)

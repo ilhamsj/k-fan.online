@@ -66,25 +66,26 @@ class Transaksi extends Model
         return $this->hasMany(BeritaLelayu::class);
     }
 
-    function status($transaction) {
+    function status($transaction, $id) {
 
         if ($transaction == 'capture') {
             return '<span class="badge badge-success">'.$transaction.'</span>';
+            // return '<a data-url="'.route('transaksi.approve', $id).'" href="'.route('transaksi.approve', $id).'" class="badge badge-success">'.$transaction.'</a>';
         } else if ($transaction == 'settlement') {
             // TODO set payment status in merchant's database to 'Settlement'
             return '<span class="badge badge-success">'.$transaction.'</span>';
         } else if ($transaction == 'pending') {
             // TODO set payment status in merchant's database to 'Pending'
-            return '<span class="badge badge-info">'.$transaction.'</span>';
+            return '<span class="badge badge-info">Pending</span>';
         } else if ($transaction == 'deny') {
             // TODO set payment status in merchant's database to 'Denied'
-            return '<span class="badge badge-danger">'.$transaction.'</span>';
+            return '<span class="badge badge-danger">Denied</span>';
         } else if ($transaction == 'expire') {
             // TODO set payment status in merchant's database to 'expire'
-            return '<span class="badge badge-danger">'.$transaction.'</span>';
+            return '<span class="badge badge-danger">Expire</span>';
         } else if ($transaction == 'cancel') {
             // TODO set payment status in merchant's database to 'Denied'
-            return '<span class="badge badge-danger">'.$transaction.'</span>';
+            return '<span class="badge badge-danger">Denied</span>';
         }
     }
 }

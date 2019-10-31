@@ -39,9 +39,15 @@
                       <td>{{ $item->user->name }}</td>
                       <td>{{ $item->paket->nama }}</td>
                       <td>{{ $item->rupiah($item->jumlah) }}</td>
-                      <td>
-
-                        {!! $item->status($item->status) !!}
+                      <td class="status">
+                        {!! $item->status($item->status, $item->id) !!}
+                        {{-- @if($item->status == 'capture')
+                            <form action="{{ route('transaksi.approve', $item->id)}}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit">Settle</button>
+                            </form>
+                        @endif --}}
                       </td>
                       <td>{{ $item->created_at }}</td>
                       <td>{{ $item->catatan }}</td>
@@ -76,5 +82,19 @@
       $(document).ready(function() {
           $('table').DataTable();
       });
+
+    //   $('.status > a').click(function (e) { 
+    //       e.preventDefault();
+
+    //       var url = $(this).attr('data-url');
+    //       $.ajax({
+    //           type: "PUT",
+    //           url: url,
+    //           success: function (response) {
+    //               console.log(response);
+                  
+    //           }
+    //       });
+    //   });
     </script>
 @endpush

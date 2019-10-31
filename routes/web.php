@@ -43,3 +43,5 @@ Route::post('/notification', 'TransaksiController@notification')->name('notifica
 Route::get('admin/user', function () {
     return view('admin.user.index');
 })->name('admin.user');
+
+Route::put('transaksi/approve/{id}', 'TransaksiController@approve')->name('transaksi.approve');

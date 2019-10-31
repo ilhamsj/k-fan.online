@@ -12,7 +12,7 @@ class TransaksiController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified'])->except('index', 'notification', 'finish');
+        $this->middleware(['auth', 'verified'])->except('index', 'notification', 'finish', 'approve');
 
         \Midtrans\Config::$serverKey = env('MIDTRANS_SERVERKEY');
         \Midtrans\Config::$isProduction = false;
@@ -105,5 +105,13 @@ class TransaksiController extends Controller
     public function finish()
     {
         return 'Transaksi berhasil';
+    }
+    
+    public function approve($id) {
+        // $status = \Midtrans\Transaction::status('9cfe8ab1-568c-3bcd-825d-c4f50b24e2b1');
+        // $status = \Midtrans\Transaction::cancel('9cfe8ab1-568c-3bcd-825d-c4f50b24e2b1');
+        // $status = \Midtrans\Transaction::approve('9cfe8ab1-568c-3bcd-825d-c4f50b24e2b1');
+        // dd($status);
+            // return redirect()->back()->with(['status' => ]);
     }
 }

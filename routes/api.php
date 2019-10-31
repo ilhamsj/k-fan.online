@@ -99,3 +99,5 @@ Route::get('test/', function () {
     ]);
     
 })->name('api.test');
+
+// Route::put('transaksi/approve/{id}', 'TransaksiController@approve')->name('transaksi.approve');

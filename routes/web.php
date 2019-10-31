@@ -12,10 +12,10 @@
 */
 Auth::routes(['verify' => true]);
 
-// Route::get('/', 'HomeController@index')->name('welcome');
-Route::get('/', function () {
-  return view('maintenance');
-})->name('welcome');
+Route::get('/', 'HomeController@index')->name('welcome');
+// Route::get('/', function () {
+//   return view('maintenance');
+// })->name('welcome');
 
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/paket/{id}', 'PaketController@show')->name('paket.show');

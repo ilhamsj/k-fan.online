@@ -105,7 +105,7 @@
 
         // read
         var table = $('table').DataTable({
-            order : [1,'desc'],
+            order : [[0,'desc'], [1,'desc']],
             responsive: true,
             processing: true,
             serverSide: true,

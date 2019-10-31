@@ -41,9 +41,8 @@
                                             <th>No</th>
                                             <th>Paket</th>
                                             <th>Jumlah</th>
-                                            {{-- <th>Catatan</th> --}}
-                                            <th>Status</th>
                                             <th>Tanggal</th>
+                                            <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -54,15 +53,22 @@
                                             <td>{{ $no++}}</td>
                                             <td>{{ $item->paket->nama }}</td>
                                             <td>{{ $item->rupiah($item->jumlah) }}</td>
-                                            {{-- <td>{{ $item->catatan }}</td> --}}
-                                            <td>{{ $item->status }}</td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
-                                                @if ($item->status == 'accept')
-                                                    Transaksi Selesai
-                                                    <a href="https://wa.me/6289666445551?text=Konfirmasi Order {{$item->id}}" target="_blank">Konfirmasi Pembayaran</a>
+                                                @if ($item->status == 'capture' || $item->status == 'settlement')
+                                                    <span class="badge badge-success">Success</span>
+                                                @elseif($item->status == 'pending')
+                                                    <span class="badge badge-info">{{ $item->status}}</span>
+                                                @else 
+                                                    <span class="badge badge-danger">{{ $item->status}}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($item->status == 'capture' || $item->status == 'settlement')
+                                                    <a class="badge badge-primary" href="https://wa.me/6289666445551?text=Konfirmasi Order {{$item->id}}" target="_blank">Konfirmasi Pembayaran</a>
+                                                @elseif($item->status == 'pending')
+                                                    <a class="badge badge-primary" href="{{ route('transaksi.show', $item->id) }}">Selesaikan Pembayaran</a>
                                                 @else
-                                                    <a href="{{ route('transaksi.show', $item->id) }}">Selesaikan Pembayaran</a>
                                                 @endif
                                             </td>
                                         </tr>

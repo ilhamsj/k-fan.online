@@ -9,7 +9,7 @@ $factory->define(Transaksi::class, function (Faker $faker) {
     $status = ['capture','settlement','pending','deny','expire', 'cancel'];
     return [
         'id'  => $faker->uuid,
-        'user_id'  => \App\User::all()->random(),
+        'user_id'  => 1,
         'paket_id'=> \App\Paket::all()->random(),
         'jumlah' => $faker->numberBetween($min = 650000, $max = 15000000),
         'catatan' => $faker->name . ' ' . $faker->randomElement(['wafat gan', 'kasihan nih', 'guling nih mayatnya']),

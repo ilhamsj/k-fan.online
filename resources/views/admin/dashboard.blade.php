@@ -107,7 +107,7 @@
 
         var ctx = $('#myChart');
         var myLineChart = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: bulan,
                 datasets: [

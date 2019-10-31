@@ -180,8 +180,8 @@
             var id = $(this).attr('data-id');
 
             // $('#password').parent().toggleClass('collapse');
-            $('#password').attr('disabled', true).parent().toggleClass('collapse');
-            $('#password-confirm').attr('disabled', true).parent().toggleClass('collapse');
+            $('#password').attr('disabled', true).parent().addClass('collapse');
+            $('#password-confirm').attr('disabled', true).parent().addClass('collapse');
 
             $('#modelId form').attr('data-id', id);
             $('#modelId form').attr('action', url);

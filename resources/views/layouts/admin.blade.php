@@ -69,7 +69,7 @@
                 'title' => 'berita duka',
                 'icon' => 'fa fa-circle',
                 'color' => 'border-left-info',
-                'link'  => route('berita-lelayu.index')
+                'link'  => route('admin.lelayu')
             ],
         ];
       @endphp

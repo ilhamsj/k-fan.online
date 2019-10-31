@@ -19,11 +19,11 @@ Route::get('/finish', 'HomeController@finish');
 
 Route::get('/admin', 'AdminController@admin')->name('admin.home');
 Route::get('/admin/user', 'AdminController@user')->name('admin.user');
+Route::get('/admin/lelayu', 'AdminController@lelayu')->name('admin.lelayu');
 Route::get('/admin/transaksi', 'TransaksiController@index')->name('admin.transaksi');
 
 Route::resource('/admin/produk', 'ProdukController');
 Route::resource('/admin/paket-produk', 'PaketProdukController');
-Route::resource('/admin/berita-lelayu', 'BeritaLelayuController');
 Route::resource('/admin/paket', 'PaketController', [
   'except' => 'show'
 ]);

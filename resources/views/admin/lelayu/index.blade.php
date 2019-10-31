@@ -109,7 +109,7 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            ajax: "{{ route('api.lelayu') }}",
+            ajax: "{{ route('lelayu.index') }}",
             columns: [
                 {data: 'action', name: 'action', orderable: false, searchable: false},
                 {data: 'DT_RowIndex', name: 'id' },

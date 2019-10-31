@@ -167,7 +167,7 @@
                 allowClear: true,
                 placeholder: "Pilih",
                 ajax: {
-                    url: '{{ route("api.test") }}',
+                    url: '{{ route("produk.cari") }}',
                     dataType: 'json',
                     type: 'GET',
                     processResults: function (data) {

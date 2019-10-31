@@ -51,4 +51,8 @@ class AdminController extends Controller
     function user() {
         return view('admin.user.index');
     }
+    
+    function lelayu() {
+        return view('admin.lelayu.index');
+    }
 }

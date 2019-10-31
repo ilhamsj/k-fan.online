@@ -65,4 +65,26 @@ class Transaksi extends Model
     {
         return $this->hasMany(BeritaLelayu::class);
     }
+
+    function status($transaction) {
+
+        if ($transaction == 'capture') {
+            return '<span class="badge badge-success">'.$transaction.'</span>';
+        } else if ($transaction == 'settlement') {
+            // TODO set payment status in merchant's database to 'Settlement'
+            return '<span class="badge badge-success">'.$transaction.'</span>';
+        } else if ($transaction == 'pending') {
+            // TODO set payment status in merchant's database to 'Pending'
+            return '<span class="badge badge-info">'.$transaction.'</span>';
+        } else if ($transaction == 'deny') {
+            // TODO set payment status in merchant's database to 'Denied'
+            return '<span class="badge badge-danger">'.$transaction.'</span>';
+        } else if ($transaction == 'expire') {
+            // TODO set payment status in merchant's database to 'expire'
+            return '<span class="badge badge-danger">'.$transaction.'</span>';
+        } else if ($transaction == 'cancel') {
+            // TODO set payment status in merchant's database to 'Denied'
+            return '<span class="badge badge-danger">'.$transaction.'</span>';
+        }
+    }
 }

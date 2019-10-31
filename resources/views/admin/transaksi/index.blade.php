@@ -39,7 +39,10 @@
                       <td>{{ $item->user->name }}</td>
                       <td>{{ $item->paket->nama }}</td>
                       <td>{{ $item->rupiah($item->jumlah) }}</td>
-                      <td>{{ $item->status }}</td>
+                      <td>
+
+                        {!! $item->status($item->status) !!}
+                      </td>
                       <td>{{ $item->created_at }}</td>
                       <td>{{ $item->catatan }}</td>
                       <td class="d-sm-flex justify-content-center">

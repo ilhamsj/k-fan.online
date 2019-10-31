@@ -31,7 +31,7 @@
               <div class="row justify-content-center align-items-center" style="min-height:100vh">
                   <div class="col-12 col-md-10 text-center">
                       <h1 class="text-info">
-                          Please be patient,  On {{ date('D M Y')}}
+                          Please be patient,
                       </h1>
                       <p class="lead">
                         <strong>

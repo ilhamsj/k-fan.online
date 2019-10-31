@@ -10,7 +10,7 @@
     <h1 class="h3 mb-2 text-gray-800">
         Data User
     </h1>
-  <a data-toggle="modal" data-target="#modelId" href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+  <a id="btnTambah" href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
     <i class="fa fa-plus-circle fa-sm text-white-50" aria-hidden="true"></i>
     Tambah
   </a>
@@ -58,6 +58,14 @@
                     @csrf
     
                     <div class="form-group">
+                        <label for="status">Status</label>
+                        <select class="form-control" name="status" id="status">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="name">Name</label>
                         <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
                     </div>
@@ -76,11 +84,10 @@
                         <label for="password-confirm">Konfirmasi Password</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
                     </div>
-    
+
                     <div class="form-group">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="kirim" type="submit" class="btn btn-primary shadow-sm">Simpan</button>
-                        <button id="btnUpdate" type="submit" class="btn btn-primary shadow-sm">Update</button>
+                        <button type="button" class="btn btn-primary shadow-sm">Save</button>
                     </div>
                 </form> 
             </div>
@@ -133,20 +140,27 @@
                 });
             }
         });
-        
 
-        // tambah data
-        $('#kirim').click(function (e) { 
+        $('#btnTambah').click(function (e) { 
             e.preventDefault();
-            var form = $('#modelId form'),
-                url = "{{route('user.store')}}";
+            $('#modelId').modal('show'); 
+            $('#modelId').find('button:last-child').attr('id', 'btnStore').html('Save');
+            
+            $('#password').removeAttr('disabled').parent().removeClass('collapse');
+            $('#password-confirm').removeAttr('disabled').parent().removeClass('collapse');
+        });
+        
+        // tambah data
+        $('#modelId').on('click', '#btnStore', function (e) {
+            e.preventDefault();
+            var form = $('#modelId form');
             
             $('.invalid-feedback').remove();
             $('.form-group').find('input').removeClass("is-invalid");
 
             $.ajax({
                 type: "POST",
-                url: url,
+                url: "{{route('user.store')}}",
                 data: form.serialize(),
                 success: function (response) {
                     sukses(response.success, 'table')
@@ -157,7 +171,6 @@
             });
         });
 
-        // edit/update
         // Show the modal
         $('table').on('click', '.btnEdit', function (e) { 
             e.preventDefault(); 
@@ -166,8 +179,13 @@
             var url = $(this).attr('data-url');
             var id = $(this).attr('data-id');
 
+            // $('#password').parent().toggleClass('collapse');
+            $('#password').attr('disabled', true).parent().toggleClass('collapse');
+            $('#password-confirm').attr('disabled', true).parent().toggleClass('collapse');
+
             $('#modelId form').attr('data-id', id);
             $('#modelId form').attr('action', url);
+            $('#modelId').find('button:last-child').attr('id', 'btnUpdate').html('Update');
 
             $.ajax({
                 type: "GET",
@@ -180,7 +198,7 @@
         });
 
         // 2. update the form
-        $('#btnUpdate').click(function (e) { 
+        $('#modelId').on('click', '#btnUpdate', function (e) { 
             e.preventDefault();
             var form = $('#modelId form');
             var id = $(form).attr('data-id');

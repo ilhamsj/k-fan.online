@@ -38,7 +38,9 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'status'    => $request->status,
         ]);
+
         return response()->json([
             'success' => 'Data berhasil ditambahkan'
         ]);
@@ -59,11 +61,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $user->update($request->all());
     
         return response()->json([
             'success' => 'Data berhasil diupdate'

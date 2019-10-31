@@ -14,8 +14,7 @@ class AddColumnStatus extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('foto');
-            $table->enum('status', ['user', 'admin'])->default('user');
+            $table->enum('status', ['user', 'admin'])->nullable()->default('user');
         });
     }
 

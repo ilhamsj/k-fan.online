@@ -90,37 +90,15 @@ class TransaksiController extends Controller
         $notif = new \Midtrans\Notification();
         $transaction = $notif->transaction_status;
         $fraud = $notif->fraud_status;
+        $type = $notif->payment_type;
         error_log("Order ID $notif->order_id: "."transaction status = $transaction, fraud staus = $fraud");
         $transaksi = Transaksi::find($notif->order_id);
-        if ($transaction == 'capture') {
-            if ($fraud == 'challenge') {
-                $transaksi->update([
-                    'status' => 'challenge'
-                ]); 
-            }
-            else if ($fraud == 'accept') {
-                $transaksi->update([
-                    'status' => 'accept'
-                ]); 
-            }
-        }
-        else if ($transaction == 'cancel') {
-            if ($fraud == 'challenge') {
-                $transaksi->update([
-                    'status' => 'challenge'
-                ]); 
-            }
-            else if ($fraud == 'accept') {
-                $transaksi->update([
-                    'status' => 'accept'
-                ]); 
-            }
-        }
-        else if ($transaction == 'deny') {
-            $transaksi->update([
-                'status' => 'deny'
-            ]); 
-        }
+
+        $transaksi->update([
+            'status' => $transaction,
+            'catatan' => $type . ' ' . $fraud
+        ]);
+
         return;
     }
     

@@ -42,94 +42,49 @@
 
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script>
-    {{-- <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            // type: 'bar',
-            // type: 'line',
-            type: 'horizontalBar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    </script> --}}
     <script>
-        var x = $("meta[name=csrf-token]").attr("content");
-        console.log(x);
-
+    
         $.ajax({
             type: "GET",
-            url: "api/user",
-            data: {
-                _token: x
-            },
-            dataType: "dataType",
+            url: "{{ route('api.test') }}",
             success: function (response) {
-                console.log(response);   
+
+                var x = Object.keys(response.data);
+                
+                var bulan           = x;
+                var dataPerbulan    = response.nilai;
+
+                var ctx = $('#myChart');
+                
+                var myLineChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: bulan,
+                        datasets: [
+                            {
+                                label: 'Penjualan',
+                                data: dataPerbulan,
+                                backgroundColor: 'rgba(255, 99, 132, 1)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 2,
+                                fill: false,
+                            }
+                        ],
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Jumlah Pendapatan'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                    }
+                });
             },
             error: function(xhr) {
                 console.log(xhr.responseJSON);
-            }
-        });
-        
-        var bulan           = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'];
-        var dataPerbulan    = [30, 20, 10, 5, 1, 10];
-
-        var ctx = $('#myChart');
-        var myLineChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: bulan,
-                datasets: [
-                    {
-                        label: 'Penjualan',
-                        data: dataPerbulan,
-                        backgroundColor: 'rgba(255, 99, 132, 1)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 2,
-                        fill: false,
-                    }
-                ],
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: 'Jumlah Pendapatan'
-                },
-                tooltips: {
-					mode: 'index',
-					intersect: false,
-				},
             }
         });
     </script>

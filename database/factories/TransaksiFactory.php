@@ -14,5 +14,6 @@ $factory->define(Transaksi::class, function (Faker $faker) {
         'catatan' => $faker->name . ' ' . $faker->randomElement(['wafat gan', 'kasihan nih', 'guling nih mayatnya']),
         'status' => $faker->randomElement(['accept', 'challenge', 'deny']),
         'snap_token' => $faker->sha1,
+        'created_at' => $faker->date(),
     ];
 });

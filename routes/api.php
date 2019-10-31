@@ -82,5 +82,20 @@ Route::post('lelayu', function (LelayuStoreRequest $request) {
     \App\BeritaLelayu::create($request->all());
     return response()->json($request->all());
 })->name('lelayu.store');
+
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
 // dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());
+
+Route::get('test/', function () {
+    $items = \App\Transaksi::all()->groupBy('status');
+
+    $label = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'];
+    $nilai = [100, 20, 10, 5, 1, 10];
+
+    return response()->json([
+        'label' => $label,
+        'nilai' => $nilai,
+        'data' => $items,
+    ]);
+    
+})->name('api.test');

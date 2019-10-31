@@ -25,12 +25,13 @@
           <table class="table table-bordered">
               <thead>
                   <tr>
+                      <th>Action</th>
                       <th>No</th>
                       <th>Nama</th>
                       <th>Email</th>
+                      <th>Status</th>
                       <th>Verivikasi</th>
                       <th>Created at</th>
-                      <th>Action</th>
                   </tr>
               </thead>
               <tbody>
@@ -101,12 +102,13 @@
                 serverSide: true,
                 ajax: "{{ route('user.index') }}",
                 columns: [
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
                     {data: 'DT_RowIndex', name: 'id' },
                     {data: 'name', name: 'name' },
                     {data: 'email', name: 'email' },
+                    {data: 'status', name: 'status' },
                     {data: 'email_verified_at', name: 'email_verified_at' },
                     {data: 'created_at', name: 'created_at' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false},
                 ],
             });
         });

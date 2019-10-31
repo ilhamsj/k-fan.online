@@ -21,9 +21,7 @@
                                 <a class="btn btn-link text-danger" href="" data-toggle="modal" data-target="#modelId">* Tambahkan Informasi Jenazah</a>
                             @endif
                             <button {{ count($item->BeritaLelayu) == null ? 'disabled' : ''}} data-token="{{$item->snap_token}}" id="pay-button" type="button" class="rounded-card btn btn-primary btn-block">Pilih Pembayaran</button>
-
                         </div>
-
                     </div>
                 </div>
 
@@ -84,36 +82,7 @@
 @endsection
 
 @push('scripts')
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENTKEY') }}"></script>
-
-<script>
-    $('#pay-button').click(function (e) { 
-        e.preventDefault();
-        var x = $(this).attr('data-token');
-        snap.pay(x, {
-            onSuccess: function(result){
-                ShowMessage('Transaksi Berhasil')
-            },
-            onPending: function(result){
-                ShowMessage('Selesaikan Pembayaran')
-            },
-            onError: function(result){
-                ShowMessage('Transaksi Error')
-            }
-        });
-    });
-
-    function ShowMessage(message) {
-        alert(message);
-        location.replace('/home')
-    }
-</script>
-
-    <script>
-        $(document).ready(function() {
-            $('table').DataTable();
-        });
-    </script>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENTKEY') }}"></script>
     <script>
         $('.tour').click(function (e) { 
             e.preventDefault();
@@ -134,7 +103,31 @@
                     },
                 ]
             });
-            // intro.start();
         }
+
+        $('#pay-button').click(function (e) { 
+            e.preventDefault();
+            var x = $(this).attr('data-token');
+            snap.pay(x, {
+                onSuccess: function(result){
+                    ShowMessage('Transaksi Berhasil')
+                },
+                onPending: function(result){
+                    ShowMessage('Selesaikan Pembayaran')
+                },
+                onError: function(result){
+                    ShowMessage('Transaksi Error')
+                }
+            });
+        });
+
+        function ShowMessage(message) {
+            alert(message);
+            location.replace('/home')
+        }
+
+        $(document).ready(function() {
+            $('table').DataTable();
+        });
     </script>
 @endpush

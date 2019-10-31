@@ -30,9 +30,6 @@ Route::get('produk/cari/', function (Request $request) {
     return response()->json($user);
 })->name('produk.cari');
 
-
-
-
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
 // dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());
 
@@ -49,4 +46,6 @@ Route::get('test/', function () {
     ]);
     
 })->name('api.test');
+
+
 

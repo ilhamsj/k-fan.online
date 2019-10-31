@@ -27,6 +27,7 @@
                       <th>Jumlah</th>
                       <th>Status</th>
                       <th>Tanggal</th>
+                      <th>Catatan</th>
                       <th class="text-center">Action</th>
                   </tr>
               </thead>
@@ -40,6 +41,7 @@
                       <td>{{ $item->rupiah($item->jumlah) }}</td>
                       <td>{{ $item->status }}</td>
                       <td>{{ $item->created_at }}</td>
+                      <td>{{ $item->catatan }}</td>
                       <td class="d-sm-flex justify-content-center">
                           <a href="#" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
                               <span class="icon text-white-50">

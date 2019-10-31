@@ -63,7 +63,7 @@
                 'title' => 'transaksi',
                 'icon' => 'fas fa-dollar-sign',
                 'color' => 'border-left-info',
-                'link'  => route('transaksi.index')
+                'link'  => route('admin.transaksi')
             ],
             5 => [
                 'title' => 'berita duka',

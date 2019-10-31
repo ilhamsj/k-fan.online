@@ -31,9 +31,6 @@ Route::get('test', function (Request $request) {
     return response()->json($user);
 })->name('api.test');
 
-Route::post('home', function (Request $request) {
-    return response()->json($request);
-})->name('upload.avatar');
 
 Route::get('lelayu', function () {
     $items = \App\BeritaLelayu::all();
@@ -86,18 +83,18 @@ Route::post('lelayu', function (LelayuStoreRequest $request) {
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
 // dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());
 
-Route::get('test/', function () {
-    $items = \App\Transaksi::all()->groupBy('status');
+// Route::get('test/', function () {
+//     $items = \App\Transaksi::all()->groupBy('status');
 
-    $label = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'];
-    $nilai = [100, 20, 10, 5, 1, 10];
+//     $label = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'];
+//     $nilai = [100, 20, 10, 5, 1, 10];
 
-    return response()->json([
-        'label' => $label,
-        'nilai' => $nilai,
-        'data' => $items,
-    ]);
+//     return response()->json([
+//         'label' => $label,
+//         'nilai' => $nilai,
+//         'data' => $items,
+//     ]);
     
-})->name('api.test');
+// })->name('api.test');
 
 // Route::put('transaksi/approve/{id}', 'TransaksiController@approve')->name('transaksi.approve');

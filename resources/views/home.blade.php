@@ -56,7 +56,7 @@
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 @if ($item->status == 'capture' || $item->status == 'settlement')
-                                                    <span class="badge badge-success">Success</span>
+                                                    <span class="badge badge-success">{{ $item->status}}</span>
                                                 @elseif($item->status == 'pending')
                                                     <span class="badge badge-info">{{ $item->status}}</span>
                                                 @else 

@@ -9,11 +9,7 @@ class BeritaLelayuController extends Controller
 {
     public function index()
     {
-        $items = BeritaLelayu::orderBy('updated_at', 'desc')->get();
-        return view('admin.lelayu.index')->with([
-            'items' => $items,
-            'no' => 1,
-        ]);
+        return view('admin.lelayu.index');
     }
 
     public function create()

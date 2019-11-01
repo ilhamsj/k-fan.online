@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->only('home');
     }
 
     public function index()
@@ -34,5 +34,14 @@ class HomeController extends Controller
 
     public function finish() {
         return redirect()->route('welcome');
+    }
+
+    public function lelayu()
+    {
+        $lelayu = \App\BeritaLelayu::all();
+
+        return view('lelayu')->with([
+            'lelayu' => $lelayu,
+        ]);
     }
 }

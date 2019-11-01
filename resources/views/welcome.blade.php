@@ -162,7 +162,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-12 col-md text-right">
-                    <a href="#" class="">
+                    <a href="{{ route('lelayu')}}" class="">
                         Tampilkan semuanya
                         <i class="fas fa-arrow-alt-circle-right    "></i>
                     </a>

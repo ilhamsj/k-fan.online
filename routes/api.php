@@ -1,8 +1,6 @@
 <?php
 
-use App\Produk;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('lelayu/transaksi/{id}', 'BeritaLelayuController@showByTransaksi')->name('lelayu.transaksi');
-Route::get('produk/cari/', 'AdminController@cariProduk')->name('produk.cari');
+Route::get('/lelayu/transaksi/{id}', 'BeritaLelayuController@showByTransaksi')->name('lelayu.transaksi');
+Route::get('/produk/cari', 'AdminController@cariProduk')->name('produk.cari');
 
-Route::resource('user', 'UserController');
-Route::resource('lelayu', 'BeritaLelayuController');
+Route::resource('/user', 'UserController');
+Route::resource('/lelayu', 'BeritaLelayuController');
+Route::get('/chart', 'ChartController@statusTransaksi')->name('chart.status');
 
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
 // dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());
@@ -31,15 +30,5 @@ Route::resource('lelayu', 'BeritaLelayuController');
 // ->whereMonth('created_at', '2004')
 // ->whereYear('created_at', '2019')
 
-Route::get('test/', function () {
-    $items = DB::table('transaksis')
-                ->select(DB::raw('count(*) as jumlah, status'))
-                ->groupBy('status')
-                ->get();
-
-    return response()->json([
-        'data' => $items
-    ]);
-})->name('api.test');
 
 

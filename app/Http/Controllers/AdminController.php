@@ -30,7 +30,7 @@ class AdminController extends Controller
             ],
             3 => [
                 'title' => 'transaksi',
-                'jumlah' => count(\App\Transaksi::where('status', 'accept')->get()),
+                'jumlah' => count(\App\Transaksi::where('status', 'settlement')->get()),
                 'icon' => 'fas fa-dollar-sign',
                 'color' => 'border-left-info',
             ],

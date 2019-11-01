@@ -62,7 +62,7 @@
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: 'Graph Line',
+                            label: 'Transaksi',
                             data: data,
                             backgroundColor: 'rgba(0, 119, 204, 0.3)'
                         }]

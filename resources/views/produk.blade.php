@@ -3,7 +3,7 @@
 @section('content')
     <section class="py-4 my-4" id="produk">
       <div class="container">
-          <div class="row h-100-kfan align-items-center">
+          <div class="row">
               <div class="col-12 align-self-end">
                   <p class="lead">
                       Produk dan jasa yang kami tawarkan

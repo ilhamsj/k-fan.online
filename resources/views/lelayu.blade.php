@@ -4,7 +4,7 @@
 
     <section id="berita" class="py-4 my-4">
         <div class="container">
-            <div class="row h-100-kfan align-items-center mb-4 justify-content-center">
+            <div class="row">
                 <div class="col-12 align-self-end">
                     <p class="lead">
                         Turut berduka cita atas meninggalnya

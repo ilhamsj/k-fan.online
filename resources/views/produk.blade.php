@@ -14,7 +14,7 @@
                   <div class="card border-0 rounded">
                       <img class="card-img-top img-fluid rounded" src="{{ file_exists((public_path('images/produk/'.$item->foto ))) ? secure_url('images/produk', $item->foto) : $item->foto }}" alt="{{ $item->foto }}" srcset="">
                       <div class="card-img-overlay p-0 d-flex flex-wrap flex-row-reverse">
-                          <div class="card-body bg-dark align-self-end col-12 rounded-bottom">
+                          <div class="card-body bg-dark align-self-end col-12 rounded-bottom" style="opacity: .7">
                               <strong class="text-light d-none d-md-block">
                                   {{$item->nama}}
                               </strong>

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
 
-    function admin() 
+    public function admin() 
     {
         $data = [
             0 => [
@@ -48,11 +48,20 @@ class AdminController extends Controller
         ]);
     }
     
-    function user() {
+    public function user() {
         return view('admin.user.index');
     }
     
-    function lelayu() {
+    public function lelayu() {
         return view('admin.lelayu.index');
+    }
+
+    public function cariProduk (Request $request) {
+        $term = $request->q;
+        $user = \App\Produk::where('nama', 'LIKE', '%'.$term.'%')
+                        ->orWhere('kategori', 'LIKE', '%'.$term.'%')
+                        ->orWhere('harga', 'LIKE', '%'.$term.'%')
+                        ->get();
+        return response()->json($user);
     }
 }

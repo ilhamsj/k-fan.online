@@ -48,40 +48,27 @@
             type: "GET",
             url: "{{ route('api.test') }}",
             success: function (response) {
-
-                var x = Object.keys(response.data);
+                var labels = response.data.map(function (e) {
+                    return e.status
+                })
                 
-                var bulan           = x;
-                var dataPerbulan    = response.nilai;
+                var data = response.data.map(function (e) {
+                    return e.jumlah                    
+                })
 
                 var ctx = $('#myChart');
-                
-                var myLineChart = new Chart(ctx, {
-                    type: 'bar',
+                var config = {
+                type: 'bar',
                     data: {
-                        labels: bulan,
-                        datasets: [
-                            {
-                                label: 'Penjualan',
-                                data: dataPerbulan,
-                                backgroundColor: 'rgba(255, 99, 132, 1)',
-                                borderColor: 'rgba(255, 99, 132, 1)',
-                                borderWidth: 2,
-                                fill: false,
-                            }
-                        ],
-                    },
-                    options: {
-                        title: {
-                            display: true,
-                            text: 'Jumlah Pendapatan'
-                        },
-                        tooltips: {
-                            mode: 'index',
-                            intersect: false,
-                        },
+                        labels: labels,
+                        datasets: [{
+                            label: 'Graph Line',
+                            data: data,
+                            backgroundColor: 'rgba(0, 119, 204, 0.3)'
+                        }]
                     }
-                });
+                };
+                var chart = new Chart(ctx, config);
             },
             error: function(xhr) {
                 console.log(xhr.responseJSON);

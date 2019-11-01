@@ -32,27 +32,24 @@
                         </div>
                         <div class="card-body">
                             <a href="" id="btn-add">Tambah</a>
-                            @if (count($item->BeritaLelayu) == null)
-                            @else
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Nama</th>
-                                                <th>Alamat</th>
-                                                <th>Foto</th>
-                                                <th>Surat Kematian</th>
-                                                <th>Tanggal Lahir</th>
-                                                <th>Tanggal Wafat</th>
-                                                <th class="text-center">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama</th>
+                                            <th>Alamat</th>
+                                            <th>Foto</th>
+                                            <th>Surat Kematian</th>
+                                            <th>Tanggal Lahir</th>
+                                            <th>Tanggal Wafat</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            @endif
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

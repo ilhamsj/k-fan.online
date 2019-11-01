@@ -41,8 +41,6 @@
 
 @push('styles')
     <style>
-
-        
         img {
             -webkit-filter: grayscale(1);
             -webkit-transition: all .3s;

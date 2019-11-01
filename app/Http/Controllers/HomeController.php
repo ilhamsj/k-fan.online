@@ -38,10 +38,19 @@ class HomeController extends Controller
 
     public function lelayu()
     {
-        $lelayu = \App\BeritaLelayu::all();
+        $lelayu = \App\BeritaLelayu::orderBy('created_at', 'desc')->get();
 
         return view('lelayu')->with([
             'lelayu' => $lelayu,
+        ]);
+    }
+
+    public function produk()
+    {
+        $items = \App\Produk::orderBy('created_at', 'desc')->get();
+
+        return view('produk')->with([
+            'produks' => $items,
         ]);
     }
 }

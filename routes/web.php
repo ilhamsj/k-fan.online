@@ -18,6 +18,7 @@ Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/paket/{id}', 'PaketController@show')->name('paket.show');
 Route::get('/finish', 'HomeController@finish');
 Route::get('/lelayu', 'HomeController@lelayu')->name('lelayu');
+Route::get('/produk', 'HomeController@produk')->name('produk');
 
 Route::get('/admin', 'AdminController@admin')->name('admin.home');
 Route::get('/admin/user', 'AdminController@user')->name('admin.user');

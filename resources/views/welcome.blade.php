@@ -44,7 +44,7 @@
                     </p>
                 </div>
 
-                @foreach ($produks as $item)                
+                @foreach ($produks as $item)
                 <div class="col-6 col-md-3 mb-4 produk-jasa align-self-start">
                     <div class="card border-0 rounded">
                         <img class="card-img-top img-fluid rounded" src="{{ file_exists((public_path('images/produk/'.$item->foto ))) ? secure_url('images/produk', $item->foto) : $item->foto }}" alt="{{ $item->foto }}" srcset="">
@@ -62,7 +62,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md text-right">
-                    <a href="#" class="">
+                    <a href="{{ route('produk') }}" class="">
                         Tampilkan semuanya
                         <i class="fas fa-arrow-alt-circle-right    "></i>
                     </a>

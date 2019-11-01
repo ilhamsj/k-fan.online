@@ -46,7 +46,7 @@
     
         $.ajax({
             type: "GET",
-            url: "{{ route('api.test') }}",
+            url: "{{ route('chart.status') }}",
             success: function (response) {
                 var labels = response.data.map(function (e) {
                     return e.status

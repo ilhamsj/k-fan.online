@@ -53,16 +53,16 @@
                 })
                 
                 var data = response.data.map(function (e) {
-                    return e.jumlah                    
+                    return e.jumlah
                 })
 
                 var ctx = $('#myChart');
                 var config = {
-                type: 'bar',
+                    type: 'line',
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: 'Transaksi',
+                            label: 'Transaksi Status',
                             data: data,
                             backgroundColor: 'rgba(0, 119, 204, 0.3)'
                         }]

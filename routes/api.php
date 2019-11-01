@@ -27,20 +27,19 @@ Route::resource('lelayu', 'BeritaLelayuController');
 
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
 // dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());
+// ->whereDay('created_at', $day)
+// ->whereMonth('created_at', '2004')
+// ->whereYear('created_at', '2019')
 
 Route::get('test/', function () {
     $items = DB::table('transaksis')
                 ->select(DB::raw('count(*) as jumlah, status'))
-                // ->whereDay('created_at', $day)
-                // ->whereMonth('created_at', '2004')
-                // ->whereYear('created_at', '2019')
                 ->groupBy('status')
                 ->get();
 
     return response()->json([
         'data' => $items
     ]);
-    
 })->name('api.test');
 
 

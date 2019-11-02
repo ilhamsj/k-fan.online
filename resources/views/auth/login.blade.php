@@ -4,7 +4,7 @@
     <section class="bg-primary">
         <div class="container">
             <div class="row justify-content-center align-items-center" style="min-height:100vh">
-                <div class="col-12 col-sm-4">
+                <div class="col-12 col-md-4">
                     <div class="card shadow-sm border-0">
                         <div class="card-header rounded-top border-0">
                             <a class="navbar-brand" href="/">

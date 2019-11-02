@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center h-50-kfan justify-content-center align-items-center">
-        <div class="col-md">
-            <div class="card">
+    <section class="bg-primary">
+        <div class="container">
+            <div class="row justify-content-center align-items-center" style="min-height:100vh">
+                <div class="col-12 col-md-4">
+                    <div class="card shadow-sm border-0">
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
@@ -40,8 +41,8 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

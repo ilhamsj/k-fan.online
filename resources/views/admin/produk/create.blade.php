@@ -21,7 +21,7 @@
 
                 <div class="form-group">
                     <label for="foto"> Foto </label>
-                    <input id="foto" type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') : 'holder.js/255x382?random=yes&auto=yes&texmode=exact'}}" autocomplete="foto" autofocus>
+                    <input id="foto" type="file" class="form-control-file @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') ? old('foto') : 'holder.js/255x382?random=yes&auto=yes&texmode=exact'}}">
 
                     @error('foto')
                         <span class="invalid-feedback" role="alert">

@@ -22,6 +22,7 @@ Route::get('/produk/cari', 'AdminController@cariProduk')->name('produk.cari');
 
 Route::resource('/user', 'UserController');
 Route::resource('/lelayu', 'BeritaLelayuController');
+Route::resource('/layanan', 'LayananController');
 Route::get('/chart', 'ChartController@statusTransaksi')->name('chart.status');
 Route::get('/test', 'ChartController@test')->name('chart.test');
 

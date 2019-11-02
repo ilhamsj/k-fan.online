@@ -20,56 +20,68 @@
           <table class="table table-bordered">
               <thead>
                   <tr>
+                      <th class="text-center">Action</th>
                       <th>No</th>
                       <th>Nama</th>
                       <th>Harga</th>
                       <th>Kategori</th>
                       <th>Foto</th>
-                      <th>Mitra</th>
-                      <th class="text-center">Action</th>
+                      <th>Create</th>
                   </tr>
               </thead>
               <tbody>
-                  @foreach ($items as $item)
-                  <tr>
-                      <td>{{$no++}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->rupiah($item->harga) }}</td>
-                      <td>{{$item->kategori}}</td>
-                      <td>
-                           <img class="img-fluid rounded" src="{{ file_exists((public_path('images/produk/'.$item->foto ))) ? secure_url('images/produk', $item->foto) : $item->foto }}" alt="{{ $item->foto }}" srcset="">
-                      </td>
-                      <td>{{ $item->user->name }}</td>
-                      <td class="d-sm-flex justify-content-center">
-                          <a href="{{ route('produk.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
-                              <span class="icon text-white-50">
-                                  <i class="fas fa-pencil-alt"></i>
-                              </span>
-                          </a>
-                          <form action="{{ route('produk.destroy', $item->id) }}" method="post">
-                              @csrf
-                              @method('DELETE')
-                              <button class="btn btn-danger btn-icon-split btn-sm" type="submit">
-                                  <span class="icon text-white-50">
-                                      <i class="fas fa-trash-alt"></i>
-                                  </span>
-                              </button>
-                          </form>
-                      </td>
-                  </tr>
-                  @endforeach
+
               </tbody>
           </table>
       </div>      
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="c" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                Body
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @push('scripts')
     <script>
-      $(document).ready(function() {
-          $('table').DataTable();
-      });
+        $('table').DataTable({
+            order : [[0,'desc'], [1,'desc']],
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('layanan.index') }}",
+            columns: [
+                {data: 'action', name: 'action', orderable: false, searchable: false},
+                {data: 'DT_RowIndex', name: 'id' },
+                {data: 'nama', name: 'nama' },
+                {data: 'harga', name: 'harga' },
+                {data: 'kategori', name: 'kategori' },
+                {data: 'foto', name: 'foto' },
+                {data: 'created_at', name: 'created_at' },
+            ],
+        });
+
+        $(selector).click(function (e) { 
+            e.preventDefault();
+            
+        });
     </script>
 @endpush

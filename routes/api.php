@@ -23,12 +23,11 @@ Route::get('/produk/cari', 'AdminController@cariProduk')->name('produk.cari');
 Route::resource('/user', 'UserController');
 Route::resource('/lelayu', 'BeritaLelayuController');
 Route::get('/chart', 'ChartController@statusTransaksi')->name('chart.status');
+Route::get('/test', 'ChartController@test')->name('chart.test');
 
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
 // dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());
 // ->whereDay('created_at', $day)
 // ->whereMonth('created_at', '2004')
 // ->whereYear('created_at', '2019')
-
-
 

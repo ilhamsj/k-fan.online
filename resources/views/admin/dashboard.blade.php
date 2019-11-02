@@ -26,6 +26,13 @@
         </div>
         @endforeach
         <div class="w-100"></div>
+        <div class="col-12 mb-4">
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                    <canvas id="test"></canvas>
+                </div>
+            </div>
+        </div>
         <div class="col-12">
             <div class="card border-0 shadow">
                 <div class="card-body">
@@ -43,7 +50,6 @@
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script>
     <script>
-    
         $.ajax({
             type: "GET",
             url: "{{ route('chart.status') }}",
@@ -57,6 +63,38 @@
                 })
 
                 var ctx = $('#myChart');
+                var config = {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Transaksi Status',
+                            data: data,
+                            backgroundColor: 'rgba(0, 119, 204, 0.3)'
+                        }]
+                    }
+                };
+                var chart = new Chart(ctx, config);
+            },
+            error: function(xhr) {
+                console.log(xhr.responseJSON);
+            }
+        });
+    </script>
+    <script>
+        $.ajax({
+            type: "GET",
+            url: "{{ route('chart.test') }}",
+            success: function (response) {
+                var labels = response.data.map(function (e) {
+                    return e.created_at
+                })
+                
+                var data = response.data.map(function (e) {
+                    return e.jumlah
+                })
+
+                var ctx = $('#test');
                 var config = {
                     type: 'line',
                     data: {

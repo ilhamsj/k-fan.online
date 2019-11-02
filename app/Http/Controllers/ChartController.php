@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Transaksi;
 use Illuminate\Support\Facades\DB;
 
 class ChartController extends Controller
@@ -11,6 +12,14 @@ class ChartController extends Controller
                     ->select(DB::raw('count(*) as jumlah, status'))
                     ->groupBy('status')
                     ->get();
+    
+        return response()->json([
+            'data' => $items
+        ]);
+    }
+ 
+    public function test() {
+        $items = Transaksi::where('status', 'capture')->get();
     
         return response()->json([
             'data' => $items

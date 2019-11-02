@@ -53,7 +53,7 @@
                         <td>{{ $item->rupiah($item->harga) }}</td>
                         <td>{{$item->diskon}}</td>
                         <td>
-                            {{-- <img class="img-fluid rounded" src="{{$item->foto}}" alt="{{$item->foto}}" srcset=""> --}}
+                            <img class="img-fluid rounded" src="{{$item->foto}}" alt="{{$item->foto}}" srcset="">
                         </td>
                         <td class="d-sm-flex justify-content-center">
                             <a href="{{ route('paket.edit', $item->id) }}" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
@@ -161,26 +161,26 @@
                 placeholder: "Pilih"
         })
 
-            $('#tambahPaketProduk').find('#produk_id').select2({
-                dropdownParent: $('#tambahPaketProduk .modal-content'),
-                theme: 'bootstrap4',
-                allowClear: true,
-                placeholder: "Pilih",
-                ajax: {
-                    url: '{{ route("produk.cari") }}',
-                    dataType: 'json',
-                    type: 'GET',
-                    processResults: function (data) {
-                        return {
-                            results:  $.map(data, function (item) {
-                                return {
-                                    text: item.nama + ' | ' + item.kategori + ' | ' + item.harga,
-                                    id: item.id
-                                }
-                            })
-                        };
-                    },
-                }
-            });
+        $('#tambahPaketProduk').find('#produk_id').select2({
+            dropdownParent: $('#tambahPaketProduk .modal-content'),
+            theme: 'bootstrap4',
+            allowClear: true,
+            placeholder: "Pilih",
+            ajax: {
+                url: '{{ route("produk.cari") }}',
+                dataType: 'json',
+                type: 'GET',
+                processResults: function (data) {
+                    return {
+                        results:  $.map(data, function (item) {
+                            return {
+                                text: item.nama + ' | ' + item.kategori + ' | ' + item.harga,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+            }
+        });
       </script>
 @endpush

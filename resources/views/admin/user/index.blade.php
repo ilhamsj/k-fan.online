@@ -98,9 +98,9 @@
 @endsection
 
 @push('scripts')
-    <script>
-        
+    <script>  
         $(document).ready(function () {
+
             // Read
             $('table').DataTable({
                 order : [[0,'desc'], [1,'desc']],
@@ -118,136 +118,146 @@
                     {data: 'created_at', name: 'created_at' },
                 ],
             });
-        });
 
-        // Hapus
-        $('table').on('click','.btnDelete',function(e){
-            e.preventDefault();
+            // Hapus
+            $('table').on('click','.btnDelete',function(e){
+                e.preventDefault();
+                
+                if(confirm()) {
+                    var urlDelete = $(this).attr('data-url');
+                    var idDelete = $(this).attr('data-id');
+                    $.ajax({
+                        type: "DELETE",
+                        url: urlDelete,
+                        data: {
+                            _token: "{{csrf_token()}}",
+                        },
+                        dataType: "json",
+                        success: function (response) {
+                            sukses(response.success, 'table')
+                        }
+                    });
+                }
+            });
+
+            $('#btnTambah').click(function (e) { 
+                e.preventDefault();
+                $('#modelId').modal('show'); 
+                
+                $('#modelId > div > div > div.modal-body > form > div:nth-child(7) > button.btn.btn-primary.shadow-sm').attr('id', 'btnStore').html('Save');
+                
+                $('#password').removeAttr('disabled').parent().removeClass('collapse');
+                $('#password-confirm').removeAttr('disabled').parent().removeClass('collapse');
+            });
             
-            if(confirm()) {
-                var urlDelete = $(this).attr('data-url');
-                var idDelete = $(this).attr('data-id');
+            // tambah data
+            $('#modelId').on('click', '#btnStore', function (e) {
+                e.preventDefault();
+                var form = $('#modelId form');
+                
+                $('.invalid-feedback').remove();
+                $('.form-group').find('input').removeClass("is-invalid");
+
                 $.ajax({
-                    type: "DELETE",
-                    url: urlDelete,
-                    data: {
-                        _token: "{{csrf_token()}}",
-                    },
-                    dataType: "json",
+                    type: "POST",
+                    url: "{{route('user.store')}}",
+                    data: form.serialize(),
                     success: function (response) {
                         sukses(response.success, 'table')
+                    },
+                    error: function (xhr) {
+                        displayError(xhr.responseJSON);
                     }
                 });
+            });
+
+            // Show the modal
+            $('table').on('click', '.btnEdit', function (e) { 
+                e.preventDefault(); 
+                $('#modelId').modal('show');
+                
+                var url = $(this).attr('data-url');
+                var id = $(this).attr('data-id');
+                var status = $(this).attr('data-status');
+
+                $('#password').attr('disabled', true).parent().addClass('collapse');
+                $('#password-confirm').attr('disabled', true).parent().addClass('collapse');
+                $('#status').val(status).change()
+
+                $('#modelId form').attr('data-id', id);
+                $('#modelId form').attr('action', url);
+                $('#modelId > div > div > div.modal-body > form > div:nth-child(7) > button.btn.btn-primary.shadow-sm').attr('id', 'btnUpdate').html('Update');
+
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    success: function (response) {
+                        $('#name').val(response.name);
+                        $('#email').val(response.email);
+                    }
+                }); 
+            });
+
+            // update the form
+            $('#modelId').on('click', '#btnUpdate', function (e) { 
+                e.preventDefault();
+                var form = $('#modelId form');
+                var id = $(form).attr('data-id');
+                var url = $(form).attr('action');
+                
+                $('.invalid-feedback').remove();
+                $('.form-group').find('input').removeClass("is-invalid");
+
+                $.ajax({
+                    type: "PUT",
+                    url: url,
+                    data: form.serialize(),
+                    success: function (response) {
+                        console.log(response);
+                        sukses(response.success, 'table')
+                    },
+                    error: function (xhr) {
+                        displayError(xhr.responseJSON);
+                    }
+                });
+                
+            });
+
+            // show error
+            function displayError(res) {
+                if ($.isEmptyObject(res) == false)
+                {
+                    $.each(res.errors, function (key, value) {
+                        $('#' + key)
+                            .closest('.form-group')
+                            .append('<span class="invalid-feedback" role="alert"> <strong>'+ value +'</strong> </span>')
+                            .find('input').addClass("is-invalid")
+                    })
+                }
             }
-        });
 
-        $('#btnTambah').click(function (e) { 
-            e.preventDefault();
-            $('#modelId').modal('show'); 
-            $('#modelId').find('button:last-child').attr('id', 'btnStore').html('Save');
-            
-            $('#password').removeAttr('disabled').parent().removeClass('collapse');
-            $('#password-confirm').removeAttr('disabled').parent().removeClass('collapse');
-        });
-        
-        // tambah data
-        $('#modelId').on('click', '#btnStore', function (e) {
-            e.preventDefault();
-            var form = $('#modelId form');
-            
-            $('.invalid-feedback').remove();
-            $('.form-group').find('input').removeClass("is-invalid");
+            // message
+            function sukses(message, table) {
+                $('#modelId').modal('hide')
+                $('.alert').find('strong').html(message)
+                $('.alert').show();
+                $('#modelId form').trigger('reset');
 
-            $.ajax({
-                type: "POST",
-                url: "{{route('user.store')}}",
-                data: form.serialize(),
-                success: function (response) {
-                    sukses(response.success, 'table')
-                },
-                error: function (xhr) {
-                    displayError(xhr.responseJSON);
-                }
-            });
-        });
-
-        // Show the modal
-        $('table').on('click', '.btnEdit', function (e) { 
-            e.preventDefault(); 
-            $('#modelId').modal('show');
-            
-            var url = $(this).attr('data-url');
-            var id = $(this).attr('data-id');
-
-            // $('#password').parent().toggleClass('collapse');
-            $('#password').attr('disabled', true).parent().addClass('collapse');
-            $('#password-confirm').attr('disabled', true).parent().addClass('collapse');
-
-            $('#modelId form').attr('data-id', id);
-            $('#modelId form').attr('action', url);
-            $('#modelId').find('button:last-child').attr('id', 'btnUpdate').html('Update');
-
-            $.ajax({
-                type: "GET",
-                url: url,
-                success: function (response) {
-                    $('#name').val(response.name);
-                    $('#email').val(response.email);
-                }
-            }); 
-        });
-
-        // 2. update the form
-        $('#modelId').on('click', '#btnUpdate', function (e) { 
-            e.preventDefault();
-            var form = $('#modelId form');
-            var id = $(form).attr('data-id');
-            var url = $(form).attr('action');
-            
-            $('.invalid-feedback').remove();
-            $('.form-group').find('input').removeClass("is-invalid");
-
-            $.ajax({
-                type: "PUT",
-                url: url,
-                data: form.serialize(),
-                success: function (response) {
-                    console.log(response);
-                    sukses(response.success, 'table')
-                },
-                error: function (xhr) {
-                    displayError(xhr.responseJSON);
-                }
-            });
-            
-        });
-
-        // show error
-        function displayError(res) {
-            if ($.isEmptyObject(res) == false)
-            {
-                $.each(res.errors, function (key, value) {
-                    $('#' + key)
-                        .closest('.form-group')
-                        .append('<span class="invalid-feedback" role="alert"> <strong>'+ value +'</strong> </span>')
-                        .find('input').addClass("is-invalid")
-                })
+                $(table).DataTable().ajax.reload();
+                $('.alert').delay(2500).slideUp(200, function() {
+                    $(this).toggleClass('collapse');
+                });
             }
-        }
+            
+            $('.alert').toggleClass('collapse');
 
-        // message
-        function sukses(message, table) {
-            $('#modelId').modal('hide')
-            $('.alert').find('strong').html(message)
-            $('.alert').show();
-            $('#modelId form').trigger('reset');
-
-            $(table).DataTable().ajax.reload();
-            $('.alert').delay(2500).slideUp(200, function() {
-                $(this).toggleClass('collapse');
+            $('#modelId').on('hidden.bs.modal', function () {
+                var form = $('#modelId form');
+                form.trigger('reset');
+                $('input[type=datetime-local]').removeAttr('value');
+                $('.invalid-feedback').remove();
+                $('.form-group').find('input').removeClass("is-invalid");
             });
-        }
-        
-        $('.alert').toggleClass('collapse');
+        });
     </script>
 @endpush

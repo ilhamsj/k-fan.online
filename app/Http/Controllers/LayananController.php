@@ -40,8 +40,7 @@ class LayananController extends Controller
 
     public function show($id)
     {
-        $item = \App\Produk::find($id);
-        return response()->json($item);
+
     }
 
     public function edit($id)

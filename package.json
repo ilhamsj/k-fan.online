@@ -22,13 +22,13 @@
         "lodash": "^4.17.13",
         "popper.js": "^1.16.0",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.23.2",
+        "sass": "^1.23.3",
         "sass-loader": "^7.1.0",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
         "@ttskch/select2-bootstrap4-theme": "^1.2.3",
-        "chart.js": "^2.9.1",
+        "chart.js": "^2.9.2",
         "datatables.net": "^1.10.20",
         "datatables.net-bs4": "^1.10.20",
         "intro.js": "^2.9.3",

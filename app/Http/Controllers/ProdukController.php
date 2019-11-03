@@ -2,80 +2,70 @@
 
 namespace App\Http\Controllers;
 
-use App\Produk;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProdukStoreRequest;
 
 class ProdukController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        $items = Produk::orderBy('updated_at', 'desc')->get();
-        return view('admin.produk.index')->with([
-            'items' => $items,
-            'no' => 1,
-        ]);
+        $items = \App\Produk::all();
+
+        return datatables($items)
+            ->addIndexColumn()
+            ->addColumn('action', function ($items) {
+                return 
+                '<a href="" data-url="'.route('produk.update', $items->id).'" data-edit="'.route('produk.edit', $items->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i></span></a>
+                 <a href="" data-url="'.route('produk.destroy', $items->id).'" class="btnDestroy btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i></span></a>';
+            })
+            ->editColumn('foto', function ($items) {
+                return '<img src="'.$items->foto.'" class="img-fluid rounded">';
+            })
+            ->rawColumns(['foto', 'action'])
+            ->toJson();
     }
 
     public function create()
     {
-        return view('admin.produk.create');
+        
     }
 
-    public function store(Request $request)
+    public function store(ProdukStoreRequest $request)
     {
-        $file_content = $request->file('foto');
-        Storage::disk('public_uploads')->put('produk', $file_content);
-
-        $produk = Produk::create($request->all());
-        $produk->foto = $request->file('foto')->hashName();
-        $produk->save();
-
-        return redirect()->route('produk.index')->with([
-            'status' => 'Tambah data Berhasil'
+        $item = \App\Produk::create($request->all());
+        return response()->json([
+            'status'  => 'success',
+            'item'      => $item
         ]);
     }
 
     public function show($id)
     {
-        //
+
     }
 
     public function edit($id)
     {
-        $item = Produk::find($id);
-        return view('admin.produk.edit')->with([
-            'item' => $item,
-        ]);
+        $item = \App\Produk::find($id);
+        return response()->json($item);
     }
 
-    public function update(ProdukStoreRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        Produk::find($id)->update($request->all());
-
-        return redirect()->route('produk.index')->with([
-            'status' => 'Update data berhasil'
+        $item = \App\Produk::find($id);
+        $item->update($request->all());
+        return response()->json([
+            'status'  => 'success',
         ]);
     }
 
     public function destroy($id)
     {
-        $item = Produk::find($id);
+        $item = \App\Produk::find($id);
         $item->delete();
-        
-        $foto = public_path('images/produk/'.$item->foto );
-        if(file_exists($foto)) {
-            unlink($foto);
-        }
-        
-        return redirect()->back()->with([
-            'status' => 'Hapus data berhasil'
+    
+        return response()->json([
+            'status'  => 'success',
         ]);
     }
 }

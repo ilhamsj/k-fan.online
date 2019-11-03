@@ -9,7 +9,7 @@
     <h1 class="h3 mb-2 text-gray-800">
         Data Produk & Jasa
     </h1>
-  <a href="{{ route('produk.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="btnAdd">
+  <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="btnAdd">
     <i class="fa fa-plus-circle fa-sm text-white-50" aria-hidden="true"></i>
     Tambah
   </a>
@@ -140,7 +140,7 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            ajax: "{{ route('layanan.index') }}",
+            ajax: "{{ route('produk.index') }}",
             columns: [
                 {data: 'action', name: 'action', orderable: false, searchable: false},
                 {data: 'DT_RowIndex', name: 'id' },
@@ -220,7 +220,7 @@
         $('#formLayanan').on('click', '#btnStore', function (e) {
             e.preventDefault();
 
-            var url = '{{ route("layanan.store")}}'
+            var url = '{{ route("produk.store")}}'
             var form = $('#formLayanan form');
             
             $.ajax({

@@ -51,7 +51,7 @@
                 'title' => 'produk',
                 'icon' => 'fa fa-table',
                 'color' => 'border-left-info',   
-                'link'  => route('produk.index')
+                'link'  => route('admin.produk')
             ],
             3 => [
                 'title' => 'paket',

@@ -55,6 +55,10 @@ class AdminController extends Controller
     public function lelayu() {
         return view('admin.lelayu.index');
     }
+    
+    public function produk() {
+        return view('admin.produk.index');
+    }
 
     public function cariProduk (Request $request) {
         $term = $request->q;

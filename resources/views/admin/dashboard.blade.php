@@ -29,7 +29,8 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow">
                 <div class="card-body">
-                    <form class="row">
+                    <form class="row" accept="{{ route('grafik.transaksi') }}">
+                        @csrf
                         <div class="form-group col">
                             <input type="date" class="form-control" id="from_date" name="from_date" value="1990-01-01">
                         </div>

@@ -78,10 +78,5 @@
                 {data: 'created_at', name: 'created_at' },
             ],
         });
-
-        $(selector).click(function (e) { 
-            e.preventDefault();
-            
-        });
     </script>
 @endpush

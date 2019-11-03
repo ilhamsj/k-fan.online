@@ -18,7 +18,7 @@ class LayananController extends Controller
                  <a href="" data-url="'.route('lelayu.destroy', $items->id).'" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$items->id.'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
             })
             ->editColumn('foto', function ($items) {
-                return '<img data-src="'.$items->foto.'" class="img-fluid rounded">';
+                return '<img src="'.$items->foto.'" class="img-fluid rounded">';
             })
             ->rawColumns(['foto', 'action'])
             ->toJson();

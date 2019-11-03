@@ -91,23 +91,20 @@
             }
         });
     </script>
-    <script>
-
-        var form = $('#content > div > div.row > div.col-12.mb-4 > div > div:nth-child(1) > form');
-        
+    <script>        
         $('#from_date').change(function (e) { 
-            e.preventDefault();
-            abc()
+            grafikTransaksi()
         });
         
         $('#to_date').change(function (e) { 
-            e.preventDefault();
-            abc()
+            grafikTransaksi()
         });
 
-        abc()
+        grafikTransaksi()
 
-        function abc() {
+        function grafikTransaksi() {
+            var form = $('#content > div > div.row > div.col-12.mb-4 > div > div:nth-child(1) > form');
+
             $.ajax({
             type: "POST",
             url: "{{ route('chart.store') }}",

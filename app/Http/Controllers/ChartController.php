@@ -41,6 +41,19 @@ class ChartController extends Controller
         ]);
     }
 
+    public function test() {
+        $items = DB::table('transaksis')
+                ->orderBy('created_at', 'asc')
+                ->get()
+                ->groupBy(function($date) {
+                    return \Carbon\Carbon::parse($date->created_at)->format('Y'); // grouping by years
+                    // return \Carbon\Carbon::parse($date->created_at)->format('m'); // grouping by months
+                });
+        return response()->json([
+            'data' => $items
+        ]);
+    }
+
     // public function test() {
     //     $items = DB::table('transaksis')
     //                 // ->select(DB::raw('sum(*) as jumlah, paket_id'))

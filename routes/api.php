@@ -28,6 +28,10 @@ Route::get('/grafik/transaksi/status', 'ChartController@transaksi_status')->name
 Route::post('/grafik/transaksi', 'ChartController@transaksi')->name('grafik.transaksi');
 Route::get('/grafik/paket', 'ChartController@paket')->name('grafik.paket');
 
+Route::get('/test', 'ChartController@test')->name('test');
+
+
+
 
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
 // dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());

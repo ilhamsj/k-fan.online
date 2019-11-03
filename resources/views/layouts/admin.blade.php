@@ -354,6 +354,7 @@
   </div>
 
   <script src="{{ secure_url('js/app.js') }}"></script>
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script> --}}
   <script>
       $("#pesanSukses").delay(2500).slideUp(200, function() {
           $(this).alert('close');
@@ -364,6 +365,7 @@
         $('#logoutForm').submit();
       });
 
+      // Click Animation
       
   </script>
   @stack('scripts')

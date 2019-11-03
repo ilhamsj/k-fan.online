@@ -67,19 +67,19 @@
 @push('scripts')
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script> --}}
     <script>
-        grafikTransaksi()
-        statusTransaksi()
-        grafikTerlaris()
+        transaksi()
+        transaksi_status()
+        transaksi_per_paket()
 
         $('#from_date').change(function (e) { 
-            grafikTransaksi()
+            transaksi()
         });
         
         $('#to_date').change(function (e) { 
-            grafikTransaksi()
+            transaksi()
         });
 
-        function grafikTransaksi() {
+        async function transaksi() {
             var form = $('#content > div > div.row > div.col-12.mb-4 > div > div:nth-child(1) > form');
 
             $.ajax({
@@ -115,7 +115,7 @@
             });
         }
         
-        function statusTransaksi() {
+        function transaksi_status() {
             $.ajax({
                 type: "GET",
                 url: "{{ route('grafik.transaksi.status') }}",
@@ -148,7 +148,7 @@
             });
         }
         
-        function grafikTerlaris() {
+        function transaksi_per_paket() {
             $.ajax({
                 type: "GET",
                 url: "{{route('grafik.paket')}}",

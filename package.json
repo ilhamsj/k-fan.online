@@ -32,6 +32,7 @@
         "datatables.net": "^1.10.20",
         "datatables.net-bs4": "^1.10.20",
         "intro.js": "^2.9.3",
+        "jquery.easing": "^1.4.1",
         "select2": "^4.0.10",
         "startbootstrap-sb-admin-2": "^4.0.7",
         "swiper": "^5.2.0"

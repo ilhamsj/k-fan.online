@@ -29,6 +29,16 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow">
                 <div class="card-body">
+                    <form class="row">
+                        <div class="form-group col">
+                            <input type="date" class="form-control" id="from_date" name="from_date" value="2018-01-01">
+                        </div>
+                        <div class="form-group col">
+                            <input type="date" class="form-control" id="to_date" name="to_date" value="2019-12-31">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body">
                     <canvas id="test"></canvas>
                 </div>
             </div>
@@ -64,7 +74,7 @@
 
                 var ctx = $('#myChart');
                 var config = {
-                    type: 'line',
+                    type: 'bar',
                     data: {
                         labels: labels,
                         datasets: [{
@@ -82,35 +92,54 @@
         });
     </script>
     <script>
-        $.ajax({
-            type: "GET",
-            url: "{{ route('chart.test') }}",
-            success: function (response) {
-                var labels = response.data.map(function (e) {
-                    return e.created_at
-                })
-                
-                var data = response.data.map(function (e) {
-                    return e.jumlah
-                })
 
-                var ctx = $('#test');
-                var config = {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Transaksi Status',
-                            data: data,
-                            backgroundColor: 'rgba(0, 119, 204, 0.3)'
-                        }]
-                    }
-                };
-                var chart = new Chart(ctx, config);
-            },
-            error: function(xhr) {
-                console.log(xhr.responseJSON);
-            }
+        var form = $('#content > div > div.row > div.col-12.mb-4 > div > div:nth-child(1) > form');
+        
+        $('#from_date').change(function (e) { 
+            e.preventDefault();
+            abc()
         });
+        
+        $('#to_date').change(function (e) { 
+            e.preventDefault();
+            abc()
+        });
+
+        abc()
+
+        function abc() {
+            $.ajax({
+            type: "POST",
+            url: "{{ route('chart.store') }}",
+            data: form.serialize(),
+                success: function (response) {
+                    var labels = response.data.map(function (e) {
+                        return e.created_at
+                    })
+                    
+                    var data = response.data.map(function (e) {
+                        return e.jumlah
+                    })
+
+                    var ctx = $('#test');
+                    var config = {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Transaksi',
+                                data: data,
+                                backgroundColor: 'rgb(63, 101, 211, 0.5)'
+                            }]
+                        }
+                    };
+                    var chart = new Chart(ctx, config);
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseJSON);
+                }
+            });
+        }
+        
     </script>
 @endpush

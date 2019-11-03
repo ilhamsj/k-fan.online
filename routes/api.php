@@ -26,6 +26,8 @@ Route::resource('/produk', 'ProdukController');
 
 Route::get('/chart', 'ChartController@statusTransaksi')->name('chart.status');
 Route::get('/test', 'ChartController@test')->name('chart.test');
+Route::get('/test/{from}/{to}', 'ChartController@test')->name('chart.test');
+Route::post('/test', 'ChartController@testPost')->name('chart.store');
 
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
 // dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());

@@ -14,8 +14,8 @@ class LayananController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($items) {
                 return 
-                '<a href="" data-url="'.route('lelayu.show', $items->id).'" data-id="'.$items->id.'"  class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
-                 <a href="" data-url="'.route('lelayu.destroy', $items->id).'" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$items->id.'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
+                '<a href="" data-url="'.route('layanan.update', $items->id).'" data-edit="'.route('layanan.edit', $items->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i></span></a>
+                 <a href="" data-url="'.route('layanan.destroy', $items->id).'" class="btnDestroy btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i></span></a>';
             })
             ->editColumn('foto', function ($items) {
                 return '<img src="'.$items->foto.'" class="img-fluid rounded">';
@@ -29,10 +29,13 @@ class LayananController extends Controller
         
     }
 
-    public function store(\App\Http\Requests\LelayuStoreRequest $request)
+    public function store(Request $request)
     {
-        \App\Produk::create($request->all());
-        return response()->json($request->all());
+        $item = \App\Produk::create($request->all());
+        return response()->json([
+            'status'  => 'success',
+            'item'      => $item
+        ]);
     }
 
     public function show($id)
@@ -43,15 +46,17 @@ class LayananController extends Controller
 
     public function edit($id)
     {
-        $item = \App\Produk::where('transaksi_id', 'a317a7d-dcd5-3a61-a705-5a49c5d5d23d')->get();
+        $item = \App\Produk::find($id);
         return response()->json($item);
     }
 
-    public function update(\App\Http\Requests\LelayuStoreRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $item = \App\Produk::find($id);
         $item->update($request->all());
-        return response()->json($item);
+        return response()->json([
+            'status'  => 'success',
+        ]);
     }
 
     public function destroy($id)
@@ -61,7 +66,6 @@ class LayananController extends Controller
     
         return response()->json([
             'status'  => 'success',
-            'success' => $item->name . ' Berhasil dihapus'
         ]);
     }
 }

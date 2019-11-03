@@ -24,11 +24,10 @@ Route::resource('/user', 'UserController');
 Route::resource('/lelayu', 'BeritaLelayuController');
 Route::resource('/produk', 'ProdukController');
 
-Route::get('/chart', 'ChartController@statusTransaksi')->name('chart.status');
-Route::get('/test', 'ChartController@test')->name('chart.test');
-Route::post('/test', 'ChartController@testPost')->name('chart.store');
+Route::get('/grafik/transaksi/status', 'ChartController@transaksi_status')->name('grafik.transaksi.status');
+Route::post('/grafik/transaksi', 'ChartController@transaksi')->name('grafik.transaksi');
+Route::get('/grafik/paket', 'ChartController@paket')->name('grafik.paket');
 
-Route::get('/test', 'ChartController@test')->name('chart.test');
 
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
 // dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());

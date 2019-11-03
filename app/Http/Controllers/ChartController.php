@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ChartController extends Controller
 {
-    public function statusTransaksi() {
+    public function transaksi_status() {
         $items = DB::table('transaksis')
                     ->select(DB::raw('count(*) as jumlah, status'))
                     ->groupBy('status')
@@ -19,7 +19,7 @@ class ChartController extends Controller
         ]);
     }
 
-    public function testPost(Request $request) {
+    public function transaksi(Request $request) {
         $items = Transaksi::where('status', 'capture')
                     ->whereBetween('created_at', [$request->from_date, $request->to_date])
                     ->orderBy('created_at', 'asc')
@@ -30,7 +30,7 @@ class ChartController extends Controller
         ]);
     }
 
-    public function test() {
+    public function paket() {
         $items = DB::table('transaksis')
                 ->select(DB::raw('count(*) as jumlah, paket_id'))
                 ->groupBy('paket_id')
@@ -40,4 +40,17 @@ class ChartController extends Controller
             'data' => $items
         ]);
     }
+
+    // public function test() {
+    //     $items = DB::table('transaksis')
+    //                 // ->select(DB::raw('sum(*) as jumlah, paket_id'))
+    //                 ->where('status', 'capture')
+    //                 ->sum('jumlah');
+    //             // ->groupBy('paket_id')
+    //             // ->get();
+    
+    //     return response()->json([
+    //         'data' => $items
+    //     ]);
+    // }
 }

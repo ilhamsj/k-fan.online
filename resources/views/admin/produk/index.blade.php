@@ -205,6 +205,9 @@
                     console.log(response);
                     $('#formLayanan').modal('hide');
                     $('table').DataTable().ajax.reload();
+                },
+                error: function (xhr) {
+                    displayError(xhr.responseJSON);
                 }
             });
         });
@@ -231,14 +234,33 @@
                     console.log(response);
                     $('#formLayanan').modal('hide');
                     $('table').DataTable().ajax.reload();
+                },
+                error: function (xhr) {
+                    displayError(xhr.responseJSON);
                 }
             });
         });
+
+        // show error
+        function displayError(res) {
+            if ($.isEmptyObject(res) == false)
+            {
+                $.each(res.errors, function (key, value) {
+                    $('#' + key)
+                        .closest('.form-group')
+                        .append('<span class="invalid-feedback" role="alert"> <strong>'+ value +'</strong> </span>')
+                        .find('input').addClass("is-invalid")
+                })
+            }
+        }
+
 
         // reset
         $('#formLayanan').on('hidden.bs.modal', function (e) {
             e.preventDefault();
             $(this).find('form').trigger('reset');
+            $('.invalid-feedback').remove();
+            $('.form-group').find('input').removeClass("is-invalid");
         });
     </script>
 @endpush

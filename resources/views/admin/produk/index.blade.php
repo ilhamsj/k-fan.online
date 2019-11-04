@@ -1,10 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="alert alert-success collapse" role="alert">
-    <strong>Message</strong>
-</div>
-
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-2 text-gray-800">
         Data Produk & Jasa
@@ -253,7 +249,6 @@
                 })
             }
         }
-
 
         // reset
         $('#formLayanan').on('hidden.bs.modal', function (e) {

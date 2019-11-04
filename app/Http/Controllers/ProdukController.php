@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\ProdukStoreRequest;
 
 class ProdukController extends Controller
@@ -50,7 +49,7 @@ class ProdukController extends Controller
         return response()->json($item);
     }
 
-    public function update(Request $request, $id)
+    public function update(ProdukStoreRequest $request, $id)
     {
         $item = \App\Produk::find($id);
         $item->update($request->all());

@@ -20,7 +20,7 @@ class ChartController extends Controller
     }
 
     public function transaksi(Request $request) {
-        $items = Transaksi::where('status', ['capture', 'settlement'])
+        $items = Transaksi::where('status', 'capture')
                     ->whereBetween('created_at', [$request->from_date, $request->to_date])
                     ->orderBy('created_at', 'asc')
                     ->get();

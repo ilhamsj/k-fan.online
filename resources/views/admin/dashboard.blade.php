@@ -32,7 +32,7 @@
                     <form class="row" accept="{{ route('grafik.transaksi') }}">
                         @csrf
                         <div class="form-group col">
-                            <input type="date" class="form-control" id="from_date" name="from_date" value="1990-01-01">
+                            <input type="date" class="form-control" id="from_date" name="from_date" value="2015-01-01">
                         </div>
                         <div class="form-group col">
                             <input type="date" class="form-control" id="to_date" name="to_date" value="2019-12-31">

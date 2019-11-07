@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PaketResource;
+use App\Http\Resources\TransaksiResource;
+use App\Paket;
 use App\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,28 +45,13 @@ class ChartController extends Controller
     }
 
     public function test() {
-        $items = DB::table('transaksis')
-                ->orderBy('created_at', 'asc')
-                ->get()
-                ->groupBy(function($date) {
-                    return \Carbon\Carbon::parse($date->created_at)->format('Y'); // grouping by years
-                    // return \Carbon\Carbon::parse($date->created_at)->format('m'); // grouping by months
-                });
-        return response()->json([
-            'data' => $items
-        ]);
+        $items = TransaksiResource::collection(Transaksi::all());
+        $items = $items->groupBy('paket_id');
+        // return $items->map(function ($item, $key) {
+        //     return [
+        //         'id' => $key->status,
+        //         'jumlah' => collect($item)->count()
+        //     ];
+        // }); 
     }
-
-    // public function test() {
-    //     $items = DB::table('transaksis')
-    //                 // ->select(DB::raw('sum(*) as jumlah, paket_id'))
-    //                 ->where('status', 'capture')
-    //                 ->sum('jumlah');
-    //             // ->groupBy('paket_id')
-    //             // ->get();
-    
-    //     return response()->json([
-    //         'data' => $items
-    //     ]);
-    // }
 }

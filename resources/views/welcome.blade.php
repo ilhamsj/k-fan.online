@@ -8,7 +8,7 @@
             <div class="row h-100-kfan justify-content-center">
                 <div class="col-12 col-md-10 text-center align-self-end">
                     <h1 class="text-primary display-1a">
-                        Kami hadir untuk meringankan beban bagi keluarga yang ditinggal.
+                        Kafan hadir untuk meringankan beban bagi keluarga yang ditinggal.
                     </h1>
                     Bergabunglah bersama <strong>Kafan</strong> sekarang !
                     <div class="my-4"></div>

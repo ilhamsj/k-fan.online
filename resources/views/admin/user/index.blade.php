@@ -98,11 +98,23 @@
 @endsection
 
 @push('scripts')
+    {{-- <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>  --}}
+    {{-- <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.flash.min.js"></script>  --}}
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> 
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> 
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script> 
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.bootstrap4.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script> 
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script> 
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script> 
     <script>  
         $(document).ready(function () {
 
             // Read
-            $('table').DataTable({
+            var table = $('table').DataTable({
+                dom: 'Bfrtip',
                 order : [[0,'desc'], [1,'desc']],
                 responsive: true,
                 processing: true,
@@ -117,7 +129,16 @@
                     {data: 'email_verified_at', name: 'email_verified_at' },
                     {data: 'created_at', name: 'created_at' },
                 ],
+                lengthMenu: [
+                    [ 10, 25, 50, -1 ],
+                    [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+                ],
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print', 'pageLength', 
+                ]
             });
+            // table.buttons().container()
+            // .appendTo( '#example_wrapper .col-md-6:eq(0)' );
 
             // Hapus
             $('table').on('click','.btnDelete',function(e){

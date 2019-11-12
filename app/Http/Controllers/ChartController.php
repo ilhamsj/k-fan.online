@@ -47,16 +47,29 @@ class ChartController extends Controller
         ]);
     }
 
-    public function test($year) {
-        $datas = DB::table('transaksis')
-                        ->select(DB::raw('count(*) as data, status as label'))
-                        ->whereYear('created_at', $year)
-                        ->groupBy('status')
-                        ->get()
-                        ;
+    // public function test($year) {
+    //     $datas = DB::table('transaksis')
+    //                     ->select(DB::raw('count(*) as data, status as label'))
+    //                     ->whereYear('created_at', $year)
+    //                     ->groupBy('status')
+    //                     ->get()
+    //                     ;
+    //     return response()->json([
+    //         'data' => $datas,
+    //         'title' => "statistik ransaksi tahun " . $year
+    //     ]);
+    // }
+
+    public function test() {
+        $datas = Transaksi::whereYear('created_at', 2019)->orderBy('created_at')->get()
+                ->groupBy(function ($proj) {
+                    return $proj->created_at->format('M');
+                })
+                ->map(function ($month) {
+                    return $month->sum('jumlah');
+                });
         return response()->json([
-            'data' => $datas,
-            'title' => "statistik ransaksi tahun " . $year
+            'data' => $datas
         ]);
     }
 

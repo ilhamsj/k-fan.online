@@ -26,7 +26,7 @@
         </div>
         @endforeach
         <div class="w-100"></div>
-        <div class="col-12 mb-4">
+        <div class="col-12 mb-4" id="statistikTransaksi">
             <div class="card border-0 shadow">
                 <div class="card-body">
                     <form class="row" accept="{{ route('grafik.transaksi') }}">
@@ -91,24 +91,36 @@
         });
         
         function transaksi() {
-            var form = $('#content > div > div.row > div.col-12.mb-4 > div > div:nth-child(1) > form');
+            var form = $('#statistikTransaksi').find('form');
 
             $.ajax({
-            type: "POST",
-            url: "{{ route('grafik.transaksi') }}",
+            type: "GET",
+            url: "{{ route('test') }}",
             data: form.serialize(),
                 success: function (response) {
-                    var labels = response.data.map(function (e) {
-                        return e.created_at
-                    })
-                    
-                    var data = response.data.map(function (e) {
-                        return e.jumlah
-                    })
 
-                    var ctx = $('#test');
+                    console.log(response.data);
+
+                    let labels = $.map(response.data, function (elementOrValue, indexOrKey) {
+                        return indexOrKey;
+                    });
+
+                    let data = $.map(response.data, function (elementOrValue, indexOrKey) {
+                        return elementOrValue;
+                        console.log(indexOrKey);
+                    });
+                    
+                    // var labels = response.data.map(function (e) {
+                    //     return e.label
+                    // })
+                    
+                    // var data = response.data.map(function (e) {
+                    //     return e.data
+                    // })
+
+                    var ctx = $('#statistikTransaksi').find('canvas');
                     var config = {
-                        type: 'line',
+                        type: 'bar',
                         data: {
                             labels: labels,
                             datasets: [{

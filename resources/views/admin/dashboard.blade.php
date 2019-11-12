@@ -45,9 +45,10 @@
             </div>
         </div>
         <div class="col-12 mb-4">
-            <div class="card border-0 shadow">
-                <div class="card-body">
-                    <input type="date" class="form-control" id="transaksi_status" name="transaksi_status" value="2019-01-01">
+            <div class="card border-0 shadow text-right">
+                <div class="card-body row justify-content-right">
+                    <div class="col"></div>
+                    <input type="date" class="form-control col-2" id="transaksi_status" name="transaksi_status" value="2019-01-01">
                 </div>
                 <div class="card-body">
                     <canvas id="myChart"></canvas>
@@ -124,7 +125,7 @@
                         data: {
                             labels: labels,
                             datasets: [{
-                                label: 'Transaksi',
+                                label: response.title,
                                 data: data,
                                 backgroundColor: 
                                 'rgba(255, 206, 86, 1)',

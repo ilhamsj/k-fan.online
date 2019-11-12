@@ -21,7 +21,7 @@ class ChartController extends Controller
                         ;
         return response()->json([
             'data' => $datas,
-            'title' => "statistik ransaksi tahun " . $year
+            'title' => "statistik status transaksi tahun " . $year
         ]);
     }
 
@@ -61,7 +61,8 @@ class ChartController extends Controller
     // }
 
     public function test() {
-        $datas = Transaksi::whereYear('created_at', 2019)->orderBy('created_at')->get()
+        $year = 2019;
+        $datas = Transaksi::whereYear('created_at', $year)->orderBy('created_at')->get()
                 ->groupBy(function ($proj) {
                     return $proj->created_at->format('M');
                 })
@@ -69,7 +70,8 @@ class ChartController extends Controller
                     return $month->sum('jumlah');
                 });
         return response()->json([
-            'data' => $datas
+            'data' => $datas,
+            'title' => "statistik transaksi tahun " . $year
         ]);
     }
 

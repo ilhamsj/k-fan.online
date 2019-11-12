@@ -8,7 +8,7 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('user');
+        $this->middleware('auth')->only('produk');
         // $this->middleware('admin');
     }
 

@@ -44,14 +44,17 @@ class ChartController extends Controller
         ]);
     }
 
-    public function test() {
-        $items = TransaksiResource::collection(Transaksi::all());
-        $items = $items->groupBy('paket_id');
-        // return $items->map(function ($item, $key) {
-        //     return [
-        //         'id' => $key->status,
-        //         'jumlah' => collect($item)->count()
-        //     ];
-        // }); 
+    public function test($year) {
+        // $items = TransaksiResource::collection(Transaksi::all())
+        $datas = DB::table('transaksis')
+                        ->select(DB::raw('count(*) as data, status as label'))
+                        ->whereYear('created_at', $year)
+                        ->groupBy('status')
+                        ->get()
+                        ;
+        return response()->json([
+            'data' => $datas,
+            'title' => "statistik ransaksi tahun " . $year
+        ]);
     }
 }

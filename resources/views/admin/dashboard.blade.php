@@ -47,6 +47,9 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow">
                 <div class="card-body">
+                    <input type="date" class="form-control" id="transaksi_status" name="transaksi_status" value="2019-01-01">
+                </div>
+                <div class="card-body">
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
@@ -59,6 +62,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @push('styles')
@@ -69,7 +73,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script>
     <script>
         transaksi()
-        transaksi_status()
+        transaksi_status(2019)
         transaksi_per_paket()
 
         $('#from_date').change(function (e) { 
@@ -79,7 +83,13 @@
         $('#to_date').change(function (e) { 
             transaksi()
         });
-
+        
+        $('#transaksi_status').change(function (e) { 
+            let x = $('#transaksi_status').val();
+            let tahun = new Date(x);
+            transaksi_status(tahun.getFullYear());
+        });
+        
         function transaksi() {
             var form = $('#content > div > div.row > div.col-12.mb-4 > div > div:nth-child(1) > form');
 
@@ -117,17 +127,22 @@
             });
         }
         
-        function transaksi_status() {
+        function transaksi_status(tahun) {
             $.ajax({
                 type: "GET",
-                url: "{{ route('grafik.transaksi.status') }}",
+                // url: "{{ route('grafik.transaksi.status') }}",
+                url: "https://k-fan.test/api/test/"+tahun,
                 success: function (response) {
+
+                    console.log(response);
+                    
+
                     var labels = response.data.map(function (e) {
-                        return e.status
+                        return e.label
                     })
                     
                     var data = response.data.map(function (e) {
-                        return e.jumlah
+                        return e.data
                     })
 
                     var ctx = $('#myChart');
@@ -136,7 +151,7 @@
                         data: {
                             labels: labels,
                             datasets: [{
-                                label: 'Transaksi Status',
+                                label: response.title,
                                 data: data,
                                 backgroundColor: 'rgba(75, 192, 192, 1)',
 
@@ -174,9 +189,9 @@
                                 data: data,
                                 // backgroundColor: 'rgba(0, 119, 204, 0.3)'
                                 backgroundColor: 
-                                // 'rgb(255, 99, 132)',
+                                'rgb(255, 99, 132)',
                                 // 'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
+                                // 'rgba(54, 162, 235, 1)',
                                 // 'rgba(255, 206, 86, 1)',
                                 // 'rgba(75, 192, 192, 1)',
                                 // 'rgba(153, 102, 255, 1)',

@@ -29,6 +29,7 @@ Route::post('/grafik/transaksi', 'ChartController@transaksi')->name('grafik.tran
 Route::get('/grafik/paket', 'ChartController@paket')->name('grafik.paket');
 
 Route::get('/test', 'ChartController@test')->name('test');
+Route::get('/test/{year}', 'ChartController@test')->name('test.year');
 
 
 

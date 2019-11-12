@@ -2,23 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\PaketResource;
-use App\Http\Resources\TransaksiResource;
 use App\Paket;
 use App\Transaksi;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Resources\PaketResource;
+use App\Http\Resources\TransaksiResource;
 
 class ChartController extends Controller
 {
-    public function transaksi_status() {
-        $items = DB::table('transaksis')
-                    ->select(DB::raw('count(*) as jumlah, status'))
-                    ->groupBy('status')
-                    ->get();
-    
+    public function transaksi_status($year) {
+        $datas = DB::table('transaksis')
+                        ->select(DB::raw('count(*) as data, status as label'))
+                        ->whereYear('created_at', $year)
+                        ->groupBy('status')
+                        ->get()
+                        ;
         return response()->json([
-            'data' => $items
+            'data' => $datas,
+            'title' => "statistik ransaksi tahun " . $year
         ]);
     }
 
@@ -45,7 +48,6 @@ class ChartController extends Controller
     }
 
     public function test($year) {
-        // $items = TransaksiResource::collection(Transaksi::all())
         $datas = DB::table('transaksis')
                         ->select(DB::raw('count(*) as data, status as label'))
                         ->whereYear('created_at', $year)
@@ -56,5 +58,17 @@ class ChartController extends Controller
             'data' => $datas,
             'title' => "statistik ransaksi tahun " . $year
         ]);
+    }
+
+    public function testYear($year) {
+        $datas = Transaksi::all()
+                ->groupBy(function ($proj) {
+                    return $proj->created_at->format('Y');
+                })
+                ->map(function ($month) {
+                    // return $month->count();
+                    return $month->sum('jumlah');
+                });
+        return response()->json($datas);
     }
 }

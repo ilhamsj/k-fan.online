@@ -24,12 +24,12 @@ Route::resource('/user', 'UserController');
 Route::resource('/lelayu', 'BeritaLelayuController');
 Route::resource('/produk', 'ProdukController');
 
-Route::get('/grafik/transaksi/status', 'ChartController@transaksi_status')->name('grafik.transaksi.status');
+Route::get('/grafik/transaksi/{year}', 'ChartController@transaksi_status')->name('grafik.transaksi.status');
 Route::post('/grafik/transaksi', 'ChartController@transaksi')->name('grafik.transaksi');
 Route::get('/grafik/paket', 'ChartController@paket')->name('grafik.paket');
 
 Route::get('/test', 'ChartController@test')->name('test');
-Route::get('/test/{year}', 'ChartController@test')->name('test.year');
+Route::get('/test/{year}', 'ChartController@testYear')->name('test.year');
 
 
 

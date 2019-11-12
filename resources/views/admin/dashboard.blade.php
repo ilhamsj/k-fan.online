@@ -128,15 +128,14 @@
         }
         
         function transaksi_status(tahun) {
+
+            let abc = "{{ route('grafik.transaksi.status', 2000)}}";
+            
             $.ajax({
                 type: "GET",
-                // url: "{{ route('grafik.transaksi.status') }}",
-                url: "https://k-fan.test/api/test/"+tahun,
+                url: abc.replace("2000", tahun),
                 success: function (response) {
-
-                    console.log(response);
                     
-
                     var labels = response.data.map(function (e) {
                         return e.label
                     })

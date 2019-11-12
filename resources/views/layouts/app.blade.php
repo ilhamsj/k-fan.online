@@ -82,11 +82,14 @@
     </div>
   </nav>
         
-  {{-- <div class="container">
-      <div class="alert alert-success" role="alert">
-          <strong>Transaksi anda selesai</strong>
-        </div>
-  </div> --}}
+
+  <div class="container">
+      @if (session('status'))
+      <div id="pesanSukses" class="alert alert-success" role="alert">
+          <strong>{{ session('status') }}</strong>
+      </div>
+      @endif
+  </div>
 
     @yield('content')
 
@@ -148,6 +151,11 @@
       e.preventDefault();
       confirm('Apakah kamu yakin akan logout ?') ? $('#logoutForm').submit() : console.log('no');
     });
+
+    $(".alert").delay(2500).slideUp(200, function() {
+        $(this).alert('close');
+    });
+
   </script>
   @stack('scripts')
 </body>

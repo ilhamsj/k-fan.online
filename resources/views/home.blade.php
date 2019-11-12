@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <hr> --}}
     <section class="py-4">
         <div class="container">
             <div class="row align-items-center justify-content-between">

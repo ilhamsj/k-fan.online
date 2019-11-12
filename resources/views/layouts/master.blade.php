@@ -73,6 +73,15 @@
       </div>
     </div>
   </nav>
+
+  <div class="container">
+      @if (session('status'))
+      <div id="pesanSukses" class="alert alert-success" role="alert">
+          <strong>{{ session('status') }}</strong>
+      </div>
+      @endif
+  </div>
+
         
     @yield('content')
 

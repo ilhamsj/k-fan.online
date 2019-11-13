@@ -6,7 +6,7 @@ use App\Transaksi;
 use Faker\Generator as Faker;
 
 $factory->define(Transaksi::class, function (Faker $faker) {
-    $status = ['capture','settlement','pending','deny','expire', 'cancel'];
+    $status = ['challange', 'capture','settlement','pending','deny','expire', 'cancel'];
     return [
         'id'  => $faker->uuid,
         'user_id'  => 1,

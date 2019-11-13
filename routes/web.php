@@ -58,6 +58,5 @@ Route::get('test/{message}', function ($message) {
   $user = User::where('status', 'admin')->first();
   Notification::send($user, new MyFirstNotification($message));
   event(new MyEvent($message));
-  return "Event has been sent!";
-
+  return "Event has been sent!";  
 });

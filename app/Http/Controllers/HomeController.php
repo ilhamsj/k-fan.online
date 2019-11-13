@@ -36,6 +36,10 @@ class HomeController extends Controller
         return redirect()->route('welcome');
     }
 
+    public function finishStore() {
+        return redirect()->route('home');
+    }
+
     public function lelayu()
     {
         $lelayu = \App\BeritaLelayu::orderBy('created_at', 'desc')->get();

@@ -24,6 +24,7 @@ Route::get('/', 'HomeController@index')->name('welcome');
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/paket/{id}', 'PaketController@show')->name('paket.show');
 Route::get('/finish', 'HomeController@finish');
+Route::post('/finish', 'HomeController@finishStore');
 Route::get('/lelayu', 'HomeController@lelayu')->name('lelayu');
 Route::get('/produk', 'HomeController@produk')->name('produk');
 
@@ -58,5 +59,5 @@ Route::get('test/{message}', function ($message) {
   Notification::send($user, new MyFirstNotification($message));
   event(new MyEvent($message));
   return "Event has been sent!";
-  
+
 });

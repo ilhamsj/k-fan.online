@@ -114,11 +114,6 @@ class TransaksiController extends Controller
         return;
     }
     
-    public function finish()
-    {
-        return 'Transaksi berhasil';
-    }
-    
     public function approve($id) {
         // $status = \Midtrans\Transaction::status('9cfe8ab1-568c-3bcd-825d-c4f50b24e2b1');
         // $status = \Midtrans\Transaction::cancel('9cfe8ab1-568c-3bcd-825d-c4f50b24e2b1');

@@ -104,8 +104,8 @@ class TransaksiController extends Controller
         ]);
 
         $user = User::where('status', 'admin')->first();
-        Notification::send($user, new MyFirstNotification("Transaksi id " . $notif->id . " status " .$transaction));
-        event(new MyEvent("Transaksi id " . $notif->id . " status " .$transaction));
+        Notification::send($user, new MyFirstNotification($transaction));
+        event(new MyEvent($transaction));
 
         return;
     }

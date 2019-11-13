@@ -1,5 +1,9 @@
 <?php
 
+use App\Events\MyEvent;
+use App\Notifications\InvoicePaid;
+use App\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,3 +43,11 @@ Route::resource('/transaksi', 'TransaksiController', [
 
 Route::post('/notification', 'TransaksiController@notification')->name('notification');
 
+Route::get('hello', function () {
+  return view('hello');
+});
+
+Route::get('test/{message}', function ($message) {
+  event(new MyEvent($message));
+  return "Event has been sent!";
+});

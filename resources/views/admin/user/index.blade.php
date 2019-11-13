@@ -21,6 +21,11 @@
     <h6 class="m-0 font-weight-bold text-primary">Data</h6>
   </div>
   <div class="card-body">
+    <div class="form-group">
+        <input type="date" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+    </div>
+  </div>
+  <div class="card-body">
       <div class="table-responsive">
           <table class="table table-bordered">
               <thead>

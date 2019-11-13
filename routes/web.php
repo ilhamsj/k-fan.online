@@ -1,8 +1,11 @@
 <?php
 
+use App\User;
 use App\Events\MyEvent;
 use App\Notifications\InvoicePaid;
-use App\User;
+use App\Notifications\MyFirstNotification;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,10 +47,17 @@ Route::resource('/transaksi', 'TransaksiController', [
 Route::post('/notification', 'TransaksiController@notification')->name('notification');
 
 Route::get('hello', function () {
+  $user = Auth::user();
+  
   return view('hello');
 });
 
 Route::get('test/{message}', function ($message) {
+
+  $user = User::find(27);
+
+  $notifikasi = Notification::send($user, new MyFirstNotification($message));
+  // dd($user->unreadNotifications);
   event(new MyEvent($message));
   return "Event has been sent!";
 });

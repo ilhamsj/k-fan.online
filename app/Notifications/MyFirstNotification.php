@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class InvoicePaid extends Notification
+class MyFirstNotification extends Notification
 {
     use Queueable;
 
@@ -16,9 +16,11 @@ class InvoicePaid extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public $message;
+
+    public function __construct($message)
     {
-        //
+        $this->message = $message;
     }
 
     /**
@@ -29,7 +31,7 @@ class InvoicePaid extends Notification
      */
     public function via($notifiable)
     {
-        return ['database']; #mail #smms
+        return ['database'];
     }
 
     /**
@@ -55,8 +57,7 @@ class InvoicePaid extends Notification
     public function toArray($notifiable)
     {
         return [
-            'invoice_id' => 'xxxx',
-            'amount' => 9999,
+            'data' => $this->message
         ];
     }
 }

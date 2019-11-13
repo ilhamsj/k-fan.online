@@ -100,7 +100,7 @@
             data: form.serialize(),
                 success: function (response) {
 
-                    console.log(response.data);
+                    // console.log(response.data);
 
                     let labels = $.map(response.data, function (elementOrValue, indexOrKey) {
                         return indexOrKey;

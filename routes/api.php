@@ -1,6 +1,8 @@
 <?php
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,15 @@ Route::get('/grafik/paket', 'ChartController@paket')->name('grafik.paket');
 Route::get('/test', 'ChartController@test')->name('test');
 Route::get('/test/{year}', 'ChartController@testYear')->name('test.year');
 
+Route::get('notifikasi/{id}', function ($user) {
+
+    $user = User::find($user);
+    $jumlah = $user->unreadNotifications->count();
+    return response()->json([
+        'data' => $user->unreadNotifications,
+        'jumlah' =>  $jumlah
+    ]);
+});
 
 
 

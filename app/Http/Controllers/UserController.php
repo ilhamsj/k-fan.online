@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Http\Requests\UserStoreRequest;
-use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,18 +11,16 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user = User::all();
-
+        $user = User::whereYear('created_at', 2019)->get();
         // if(request()->ajax()) {
-
-            return datatables($user)
-                ->addIndexColumn()
-                ->addColumn('action', function ($user) {
-                    return 
-                    '<a href="" data-id="'.$user->id.'" data-url="'.route('user.show', $user->id).'" data-status="'.$user->status.'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
-                    <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$user->id.'" data-url="'.route('user.destroy', $user->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
-                })
-                ->toJson();
+        return datatables($user)
+            ->addIndexColumn()
+            ->addColumn('action', function ($user) {
+                return 
+                '<a href="" data-id="'.$user->id.'" data-url="'.route('user.show', $user->id).'" data-status="'.$user->status.'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
+                <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$user->id.'" data-url="'.route('user.destroy', $user->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
+            })
+            ->toJson();
         // }
     }
 

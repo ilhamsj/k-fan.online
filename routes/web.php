@@ -54,7 +54,7 @@ Route::get('hello', function () {
 
 Route::get('test/{message}', function ($message) {
 
-  $user = User::find(27);
+  $user = Auth::user();
 
   $notifikasi = Notification::send($user, new MyFirstNotification($message));
   // dd($user->unreadNotifications);

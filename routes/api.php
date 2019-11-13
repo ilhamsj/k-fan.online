@@ -33,15 +33,15 @@ Route::get('/grafik/paket', 'ChartController@paket')->name('grafik.paket');
 Route::get('/test', 'ChartController@test')->name('test');
 Route::get('/test/{year}', 'ChartController@testYear')->name('test.year');
 
-Route::get('notifikasi/{id}', function ($user) {
+Route::get('notifikasi', function () {
 
-    $user = User::find($user);
+    $user = User::where('status', 'admin')->first();
     $jumlah = $user->unreadNotifications->count();
     return response()->json([
         'data' => $user->unreadNotifications,
         'jumlah' =>  $jumlah
     ]);
-});
+})->name('notifikasi');
 
 
 

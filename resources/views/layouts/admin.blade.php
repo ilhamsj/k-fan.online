@@ -323,8 +323,10 @@
     function notifikasi () {
       $.ajax({
       type: "GET",
-      url: "https://k-fan.test/api/notifikasi/27",
+      url: "{{ route('notifikasi') }}",
       success: function (response) {
+        console.log(response);
+        
         var notifikasi = $.map(response.data, function (value, index) {
           var abc =  $('#notifikasi_items > div').append('<a class="dropdown-item d-flex align-items-center" href="">'+value.data.data+'</a>');
         });

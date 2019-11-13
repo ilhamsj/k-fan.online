@@ -92,23 +92,24 @@ class TransaksiController extends Controller
     public function notification(Request $request)
     {
         $notif = new \Midtrans\Notification();
+        $transaksi = Transaksi::find($notif->order_id);
         $transaction = $notif->transaction_status;
         $fraud = $notif->fraud_status;
-        $type = $notif->payment_type;
-        error_log("Order ID $notif->order_id: "."transaction status = $transaction, fraud staus = $fraud");
-        $transaksi = Transaksi::find($notif->order_id);
-
+        
         $catatan = "Transaksi id " . $notif->transaction_id . " Total " . $notif->gross_amount;
-
+        
         $transaksi->update([
             'status' => $transaction,
             'catatan' => $catatan
         ]);
+      
+        if($transaction == "settlement" || $transaction == "capture") {
+            $user = User::where('status', 'admin')->first();
+            Notification::send($user, new MyFirstNotification("Transaksi " . $transaksi->paket->nama . ", status " . $transaction));
+            event(new MyEvent($catatan));
+        }
 
-
-        $user = User::where('status', 'admin')->first();
-        Notification::send($user, new MyFirstNotification($catatan));
-        event(new MyEvent($catatan));
+        error_log("Order ID $notif->order_id: "."transaction status = $transaction, fraud staus = $fraud");
 
         return;
     }

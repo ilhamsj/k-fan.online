@@ -54,10 +54,9 @@ Route::get('hello', function () {
 
 Route::get('test/{message}', function ($message) {
 
-  $user = User::first();
 
-  $notifikasi = Notification::send($user, new MyFirstNotification($message));
-  // dd($user->unreadNotifications);
+  $user = User::find(792);
+  Notification::send($user, new MyFirstNotification($message));
   event(new MyEvent($message));
   return "Event has been sent!";
 });

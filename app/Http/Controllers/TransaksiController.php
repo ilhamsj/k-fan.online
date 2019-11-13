@@ -105,7 +105,7 @@ class TransaksiController extends Controller
       
         if($transaction == "settlement" || $transaction == "capture") {
             $user = User::where('status', 'admin')->first();
-            Notification::send($user, new MyFirstNotification("Transaksi " . $transaksi->paket->nama . ", status " . $transaction));
+            Notification::send($user, new MyFirstNotification("Transaksi " . $transaksi->paket->nama . " status " . $transaction  . ", oleh " . $transaksi->user->name));
             event(new MyEvent($catatan));
         }
 

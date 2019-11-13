@@ -98,14 +98,17 @@ class TransaksiController extends Controller
         error_log("Order ID $notif->order_id: "."transaction status = $transaction, fraud staus = $fraud");
         $transaksi = Transaksi::find($notif->order_id);
 
+        $catatan = "Transaksi id " . $notif->transaction_id . " Total " . $notif->gross_amount;
+
         $transaksi->update([
             'status' => $transaction,
-            'catatan' => $type . ' ' . $fraud
+            'catatan' => $catatan
         ]);
 
+
         $user = User::where('status', 'admin')->first();
-        Notification::send($user, new MyFirstNotification($transaction));
-        event(new MyEvent($transaction));
+        Notification::send($user, new MyFirstNotification($catatan));
+        event(new MyEvent($catatan));
 
         return;
     }

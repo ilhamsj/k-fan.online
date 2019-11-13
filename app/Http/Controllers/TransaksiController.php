@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Transaksi;
 use Midtrans\Snap;
+use App\Events\MyEvent;
 use Midtrans\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -103,7 +104,7 @@ class TransaksiController extends Controller
         ]);
 
         $user = User::where('status', 'admin')->first();
-        $notifikasi = Notification::send($user, new MyFirstNotification("Transaksi id " . $notif->id . " status " .$transaction));
+        Notification::send($user, new MyFirstNotification("Transaksi id " . $notif->id . " status " .$transaction));
         event(new MyEvent("Transaksi id " . $notif->id . " status " .$transaction));
 
         return;

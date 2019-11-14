@@ -4,6 +4,7 @@ use App\User;
 use App\Events\MyEvent;
 use App\Notifications\InvoicePaid;
 use App\Notifications\MyFirstNotification;
+use App\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 
@@ -56,7 +57,7 @@ Route::get('hello', function () {
 Route::get('test/{message}', function ($message) {
 
   $user       = User::where('status', 'admin')->first();
-  $transaksi  = 'a15708a7-35e3-3348-b728-9a368cf7657f';
+  $transaksi  = Transaksi::first();
   $status     = 'capture';
   $paket      = 'platinum';
   $pemesan    = 'gamora';

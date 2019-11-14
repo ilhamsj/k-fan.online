@@ -277,19 +277,19 @@
           <ul>
             <li>Transaksi id : </li>
             <li>User : </li>
-            <li>Jenazah : </li>
             <li>Paket : </li>
             <li>Jumlah : </li>
+            <li>Jenazah : </li>
           </ul>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm">Tandai sudah dibaca</button>
-          <button type="button" class="btn btn-primary btn-sm">
+          <button type="button" class="btn btn-secondary btn-sm">Tutup</button>
+          {{-- <button type="button" class="btn btn-primary btn-sm">
             <i class="fa fa-check-circle" aria-hidden="true"></i>
           </button>
           <button type="button" class="btn btn-danger btn-sm">
             <i class="fa fa-ban" aria-hidden="true"></i>
-          </button>
+          </button> --}}
         </div>
       </div>
     </div>
@@ -331,30 +331,6 @@
 
     notifikasi ()
 
-
-  $(document).on('click', '#notifikasi_items > div > a', function (e) {
-      e.preventDefault()
-      var abc = $(this).attr('data-id');
-      let notifikasi = $(this).attr('data-notif');
-      $('#modal_notifikasi').modal('show');
-
-      let url = "{{ route('pembayaran.show', [1,99999999999999999])}}";
-      let url_baru = url.replace("1", abc).replace('99999999999999999', notifikasi);
-
-      $.ajax({
-        type: "GET",
-        url: url_baru,
-        success: function (response) {
-          var transaksi = $('#modal_notifikasi').find('ul > li:first-child').append(abc)
-          var user      = transaksi.next().append(response.data.user.name)
-          var jenazah   = user.next().append(response.data.berita.nama)
-          var paket     = jenazah.next().append(response.data.paket.nama)
-          var harga     = paket.next().append(response.data.jumlah)
-          console.log(response);
-        }
-      });
-  });
-
   function notifikasi () {
       $.ajax({
       type: "GET",
@@ -363,13 +339,38 @@
         console.log(response);
         
         var notifikasi = $.map(response.data, function (value, index) {
-          var abc =  $('#notifikasi_items > div').append('<a data-id="'+value.data.transaksi+'" data-notif="'+value.id+'" class="dropdown-item d-flex align-items-center" href="">'+value.data.user+', order paket '+value.data.paket+', status '+value.data.status+'</a>');
+          var abc =  $('#notifikasi_items > div').append('<a data-id="'+value.data.transaksi.id+'" data-notif="'+value.id+'" class="dropdown-item d-flex align-items-center" href="">'+value.data.user+', order paket '+value.data.paket+', status '+value.data.status+'</a>');
         });
 
         $('#jumlah_notifikasi').text(response.jumlah); 
       }
     });
   }
+
+  
+  $(document).on('click', '#notifikasi_items > div > a', function (e) {
+      e.preventDefault()
+      var abc = $(this).attr('data-id');
+
+      let notifikasi = $(this).attr('data-notif');
+      $('#modal_notifikasi').modal('show');
+
+      let url = "{{ route('pembayaran.show', [111111, 99999999999999999])}}";
+      let url_baru = url.replace("111111", abc).replace('99999999999999999', notifikasi);
+
+      $.ajax({
+        type: "GET",
+        url: url_baru,
+        success: function (response) {
+          var transaksi = $('#modal_notifikasi').find('ul > li:first-child').append(abc)
+          var user      = transaksi.next().append(response.data.user.name)
+          var paket     = user.next().append(response.data.paket.nama)
+          var harga     = paket.next().append(response.data.jumlah)
+          // var jenazah   = user.next().append(response.data.berita.nama)
+          console.log(response);
+        }
+      });
+  });
 
   $('#modal_notifikasi').on('hidden.bs.modal', function () {
     $('#notifikasi_items > div > a').remove();

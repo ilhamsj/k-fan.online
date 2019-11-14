@@ -366,13 +366,19 @@
           var user      = transaksi.next().append(response.data.user.name)
           var paket     = user.next().append(response.data.paket.nama)
           var harga     = paket.next().append(response.data.jumlah)
-          // var jenazah   = user.next().append(response.data.berita.nama)
+          var jenazah   = user.next().append(response.data.berita.nama)
           console.log(response);
         }
       });
   });
 
-  $('#modal_notifikasi').on('hidden.bs.modal', function () {
+  $('#modal_notifikasi').on('hidden.bs.modal', function (e) {
+    e.preventDefault()
+    var transaksi = $('#modal_notifikasi').find('ul > li:first-child').append(" ")
+    var user      = transaksi.next().append(" ")
+    var paket     = user.next().append(" ")
+    var harga     = paket.next().append(" ")
+    var jenazah   = user.next().append(" ")
     $('#notifikasi_items > div > a').remove();
       notifikasi ()
   });

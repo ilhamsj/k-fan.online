@@ -15,6 +15,8 @@ $factory->define(Transaksi::class, function (Faker $faker) {
         'catatan' => $faker->name . ' ' . $faker->randomElement(['wafat gan', 'kasihan nih', 'guling nih mayatnya']),
         'status' => $faker->randomElement($status),
         'snap_token' => $faker->sha1,
-        'created_at' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
+        // 'created_at' => $faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now'),
+        // 'created_at' => $faker->dateTimeBetween($startDate = '-1 year', $endDate = 'now'),
+        'created_at' => $faker->dateTimeBetween($startDate = '-12 month', $endDate = 'now'),
     ];
 });

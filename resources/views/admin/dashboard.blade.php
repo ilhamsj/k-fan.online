@@ -28,16 +28,20 @@
         <div class="w-100"></div>
         <div class="col-12 mb-4" id="statistikTransaksi">
             <div class="card border-0 shadow">
-                <div class="card-body">
-                    <form class="row" accept="{{ route('grafik.transaksi') }}">
-                        @csrf
-                        <div class="form-group col">
-                            <input type="date" class="form-control" id="from_date" name="from_date" value="2015-01-01">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Transaksi</div>
+                            <a class="dropdown-item" href="#">7 hari terakhir</a>
+                            <a class="dropdown-item" href="#">30 hari terakhir</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-                        <div class="form-group col">
-                            <input type="date" class="form-control" id="to_date" name="to_date" value="2019-12-31">
-                        </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="card-body">
                     <canvas id="test"></canvas>
@@ -46,16 +50,15 @@
         </div>
         <div class="col-12 mb-4">
             <div class="card border-0 shadow text-right">
-                <div class="card-body row justify-content-right">
-                    <div class="col"></div>
-                    <input type="date" class="form-control col-2" id="transaksi_status" name="transaksi_status" value="2019-01-01">
+                <div class="card-body">
+                    <input type="date" class="form-control" id="transaksi_status" name="transaksi_status" value="2019-01-01">
                 </div>
                 <div class="card-body">
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
         </div>
-        <div class="col-12 mb-4">
+        <div class="col mb-4">
             <div class="card border-0 shadow">
                 <div class="card-body">
                     <canvas id="grafikTerlaris"></canvas>

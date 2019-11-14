@@ -18,9 +18,12 @@ class MyFirstNotification extends Notification
      */
     public $message;
 
-    public function __construct($message)
+    public function __construct($transaksi, $paket, $status, $pemesan)
     {
-        $this->message = $message;
+        $this->transaksi = $transaksi;
+        $this->paket    = $paket;
+        $this->status    = $status;
+        $this->pemesan    = $pemesan;
     }
 
     /**
@@ -57,7 +60,10 @@ class MyFirstNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'data' => $this->message
+            'transaksi' => $this->transaksi,
+            'user'      => $this->pemesan,
+            'paket'     => $this->paket,
+            'status'     => $this->status,
         ];
     }
 }

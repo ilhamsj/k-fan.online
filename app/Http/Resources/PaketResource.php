@@ -16,13 +16,14 @@ class PaketResource extends JsonResource
 
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'nama' => $this->nama,
-            'harga' => $this->harga,
-            'diskon' => $this->diskon,
-            'deskripsi' => $this->deskripsi,
-            'foto' => $this->foto,  
-        ];
+        // return [
+        //     'id' => $this->id,
+        //     'nama' => $this->nama,
+        //     'harga' => $this->harga,
+        //     'diskon' => $this->diskon,
+        //     'deskripsi' => $this->deskripsi,
+        //     'foto' => $this->foto,  
+        // ];
+        return parent::toArray($request);
     }
 }

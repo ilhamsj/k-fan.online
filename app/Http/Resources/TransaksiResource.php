@@ -2,6 +2,9 @@
 
 namespace App\Http\Resources;
 
+use App\BeritaLelayu;
+use App\Paket;
+use App\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TransaksiResource extends JsonResource
@@ -16,13 +19,13 @@ class TransaksiResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'paket_id' => $this->paket_id,
             'jumlah' => $this->jumlah,
             'catatan' => $this->catatan,
             'status' => $this->status,
             'snap_token' => $this->snap_token,
-            'paket' => $this->paket->nama
+            'paket' => new PaketResource(Paket::find($this->paket_id)),
+            'user' => new UserResource(User::find($this->user_id)),
+            'berita' => new BeritaDukaResource(BeritaLelayu::where('transaksi_id', $this->id)->first())
         ];
     }
 }

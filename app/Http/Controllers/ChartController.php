@@ -62,16 +62,27 @@ class ChartController extends Controller
 
     public function test() {
         $year = 2019;
-        $datas = Transaksi::whereYear('created_at', $year)->orderBy('created_at')->get()
-                ->groupBy(function ($proj) {
-                    return $proj->created_at->format('M');
-                })
-                ->map(function ($month) {
-                    return $month->sum('jumlah');
-                });
+        $from_date = '2018-11-01';
+        $to_date = date('Y-m-d');
+
+        $datas = Transaksi::where('status', ['challange'])
+                            ->whereBetween('created_at', [$from_date, $to_date])
+                            ->orderBy('created_at')
+                            ->get()
+                            ->groupBy(function ($proj) {
+                                return $proj->created_at
+                                            // ->format('dM');
+                                            ->format('My');
+                                            // ->format('Y');
+                            })
+                            ->map(function ($total) {
+                                return $total->count();
+                                // return $total->sum('jumlah');
+                            })
+                            ;
         return response()->json([
             'data' => $datas,
-            'title' => "statistik transaksi tahun " . $year
+            'title' => "transaksi terbanyak"
         ]);
     }
 

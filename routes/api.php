@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Resources\TransaksiResource;
+use App\Transaksi;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +36,14 @@ Route::get('/grafik/paket', 'ChartController@paket')->name('grafik.paket');
 Route::get('/test', 'ChartController@test')->name('test');
 Route::get('/test/{year}', 'ChartController@testYear')->name('test.year');
 
+Route::get('pembayaran/{id}/{id_notifikasi}', function ($id, $id_notif) {
+    $user   = User::where('status', 'admin')->first();
+    $status = $user->notifications()->find($id_notif)->markAsRead();
+
+    return new TransaksiResource(Transaksi::find($id));
+ })->name('pembayaran.show');
+
+ 
 Route::get('notifikasi', function () {
 
     $user = User::where('status', 'admin')->first();
@@ -43,6 +54,17 @@ Route::get('notifikasi', function () {
     ]);
 })->name('notifikasi');
 
+Route::get('notifikasi/{id}', function ($id) {
+    $user   = User::where('status', 'admin')->first();
+    $status = $user->notifications()->find($id)->markAsRead();
+    return response()->json([
+        'status' => 'Berhasil di unread'
+    ]);
+})->name('notifikasi.read');
+
+// Route::put('mark', function ($id) {
+    
+// });
 
 
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')

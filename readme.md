@@ -26,3 +26,8 @@ https://source.unsplash.com/ojU4SmuZzrU/348x232
 
 foto jenazah
 https://source.unsplash.com/ojU4SmuZzrU/225x281
+
+jumlah transaksi dar
+1 - 30 hari (perhari)
+> 30 hari (perbulan) (kuartal 1, 2, 3)
+> 12 bulan (pertahun)

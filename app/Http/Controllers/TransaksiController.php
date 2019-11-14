@@ -102,12 +102,21 @@ class TransaksiController extends Controller
             'status' => $transaction,
             'catatan' => $catatan
         ]);
+
+        $user       = User::where('status', 'admin')->first();
+        // $transaksi  = 'a15708a7-35e3-3348-b728-9a368cf7657f';
+        $status     = $transaction;
+        $paket      = $transaksi->paket->nama;
+        $pemesan    = $transaksi->user->name;
+      
       
         if($transaction == "settlement" || $transaction == "capture") {
             $user = User::where('status', 'admin')->first();
-            Notification::send($user, new MyFirstNotification("Transaksi " . $transaksi->paket->nama . " status " . $transaction  . ", oleh " . $transaksi->user->name));
+            Notification::send($user, new MyFirstNotification($notif->transaction_id, $paket, $status, $pemesan));
             event(new MyEvent($catatan));
         }
+
+        // "Transaksi " . $transaksi->paket->nama . " status " . $transaction  . ", oleh " . $transaksi->user->name
 
         error_log("Order ID $notif->order_id: "."transaction status = $transaction, fraud staus = $fraud");
 

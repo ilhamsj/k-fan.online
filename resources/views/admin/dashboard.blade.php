@@ -7,9 +7,9 @@
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="generateReport"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
-    <div class="row">
+    <div class="row" id="cetak_pdf">
         @foreach ($items as $item)
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-3 col-md-6 mb-4 cetak_pdf_card">
             <div class="card {{ $item['color'] }} shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="col mb-4">
+        <div class="col-12 mb-4">
             <div class="card border-0 shadow">
                 <div class="card-body">
                     <canvas id="grafikTerlaris"></canvas>
@@ -69,7 +69,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @push('styles')
@@ -78,6 +77,25 @@
 
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+    <script>
+        var xfsd = $('#cetak_pdf').width();
+        var hdok = $('#cetak_pdf').height();
+        
+        $('#generateReport').click(function (e) { 
+
+            html2canvas(document.getElementById("cetak_pdf"), {
+                onrendered: function(canvas) {
+                    var imgData = canvas.toDataURL('image/png');
+                    var doc = new jsPDF('P', 'px', [hdok, xfsd]);
+                    
+                    doc.addImage(imgData, 'PNG', 10, 10);
+                    doc.save('report.pdf');
+                }
+            });
+        });
+    </script>
     <script>
         transaksi()
         transaksi_status(2019)

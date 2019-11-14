@@ -72,8 +72,8 @@ class ChartController extends Controller
                             ->get()
                             ->groupBy(function ($proj) {
                                 return $proj->created_at
-                                            ->format('dM');
-                                            // ->format('My');
+                                            // ->format('dM');
+                                            ->format('My');
                                             // ->format('Y');
                             })
                             ->map(function ($total) {

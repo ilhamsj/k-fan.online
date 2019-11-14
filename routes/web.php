@@ -64,6 +64,6 @@ Route::get('test/{message}', function ($message) {
   $pemesan    = 'gamora';
 
   Notification::send($user, new MyFirstNotification($transaksi, $paket, $status, $pemesan));
-  event(new MyEvent($message));
+  // event(new MyEvent($message));
   return "Event has been sent!";  
 });

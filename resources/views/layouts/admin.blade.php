@@ -315,37 +315,37 @@
     // Enable pusher logging - don't include this in production
     // Pusher.logToConsole = true;
 
-    var pusher = new Pusher('44c07d75b84acf6201e2', {
-      cluster: 'ap1',
-      forceTLS: true
-    });
+    // var pusher = new Pusher('44c07d75b84acf6201e2', {
+    //   cluster: 'ap1',
+    //   forceTLS: true
+    // });
 
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(response) {
-      // alert(JSON.stringify(data));
-      $('#myAudio')[0].play();
-      console.log(response);
-      $('#notifikasi_items > div > a').remove();
-      notifikasi ()
-    });
+    // var channel = pusher.subscribe('my-channel');
+    // channel.bind('my-event', function(response) {
+    //   // alert(JSON.stringify(data));
+    //   $('#myAudio')[0].play();
+    //   console.log(response);
+    //   $('#notifikasi_items > div > a').remove();
+    //   notifikasi ()
+    // });
 
-    notifikasi ()
+  //   notifikasi ()
 
-  function notifikasi () {
-      $.ajax({
-      type: "GET",
-      url: "{{ route('notifikasi') }}",
-      success: function (response) {
-        console.log(response);
+  // function notifikasi () {
+  //     $.ajax({
+  //     type: "GET",
+  //     url: "{{ route('notifikasi') }}",
+  //     success: function (response) {
+  //       console.log(response);
         
-        var notifikasi = $.map(response.data, function (value, index) {
-          var abc =  $('#notifikasi_items > div').append('<a data-id="'+value.data.transaksi.id+'" data-notif="'+value.id+'" class="dropdown-item d-flex align-items-center" href="">'+value.data.user+', order paket '+value.data.paket+', status '+value.data.status+'</a>');
-        });
+  //       var notifikasi = $.map(response.data, function (value, index) {
+  //         var abc =  $('#notifikasi_items > div').append('<a data-id="'+value.data.transaksi.id+'" data-notif="'+value.id+'" class="dropdown-item d-flex align-items-center" href="">'+value.data.user+', order paket '+value.data.paket+', status '+value.data.status+'</a>');
+  //       });
 
-        $('#jumlah_notifikasi').text(response.jumlah); 
-      }
-    });
-  }
+  //       $('#jumlah_notifikasi').text(response.jumlah); 
+  //     }
+  //   });
+  // }
 
   
   $(document).on('click', '#notifikasi_items > div > a', function (e) {

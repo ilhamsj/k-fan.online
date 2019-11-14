@@ -29,8 +29,8 @@
         <div class="col-12 mb-4" id="statistikTransaksi">
             <div class="card border-0 shadow">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                    <div class="dropdown no-arrow">
+                    <h6 class="m-0 font-weight-bold text-primary">Statistik Jumlah Tansaksi</h6>
+                    {{-- <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                         </a>
@@ -41,8 +41,11 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
+                {{-- <div class="card-body">
+                    <input type="number" class="form-control" id="transaksi_status" name="transaksi_status" value="{{ Date('Y')}}" max="{{ Date('Y')}}">
+                </div> --}}
                 <div class="card-body">
                     <canvas id="test"></canvas>
                 </div>
@@ -51,7 +54,7 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow text-right">
                 <div class="card-body">
-                    <input type="date" class="form-control" id="transaksi_status" name="transaksi_status" value="2019-01-01">
+                    <input type="number" class="form-control" id="transaksi_status" name="transaksi_status" value="{{ Date('Y')}}" max="{{ Date('Y')}}">
                 </div>
                 <div class="card-body">
                     <canvas id="myChart"></canvas>

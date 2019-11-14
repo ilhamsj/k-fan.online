@@ -62,17 +62,18 @@ class ChartController extends Controller
 
     public function test() {
         $year = 2019;
-        $from_date = '2018-11-01';
+        $from_date = '2019-10-01';
         $to_date = date('Y-m-d');
 
-        $datas = Transaksi::where('status', ['challange'])
+        $datas = Transaksi::where('status', 'challange')
+                            ->orWhere('status', '')
                             ->whereBetween('created_at', [$from_date, $to_date])
                             ->orderBy('created_at')
                             ->get()
                             ->groupBy(function ($proj) {
                                 return $proj->created_at
-                                            // ->format('dM');
-                                            ->format('My');
+                                            ->format('dM');
+                                            // ->format('My');
                                             // ->format('Y');
                             })
                             ->map(function ($total) {
@@ -82,7 +83,7 @@ class ChartController extends Controller
                             ;
         return response()->json([
             'data' => $datas,
-            'title' => "transaksi terbanyak"
+            'title' => "Statistik Jumlah Tansaksi"
         ]);
     }
 

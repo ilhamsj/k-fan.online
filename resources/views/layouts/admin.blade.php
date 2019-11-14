@@ -110,7 +110,7 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          {{-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
@@ -119,7 +119,7 @@
                 </button>
               </div>
             </div>
-          </form>
+          </form> --}}
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -283,8 +283,8 @@
           </ul>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm">Tutup</button>
-          {{-- <button type="button" class="btn btn-primary btn-sm">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+            {{-- <button type="button" class="btn btn-primary btn-sm">
             <i class="fa fa-check-circle" aria-hidden="true"></i>
           </button>
           <button type="button" class="btn btn-danger btn-sm">

@@ -16,29 +16,39 @@
             </div>
         </form>
     </div>
-    <div class="row" id="cetak_pdf">
-        <div class="col-xl-3 col-md-6 mb-4 cetak_pdf_card">
-            <div class="card shadow h-100 py-2 border-left-info">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2 text-center">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">xxxx</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">9999</div>
+
+    <section id="cetak_report">
+        <div class="row">
+            <div class="col mb-4">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Report</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">9999</div>
+            </div>
+        </div>
+        <div class="row" id="cetak_pdf">
+            <div class="col-xl-3 col-md-6 mb-4 cetak_pdf_card">
+                <div class="card shadow h-100 py-2 border-left-info">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2 text-center">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">xxxx</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">9999</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card border-0 shadow">
-                <div class="card-body">
-                    <canvas id="statistik"></canvas>
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-0 shadow">
+                    <div class="card-body">
+                        <canvas id="statistik"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
 @endsection
 
 @push('styles')
@@ -85,6 +95,7 @@
                                     $(card).prependTo('#cetak_pdf');
                     });
                     $('#cetak_pdf > div:last-child').remove();
+                    $('#cetak_report').find('.h5').first().text(response.label);
 
                     var labels = $.map(response.chart.m, function (value, index) {
                         return index
@@ -103,7 +114,7 @@
                         data: {
                             labels: labels,
                             datasets: [{
-                                label: "Transaksi",
+                                label: ' Transaksi '+response.label,
                                 data: datas,
                                 backgroundColor: 'rgba(255, 206, 86, 1)',
                             }]
@@ -119,10 +130,10 @@
             
             $('#generateReport').click(function (e) { 
 
-                html2canvas(document.getElementById("cetak_pdf"), {
+                html2canvas(document.getElementById("cetak_report"), {
                     onrendered: function(canvas) {
                         var imgData = canvas.toDataURL('image/png');
-                        var doc = new jsPDF('P', 'px', 'a4');
+                        var doc = new jsPDF('L', 'px', 'legal');
                         // unit: 'mm', format: 'a4', orientation: 'landscape'
                         doc.addImage(imgData, 'PNG', 10, 10);
                         doc.save('report.pdf');

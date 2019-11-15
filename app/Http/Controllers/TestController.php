@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\BeritaLelayu;
-use App\Http\Resources\TestCollection;
-use App\Http\Resources\TestResource;
-use App\Http\Resources\TransaksiResource;
-use App\Http\Resources\TransaksiShowResource;
-use App\Http\Resources\UserResource;
+use App\User;
 use App\Paket;
 use App\Produk;
 use App\Transaksi;
-use App\User;
+use Carbon\Carbon;
+use App\BeritaLelayu;
 use Illuminate\Http\Request;
+use App\Http\Resources\TestResource;
+use App\Http\Resources\UserResource;
+use App\Http\Resources\TestCollection;
+use App\Http\Resources\TransaksiResource;
+use App\Http\Resources\TransaksiShowResource;
 
 class TestController extends Controller
 {
@@ -20,6 +21,7 @@ class TestController extends Controller
         $transaksi = new TestCollection(
                 Transaksi::where('status', 'capture')
                 ->whereBetween('created_at', [$request->from_date, $request->to_date])
+                ->orderBy('created_at')
                 ->get()
         );
         $paket  = Paket::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
@@ -37,16 +39,16 @@ class TestController extends Controller
 
         return response()->json([
             'total' => [
-                'transaksi' => $transaksi,
-                'paket'     => $paket,
-                'produk'    => $produk,
-                'user'      => $user,
-                'berita'    => $berita,
+                'Total transaksi' => $transaksi,
+                'Total paket'     => $paket,
+                // 'produk'    => $produk,
+                'Total Pengguna'      => $user,
+                'Total berita'    => $berita,
             ],
             'chart' => [
                 'm'    => $m,
             ],
-            'logic' => $logic
+            'label' => Carbon::parse($request->from_date)->format('d M Y'). " - " .  Carbon::parse($request->to_date)->format('d M Y')
         ]);
     }
 }

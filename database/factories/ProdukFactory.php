@@ -37,5 +37,6 @@ $factory->define(Produk::class, function (Faker $faker) {
         // 'foto'      => $faker->imageUrl(225, 325, null, true, $faker->name, true), 
         // 'foto'      => 'holder.js/225x325?auto=yes&random=yes&texmode=exact', 
         'foto'      => 'https://source.unsplash.com/225x325/?funeral,burial,ambulance,flower', 
+        'created_at' => $faker->dateTimeBetween($startDate = '-6 month', $endDate = 'now'),
     ];
 });

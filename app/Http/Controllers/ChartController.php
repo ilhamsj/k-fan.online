@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Paket;
 use App\Transaksi;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Resources\PaketResource;
-use App\Http\Resources\TransaksiResource;
 
 class ChartController extends Controller
 {
@@ -46,19 +42,6 @@ class ChartController extends Controller
             'data' => $items
         ]);
     }
-
-    // public function test($year) {
-    //     $datas = DB::table('transaksis')
-    //                     ->select(DB::raw('count(*) as data, status as label'))
-    //                     ->whereYear('created_at', $year)
-    //                     ->groupBy('status')
-    //                     ->get()
-    //                     ;
-    //     return response()->json([
-    //         'data' => $datas,
-    //         'title' => "statistik ransaksi tahun " . $year
-    //     ]);
-    // }
 
     public function test() {
         $year = 2019;

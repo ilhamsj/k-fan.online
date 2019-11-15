@@ -14,5 +14,6 @@ $factory->define(Paket::class, function (Faker $faker) {
         // 'foto'      => 'https://source.unsplash.com/348x232/?flower', 
         'foto'      => 'holder.js/348x232?random=yes&auto=yes&texmode=exact',
         // 'foto'      => 'https://source.unsplash.com/348x232/?funeral,grave',
+        'created_at' => $faker->dateTimeBetween($startDate = '-1 days', $endDate = 'now'),
     ];
 });

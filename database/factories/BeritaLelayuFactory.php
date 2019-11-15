@@ -17,5 +17,6 @@ $factory->define(BeritaLelayu::class, function (Faker $faker) {
         // 'foto'              => $faker->imageUrl(225, 281, 'cats', true, $faker->name, true), 
         // 'foto'              => 'holder.js/225x281?auto=yes&random=yes&texmode=exact', 
         'foto'              => 'https://source.unsplash.com/225x281/?people,human,girl,man,face',
+        'created_at' => $faker->dateTimeBetween($startDate = '-1 days', $endDate = 'now'),
     ];
 });

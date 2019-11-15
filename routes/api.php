@@ -35,7 +35,6 @@ Route::get('/grafik/paket', 'ChartController@paket')->name('grafik.paket');
 
 Route::get('/test', 'ChartController@test')->name('test');
 Route::get('/test/{year}', 'ChartController@testYear')->name('test.year');
-
 Route::get('pembayaran/{id}/{id_notifikasi}', function ($id, $id_notif) {
     $user   = User::where('status', 'admin')->first();
     $status = $user->notifications()->find($id_notif)->markAsRead();
@@ -43,7 +42,6 @@ Route::get('pembayaran/{id}/{id_notifikasi}', function ($id, $id_notif) {
     return new TransaksiResource(Transaksi::find($id));
  })->name('pembayaran.show');
 
- 
 Route::get('notifikasi', function () {
 
     $user = User::where('status', 'admin')->first();
@@ -62,10 +60,7 @@ Route::get('notifikasi/{id}', function ($id) {
     ]);
 })->name('notifikasi.read');
 
-// Route::put('mark', function ($id) {
-    
-// });
-
+Route::post('/test/search', 'TestController@index')->name('searchFromDate');
 
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
 // dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());

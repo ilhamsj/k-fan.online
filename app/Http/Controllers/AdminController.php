@@ -17,19 +17,19 @@ class AdminController extends Controller
         $data = [
             0 => [
                 'title' => 'User',
-                'jumlah' => count(\App\User::all()),
+                'jumlah' => count(\App\User::where('created_at', today())->get()),
                 'icon' => 'fa fa-user',
                 'color' => 'border-left-info',
             ],
             1 => [
                 'title' => 'Produk',
-                'jumlah' => count(\App\Produk::all()),
+                'jumlah' => count(\App\Produk::where('created_at', today())->get()),
                 'icon' => 'fa fa-table',
                 'color' => 'border-left-info',   
             ],
             2 => [
                 'title' => 'Paket',
-                'jumlah' => count(\App\Paket::all()),
+                'jumlah' => count(\App\Paket::where('created_at', today())->get()),
                 'icon' => 'fa fa-table',
                 'color' => 'border-left-info',
             ],

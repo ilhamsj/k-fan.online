@@ -300,89 +300,79 @@
   </audio>
 
   <script src="{{ secure_url('js/app.js') }}"></script>
-  <script>
-      $("#pesanSukses").delay(2500).slideUp(200, function() {
-          $(this).alert('close');
-      });
-
-      $('#logoutButton').click(function (e) { 
-        e.preventDefault();
-        $('#logoutForm').submit();
-      });
-  </script>
   <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
   <script>
-    // Enable pusher logging - don't include this in production
-    // Pusher.logToConsole = true;
+    $("#pesanSukses").delay(2500).slideUp(200, function() {
+        $(this).alert('close');
+    });
 
-    // var pusher = new Pusher('44c07d75b84acf6201e2', {
-    //   cluster: 'ap1',
-    //   forceTLS: true
-    // });
+    $('#logoutButton').click(function (e) { 
+      e.preventDefault();
+      $('#logoutForm').submit();
+    });
 
-    // var channel = pusher.subscribe('my-channel');
-    // channel.bind('my-event', function(response) {
-    //   // alert(JSON.stringify(data));
-    //   $('#myAudio')[0].play();
-    //   console.log(response);
-    //   $('#notifikasi_items > div > a').remove();
-    //   notifikasi ()
-    // });
+    var pusher = new Pusher('44c07d75b84acf6201e2', {
+      cluster: 'ap1',
+      forceTLS: true
+    });
 
-  //   notifikasi ()
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(response) {
+      $('#myAudio')[0].play();
+      console.log(response);
+      $('#notifikasi_items > div > a').remove();
+      notifikasi ()
+    });
 
-  // function notifikasi () {
-  //     $.ajax({
-  //     type: "GET",
-  //     url: "{{ route('notifikasi') }}",
-  //     success: function (response) {
-  //       console.log(response);
-        
-  //       var notifikasi = $.map(response.data, function (value, index) {
-  //         var abc =  $('#notifikasi_items > div').append('<a data-id="'+value.data.transaksi.id+'" data-notif="'+value.id+'" class="dropdown-item d-flex align-items-center" href="">'+value.data.user+', order paket '+value.data.paket+', status '+value.data.status+'</a>');
-  //       });
+    notifikasi ()
 
-  //       $('#jumlah_notifikasi').text(response.jumlah); 
-  //     }
-  //   });
-  // }
-
-  
-  $(document).on('click', '#notifikasi_items > div > a', function (e) {
-      e.preventDefault()
-      var abc = $(this).attr('data-id');
-
-      let notifikasi = $(this).attr('data-notif');
-      $('#modal_notifikasi').modal('show');
-
-      let url = "{{ route('pembayaran.show', [111111, 99999999999999999])}}";
-      let url_baru = url.replace("111111", abc).replace('99999999999999999', notifikasi);
-
-      $.ajax({
+    function notifikasi () {
+        $.ajax({
         type: "GET",
-        url: url_baru,
+        url: "{{ route('notifikasi') }}",
         success: function (response) {
-          var transaksi = $('#modal_notifikasi').find('ul > li:first-child').append(abc)
-          var user      = transaksi.next().append(response.data.user.name)
-          var paket     = user.next().append(response.data.paket.nama)
-          var harga     = paket.next().append(response.data.jumlah)
-          var jenazah   = user.next().append(response.data.berita.nama)
-          console.log(response);
+          var notifikasi = $.map(response.data, function (value, index) {
+            var abc =  $('#notifikasi_items > div').append('<a data-id="'+value.data.transaksi.id+'" data-notif="'+value.id+'" class="dropdown-item d-flex align-items-center" href="">'+value.data.user+', order paket '+value.data.paket+', status '+value.data.status+'</a>');
+          });
+
+          $('#jumlah_notifikasi').text(response.jumlah); 
         }
       });
-  });
+    }
 
-  $('#modal_notifikasi').on('hidden.bs.modal', function (e) {
-    e.preventDefault()
-    var transaksi = $('#modal_notifikasi').find('ul > li:first-child').append(" ")
-    var user      = transaksi.next().append(" ")
-    var paket     = user.next().append(" ")
-    var harga     = paket.next().append(" ")
-    var jenazah   = user.next().append(" ")
-    $('#notifikasi_items > div > a').remove();
+    $(document).on('click', '#notifikasi_items > div > a', function (e) {
+        e.preventDefault()
+        var abc = $(this).attr('data-id');
+
+        let notifikasi = $(this).attr('data-notif');
+        $('#modal_notifikasi').modal('show');
+
+        let url = "{{ route('pembayaran.show', [111111, 99999999999999999])}}";
+        let url_baru = url.replace("111111", abc).replace('99999999999999999', notifikasi);
+
+        $.ajax({
+          type: "GET",
+          url: url_baru,
+          success: function (response) {
+            var transaksi = $('#modal_notifikasi').find('ul > li:first-child').append(abc)
+            var user      = transaksi.next().append(response.data.user.name)
+            var paket     = user.next().append(response.data.paket.nama)
+            var harga     = paket.next().append(response.data.jumlah)
+            var jenazah   = harga.next().append(response.data.berita.nama)
+          }
+        });  
+    });
+
+    $('#modal_notifikasi').on('hidden.bs.modal', function (e) {
+      e.preventDefault()
+      var transaksi = $('#modal_notifikasi').find('ul > li:first-child').append(" ")
+      var user      = transaksi.next().text(" ")
+      var paket     = user.next().append(" ")
+      var harga     = paket.next().append(" ")
+      var jenazah   = user.next().append(" ")
+      $('#notifikasi_items > div > a').remove();
       notifikasi ()
-  });
-
+    });
   </script>
   @stack('scripts')
 </body>

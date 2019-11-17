@@ -45,6 +45,11 @@
                       <td>{{ $item->created_at }}</td>
                       <td>{{ $item->catatan }}</td>
                       <td class="d-sm-flex justify-content-center">
+                          <a href="#" class="btn btn-success btn-sm btn-icon-split">
+                              <span class="icon text-white-50">
+                                  <i class="fa fa-eye" aria-hidden="true"></i>
+                              </span>
+                          </a>
                           <a href="#" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
                               <span class="icon text-white-50">
                                   <i class="fas fa-pencil-alt"></i>

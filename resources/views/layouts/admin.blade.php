@@ -275,21 +275,17 @@
         </div>
         <div class="modal-body">
           <ul>
-            <li>Transaksi id : </li>
-            <li>User : </li>
-            <li>Paket : </li>
-            <li>Jumlah : </li>
-            <li>Jenazah : </li>
+            <li><b>Transaksi id</b><br/></li>
+            <li><b>User</b><br/></li>
+            <li><b>Paket</b><br/></li>
+            <li><b>Jumlah</b><br/></li>
+            <li><b>Catatan</b><br/></li>
+            <li><b>Jenazah</b><br/></li>
           </ul>
         </div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-            {{-- <button type="button" class="btn btn-primary btn-sm">
-            <i class="fa fa-check-circle" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="btn btn-danger btn-sm">
-            <i class="fa fa-ban" aria-hidden="true"></i>
-          </button> --}}
+            <button class="btn btn-primary" type="button" data-dismiss="modal">Whatsapp</button>
         </div>
       </div>
     </div>
@@ -373,6 +369,10 @@
       $('#notifikasi_items > div > a').remove();
       notifikasi ()
     });
+
+    let cek_jumlah_notif = $('#jumlah_notifikasi').text();
+    console.log(cek_jumlah_notif);
+    
   </script>
   @stack('scripts')
 </body>

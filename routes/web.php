@@ -58,12 +58,12 @@ Route::get('hello', function () {
 Route::get('test/{message}', function ($message) {
 
   $user       = User::where('status', 'admin')->first();
-  $transaksi  = Transaksi::first();
+  $transaksi  = Transaksi::find(1);
   $status     = 'capture';
   $paket      = Paket::all()->random();
   $pemesan    = 'gamora';
 
   Notification::send($user, new MyFirstNotification($transaksi, $paket, $status, $pemesan));
-  event(new MyEvent($message));
+  // event(new MyEvent($message));
   return "Event has been sent!";  
 });

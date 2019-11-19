@@ -46,30 +46,15 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal_invoice">
                 <div class="row">
                     <div class="col-12">
                         <h3>Invoice :</h3>
                     </div>
                     <div class="col">
                         <p>
-                            <strong>From</strong> <br/>
-                            17 November 2019 10:00
-                        </p>
-                        <p>
-                            <strong>To</strong> <br/>
-                            17 November 2019 10:00
-                        </p>
-                    </div>
-        
-                    <div class="col text-right">
-                        <p>
                             <strong>ID</strong> <br/>
                             #a4643aaf-d1e1-3020-82c5-f9c2e298b59c
-                        </p>
-                        <p>
-                            <strong>Tanggal</strong> <br/>
-                            17 November 2019 10:00
                         </p>
                     </div>
                 </div>
@@ -111,7 +96,7 @@
                     </table>
                 </div>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal_catatan">
                 <h4>Notes :</h4>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad voluptas doloribus totam repellendus, repudiandae ea nihil natus earum. Deserunt distinctio quia, nobis quis nesciunt rem a et quidem doloribus nihil?
             </div>
@@ -165,7 +150,7 @@
                 success: function (response) {
                     $('#transaksi-show').modal('show');
                     $.map(response.data, function (value, index) {
-                        var nota  = $('#transaksi-show').find('tr:first-child').clone();
+                        // var nota  = $('#transaksi-show').find('tr:first-child').clone();
                         
                         // if(value != null)
                         // {
@@ -198,7 +183,7 @@
                         //     $('#transaksi-show').find('table').append(nota);
                         // }
 
-
+                        $('#modal_catatan').append(JSON.stringify(value));
                         console.log(value);
                         // console.log(Array.isArray(value) ? 'array' : 'bukan');
                         // console.log(value ? 'ada' : 'null');
@@ -209,10 +194,6 @@
             });
         });
 
-
-
-        
-        
         $('#transaksi-show').on('hidden.bs.modal', function (e) {
             e.preventDefault()
             $('#transaksi-show').find('table > tbody > tr').not(':first').remove();

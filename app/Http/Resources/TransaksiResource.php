@@ -20,7 +20,7 @@ class TransaksiResource extends JsonResource
     {
         return [
             'id'            => $this->id,
-            'tanggal'       =>  date("d F Y h:i:s", strtotime($this->created_at)),
+            'tanggal'       => $this->created_at,
             'status'        => $this->status,
             'jumlah'        => $this->jumlah,
             'catatan'       => $this->catatan,

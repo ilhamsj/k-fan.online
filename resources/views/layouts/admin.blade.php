@@ -326,9 +326,9 @@
         $.ajax({
         type: "GET",
         url: "{{ route('notifikasi') }}",
-        success: function (response) {
+        success: function (response) {          
           var notifikasi = $.map(response.data, function (value, index) {
-            var abc =  $('#notifikasi_items > div').append('<a data-id="'+value.data.transaksi.id+'" data-notif="'+value.id+'" class="dropdown-item d-flex align-items-center" href="">'+value.data.user+', order paket '+value.data.paket+', status '+value.data.status+'</a>');
+            $('#notifikasi_items > div').append('<a data-id="'+value.data.transaksi.id+'" data-notif="'+value.id+'" class="dropdown-item d-flex align-items-center" href="">'+value.data.user.name+', order paket '+value.data.paket.nama+', status '+value.data.status+'</a>');
           });
 
           $('#jumlah_notifikasi').text(response.jumlah); 
@@ -368,11 +368,7 @@
       var jenazah   = user.next().append(" ")
       $('#notifikasi_items > div > a').remove();
       notifikasi ()
-    });
-
-    let cek_jumlah_notif = $('#jumlah_notifikasi').text();
-    console.log(cek_jumlah_notif);
-    
+    });    
   </script>
   @stack('scripts')
 </body>

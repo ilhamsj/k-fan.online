@@ -97,6 +97,11 @@
 
 @endsection
 
+@push('styles')
+    <link rel="stylesheet" href="{{ secure_url('css/components.css') }}">
+    <link rel="stylesheet" href="{{ secure_url('css/icomoon.css') }}">
+@endpush
+
 @push('scripts')
     {{-- <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>  --}}
     {{-- <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.flash.min.js"></script>  --}}
@@ -114,7 +119,6 @@
 
             // Read
             var table = $('table').DataTable({
-                dom: 'Bfrtip',
                 order : [[0,'desc'], [1,'desc']],
                 responsive: true,
                 processing: true,
@@ -129,16 +133,30 @@
                     {data: 'email_verified_at', name: 'email_verified_at' },
                     {data: 'created_at', name: 'created_at' },
                 ],
-                lengthMenu: [
-                    [ 10, 25, 50, -1 ],
-                    [ '10 rows', '25 rows', '50 rows', 'Show all' ]
-                ],
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print', 'pageLength', 
-                ]
+                buttons: {
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            className: 'btn btn-light',
+                            exportOptions: {
+                                columns: 'th:not(:first-child)'
+                            }
+                        },
+                        {
+                            extend: 'pdf',
+                            className: 'btn btn-light',
+                            exportOptions: {
+                                columns: 'th:not(:first-child)'
+                            }
+                        }
+                    ]
+                },
+                autoWidth: false,
+                dom: '<"datatable-header"fBl><"datatable-scroll-wrap"t><"datatable-footer"ip>',
+                language: {
+                    paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+                }
             });
-            // table.buttons().container()
-            // .appendTo( '#example_wrapper .col-md-6:eq(0)' );
 
             // Hapus
             $('table').on('click','.btnDelete',function(e){

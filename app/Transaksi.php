@@ -56,8 +56,8 @@ class Transaksi extends Model
     }
 
     // Rupiah
-    function rupiah($angka){
-        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+    function rupiah($jumlah){
+        $hasil_rupiah = "Rp " . number_format($jumlah,2,',','.');
         return $hasil_rupiah;
     }
 

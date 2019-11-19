@@ -62,6 +62,9 @@ Route::get('notifikasi/{id}', function ($id) {
 
 Route::post('/test/search', 'TestController@index')->name('searchFromDate');
 
+Route::get('v1/transaksi', 'TransaksiController@indexV2')->name('transaksi.index.v1');
+Route::get('v1/transaksi/{id}', 'TransaksiController@show_api')->name('transaksi.show.v1');
+
 // \Carbon\Carbon::parse($item->lahir)->format('Y-m-d\TH:s')
 // dd(\Carbon\Carbon::parse($item->lahir)->toDateTimeLocalString());
 // ->whereDay('created_at', $day)

@@ -5,10 +5,6 @@
     <h1 class="h3 mb-2 text-gray-800">
         Transaksi
     </h1>
-  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-    <i class="fas fa-file-export fa-sm text-white-50"></i>
-    Export
-  </a>
 </div>
 
 <div class="card shadow mb-4">
@@ -17,73 +13,63 @@
   </div>
   <div class="card-body">
       <div class="table-responsive">
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="transaksi">
               <thead>
                   <tr>
-                      <th>No</th>
-                      <th>ID Transaksi</th>
+                      <th class="text-center">Action</th>
+                      <th>ID</th>
                       <th>User</th>
                       <th>Paket</th>
                       <th>Jumlah</th>
                       <th>Status</th>
-                      <th>Tanggal</th>
-                      <th>Catatan</th>
-                      <th class="text-center">Action</th>
+                      <th>Create</th>
                   </tr>
               </thead>
               <tbody>
-                  @foreach ($items as $item)
-                  <tr>
-                      <td>{{ $no++ }}</td>
-                      <td>{{ $item->id }}</td>
-                      <td>{{ $item->user->name }}</td>
-                      <td>{{ $item->paket->nama }}</td>
-                      <td>{{ $item->rupiah($item->jumlah) }}</td>
-                      <td class="status">
-                        {!! $item->status($item->status, $item->id) !!}
-                      </td>
-                      <td>{{ $item->created_at }}</td>
-                      <td>{{ $item->catatan }}</td>
-                      <td class="d-sm-flex justify-content-center">
-                          <a href="#" class="btn btn-success btn-sm btn-icon-split">
-                              <span class="icon text-white-50">
-                                  <i class="fa fa-eye" aria-hidden="true"></i>
-                              </span>
-                          </a>
-                          <a href="#" class="mx-1 btn btn-secondary btn-sm btn-icon-split">
-                              <span class="icon text-white-50">
-                                  <i class="fas fa-pencil-alt"></i>
-                              </span>
-                          </a>
-                          <form action="{{ route('transaksi.destroy', $item->id) }}" method="post">
-                              @csrf
-                              @method('DELETE')
-                              <button class="btn btn-danger btn-icon-split btn-sm" type="submit">
-                                  <span class="icon text-white-50">
-                                      <i class="fas fa-trash-alt"></i>
-                                  </span>
-                              </button>
-                          </form>
-                      </td>
-                  </tr>
-                  @endforeach
+
               </tbody>
-              <tfoot>
-                <tr>
-                    <th>No</th>
-                    <th>ID Transaksi</th>
-                    <th>User</th>
-                    <th>Paket</th>
-                    <th>Jumlah</th>
-                    <th>Status</th>
-                    <th>Tanggal</th>
-                    <th>Catatan</th>
-                    <th class="text-center">Action</th>
-                </tr>
-              </tfoot>
           </table>
       </div>      
   </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="transaksi-show" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fa fa-flag" aria-hidden="true"></i>
+                    <strong><span class="text-primary">Ka</span>fan</strong>
+                </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col pl-4 text-left">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-borderless table-hover">
+                        <tr>
+                            <td>Detail</td>
+                            <td>Transaksi</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-primary">Cetak</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection
@@ -99,34 +85,90 @@
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script> 
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script> 
     <script>
-      $(document).ready(function() {
-        $('table tfoot th').each( function () {
-            var title = $(this).text();
-            $(this).html( '<input type="text" class="form-control" placeholder="Search '+title+'" />' );
-        });
-        var table = $('table').DataTable( {
-            dom: 'Bfrtip',
-            buttons: [
-                {
-                    extend: 'pdfHtml5',
-                    orientation: 'landscape',
-                    messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
-                }
-            ]
+        var table = $('#transaksi').DataTable({
+            order : [[0,'desc']],
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('transaksi.index.v1') }}",
+            columns: [
+                {data: 'action', name: 'action', orderable: false, searchable: false},
+                {data: 'id', name: 'id' },
+                {data: 'user_id', name: 'user_id' },
+                {data: 'paket_id', name: 'paket_id' },
+                {data: 'jumlah', name: 'jumlah' },
+                {data: 'status', name: 'status' },
+                {data: 'created_at', name: 'created_at' }
+            ],
         });
         
-        // Apply the search
-        table.columns().every( function () {
-            var that = this;
-    
-            $('input', this.footer() ).on( 'keyup change clear', function () {
-                if ( that.search() !== this.value ) {
-                    that
-                    .search( this.value )
-                    .draw();
+        $(document).on('click', '.transaksi_show', function (e) {
+            e.preventDefault();
+
+            var url = $(this).attr('data-url');
+
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (response) {
+                    $('#transaksi-show').modal('show');
+                    $.map(response.data, function (value, index) {
+                        var nota  = $('#transaksi-show').find('tr:first-child').clone();
+                        
+                        if(value != null)
+                        {
+                            if(Number.isInteger(value))
+                            {
+                                $(nota).find('td').first().text(index);
+                                $(nota).find('td').last().text(value);
+                                $('#transaksi-show').find('table').append(nota);
+                            }
+                            else
+                            {
+                                if(value.length == undefined)
+                                {
+                                    $.map(value, function (val, ind) {
+                                        $('#transaksi-show > div > div > div:nth-child(2) > div > div').append('<p>'+ind+'<br/><strong>'+val+'</strong></p>');
+                                    });
+                                }
+                                else
+                                {
+                                    $(nota).find('td').first().text(index);
+                                    $(nota).find('td').last().text(value);
+                                    $('#transaksi-show').find('table').append(nota);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            $(nota).find('td').first().text(index);
+                            $(nota).find('td').last().text('tidak ada data mayat');
+                            $('#transaksi-show').find('table').append(nota);
+                        }
+
+
+                        console.log(value);
+                        // console.log(Array.isArray(value) ? 'array' : 'bukan');
+                        // console.log(value ? 'ada' : 'null');
+                        // console.log(value.length);
+                        // console.log(Number.isInteger(value) ? value : 'bukan'); 
+                    });
                 }
             });
-        } );
-      });
+        });
+
+
+
+        
+        
+        $('#transaksi-show').on('hidden.bs.modal', function (e) {
+            e.preventDefault()
+            $('#transaksi-show').find('table > tbody > tr').not(':first').remove();
+        });
+
+        
+        function new_url(url, before, after) {
+            return url.replace(before, after);
+        }
     </script>
 @endpush

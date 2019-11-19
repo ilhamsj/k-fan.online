@@ -9,6 +9,7 @@ use App\Events\MyEvent;
 use Midtrans\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\TransaksiResource;
 use App\Notifications\MyFirstNotification;
 use Illuminate\Support\Facades\Notification;
 
@@ -16,12 +17,53 @@ class TransaksiController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified'])->except('index', 'notification', 'finish', 'approve');
+        // $this->middleware(['auth', 'verified'])->except('indexV2', 'index', 'notification', 'finish', 'approve');
 
         \Midtrans\Config::$serverKey = env('MIDTRANS_SERVERKEY');
         \Midtrans\Config::$isProduction = false;
         \Midtrans\Config::$isSanitized = true;
         \Midtrans\Config::$is3ds = true;
+    }
+
+    // function rupiah($angka){
+    //     $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+    //     return $hasil_rupiah;
+    // }
+
+    public function indexV2()
+    {
+        $items = Transaksi::orderBy('created_at', 'desc')->get();
+
+        return datatables($items)
+            ->addIndexColumn()
+            ->addColumn('action', function ($items) {
+                return 
+                '
+                    <a href="" data-url="'.route('transaksi.show.v1', $items->id).'" class="btn btn-secondary btn-sm btn-icon-split transaksi_show"> <span class="icon text-white-50"> <i class="fa fa-eye" aria-hidden="true"></i> </span></a>
+                    <a href="" class="btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i></span></a>
+                ';
+            })
+            ->editColumn('user_id', function ($items) {
+                return $items->user->name;
+            })
+            ->editColumn('paket_id', function ($items) {
+                return $items->paket->nama;
+            })
+            ->editColumn('jumlah', function ($items) {
+                $rupiah = new Transaksi();
+                return $rupiah->rupiah($items->jumlah);
+            })
+            ->editColumn('status', function ($items) {
+                if ($items->status == 'capture' || $items->status == 'settlement'):
+                    return '<span class="badge badge-pill badge-success">'.$items->status.'</span>';
+                elseif ($items->status == 'pending'):
+                    return '<span class="badge badge-pill badge-info">'.$items->status.'</span>';
+                else:
+                    return '<span class="badge badge-pill badge-danger">'.$items->status.'</span>';
+                endif;
+            })
+            ->rawColumns(['action', 'status', 'user_id', 'paket_id', 'jumlah'])
+            ->toJson();
     }
 
     public function index()
@@ -81,6 +123,11 @@ class TransaksiController extends Controller
         ]);
     }
 
+    public function show_api($id)
+    {
+        return new TransaksiResource(Transaksi::find($id));
+    }
+
     public function destroy($id)
     {
         Transaksi::destroy($id);
@@ -104,7 +151,6 @@ class TransaksiController extends Controller
         ]);
 
         $user       = User::where('status', 'admin')->first();
-        // $transaksi  = 'a15708a7-35e3-3348-b728-9a368cf7657f';
         $status     = $transaction;
         $paket      = $transaksi->paket->nama;
         $pemesan    = $transaksi->user->name;

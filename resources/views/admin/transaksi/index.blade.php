@@ -35,7 +35,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="transaksi-show" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">
@@ -48,20 +48,72 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col pl-4 text-left">
-                        
+                    <div class="col-12">
+                        <h3>Invoice :</h3>
+                    </div>
+                    <div class="col">
+                        <p>
+                            <strong>From</strong> <br/>
+                            17 November 2019 10:00
+                        </p>
+                        <p>
+                            <strong>To</strong> <br/>
+                            17 November 2019 10:00
+                        </p>
+                    </div>
+        
+                    <div class="col text-right">
+                        <p>
+                            <strong>ID</strong> <br/>
+                            #a4643aaf-d1e1-3020-82c5-f9c2e298b59c
+                        </p>
+                        <p>
+                            <strong>Tanggal</strong> <br/>
+                            17 November 2019 10:00
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="modal-body">
                 <div class="table-responsive">
-                    <table class="table table-borderless table-hover">
-                        <tr>
-                            <td>Detail</td>
-                            <td>Transaksi</td>
-                        </tr>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>No</th>
+                                <th>Paket</th>
+                                <th>Produk</th>
+                                <th>Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="3">01</td>
+                                <td rowspan="3">Platinum</td>
+                                <td>Peti Mati</td>
+                                <td>19000</td>
+                            </tr>
+                            <tr>
+                                <td>Peti Mati</td>
+                                <td>19000</td>
+                            </tr>
+                            <tr>
+                                <td>Peti Mati</td>
+                                <td>19000</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="2">Total</th>
+                                <th>4</th>
+                                <th>Harga</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
+            </div>
+            <div class="modal-body">
+                <h4>Notes :</h4>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad voluptas doloribus totam repellendus, repudiandae ea nihil natus earum. Deserunt distinctio quia, nobis quis nesciunt rem a et quidem doloribus nihil?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -115,36 +167,36 @@
                     $.map(response.data, function (value, index) {
                         var nota  = $('#transaksi-show').find('tr:first-child').clone();
                         
-                        if(value != null)
-                        {
-                            if(Number.isInteger(value))
-                            {
-                                $(nota).find('td').first().text(index);
-                                $(nota).find('td').last().text(value);
-                                $('#transaksi-show').find('table').append(nota);
-                            }
-                            else
-                            {
-                                if(value.length == undefined)
-                                {
-                                    $.map(value, function (val, ind) {
-                                        $('#transaksi-show > div > div > div:nth-child(2) > div > div').append('<p>'+ind+'<br/><strong>'+val+'</strong></p>');
-                                    });
-                                }
-                                else
-                                {
-                                    $(nota).find('td').first().text(index);
-                                    $(nota).find('td').last().text(value);
-                                    $('#transaksi-show').find('table').append(nota);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            $(nota).find('td').first().text(index);
-                            $(nota).find('td').last().text('tidak ada data mayat');
-                            $('#transaksi-show').find('table').append(nota);
-                        }
+                        // if(value != null)
+                        // {
+                        //     if(Number.isInteger(value))
+                        //     {
+                        //         $(nota).find('td').first().text(index);
+                        //         $(nota).find('td').last().text(value);
+                        //         $('#transaksi-show').find('table').append(nota);
+                        //     }
+                        //     else
+                        //     {
+                        //         if(value.length == undefined)
+                        //         {
+                        //             $.map(value, function (val, ind) {
+                        //                 $('#transaksi-show > div > div > div:nth-child(2) > div > div').append('<p>'+ind+'<br/><strong>'+val+'</strong></p>');
+                        //             });
+                        //         }
+                        //         else
+                        //         {
+                        //             $(nota).find('td').first().text(index);
+                        //             $(nota).find('td').last().text(value);
+                        //             $('#transaksi-show').find('table').append(nota);
+                        //         }
+                        //     }
+                        // }
+                        // else
+                        // {
+                        //     $(nota).find('td').first().text(index);
+                        //     $(nota).find('td').last().text('tidak ada data mayat');
+                        //     $('#transaksi-show').find('table').append(nota);
+                        // }
 
 
                         console.log(value);
@@ -170,5 +222,8 @@
         function new_url(url, before, after) {
             return url.replace(before, after);
         }
+
+        $('#transaksi-show').modal('show');
+
     </script>
 @endpush

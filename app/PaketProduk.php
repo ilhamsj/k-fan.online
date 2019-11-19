@@ -15,4 +15,9 @@ class PaketProduk extends Model
     {
         return $this->belongsTo('App\Produk');
     }
+
+    public function paket()
+    {
+        return $this->belongsTo('App\Paket');
+    }
 }

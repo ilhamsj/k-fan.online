@@ -14,9 +14,19 @@ class Produk extends Model
         'foto',
     ];
 
+    public function paket()
+    {
+        return $this->belongsToMany('App\Paket', 'paket_produks');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User', 'mitra_id', 'id');
+    }
+
+    public function PaketProduk()
+    {   
+        return $this->hasMany('App\PaketProduk');
     }
 
     // Rupiah

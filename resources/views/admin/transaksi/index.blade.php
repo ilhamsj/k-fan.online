@@ -31,17 +31,22 @@
           </table>
       </div>      
   </div>
+  <div class="card-body">
+      <img src="" alt="" srcset="">
+  </div>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="transaksi-show" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content  border-0">
+            <div class="modal-header border-0">
                 <h5 class="modal-title">
                     <i class="fa fa-flag" aria-hidden="true"></i>
                     <strong><span class="text-primary">Ka</span>fan</strong>
                 </h5>
+                <button type="button" class="btn btn-primary" id="generateReport">Cetak</button>
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -52,16 +57,13 @@
                         <h3>Invoice :</h3>
                     </div>
                     <div class="col">
-                        <p>
-                            <strong>ID</strong> <br/>
-                            #a4643aaf-d1e1-3020-82c5-f9c2e298b59c
-                        </p>
+         
                     </div>
                 </div>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal_invoice_details">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered">
                         <thead class="thead-inverse">
                             <tr>
                                 <th>No</th>
@@ -72,25 +74,17 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td rowspan="3">01</td>
-                                <td rowspan="3">Platinum</td>
-                                <td>Peti Mati</td>
-                                <td>19000</td>
-                            </tr>
-                            <tr>
-                                <td>Peti Mati</td>
-                                <td>19000</td>
-                            </tr>
-                            <tr>
-                                <td>Peti Mati</td>
-                                <td>19000</td>
+                                <td>01</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th colspan="2">Total</th>
-                                <th>4</th>
-                                <th>Harga</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </tfoot>
                     </table>
@@ -98,12 +92,10 @@
             </div>
             <div class="modal-body" id="modal_catatan">
                 <h4>Notes :</h4>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad voluptas doloribus totam repellendus, repudiandae ea nihil natus earum. Deserunt distinctio quia, nobis quis nesciunt rem a et quidem doloribus nihil?
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-primary">Cetak</button>
             </div>
         </div>
     </div>
@@ -112,6 +104,11 @@
 @endsection
 
 @push('scripts')
+
+    <!-- print -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> 
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> 
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script> 
@@ -150,46 +147,62 @@
                 success: function (response) {
                     $('#transaksi-show').modal('show');
                     $.map(response.data, function (value, index) {
-                        // var nota  = $('#transaksi-show').find('tr:first-child').clone();
-                        
-                        // if(value != null)
-                        // {
-                        //     if(Number.isInteger(value))
-                        //     {
-                        //         $(nota).find('td').first().text(index);
-                        //         $(nota).find('td').last().text(value);
-                        //         $('#transaksi-show').find('table').append(nota);
-                        //     }
-                        //     else
-                        //     {
-                        //         if(value.length == undefined)
-                        //         {
-                        //             $.map(value, function (val, ind) {
-                        //                 $('#transaksi-show > div > div > div:nth-child(2) > div > div').append('<p>'+ind+'<br/><strong>'+val+'</strong></p>');
-                        //             });
-                        //         }
-                        //         else
-                        //         {
-                        //             $(nota).find('td').first().text(index);
-                        //             $(nota).find('td').last().text(value);
-                        //             $('#transaksi-show').find('table').append(nota);
-                        //         }
-                        //     }
-                        // }
-                        // else
-                        // {
-                        //     $(nota).find('td').first().text(index);
-                        //     $(nota).find('td').last().text('tidak ada data mayat');
-                        //     $('#transaksi-show').find('table').append(nota);
-                        // }
+                        if(value != null)
+                        {
+                            if(Number.isInteger(value))
+                            {
+                                $('#modal_invoice_details').find('tfoot > tr > th:last-child').text(value)
+                            }
+                            else
+                            {
+                                if(value.length == undefined)
+                                {
+                                    if(index == 'paket')
+                                    {
+                                        $('#modal_invoice_details').find('tbody > tr > td:nth-child(2)').append('<span>'+value.nama+'</span>');
+                                        
+                                        var no = 1;
+                                        $.map(value.produk, function (val, ind) {
+                                            var nota  = $('#modal_invoice_details').find('tbody > tr').first().clone()
+                                            $(nota).find('td:nth-child(1)').text(no++);
+                                            $(nota).find('td:nth-child(3)').text(val.nama);
+                                            $(nota).find('td:nth-child(4)').text(val.harga);
+                                            $('#modal_invoice_details').find('tbody').append(nota);
+                                        });
+                                        $('#modal_invoice_details').find('tfoot > tr > th:nth-child(2)').text(value.produk.length)
+                                        var tr = $('#modal_invoice_details').find('tbody > tr:gt(1) > td:nth-child(2)').remove();
+                                        var tr = $('#modal_invoice_details').find('tbody > tr:gt(1) > td:nth-child(1)').remove();
+                                        $('#modal_invoice_details').find('tbody > tr:nth-child(2) > td:nth-child(2)').attr('rowspan', value.produk.length)
+                                        $('#modal_invoice_details').find('tbody > tr:nth-child(2) > td:nth-child(1)').attr('rowspan', value.produk.length)
+                                    }
+                                }
+                                else
+                                {
+                                    if(index != 'catatan')
+                                    {
+                                        $('#modal_invoice > div > div:nth-child(2)').append('<p>' + index + '<br/><strong>' + value + '</strong></p>');
+                                    }
+                                    else
+                                    {
+                                        $('#modal_catatan').append('<div>'+value+'</div>');
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
 
-                        $('#modal_catatan').append(JSON.stringify(value));
+                        }
+
                         console.log(value);
+                        // $(transaksi).last().remove();
+
                         // console.log(Array.isArray(value) ? 'array' : 'bukan');
                         // console.log(value ? 'ada' : 'null');
                         // console.log(value.length);
                         // console.log(Number.isInteger(value) ? value : 'bukan'); 
                     });
+                    $('#modal_invoice_details').find('tbody > tr').first().remove()
                 }
             });
         });
@@ -197,6 +210,13 @@
         $('#transaksi-show').on('hidden.bs.modal', function (e) {
             e.preventDefault()
             $('#transaksi-show').find('table > tbody > tr').not(':first').remove();
+            $('#modal_invoice > div > div:nth-child(2) > p').remove();
+            $('#modal_catatan > div').remove();
+            $('#modal_invoice_details').find('tfoot > tr > th:last-child > span').remove()
+            $('#modal_invoice_details').find('tbody > tr > td:last-child > span').remove()
+            $('#modal_invoice_details').find('tbody > tr > td:nth-child(2) > span').remove()
+            $('#generateReport').parent().show();
+
         });
 
         
@@ -204,7 +224,26 @@
             return url.replace(before, after);
         }
 
-        $('#transaksi-show').modal('show');
+        
+        $('#generateReport').click(function (e) { 
+            window.scrollTo(0,0)
+            $(this).parent().hide();
+            
+            var h_doc = $('#transaksi-show').height();
+            var w_doc = $('#transaksi-show').width();
+
+            html2canvas(document.getElementById("transaksi-show"), {
+                onrendered: function(canvas) {
+                    var imgData = canvas.toDataURL('image/png');
+                    var doc = new jsPDF('P', 'pt', 'a4');
+                    doc.addImage(imgData, 'JPEG', -220, 0)
+                    doc.save('invoice.pdf');
+                // $('.card-body:last-child > img').attr('src', imgData);
+                    // $('#transaksi-show').modal('hide')
+                }
+            });
+        });
+
 
     </script>
 @endpush

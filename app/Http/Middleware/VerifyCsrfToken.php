@@ -21,5 +21,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'finish',
         'notification',
+        'auth/google/callback'
     ];
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
@@ -64,7 +65,9 @@ class LoginController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'password' => Hash::make('password'),
-                    'google_id'=> $user->id
+                    'google_id'=> $user->id,
+                    'email_verivied_at' => Carbon::now()
+
                 ]);
   
                 Auth::login($newUser);

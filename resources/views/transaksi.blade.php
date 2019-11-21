@@ -154,6 +154,7 @@
                 url: "{{ route('lelayu.store') }}",
                 data: form.serialize(),
                 success: function (response) {
+                    $('#pay-button').removeAttr('disabled');
                     $('#modelId').modal('hide');
                     $('table').DataTable().ajax.reload();
                 },

@@ -280,12 +280,11 @@
             <li><b>Paket</b><br/></li>
             <li><b>Jumlah</b><br/></li>
             <li><b>Catatan</b><br/></li>
-            <li><b>Jenazah</b><br/></li>
           </ul>
         </div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary" type="button" data-dismiss="modal">Whatsapp</button>
+            {{-- <a href="tel:6289666445551 target="_blank" class="btn btn-primary">Whatsapp</a> --}}
         </div>
       </div>
     </div>
@@ -350,11 +349,16 @@
           type: "GET",
           url: url_baru,
           success: function (response) {
+            console.log(response);
+            
             var transaksi = $('#modal_notifikasi').find('ul > li:first-child').append(abc)
             var user      = transaksi.next().append(response.data.user.name)
             var paket     = user.next().append(response.data.paket.nama)
             var harga     = paket.next().append(response.data.jumlah)
-            var jenazah   = harga.next().append(response.data.berita.nama)
+            if(response.data.berita != null)
+            {
+              var jenazah   = harga.next().append('Pemakaman untuk ' + response.data.berita.nama)
+            }
           }
         });  
     });

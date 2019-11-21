@@ -52,6 +52,7 @@
                                     <button type="submit" class="btn btn-primary btn-block">
                                         {{ __('Login') }} 
                                     </button>
+                                    <a href="{{ route('auth.google') }}" class="btn btn-secondary btn-block">Google</a>
                                     <a href="{{ route('register') }}" class="btn btn-secondary btn-block">Register</a>
                                 </div>
                             </form>

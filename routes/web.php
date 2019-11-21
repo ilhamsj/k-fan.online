@@ -67,3 +67,6 @@ Route::get('test/{message}', function ($message) {
   event(new MyEvent($message));
   return "Event has been sent!";  
 });
+
+Route::get('auth/google', 'Auth\LoginController@redirectToGoogle')->name('auth.google');
+Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');

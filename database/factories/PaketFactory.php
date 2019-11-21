@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Paket::class, function (Faker $faker) {
     return [
-        'nama'      => $faker->randomElement(['Bronze', 'Silver', 'Gold', 'Platinum', 'Ultimate']),
+        'nama'      => $faker->unique()->randomElement(['Paket 1', 'Paket 2', 'Paket 3']),
         'harga'     => $faker->numberBetween($min = 650000, $max = 15000000),
         'diskon'    => $faker->randomNumber(1),
         'deskripsi' => $faker->realText($maxNbChars = 200, $indexSize = 2),

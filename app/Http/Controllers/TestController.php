@@ -15,8 +15,7 @@ class TestController extends Controller
 {
     public function index(Request $request) {
         $transaksi = new TestCollection(
-                Transaksi::where('status', 'capture')
-                            ->orWhere('status', 'settlement')
+                Transaksi::whereIn('status', ['settlement', 'capture'])
                             ->whereBetween('created_at', [$request->from_date, $request->to_date])
                             ->orderBy('created_at')
                             ->get()

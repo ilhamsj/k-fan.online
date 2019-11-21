@@ -18,6 +18,6 @@ $factory->define(Transaksi::class, function (Faker $faker) {
         'snap_token' => $faker->sha1,
         // 'created_at' => $faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now'),
         // 'created_at' => $faker->dateTimeBetween($startDate = '-1 year', $endDate = 'now'),
-        'created_at' => $faker->dateTimeBetween($startDate = '-5 year', $endDate = 'now'),
+        'created_at' => $faker->dateTimeBetween($startDate = '-3 years', $endDate = 'now'),
     ];
 });

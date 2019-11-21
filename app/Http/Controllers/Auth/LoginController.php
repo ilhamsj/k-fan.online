@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -47,10 +45,12 @@ class LoginController extends Controller
 
     public function handleGoogleCallback()
     {
-        try {
+        $user = Socialite::driver('google')->user();
+        dd($user);
+        // try {
   
-            $user = Socialite::driver('google')->user();
-            dd($user);
+        //     $user = Socialite::driver('google')->user();
+        //     dd($user);
             
             // $finduser = User::where('google_id', $user->id)->first();
    
@@ -71,9 +71,9 @@ class LoginController extends Controller
    
             //     return redirect()->back();
             // }
-        } catch (Exception $e) {
-            return redirect('auth/google');
-        }
+        // } catch (Exception $e) {
+        //     return redirect('auth/google');
+        // }
     }
 
 }

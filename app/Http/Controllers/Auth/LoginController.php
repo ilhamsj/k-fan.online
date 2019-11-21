@@ -66,8 +66,7 @@ class LoginController extends Controller
                     'email' => $user->email,
                     'password' => Hash::make('password'),
                     'google_id'=> $user->id,
-                    'email_verivied_at' => Carbon::now()
-
+                    'email_verified_at' => Carbon::now()
                 ]);
   
                 Auth::login($newUser);

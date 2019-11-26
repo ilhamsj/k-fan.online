@@ -3,6 +3,8 @@
 ## Requirement
 1. Composer
 1. Nodejs
+1. MySql
+1. Laravel Requirement [Here](https://laravel.com/docs/6.x#server-requirements)
 
 ## Cara Install 
 * `composer install`  

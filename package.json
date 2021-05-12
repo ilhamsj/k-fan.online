@@ -35,6 +35,6 @@
         "jquery.easing": "^1.4.1",
         "select2": "^4.0.10",
         "startbootstrap-sb-admin-2": "^4.0.7",
-        "swiper": "^5.2.0"
+        "swiper": "^6.5.1"
     }
 }
